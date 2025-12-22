@@ -20,7 +20,8 @@ memory-bank/
 │   └── feature-template.md
 ├── architecture/               # High-level architecture docs
 │   ├── tech-stack.md
-│   └── system-overview.md
+│   ├── system-overview.md
+│   └── patterns.md             # Development patterns & best practices
 └── features/                   # Individual feature documentation
     ├── theme-system/
     ├── sanity-integration/
@@ -124,5 +125,6 @@ See [CLAUDE.md](../CLAUDE.md) for complete rules and [WORKFLOW.md](./WORKFLOW.md
 | QUICK-START.md | Quick reference for common tasks |
 | templates/ | Standardized documentation format |
 | architecture/ | System-level documentation |
+| architecture/patterns.md | Development patterns & best practices |
 | features/[name]/ | Specific feature details |
 | ../CLAUDE.md | Memory bank rules (7 critical rules) |

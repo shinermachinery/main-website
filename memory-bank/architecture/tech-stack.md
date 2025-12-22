@@ -163,3 +163,16 @@ Optional:
 - **Embedded CMS**: Sanity Studio served from Next.js
 - **Modern React**: Server Components by default
 - **Type Safety**: Strict TypeScript everywhere
+
+## Required Development Patterns
+
+For consistent Next.js 16 development, follow these mandatory patterns:
+
+- **Server Components First**: All pages are server components by default
+- **Async Params/SearchParams**: Always await in Next.js 16
+- **Component-Based Data**: Each client component gets its own server data component
+- **Server Data Components**: `[component-name]-data.tsx` files in components folder for data fetching
+- **Suspense Boundaries**: Enable streaming and loading states
+- **Client Components**: Only when interactivity needed, receive data as props
+
+**See**: [Development Patterns](./patterns.md) for detailed guidance and examples.

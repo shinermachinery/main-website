@@ -159,6 +159,79 @@ All schemas exported from `src/sanity/schemaTypes/index.ts` and used in `sanity.
 - Use the Sanity client from `src/sanity/lib/client.ts` for queries
 - Image optimization uses `@sanity/image-url` via `src/sanity/lib/image.ts`
 
+### Server Component & Data Loading Patterns
+
+**CRITICAL RULES** for Next.js 16 development:
+
+1. **Pages MUST be server components** - NO 'use client' on page files
+   - Exception: `/studio` route (Sanity Studio requires client-side)
+   - Use client components only for interactivity (forms, events, state)
+
+2. **Always await params and searchParams** - Next.js 16 requirement
+   ```typescript
+   // ✅ CORRECT
+   export default async function Page({ params, searchParams }: Props) {
+     const { slug } = await params
+     const filters = await searchParams
+   }
+
+   // ❌ WRONG - TypeScript error!
+   export default function Page({ params }) {
+     const slug = params.slug
+   }
+   ```
+
+3. **Component-based server data pattern** - Each client component gets its own server data file
+   - Create `[component-name]-data.tsx` files in `src/components/[feature]/`
+   - Server component fetches data and renders client component with data as props
+   - Example: `blog-list-data.tsx` fetches data for `BlogList` client component
+   - Multiple client components = multiple server data files (NOT one data.ts per route)
+
+4. **Wrap data fetching in Suspense** - Enable streaming for better UX
+   ```typescript
+   <Suspense fallback={<Skeleton />}>
+     <ServerDataComponent />
+   </Suspense>
+   ```
+
+5. **Show loading states** - Create skeleton components for all Suspense fallbacks
+
+**Quick Example:**
+```typescript
+// src/app/blog/page.tsx (Server Page)
+import { Suspense } from 'react'
+import { BlogListData } from '@/components/blog/blog-list-data'
+
+export default async function BlogPage({ searchParams }: Props) {
+  const params = await searchParams
+
+  return (
+    <Suspense fallback={<BlogListSkeleton />}>
+      <BlogListData filters={params} />
+    </Suspense>
+  )
+}
+
+// src/components/blog/blog-list-data.tsx (Server Data Component)
+import { client } from '@/sanity/lib/client'
+import { BlogList } from './blog-list'
+
+export async function BlogListData({ filters }) {
+  const posts = await client.fetch(`*[_type == "post"]`)
+  return <BlogList posts={posts} />
+}
+
+// src/components/blog/blog-list.tsx (Client Component)
+'use client'
+
+export function BlogList({ posts }) {
+  // Interactive UI receives data as props
+  return <div>{/* ... */}</div>
+}
+```
+
+**For comprehensive patterns and examples**, see [Architecture Patterns Documentation](memory-bank/architecture/patterns.md).
+
 ## Memory Bank System
 
 This project uses a comprehensive memory bank system to track all features, decisions, and development progress. The memory bank is located in the `memory-bank/` directory and MUST be maintained for all development work.

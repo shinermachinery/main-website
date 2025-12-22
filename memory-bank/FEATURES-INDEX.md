@@ -281,6 +281,7 @@ Features scheduled for future implementation:
 
 - [Architecture Overview](./architecture/system-overview.md)
 - [Tech Stack](./architecture/tech-stack.md)
+- [Development Patterns](./architecture/patterns.md)
 - [Memory Bank README](./README.md)
 - [Feature Template](./templates/feature-template.md)
 

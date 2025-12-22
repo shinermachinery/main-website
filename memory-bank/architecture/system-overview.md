@@ -163,6 +163,14 @@ import { cn } from '@/lib/utils'
 - `/` - Homepage
 - `/studio` - Sanity Studio (statically generated)
 
+**Development Pattern**:
+- Server components by default (no 'use client' on pages)
+- Always await params/searchParams (Next.js 16)
+- Component-based server data components (`[component-name]-data.tsx`) for data fetching
+- Each client component gets a corresponding server data component
+- Suspense boundaries for streaming
+- See [patterns.md](./patterns.md) for detailed patterns
+
 ## Data Flow
 
 ### Content Rendering Flow
@@ -311,9 +319,13 @@ Serve Static + SSR Pages
 
 ### Adding New Pages
 1. Create file in `src/app/[route]/page.tsx`
-2. Use Server Components by default
-3. Query content via Sanity client
-4. Export metadata for SEO
+2. **Keep as server component** (no 'use client')
+3. **Always await params/searchParams** if used
+4. Create server data components in `src/components/[feature]/[name]-data.tsx`
+5. Wrap server data components in Suspense boundaries
+6. Export metadata for SEO
+
+**See**: [Development Patterns](./patterns.md) for detailed examples
 
 ### Adding New Components
 1. Create in `src/components/ui/` or `src/components/global/`

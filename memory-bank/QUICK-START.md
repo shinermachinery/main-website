@@ -97,6 +97,7 @@ touch memory-bank/features/newsletter/CHANGELOG.md
 Theme System          → memory-bank/features/theme-system/
 Sanity CMS           → memory-bank/features/sanity-integration/
 UI Components        → memory-bank/features/ui-components/
+Development Patterns  → memory-bank/architecture/patterns.md
 Architecture         → memory-bank/architecture/system-overview.md
 Tech Stack           → memory-bank/architecture/tech-stack.md
 ```
@@ -157,6 +158,15 @@ Looking for...
 
 **Theme configuration?**
 → `features/theme-system/README.md`
+
+**Development patterns?**
+→ `architecture/patterns.md` → Server components, data loading
+
+**How to structure pages?**
+→ `architecture/patterns.md` → Page Structure pattern
+
+**Data fetching best practices?**
+→ `architecture/patterns.md` → Server Data Component pattern
 
 ## 🏷️ Status Indicators
 
