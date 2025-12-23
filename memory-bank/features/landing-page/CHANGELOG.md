@@ -2,6 +2,48 @@
 
 All notable changes to the landing page feature will be documented in this file.
 
+## About Section Redesign (2025-12-24)
+
+### Modified
+
+- `src/components/landing/about-section.tsx`
+  - Completely redesigned with two-part layout structure
+  - **Part 1**: Mission statement section (existing "A Word About Us and Our Mission")
+    - Updated typography to light mode compatible (text-gray-900, text-gray-600)
+    - Changed font-weight to font-normal for cleaner look
+    - Adjusted spacing for better visual hierarchy
+  - **Part 2**: "Built to Perform, Built to Last" section (NEW)
+    - Added tagline with two-line heading
+    - Created 2x2 feature grid with 4 feature cards:
+      - Highest Precision Components (wrench icon)
+      - 24/7 Support & Service (settings icon)
+      - Productivity Focused (trending chart icon)
+      - Global Reach, Local Support (globe icon)
+    - Teal icon accents (text-teal-600) for visual consistency
+    - Light mode compatible text colors
+  - Changed background from bg-white to bg-gray-50 for light mode
+  - Added vertical spacing between two parts (space-y-24)
+  - Responsive 2-column grid for features on mobile/desktop
+
+### Design Updates
+
+- Typography: Adjusted to light mode with proper contrast
+  - Headings: text-gray-900 (dark text on light background)
+  - Body text: text-gray-600 (medium gray for readability)
+  - Icon color: text-teal-600 (brand accent)
+- Icons: Using Heroicons via inline SVG
+- Spacing: Consistent gap spacing (gap-8, gap-12, space-y-3)
+- Background: Light gray (bg-gray-50) for subtle visual separation
+
+### Technical Notes
+
+- Component remains as server component (no client-side JS)
+- Icons embedded as inline SVG for performance (no icon library import overhead)
+- Responsive design maintained with mobile-first approach
+- Accessibility preserved with semantic HTML structure
+
+---
+
 ## Phase 1 - Foundation Setup (2025-12-23)
 
 ### Added
