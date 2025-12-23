@@ -1,11 +1,11 @@
 export function AboutSection() {
   return (
-    <section className="py-24 md:py-32 bg-background">
+    <section id="about" className="py-24 md:py-32 bg-background" aria-labelledby="about-heading">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
           {/* Heading Column */}
           <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+            <h2 id="about-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
               A Word About Us and Our Mission
             </h2>
           </div>

@@ -3,11 +3,14 @@ import { ArrowRight } from 'lucide-react'
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-secondary overflow-hidden">
+    <section
+      className="relative min-h-screen flex items-center justify-center bg-secondary overflow-hidden"
+      aria-label="Hero section"
+    >
       {/* Decorative Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-blue-10 via-transparent to-brand-green-10 opacity-50" />
-      <div className="absolute top-24 left-24 w-96 h-96 bg-brand-blue-10 rounded-full blur-3xl opacity-30" />
-      <div className="absolute bottom-24 right-24 w-96 h-96 bg-brand-green-10 rounded-full blur-3xl opacity-30" />
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-blue-10 via-transparent to-brand-green-10 opacity-50" aria-hidden="true" />
+      <div className="absolute top-24 left-24 w-96 h-96 bg-brand-blue-10 rounded-full blur-3xl opacity-30" aria-hidden="true" />
+      <div className="absolute bottom-24 right-24 w-96 h-96 bg-brand-green-10 rounded-full blur-3xl opacity-30" aria-hidden="true" />
 
       {/* Content */}
       <div className="container relative z-10 mx-auto px-4 py-32">
@@ -36,7 +39,11 @@ export function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+        aria-label="Scroll down indicator"
+        role="img"
+      >
         <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex items-start justify-center p-2">
           <div className="w-1 h-3 bg-muted-foreground rounded-full" />
         </div>

@@ -43,11 +43,11 @@ export function ProductsGrid({ products }: ProductsGridProps) {
   }
 
   return (
-    <section className="py-24 md:py-32 bg-secondary/30">
+    <section id="products" className="py-24 md:py-32 bg-secondary/30" aria-labelledby="products-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 id="products-heading" className="text-4xl md:text-5xl font-bold mb-4">
               Featured Products
             </h2>
             <p className="text-lg text-muted-foreground">

@@ -25,12 +25,12 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section className="py-24 md:py-32 bg-secondary">
+    <section id="features" className="py-24 md:py-32 bg-secondary" aria-labelledby="features-heading">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
           {/* Heading Column */}
           <div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight">
+            <h2 id="features-heading" className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight">
               Built to Perform
               <br />
               Built to Last
@@ -46,7 +46,7 @@ export function FeaturesSection() {
                   key={feature.title}
                   className="bg-background rounded-2xl p-6 space-y-4 hover:shadow-lg transition-shadow"
                 >
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-blue-10 to-brand-green-10 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-blue-10 to-brand-green-10 flex items-center justify-center" aria-hidden="true">
                     <Icon className="w-6 h-6 text-primary" />
                   </div>
                   <div className="space-y-2">

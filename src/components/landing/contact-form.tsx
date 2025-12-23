@@ -44,11 +44,11 @@ export function ContactForm() {
   }
 
   return (
-    <section className="py-24 md:py-32 bg-background">
+    <section id="contact" className="py-24 md:py-32 bg-background" aria-labelledby="contact-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="mb-12 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold mb-4">
               Get In Touch
             </h2>
             <p className="text-lg text-muted-foreground">
