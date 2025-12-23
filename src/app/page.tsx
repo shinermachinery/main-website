@@ -9,6 +9,8 @@ import { TeamData } from '@/components/landing/team-data'
 import { TeamSkeleton } from '@/components/landing/team-skeleton'
 import { TestimonialsData } from '@/components/landing/testimonials-data'
 import { TestimonialsSkeleton } from '@/components/landing/testimonials-skeleton'
+import { ContactForm } from '@/components/landing/contact-form'
+import { Footer } from '@/components/landing/footer'
 
 export default function HomePage() {
   return (
@@ -30,6 +32,9 @@ export default function HomePage() {
       <Suspense fallback={<TestimonialsSkeleton />}>
         <TestimonialsData />
       </Suspense>
+
+      <ContactForm />
+      <Footer />
     </div>
   )
 }
