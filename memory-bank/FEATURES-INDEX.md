@@ -129,6 +129,49 @@ Features currently implemented and in use.
 
 ---
 
+### 5. Landing Page
+
+**Status**: 🚧 In Development
+**Location**: `memory-bank/features/landing-page/`
+**Description**: Professional landing page with static sections and CMS-managed content
+**Key Tech**: Next.js 16, Sanity CMS, Plus Jakarta Sans, OKLCH colors
+**Created**: 2025-12-23
+
+**Quick Links:**
+- [Full Documentation](./features/landing-page/README.md)
+- [Changelog](./features/landing-page/CHANGELOG.md)
+
+**Key Files:**
+- `src/app/page.tsx` - Landing page route
+- `src/app/layout.tsx` - Font configuration
+- `src/app/globals.css` - Brand colors
+- `src/components/landing/*` - All landing sections
+
+**Sections:**
+- Hero section (static)
+- About Us (static)
+- Features Grid (static)
+- Featured Products (CMS)
+- Statistics (static)
+- Team (CMS)
+- Testimonials (CMS)
+- Contact Form (Server Action → CMS)
+- Footer (static)
+
+**Dependencies:**
+- Sanity CMS Integration
+- UI Components (Button, Gradient Button)
+- Theme System (for color variables)
+
+**Phases:**
+- ✅ Phase 1: Foundation Setup (Completed 2025-12-23)
+- 🔲 Phase 2: Static Sections
+- 🔲 Phase 3: Sanity CMS Integration
+- 🔲 Phase 4: Contact Form + Footer
+- 🔲 Phase 5: Polish, Accessibility, SEO
+
+---
+
 ## Feature Status Legend
 
 - ✅ **Completed** - Fully implemented and stable
