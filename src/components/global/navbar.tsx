@@ -32,7 +32,7 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-zinc-200">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -43,7 +43,7 @@ export function Navbar() {
                 <div className="w-4 h-4 bg-white rounded-sm" />
               </div>
               {/* Logo Text */}
-              <span className="text-xl font-bold text-foreground">
+              <span className="text-xl font-bold text-zinc-900">
                 SHINER
               </span>
             </div>
@@ -55,7 +55,7 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-foreground rounded-xl hover:bg-secondary transition-colors"
+                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-900 rounded-xl hover:bg-zinc-100 transition-colors"
               >
                 {link.name}
                 {link.hasDropdown && (
@@ -72,7 +72,7 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-foreground hover:bg-secondary rounded-lg transition-colors"
+            className="lg:hidden p-2 text-zinc-900 hover:bg-zinc-100 rounded-lg transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
@@ -85,13 +85,13 @@ export function Navbar() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-border py-4 space-y-2">
+          <div className="lg:hidden border-t border-zinc-200 py-4 space-y-2">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between px-4 py-3 text-sm font-medium text-foreground rounded-xl hover:bg-secondary transition-colors"
+                className="flex items-center justify-between px-4 py-3 text-sm font-medium text-zinc-900 rounded-xl hover:bg-zinc-100 transition-colors"
               >
                 {link.name}
                 {link.hasDropdown && (
