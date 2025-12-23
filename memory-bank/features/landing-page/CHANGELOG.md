@@ -2,6 +2,48 @@
 
 All notable changes to the landing page feature will be documented in this file.
 
+## Stats & How It Works Sections Update (2025-12-24)
+
+### Modified
+
+- `src/components/landing/stats-section.tsx`
+  - Converted to light mode with `bg-white` background
+  - Added centered heading: "A few more facts about us"
+  - Updated typography for light mode compatibility:
+    - Stats values: `text-gray-900` instead of gradient text
+    - Stats labels: `text-gray-600`
+    - Font weight: Changed to `font-normal` throughout
+  - Updated all stats data to "500+ Companies served"
+  - Removed separator lines between stats
+  - Simplified overall design for cleaner appearance
+
+### Added
+
+- `src/components/landing/how-it-works-section.tsx` (NEW)
+  - 3-step process section with consultation workflow
+  - Step 1: Consultation - Align requirements & goals
+  - Step 2: Custom Configuration - Tailored machine design
+  - Step 3: Installation & Training - Ready-to-operate, supported
+  - "Schedule a Demo" button with teal background (`bg-teal-600`)
+  - Teal accent color for step numbers (`text-teal-600`)
+  - Light mode background (`bg-gray-50`)
+  - Responsive 3-column grid (1 column on mobile)
+  - Header with title and CTA button in flexbox layout
+
+- `src/app/page.tsx`
+  - Added `HowItWorksSection` import and component
+  - Positioned after `StatsSection` in page flow
+
+### Design Updates
+
+- Typography consistency across both sections
+- Light mode compatible text colors throughout
+- Teal brand accent integration
+- Responsive grid layouts
+- Server components (no client-side JavaScript)
+
+---
+
 ## About Section Redesign (2025-12-24)
 
 ### Modified

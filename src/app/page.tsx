@@ -4,6 +4,7 @@ import { HeroSection } from '@/components/landing/hero-section'
 import { AboutSection } from '@/components/landing/about-section'
 import { FeaturesSection } from '@/components/landing/features-section'
 import { StatsSection } from '@/components/landing/stats-section'
+import { HowItWorksSection } from '@/components/landing/how-it-works-section'
 import { ProductsData } from '@/components/landing/products-data'
 import { ProductsSkeleton } from '@/components/landing/products-skeleton'
 import { TeamData } from '@/components/landing/team-data'
@@ -65,6 +66,7 @@ export default function HomePage() {
       </Suspense>
 
       <StatsSection />
+      <HowItWorksSection />
 
       <Suspense fallback={<TeamSkeleton />}>
         <TeamData />

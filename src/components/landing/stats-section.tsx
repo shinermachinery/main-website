@@ -1,43 +1,50 @@
 const stats = [
   {
     value: '500+',
-    label: 'Products',
+    label: 'Companies served',
   },
   {
-    value: '100+',
-    label: 'Global Partners',
+    value: '500+',
+    label: 'Companies served',
   },
   {
-    value: '50K+',
-    label: 'Happy Customers',
+    value: '500+',
+    label: 'Companies served',
   },
   {
-    value: '99%',
-    label: 'Satisfaction Rate',
+    value: '500+',
+    label: 'Companies served',
   },
 ]
 
 export function StatsSection() {
   return (
-    <section className="py-24 md:py-32 bg-background">
+    <section className="py-24 md:py-32 bg-white">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-          {stats.map((stat, index) => (
-            <div
-              key={stat.label}
-              className="text-center space-y-2 relative"
-            >
-              {index !== stats.length - 1 && (
-                <div className="hidden md:block absolute right-0 top-1/2 transform -translate-y-1/2 h-16 w-px bg-border" />
-              )}
-              <div className="text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-brand-green">
-                {stat.value}
+        <div className="max-w-7xl mx-auto">
+          {/* Heading */}
+          <div className="text-center mb-16">
+            <h2 className="text-base font-normal text-gray-600">
+              A few more facts about us
+            </h2>
+          </div>
+
+          {/* Stats Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            {stats.map((stat, index) => (
+              <div
+                key={`${stat.label}-${index}`}
+                className="text-center space-y-2"
+              >
+                <div className="text-4xl md:text-5xl font-normal text-gray-900">
+                  {stat.value}
+                </div>
+                <div className="text-sm font-normal text-gray-600">
+                  {stat.label}
+                </div>
               </div>
-              <div className="text-sm md:text-base text-muted-foreground font-medium">
-                {stat.label}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
