@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react'
 export function HeroSection() {
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center bg-secondary overflow-hidden"
+      className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center bg-secondary overflow-hidden"
       aria-label="Hero section"
     >
       {/* Decorative Background */}

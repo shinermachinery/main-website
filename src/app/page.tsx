@@ -55,7 +55,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen">
+    <div>
       <HeroSection />
       <AboutSection />
       <FeaturesSection />
