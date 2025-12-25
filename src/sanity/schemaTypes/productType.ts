@@ -27,21 +27,97 @@ export const productType = defineType({
       title: 'Description',
       type: 'text',
       rows: 3,
+      description: 'Short description of the product',
     }),
     defineField({
-      name: 'image',
-      title: 'Product Image',
-      type: 'image',
+      name: 'descriptionBulletPoints',
+      title: 'Description Bullet Points',
+      type: 'array',
+      of: [defineArrayMember({type: 'string'})],
+      description: 'Key points highlighting product benefits',
+    }),
+    defineField({
+      name: 'images',
+      title: 'Product Images',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            defineField({
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative text',
+            })
+          ]
+        })
+      ],
+      description: 'Multiple images of the product (first image is primary)',
+      validation: (Rule) => Rule.min(1).error('At least one image is required'),
+    }),
+    defineField({
+      name: 'brochure',
+      title: 'Product Brochure',
+      type: 'file',
       options: {
-        hotspot: true,
+        accept: '.pdf,.doc,.docx',
       },
+      description: 'Upload product brochure (PDF or DOC)',
+    }),
+    defineField({
+      name: 'specifications',
+      title: 'Specifications',
+      type: 'object',
       fields: [
         defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        })
-      ]
+          name: 'description',
+          title: 'Specifications Description',
+          type: 'text',
+          rows: 2,
+          description: 'Overview of product specifications',
+        }),
+        defineField({
+          name: 'specs',
+          title: 'Specification Points',
+          type: 'array',
+          of: [
+            defineArrayMember({
+              type: 'object',
+              fields: [
+                defineField({
+                  name: 'label',
+                  title: 'Label',
+                  type: 'string',
+                  description: 'e.g., "Dimensions", "Weight", "Material"',
+                  validation: (Rule) => Rule.required(),
+                }),
+                defineField({
+                  name: 'value',
+                  title: 'Value',
+                  type: 'string',
+                  description: 'e.g., "50 x 30 x 20 cm", "5kg", "Stainless Steel"',
+                  validation: (Rule) => Rule.required(),
+                }),
+              ],
+              preview: {
+                select: {
+                  label: 'label',
+                  value: 'value',
+                },
+                prepare({label, value}) {
+                  return {
+                    title: label,
+                    subtitle: value,
+                  }
+                },
+              },
+            })
+          ],
+        }),
+      ],
     }),
     defineField({
       name: 'price',
@@ -50,8 +126,27 @@ export const productType = defineType({
       validation: (Rule) => Rule.min(0),
     }),
     defineField({
+      name: 'relatedProducts',
+      title: 'Related Products',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{type: 'product'}],
+        })
+      ],
+      description: 'Products that are related or can be cross-sold',
+    }),
+    defineField({
+      name: 'collection',
+      title: 'Product Collection',
+      type: 'reference',
+      to: [{type: 'productCollection'}],
+      description: 'Assign this product to a collection',
+    }),
+    defineField({
       name: 'features',
-      title: 'Features',
+      title: 'Key Features',
       type: 'array',
       of: [defineArrayMember({type: 'string'})],
       description: 'Key features of this product',
@@ -74,7 +169,7 @@ export const productType = defineType({
   preview: {
     select: {
       title: 'title',
-      media: 'image',
+      media: 'images.0',
       featured: 'featured',
     },
     prepare(selection) {

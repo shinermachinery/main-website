@@ -67,7 +67,7 @@ export const testimonialType = defineType({
   preview: {
     select: {
       title: 'customerName',
-      subtitle: 'role',
+      role: 'role',
       media: 'image',
       rating: 'rating',
       featured: 'featured',

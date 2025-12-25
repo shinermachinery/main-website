@@ -4,28 +4,39 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Development Commands
 
+**IMPORTANT: Always use `bun` for package management and running scripts.**
+
 **Start development server:**
 ```bash
-npm run dev
-# or
 bun dev
 ```
 Access at http://localhost:3000
 
 **Build for production:**
 ```bash
-npm run build
+bun run build
 ```
 
 **Start production server:**
 ```bash
-npm start
+bun start
 ```
 
 **Lint and format:**
 ```bash
-npm run lint        # Check with Biome
-npm run format      # Format with Biome
+bun run lint        # Check with Biome
+bun run format      # Format with Biome
+```
+
+**Install dependencies:**
+```bash
+bun install
+```
+
+**Add packages:**
+```bash
+bun add <package-name>
+bun add -d <package-name>  # For dev dependencies
 ```
 
 ## MCP Server Configuration

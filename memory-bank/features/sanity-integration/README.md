@@ -2,7 +2,7 @@
 
 > **Status**: Completed
 > **Created**: 2025-12-23
-> **Last Modified**: 2025-12-23
+> **Last Modified**: 2025-12-25
 > **Owner/Lead**: Team
 
 ## Overview
@@ -113,6 +113,68 @@ import { PortableText } from '@portabletext/react'
 />
 ```
 
+**Querying Products with All Fields:**
+```typescript
+import { client } from '@/sanity/lib/client'
+
+// Query products with specifications and related data
+const products = await client.fetch(`
+  *[_type == "product" && featured == true] {
+    _id,
+    title,
+    slug,
+    description,
+    descriptionBulletPoints,
+    images[] {
+      asset,
+      alt
+    },
+    "brochureUrl": brochure.asset->url,
+    specifications {
+      description,
+      specs[] {
+        label,
+        value
+      }
+    },
+    price,
+    features,
+    relatedProducts[]-> {
+      _id,
+      title,
+      slug,
+      "image": images[0]
+    },
+    collection-> {
+      title,
+      slug
+    }
+  }
+`)
+```
+
+**Querying Product Collections:**
+```typescript
+import { client } from '@/sanity/lib/client'
+
+// Get collection with its products
+const collection = await client.fetch(`
+  *[_type == "productCollection" && slug.current == $slug][0] {
+    _id,
+    title,
+    description,
+    image,
+    "products": *[_type == "product" && collection._ref == ^._id] {
+      _id,
+      title,
+      slug,
+      "image": images[0],
+      price
+    }
+  }
+`, { slug: 'industrial-tools' })
+```
+
 ## Configuration
 
 ### Environment Variables
@@ -196,6 +258,42 @@ Rich text content supporting:
 - Images
 - Block quotes
 - Code blocks
+
+### Product Type (`productType.ts`)
+
+Comprehensive product management with:
+- **Basic Info**:
+  - Title (string, required)
+  - Slug (slug, required)
+  - Description (text)
+  - Description Bullet Points (array of strings)
+- **Media**:
+  - Images (array of images with alt text, min 1 required)
+  - Brochure (file upload - PDF/DOC)
+- **Specifications**:
+  - Specification Description (text)
+  - Spec Points (array of label/value pairs)
+    - Label: e.g., "Dimensions", "Weight", "Material"
+    - Value: e.g., "50 x 30 x 20 cm", "5kg", "Stainless Steel"
+- **Pricing & Features**:
+  - Price (number)
+  - Key Features (array of strings)
+- **Relationships**:
+  - Related Products (array of product references)
+  - Collection (reference to product collection)
+- **Display**:
+  - Featured (boolean)
+  - Order (number)
+
+### Product Collection Type (`productCollectionType.ts`)
+
+Product grouping and organization:
+- Title (string, required)
+- Slug (slug, required)
+- Description (text)
+- Collection Image (image with alt text)
+- Featured (boolean)
+- Order (number)
 
 ## Dependencies
 
