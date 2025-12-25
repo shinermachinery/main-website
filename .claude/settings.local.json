@@ -5,7 +5,10 @@
       "mcp__figma__get_design_context",
       "mcp__figma__get_screenshot",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(bun run build)",
+      "Bash(timeout 15 bun dev:*)",
+      "Bash(bun run lint:*)"
     ]
   },
   "enableAllProjectMcpServers": true

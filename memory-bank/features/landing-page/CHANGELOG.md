@@ -2,6 +2,261 @@
 
 All notable changes to the landing page feature will be documented in this file.
 
+## Contact Page Created (2025-12-25)
+
+### Added - Contact Us Page
+
+**Context**: Created a dedicated Contact Us page based on Figma design, pixel-perfect and fully responsive with working form.
+
+- **Created** `src/app/(landing)/contact/page.tsx` (Server Component)
+  - Exports metadata for SEO
+  - Wraps ContactPageClient component
+
+- **Created** `src/app/(landing)/contact/contact-client.tsx` (Client Component)
+  - Full contact page implementation
+  - Interactive form with state management
+  - Form validation (HTML5 + React)
+  - Loading states during submission
+  - Success/error message display
+
+**Page Sections:**
+
+1. **Hero Section**
+   - Heading: "Let's Build Better Production Together"
+   - Subheading: "Get in touch with our team for quotes, demos, or technical support"
+   - Responsive two-column layout
+
+2. **Left Column - Get In Touch Card**
+   - Gray background card (bg-gray-50)
+   - Section title and description text
+   - 2x2 contact info grid:
+     - 2 phone numbers (+91-90443 20555)
+     - 2 email addresses (contact@ and sales@shinermachinery.com)
+   - Icons for Phone and Mail (lucide-react)
+   - White pill-shaped buttons for each contact method
+
+3. **Right Column - Contact Form**
+   - Gray background with border (bg-gray-50, border-gray-200)
+   - Rounded corners (rounded-3xl)
+   - Form fields:
+     - Full Name (text input)
+     - Email (email input)
+     - Contact Number (tel input)
+     - Your Message (textarea, 96px min-height)
+   - All fields required with placeholder text
+   - Focus states with brand-blue ring
+   - Submit button:
+     - "Get a Solution" text
+     - Gradient background (brand-blue to brand-green)
+     - Multiple shadow effects for depth
+     - Disabled state while submitting
+     - Shows "Sending..." during submission
+
+4. **Office Locations Section**
+   - 3-column grid layout (1 col mobile → 3 col desktop)
+   - Each location card:
+     - Title (Corporate Office, Manufacturing Office, Branch Office)
+     - Full address text
+     - Square map placeholder (aspect-square, rounded-3xl, bg-gray-100)
+   - Real addresses for Indian offices (Thane, Faridabad, Karnal)
+
+**Technical Details:**
+
+- **Form State Management**: useState for form data and status
+- **Async Operations**: useTransition for pending states
+- **Form Handling**: Controlled inputs with onChange handlers
+- **Validation**: HTML5 required attributes + future server-side validation
+- **Auto-reset**: Success message clears after 3 seconds
+- **Icons**: lucide-react (Phone, Mail)
+- **Typography**: Plus Jakarta Sans with proper weights
+- **Spacing**: Consistent gaps (gap-6, gap-7, gap-10)
+- **Border Radius**: 16px (rounded-2xl), 24px (rounded-3xl), full (rounded-full)
+
+**Form Flow:**
+
+1. User fills out form fields
+2. User submits form
+3. Form enters pending state (button disabled, shows "Sending...")
+4. TODO: Server Action will handle actual submission
+5. On success: Form resets, success message displays
+6. Success message auto-hides after 3 seconds
+
+**Styling Details:**
+
+- **Input Fields**: White background, rounded-2xl, gray-500 placeholder
+- **Focus States**: 2px brand-blue ring
+- **Button Gradients**: Blue-to-green with inset shadows
+- **Contact Pills**: White background, rounded-xl, subtle padding
+- **Card Backgrounds**: Gray-50 for soft contrast
+- **Typography Scale**: 14px (sm), 20px (xl), 36px (h1)
+
+### Files Changed
+
+- `src/app/(landing)/contact/page.tsx` (NEW - Server Component)
+- `src/app/(landing)/contact/contact-client.tsx` (NEW - Client Component)
+
+### SEO & Accessibility
+
+- Page title: "Contact Us - Shiner Machinery"
+- Meta description with keywords
+- Semantic HTML (section, h1, h2, form)
+- Proper label associations (htmlFor/id)
+- Required field validation
+- Keyboard accessible form inputs
+- Focus management
+
+### Future Enhancements
+
+- [ ] Integrate with actual Server Action for form submission
+- [ ] Add Google Maps embeds for office locations
+- [ ] Implement reCAPTCHA for spam protection
+- [ ] Add form field validation messages
+- [ ] Integrate with Sanity for storing submissions
+
+---
+
+## About Page Created (2025-12-25)
+
+### Added - About Us Page
+
+**Context**: Created a new About Us page based on Figma design, pixel-perfect and fully responsive.
+
+- **Created** `src/app/(landing)/about/page.tsx`
+  - Server component with full SEO metadata
+  - Pixel-perfect implementation matching Figma design (node-id: 17569:394)
+  - Fully responsive layout (mobile, tablet, desktop)
+  - Light mode optimized with proper brand colors
+
+**Page Sections:**
+
+1. **Hero Section**
+   - Heading: "Engineering Excellence for Modern Manufacturing"
+   - Subheading with company description
+   - Image placeholder (566x337px on desktop)
+   - Responsive two-column layout (stacks on mobile)
+
+2. **Who We Are & Our Mission Section**
+   - Left column: Two cards (green and blue tinted backgrounds)
+     - "Who We Are" card with company description
+     - "Our Mission" card with mission statement
+   - Right column: 4 feature cards with gradient headings
+     - Precision Engineering (Settings icon)
+     - Customer-First Support (Headset icon)
+     - Innovation-Driven (Sparkles icon)
+     - Global Standards (Globe icon)
+   - Border-style cards with gradient text for feature titles
+
+3. **Bottom Features Grid**
+   - 4 cards in responsive grid (1 col mobile → 2 col tablet → 4 col desktop)
+   - Cards: Industry-tested, Scalable production, After-sales support, Proven results
+   - Each card has icon and description
+   - Light gray background (bg-gray-50)
+
+4. **Featured Products Section**
+   - Section header with gradient "Explore Products" button
+   - 4 product cards in responsive grid
+   - Each card: image, name, description, "View Details" CTA
+   - Uses Next.js Image component for optimization
+   - Temporary placeholder data (can be replaced with CMS)
+
+**Technical Details:**
+
+- **Icons**: lucide-react (Settings, Headset, Sparkles, Globe, Building2, TrendingUp, Phone, Award)
+- **Images**: Next.js Image component with Unsplash placeholders
+- **Brand Colors**: Using existing brand-blue and brand-green from globals.css
+- **Typography**: Plus Jakarta Sans (already configured)
+- **Spacing**: Consistent 24px gaps matching Figma
+- **Border Radius**: 16px for all cards (rounded-2xl)
+- **Gradients**: Blue-to-green gradients for accents and CTAs
+
+**Configuration Changes:**
+
+- **Modified** `next.config.ts`
+  - Added image remote patterns for Unsplash and Sanity CDN
+  - Allows Next.js Image component to fetch from external sources
+
+**Design Tokens Used:**
+- `bg-brand-green-10` - 10% opacity green background
+- `bg-brand-blue-10` - 10% opacity blue background
+- `text-brand-green` - Full opacity green text
+- `text-brand-blue` - Full opacity blue text
+- `from-brand-blue to-brand-green` - Gradient overlays
+
+**Responsiveness:**
+- Mobile (< 640px): Single column layouts, stacked sections
+- Tablet (640px - 1024px): 2-column grids where appropriate
+- Desktop (> 1024px): Full multi-column layouts as designed
+
+### Files Changed
+
+- `src/app/(landing)/about/page.tsx` (NEW)
+- `next.config.ts` (MODIFIED - added image domains)
+
+### SEO & Accessibility
+
+- Page title: "About Us - Shiner Machinery"
+- Meta description with company value proposition
+- Semantic HTML structure
+- Proper heading hierarchy (h1, h2)
+- Alt text on all images
+- Keyboard-accessible buttons and links
+
+---
+
+## Route Group Restructure (2025-12-25)
+
+### Changed - Routing Architecture
+
+**Context**: Restructured landing page to use Next.js route groups for better layout isolation and scalability.
+
+- **Created** `src/app/(landing)/` route group directory
+  - Isolates landing pages from other routes (e.g., `/studio`, future blog)
+  - Enables layout-specific components (Navbar + Footer)
+  - No URL impact (route groups don't affect URLs)
+
+- **Created** `src/app/(landing)/layout.tsx`
+  - Dedicated layout for landing pages
+  - Includes Navbar component at top
+  - Wraps children in `<main className="pt-20">` (navbar spacing)
+  - Includes Footer component at bottom
+  - Server component (no client-side overhead)
+
+- **Moved** `src/app/page.tsx` → `src/app/(landing)/page.tsx`
+  - Same file location, just inside route group
+  - Removed Footer import and rendering (now in layout)
+  - All other content remains identical
+  - Metadata unchanged
+
+- **Modified** `src/app/layout.tsx` (Root Layout)
+  - Removed Navbar import (moved to landing layout)
+  - Removed commented-out Navbar component
+  - Removed `<main className="pt-20">` wrapper (moved to landing layout)
+  - Now only handles: fonts, theme provider, global styles
+  - Cleaner separation of concerns
+
+### Benefits
+
+- **Layout Isolation**: Landing layout (Navbar + Footer) doesn't affect other routes
+- **Scalability**: Easy to add new route groups (e.g., `(blog)`, `(dashboard)`)
+- **Cleaner Architecture**: Root layout only handles global concerns
+- **Better Maintainability**: Layout-specific components grouped with their routes
+
+### Files Changed
+
+- `src/app/(landing)/layout.tsx` (NEW)
+- `src/app/(landing)/page.tsx` (MOVED from `src/app/page.tsx`)
+- `src/app/layout.tsx` (MODIFIED - simplified)
+- `src/app/page.tsx` (DELETED)
+
+### Migration Notes
+
+- No URL changes - landing page still accessible at `/`
+- All existing components work unchanged
+- CMS integration unaffected
+- SEO metadata preserved
+
+---
+
 ## Stats & How It Works Sections Update (2025-12-24)
 
 ### Modified

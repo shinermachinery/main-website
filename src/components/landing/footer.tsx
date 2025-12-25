@@ -1,8 +1,8 @@
-import Link from 'next/link'
-import { Github, Twitter, Linkedin, Mail } from 'lucide-react'
+import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import Link from "next/link";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-secondary/50 border-t">
@@ -14,7 +14,8 @@ export function Footer() {
               Shiner
             </h3>
             <p className="text-sm text-muted-foreground">
-              Precision engineering delivered with confidence. Built to perform, built to last.
+              Precision engineering delivered with confidence. Built to perform,
+              built to last.
             </p>
           </div>
 
@@ -149,17 +150,14 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-            <p>
-              © {currentYear} Shiner. All rights reserved.
-            </p>
+            <p>© {currentYear} Shiner. All rights reserved.</p>
             <p className="text-center">
-              Built with{' '}
-              <span className="text-red-500">❤</span>{' '}
-              using Next.js and Sanity CMS
+              Built with <span className="text-red-500">❤</span> using Next.js
+              and Sanity CMS
             </p>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }

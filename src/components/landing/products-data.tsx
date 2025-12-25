@@ -1,19 +1,19 @@
-import { client } from '@/sanity/lib/client'
-import { ProductsGrid } from './products-grid'
+import { client } from "@/sanity/lib/client";
+import { ProductsGrid } from "./products-grid";
 
 interface Product {
-  _id: string
-  title: string
-  slug: { current: string }
-  description?: string
+  _id: string;
+  title: string;
+  slug: { current: string };
+  description?: string;
   image?: {
     asset: {
-      _ref: string
-    }
-    alt?: string
-  }
-  price?: number
-  features?: string[]
+      _ref: string;
+    };
+    alt?: string;
+  };
+  price?: number;
+  features?: string[];
 }
 
 export async function ProductsData() {
@@ -28,9 +28,9 @@ export async function ProductsData() {
     },
     price,
     features
-  }`
+  }`;
 
-  const products = await client.fetch<Product[]>(query)
+  const products = await client.fetch<Product[]>(query);
 
-  return <ProductsGrid products={products} />
+  return <ProductsGrid products={products} />;
 }

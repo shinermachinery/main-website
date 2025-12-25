@@ -10,10 +10,7 @@ export function ProductsSkeleton() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Array.from({ length: 3 }).map((_, i) => (
-              <div
-                key={i}
-                className="rounded-2xl border bg-card p-6 space-y-4"
-              >
+              <div key={i} className="rounded-2xl border bg-card p-6 space-y-4">
                 <div className="aspect-square bg-muted animate-pulse rounded-xl" />
                 <div className="h-7 w-3/4 bg-muted animate-pulse rounded-lg" />
                 <div className="space-y-2">
@@ -28,5 +25,5 @@ export function ProductsSkeleton() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,21 +1,21 @@
 export function HowItWorksSection() {
   const steps = [
     {
-      number: 'Step 1',
-      title: 'Consultation',
-      description: 'Align requirements & goals',
+      number: "Step 1",
+      title: "Consultation",
+      description: "Align requirements & goals",
     },
     {
-      number: 'Step 2',
-      title: 'Custom Configuration',
-      description: 'Tailored machine design',
+      number: "Step 2",
+      title: "Custom Configuration",
+      description: "Tailored machine design",
     },
     {
-      number: 'Step 3',
-      title: 'Installation & Training',
-      description: 'Ready-to-operate, supported',
+      number: "Step 3",
+      title: "Installation & Training",
+      description: "Ready-to-operate, supported",
     },
-  ]
+  ];
 
   return (
     <section className="py-24 md:py-32 bg-gray-50">
@@ -50,5 +50,5 @@ export function HowItWorksSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

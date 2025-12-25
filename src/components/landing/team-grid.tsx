@@ -1,23 +1,23 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import { imageBuilder } from '@/sanity/lib/image'
+import Image from "next/image";
+import { imageBuilder } from "@/sanity/lib/image";
 
 interface TeamMember {
-  _id: string
-  name: string
-  role: string
-  bio?: string
+  _id: string;
+  name: string;
+  role: string;
+  bio?: string;
   image?: {
     asset: {
-      _ref: string
-    }
-    alt?: string
-  }
+      _ref: string;
+    };
+    alt?: string;
+  };
 }
 
 interface TeamGridProps {
-  teamMembers: TeamMember[]
+  teamMembers: TeamMember[];
 }
 
 export function TeamGrid({ teamMembers }: TeamGridProps) {
@@ -35,7 +35,7 @@ export function TeamGrid({ teamMembers }: TeamGridProps) {
           </div>
         </div>
       </section>
-    )
+    );
   }
 
   return (
@@ -55,13 +55,10 @@ export function TeamGrid({ teamMembers }: TeamGridProps) {
             {teamMembers.map((member) => {
               const imageUrl = member.image
                 ? imageBuilder.image(member.image).width(400).height(400).url()
-                : '/placeholder-avatar.jpg'
+                : "/placeholder-avatar.jpg";
 
               return (
-                <div
-                  key={member._id}
-                  className="group text-center space-y-4"
-                >
+                <div key={member._id} className="group text-center space-y-4">
                   <div className="relative aspect-square overflow-hidden rounded-2xl bg-muted mx-auto max-w-[280px]">
                     <Image
                       src={imageUrl}
@@ -84,11 +81,11 @@ export function TeamGrid({ teamMembers }: TeamGridProps) {
                     )}
                   </div>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

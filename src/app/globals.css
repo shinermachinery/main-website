@@ -126,9 +126,9 @@
 
   /* Brand Colors - Slightly lighter for dark mode */
   --brand-blue: oklch(0.55 0.12 250);
-  --brand-green: oklch(0.70 0.18 150);
+  --brand-green: oklch(0.7 0.18 150);
   --brand-blue-10: oklch(0.55 0.12 250 / 10%);
-  --brand-green-10: oklch(0.70 0.18 150 / 10%);
+  --brand-green-10: oklch(0.7 0.18 150 / 10%);
 }
 
 @layer base {

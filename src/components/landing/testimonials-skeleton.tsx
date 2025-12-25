@@ -10,13 +10,13 @@ export function TestimonialsSkeleton() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Array.from({ length: 3 }).map((_, i) => (
-              <div
-                key={i}
-                className="rounded-2xl border bg-card p-8 space-y-6"
-              >
+              <div key={i} className="rounded-2xl border bg-card p-8 space-y-6">
                 <div className="flex gap-1">
                   {Array.from({ length: 5 }).map((_, j) => (
-                    <div key={j} className="h-5 w-5 bg-muted animate-pulse rounded" />
+                    <div
+                      key={j}
+                      className="h-5 w-5 bg-muted animate-pulse rounded"
+                    />
                   ))}
                 </div>
                 <div className="space-y-2">
@@ -37,5 +37,5 @@ export function TestimonialsSkeleton() {
         </div>
       </div>
     </section>
-  )
+  );
 }

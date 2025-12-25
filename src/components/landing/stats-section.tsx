@@ -1,21 +1,21 @@
 const stats = [
   {
-    value: '500+',
-    label: 'Companies served',
+    value: "500+",
+    label: "Companies served",
   },
   {
-    value: '500+',
-    label: 'Companies served',
+    value: "500+",
+    label: "Companies served",
   },
   {
-    value: '500+',
-    label: 'Companies served',
+    value: "500+",
+    label: "Companies served",
   },
   {
-    value: '500+',
-    label: 'Companies served',
+    value: "500+",
+    label: "Companies served",
   },
-]
+];
 
 export function StatsSection() {
   return (
@@ -48,5 +48,5 @@ export function StatsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,18 +1,18 @@
-import { client } from '@/sanity/lib/client'
-import { TestimonialsCarousel } from './testimonials-carousel'
+import { client } from "@/sanity/lib/client";
+import { TestimonialsCarousel } from "./testimonials-carousel";
 
 interface Testimonial {
-  _id: string
-  customerName: string
-  role?: string
-  content: string
-  rating: number
+  _id: string;
+  customerName: string;
+  role?: string;
+  content: string;
+  rating: number;
   image?: {
     asset: {
-      _ref: string
-    }
-    alt?: string
-  }
+      _ref: string;
+    };
+    alt?: string;
+  };
 }
 
 export async function TestimonialsData() {
@@ -26,9 +26,9 @@ export async function TestimonialsData() {
       asset,
       alt
     }
-  }`
+  }`;
 
-  const testimonials = await client.fetch<Testimonial[]>(query)
+  const testimonials = await client.fetch<Testimonial[]>(query);
 
-  return <TestimonialsCarousel testimonials={testimonials} />
+  return <TestimonialsCarousel testimonials={testimonials} />;
 }

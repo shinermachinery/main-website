@@ -1,27 +1,27 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import { GradientButton } from '@/components/ui/gradient-button'
-import { imageBuilder } from '@/sanity/lib/image'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { GradientButton } from "@/components/ui/gradient-button";
+import { imageBuilder } from "@/sanity/lib/image";
 
 interface Product {
-  _id: string
-  title: string
-  slug: { current: string }
-  description?: string
+  _id: string;
+  title: string;
+  slug: { current: string };
+  description?: string;
   image?: {
     asset: {
-      _ref: string
-    }
-    alt?: string
-  }
-  price?: number
-  features?: string[]
+      _ref: string;
+    };
+    alt?: string;
+  };
+  price?: number;
+  features?: string[];
 }
 
 interface ProductsGridProps {
-  products: Product[]
+  products: Product[];
 }
 
 export function ProductsGrid({ products }: ProductsGridProps) {
@@ -39,15 +39,22 @@ export function ProductsGrid({ products }: ProductsGridProps) {
           </div>
         </div>
       </section>
-    )
+    );
   }
 
   return (
-    <section id="products" className="py-24 md:py-32 bg-secondary/30" aria-labelledby="products-heading">
+    <section
+      id="products"
+      className="py-24 md:py-32 bg-secondary/30"
+      aria-labelledby="products-heading"
+    >
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
-            <h2 id="products-heading" className="text-4xl md:text-5xl font-bold mb-4">
+            <h2
+              id="products-heading"
+              className="text-4xl md:text-5xl font-bold mb-4"
+            >
               Featured Products
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -59,7 +66,7 @@ export function ProductsGrid({ products }: ProductsGridProps) {
             {products.map((product) => {
               const imageUrl = product.image
                 ? imageBuilder.image(product.image).width(600).height(600).url()
-                : '/placeholder-product.jpg'
+                : "/placeholder-product.jpg";
 
               return (
                 <div
@@ -108,11 +115,11 @@ export function ProductsGrid({ products }: ProductsGridProps) {
                     </GradientButton>
                   </div>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

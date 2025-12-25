@@ -1,30 +1,32 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Image from 'next/image'
-import { imageBuilder } from '@/sanity/lib/image'
-import { Star, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+import { imageBuilder } from "@/sanity/lib/image";
 
 interface Testimonial {
-  _id: string
-  customerName: string
-  role?: string
-  content: string
-  rating: number
+  _id: string;
+  customerName: string;
+  role?: string;
+  content: string;
+  rating: number;
   image?: {
     asset: {
-      _ref: string
-    }
-    alt?: string
-  }
+      _ref: string;
+    };
+    alt?: string;
+  };
 }
 
 interface TestimonialsCarouselProps {
-  testimonials: Testimonial[]
+  testimonials: Testimonial[];
 }
 
-export function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps) {
-  const [currentIndex, setCurrentIndex] = useState(0)
+export function TestimonialsCarousel({
+  testimonials,
+}: TestimonialsCarouselProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   if (!testimonials || testimonials.length === 0) {
     return (
@@ -34,29 +36,29 @@ export function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               What Our Customers Say
             </h2>
-            <p className="text-muted-foreground">
-              Testimonials coming soon!
-            </p>
+            <p className="text-muted-foreground">Testimonials coming soon!</p>
           </div>
         </div>
       </section>
-    )
+    );
   }
 
   const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-  }
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
 
   const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  }
+    setCurrentIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
+    );
+  };
 
   // Show 3 testimonials at a time on desktop, 1 on mobile
   const visibleTestimonials = [
     testimonials[currentIndex],
     testimonials[(currentIndex + 1) % testimonials.length],
     testimonials[(currentIndex + 2) % testimonials.length],
-  ]
+  ];
 
   return (
     <section className="py-24 md:py-32 bg-secondary/30">
@@ -96,8 +98,12 @@ export function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {visibleTestimonials.map((testimonial, idx) => {
                 const imageUrl = testimonial.image
-                  ? imageBuilder.image(testimonial.image).width(100).height(100).url()
-                  : '/placeholder-avatar.jpg'
+                  ? imageBuilder
+                      .image(testimonial.image)
+                      .width(100)
+                      .height(100)
+                      .url()
+                  : "/placeholder-avatar.jpg";
 
                 return (
                   <div
@@ -111,8 +117,8 @@ export function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps
                           key={i}
                           className={`h-5 w-5 ${
                             i < testimonial.rating
-                              ? 'fill-brand-green text-brand-green'
-                              : 'text-muted-foreground'
+                              ? "fill-brand-green text-brand-green"
+                              : "text-muted-foreground"
                           }`}
                         />
                       ))}
@@ -128,14 +134,18 @@ export function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps
                       <div className="relative h-12 w-12 rounded-full overflow-hidden bg-muted flex-shrink-0">
                         <Image
                           src={imageUrl}
-                          alt={testimonial.image?.alt || testimonial.customerName}
+                          alt={
+                            testimonial.image?.alt || testimonial.customerName
+                          }
                           fill
                           className="object-cover"
                           sizes="48px"
                         />
                       </div>
                       <div>
-                        <p className="font-semibold">{testimonial.customerName}</p>
+                        <p className="font-semibold">
+                          {testimonial.customerName}
+                        </p>
                         {testimonial.role && (
                           <p className="text-sm text-muted-foreground">
                             {testimonial.role}
@@ -144,7 +154,7 @@ export function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps
                       </div>
                     </div>
                   </div>
-                )
+                );
               })}
             </div>
 
@@ -157,8 +167,8 @@ export function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps
                     onClick={() => setCurrentIndex(idx)}
                     className={`h-2 rounded-full transition-all ${
                       idx === currentIndex
-                        ? 'w-8 bg-gradient-to-r from-brand-blue to-brand-green'
-                        : 'w-2 bg-muted-foreground/30'
+                        ? "w-8 bg-gradient-to-r from-brand-blue to-brand-green"
+                        : "w-2 bg-muted-foreground/30"
                     }`}
                     aria-label={`Go to testimonial ${idx + 1}`}
                   />
@@ -169,5 +179,5 @@ export function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import { GradientButton } from '@/components/ui/gradient-button'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight } from "lucide-react";
+import { GradientButton } from "@/components/ui/gradient-button";
 
 export function HeroSection() {
   return (
@@ -8,9 +8,18 @@ export function HeroSection() {
       aria-label="Hero section"
     >
       {/* Decorative Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-blue-10 via-transparent to-brand-green-10 opacity-50" aria-hidden="true" />
-      <div className="absolute top-24 left-24 w-96 h-96 bg-brand-blue-10 rounded-full blur-3xl opacity-30" aria-hidden="true" />
-      <div className="absolute bottom-24 right-24 w-96 h-96 bg-brand-green-10 rounded-full blur-3xl opacity-30" aria-hidden="true" />
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-brand-blue-10 via-transparent to-brand-green-10 opacity-50"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute top-24 left-24 w-96 h-96 bg-brand-blue-10 rounded-full blur-3xl opacity-30"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-24 right-24 w-96 h-96 bg-brand-green-10 rounded-full blur-3xl opacity-30"
+        aria-hidden="true"
+      />
 
       {/* Content */}
       <div className="container relative z-10 mx-auto px-4 py-32">
@@ -31,7 +40,11 @@ export function HeroSection() {
               Explore Products
               <ArrowRight className="ml-2 h-5 w-5" />
             </GradientButton>
-            <GradientButton variant="secondary" size="lg" className="min-w-[200px]">
+            <GradientButton
+              variant="secondary"
+              size="lg"
+              className="min-w-[200px]"
+            >
               Contact Us
             </GradientButton>
           </div>
@@ -49,5 +62,5 @@ export function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

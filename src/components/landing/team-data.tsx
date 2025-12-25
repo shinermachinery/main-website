@@ -1,17 +1,17 @@
-import { client } from '@/sanity/lib/client'
-import { TeamGrid } from './team-grid'
+import { client } from "@/sanity/lib/client";
+import { TeamGrid } from "./team-grid";
 
 interface TeamMember {
-  _id: string
-  name: string
-  role: string
-  bio?: string
+  _id: string;
+  name: string;
+  role: string;
+  bio?: string;
   image?: {
     asset: {
-      _ref: string
-    }
-    alt?: string
-  }
+      _ref: string;
+    };
+    alt?: string;
+  };
 }
 
 export async function TeamData() {
@@ -24,9 +24,9 @@ export async function TeamData() {
       asset,
       alt
     }
-  }`
+  }`;
 
-  const teamMembers = await client.fetch<TeamMember[]>(query)
+  const teamMembers = await client.fetch<TeamMember[]>(query);
 
-  return <TeamGrid teamMembers={teamMembers} />
+  return <TeamGrid teamMembers={teamMembers} />;
 }

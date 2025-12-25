@@ -1,58 +1,73 @@
-'use client'
+"use client";
 
-import { useState, useTransition } from 'react'
-import { submitContactForm } from '@/app/actions/submit-contact'
-import { GradientButton } from '@/components/ui/gradient-button'
-import { Mail, User, MessageSquare, Loader2, CheckCircle2, AlertCircle } from 'lucide-react'
+import {
+  AlertCircle,
+  CheckCircle2,
+  Loader2,
+  Mail,
+  MessageSquare,
+  User,
+} from "lucide-react";
+import { useState, useTransition } from "react";
+import { submitContactForm } from "@/app/actions/submit-contact";
+import { GradientButton } from "@/components/ui/gradient-button";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  })
+    name: "",
+    email: "",
+    message: "",
+  });
   const [responseMessage, setResponseMessage] = useState<{
-    type: 'success' | 'error' | null
-    text: string
-  }>({ type: null, text: '' })
-  const [isPending, startTransition] = useTransition()
+    type: "success" | "error" | null;
+    text: string;
+  }>({ type: null, text: "" });
+  const [isPending, startTransition] = useTransition();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setResponseMessage({ type: null, text: '' })
+    e.preventDefault();
+    setResponseMessage({ type: null, text: "" });
 
     startTransition(async () => {
-      const result = await submitContactForm(formData)
+      const result = await submitContactForm(formData);
 
       if (result.success) {
-        setResponseMessage({ type: 'success', text: result.message })
+        setResponseMessage({ type: "success", text: result.message });
         // Reset form
-        setFormData({ name: '', email: '', message: '' })
+        setFormData({ name: "", email: "", message: "" });
       } else {
-        setResponseMessage({ type: 'error', text: result.message })
+        setResponseMessage({ type: "error", text: result.message });
       }
-    })
-  }
+    });
+  };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
-    }))
-  }
+    }));
+  };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-background" aria-labelledby="contact-heading">
+    <section
+      id="contact"
+      className="py-24 md:py-32 bg-background"
+      aria-labelledby="contact-heading"
+    >
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="mb-12 text-center">
-            <h2 id="contact-heading" className="text-4xl md:text-5xl font-bold mb-4">
+            <h2
+              id="contact-heading"
+              className="text-4xl md:text-5xl font-bold mb-4"
+            >
               Get In Touch
             </h2>
             <p className="text-lg text-muted-foreground">
-              Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+              Have questions? We'd love to hear from you. Send us a message and
+              we'll respond as soon as possible.
             </p>
           </div>
 
@@ -127,12 +142,12 @@ export function ContactForm() {
             {responseMessage.type && (
               <div
                 className={`flex items-center gap-3 p-4 rounded-xl ${
-                  responseMessage.type === 'success'
-                    ? 'bg-brand-green-10 text-brand-green border border-brand-green/20'
-                    : 'bg-red-500/10 text-red-500 border border-red-500/20'
+                  responseMessage.type === "success"
+                    ? "bg-brand-green-10 text-brand-green border border-brand-green/20"
+                    : "bg-red-500/10 text-red-500 border border-red-500/20"
                 }`}
               >
-                {responseMessage.type === 'success' ? (
+                {responseMessage.type === "success" ? (
                   <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
                 ) : (
                   <AlertCircle className="h-5 w-5 flex-shrink-0" />
@@ -164,5 +179,5 @@ export function ContactForm() {
         </div>
       </div>
     </section>
-  )
+  );
 }

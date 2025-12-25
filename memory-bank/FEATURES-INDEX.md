@@ -2,7 +2,7 @@
 
 Master index of all features in this project. Each feature has detailed documentation in its respective folder.
 
-**Last Updated**: 2025-12-23
+**Last Updated**: 2025-12-25
 
 ## Active Features
 
@@ -142,21 +142,33 @@ Features currently implemented and in use.
 - [Changelog](./features/landing-page/CHANGELOG.md)
 
 **Key Files:**
-- `src/app/page.tsx` - Landing page route
-- `src/app/layout.tsx` - Font configuration
+- `src/app/(landing)/layout.tsx` - Landing layout (Navbar + Footer)
+- `src/app/(landing)/page.tsx` - Home page route
+- `src/app/(landing)/about/page.tsx` - About Us page
+- `src/app/(landing)/contact/page.tsx` - Contact page
+- `src/app/layout.tsx` - Root layout (fonts, theme)
 - `src/app/globals.css` - Brand colors
 - `src/components/landing/*` - All landing sections
 
-**Sections:**
+**Pages:**
+- **Home** (`/`) - Full landing page with all sections
+- **About** (`/about`) - Company overview and values
+- **Contact** (`/contact`) - Contact form and office locations
+
+**Home Page Sections:**
 - Hero section (static)
 - About Us (static)
 - Features Grid (static)
 - Featured Products (CMS)
 - Statistics (static)
+- How It Works (static)
 - Team (CMS)
 - Testimonials (CMS)
 - Contact Form (Server Action → CMS)
-- Footer (static)
+
+**Shared Layout:**
+- Navbar (top navigation)
+- Footer (site footer)
 
 **Dependencies:**
 - Sanity CMS Integration
@@ -169,6 +181,9 @@ Features currently implemented and in use.
 - ✅ Phase 3: Sanity CMS Integration (Completed 2025-12-23)
 - ✅ Phase 4: Contact Form + Footer (Completed 2025-12-23)
 - ✅ Phase 5: Polish, Accessibility, SEO (Completed 2025-12-23)
+- ✅ Phase 6: Route Group Restructure (Completed 2025-12-25)
+- ✅ Phase 7: About Us Page (Completed 2025-12-25)
+- ✅ Phase 8: Contact Us Page (Completed 2025-12-25)
 
 ---
 
@@ -309,15 +324,17 @@ Features scheduled for future implementation:
 | Sanity Integration | ✅ | `sanity.config.ts`<br>`src/sanity/**/*` | [View](./features/sanity-integration/README.md) |
 | UI Components | 🚧 | `src/components/ui/**/*`<br>`src/lib/utils.ts` | [View](./features/ui-components/README.md) |
 | MCP Integration | ✅ | `.mcp.json`<br>`.claude/settings.local.json` | [View](../MCP-SETUP.md) |
+| Landing Pages | ✅ | `src/app/(landing)/**/*`<br>3 pages: Home, About, Contact | [View](./features/landing-page/README.md) |
 
 ## Feature Statistics
 
 **Total Features**: 5
 - ✅ Completed: 4
-- 🚧 In Development: 0
+- 🚧 In Development: 1
 - 📋 Planned: 3
 
-**Last Feature Completed**: Landing Page (2025-12-23)
+**Last Feature Completed**: Landing Pages (2025-12-25)
+**Recently Updated**: Landing Pages - Added About & Contact pages
 **Next Planned**: Blog Frontend
 
 ## Related Documentation
