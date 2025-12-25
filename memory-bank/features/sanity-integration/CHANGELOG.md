@@ -2,6 +2,32 @@
 
 All notable changes to the Sanity integration will be documented in this file.
 
+## [1.1.0] - 2025-12-25
+
+### Enhanced
+- **Product Schema** - Comprehensive product management schema
+  - Multiple images support with alt text (array of images)
+  - Brochure file upload (PDF/DOC support)
+  - Description bullet points for key benefits
+  - Specifications object with description and spec points (label/value pairs)
+  - Related products references
+  - Product collection reference
+  - Kept existing fields: price, features, featured, order
+
+### Added
+- **Product Collection Schema** - Group products into collections
+  - Title and slug
+  - Description and hero image
+  - Featured collection flag
+  - Display order
+
+### Files Modified
+- `src/sanity/schemaTypes/productType.ts` - Enhanced with new fields
+- `src/sanity/schemaTypes/index.ts` - Added product collection export
+
+### Files Created
+- `src/sanity/schemaTypes/productCollectionType.ts` - New collection schema
+
 ## [1.0.0] - 2025-12-23
 
 ### Added
