@@ -56,7 +56,7 @@ export function ProductsGrid({ products }: ProductsGridProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product) => {
+            {/* {products.map((product) => {
               const imageUrl = product.image
                 ? imageBuilder.image(product.image).width(600).height(600).url()
                 : '/placeholder-product.jpg'
@@ -109,7 +109,7 @@ export function ProductsGrid({ products }: ProductsGridProps) {
                   </div>
                 </div>
               )
-            })}
+            })} */}
           </div>
         </div>
       </div>

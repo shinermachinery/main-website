@@ -13,6 +13,9 @@ import { TestimonialsData } from '@/components/landing/testimonials-data'
 import { TestimonialsSkeleton } from '@/components/landing/testimonials-skeleton'
 import { ContactForm } from '@/components/landing/contact-form'
 import { Footer } from '@/components/landing/footer'
+import { client } from '@/sanity/lib/client'
+import { sanityFetch, SanityLive } from '@/sanity/lib/live'
+import { productQuery } from '@/sanity/query/product'
 
 export const metadata: Metadata = {
   title: 'Shiner - Precision Engineering Delivered With Confidence',
@@ -54,7 +57,9 @@ export const metadata: Metadata = {
   },
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+  const product = await sanityFetch({query:productQuery})
+  console.log(product)
   return (
     <div>
       <HeroSection />
@@ -78,6 +83,7 @@ export default function HomePage() {
 
       <ContactForm />
       <Footer />
+      <SanityLive/>
     </div>
   )
 }
