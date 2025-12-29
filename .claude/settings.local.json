@@ -8,7 +8,13 @@
       "Bash(git commit:*)",
       "Bash(bun run build)",
       "Bash(timeout 15 bun dev:*)",
-      "Bash(bun run lint:*)"
+      "Bash(bun run lint:*)",
+      "Bash(bun add:*)",
+      "Bash(npx tsc:*)",
+      "Bash(bunx biome:*)",
+      "Bash(bunx tsc:*)",
+      "Bash(pkill:*)",
+      "Bash(cat:*)"
     ]
   },
   "enableAllProjectMcpServers": true

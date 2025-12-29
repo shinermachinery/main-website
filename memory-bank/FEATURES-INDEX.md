@@ -2,7 +2,7 @@
 
 Master index of all features in this project. Each feature has detailed documentation in its respective folder.
 
-**Last Updated**: 2025-12-25
+**Last Updated**: 2025-12-29
 
 ## Active Features
 
@@ -154,6 +154,7 @@ Features currently implemented and in use.
 - **Home** (`/`) - Full landing page with all sections
 - **About** (`/about`) - Company overview and values
 - **Contact** (`/contact`) - Contact form and office locations
+- **Blog** (`/blog`) - Blog posts listing with search and filters
 
 **Home Page Sections:**
 - Hero section (static)
@@ -184,6 +185,9 @@ Features currently implemented and in use.
 - ✅ Phase 6: Route Group Restructure (Completed 2025-12-25)
 - ✅ Phase 7: About Us Page (Completed 2025-12-25)
 - ✅ Phase 8: Contact Us Page (Completed 2025-12-25)
+- ✅ Phase 9: Light Mode Refinements (Completed 2025-12-29)
+- ✅ Phase 10: Blog Posts Page (Completed 2025-12-29)
+- ✅ Phase 11: Individual Blog Post Page (Completed 2025-12-29)
 
 ---
 
@@ -324,7 +328,7 @@ Features scheduled for future implementation:
 | Sanity Integration | ✅ | `sanity.config.ts`<br>`src/sanity/**/*` | [View](./features/sanity-integration/README.md) |
 | UI Components | 🚧 | `src/components/ui/**/*`<br>`src/lib/utils.ts` | [View](./features/ui-components/README.md) |
 | MCP Integration | ✅ | `.mcp.json`<br>`.claude/settings.local.json` | [View](../MCP-SETUP.md) |
-| Landing Pages | ✅ | `src/app/(landing)/**/*`<br>3 pages: Home, About, Contact | [View](./features/landing-page/README.md) |
+| Landing Pages | ✅ | `src/app/(landing)/**/*`<br>4 pages: Home, About, Contact, Blog | [View](./features/landing-page/README.md) |
 
 ## Feature Statistics
 
@@ -333,9 +337,9 @@ Features scheduled for future implementation:
 - 🚧 In Development: 1
 - 📋 Planned: 3
 
-**Last Feature Completed**: Landing Pages (2025-12-25)
-**Recently Updated**: Landing Pages - Added About & Contact pages
-**Next Planned**: Blog Frontend
+**Last Feature Completed**: Landing Pages (2025-12-29)
+**Recently Updated**: Landing Pages - Blog cards pixel-perfect with complete dummy data (9 posts), individual blog post pages with portable text, blog listing with search/filters, light mode refinements
+**Next Planned**: Products Page, Product Detail Pages
 
 ## Related Documentation
 
@@ -349,4 +353,4 @@ Features scheduled for future implementation:
 
 **Maintenance Schedule**: Review and update this index when features change
 **Owner**: Team
-**Last Review**: 2025-12-23
+**Last Review**: 2025-12-29

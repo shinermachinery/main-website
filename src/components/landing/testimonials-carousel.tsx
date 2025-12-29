@@ -1,8 +1,7 @@
 "use client";
 
-import { ChevronLeft, ChevronRight, Star } from "lucide-react";
-import Image from "next/image";
-import { useState } from "react";
+import { TestimonialCard } from "@/components/landing/testimonial-card";
+import { ContentSlider } from "@/components/ui/content-slider";
 import { imageBuilder } from "@/sanity/lib/image";
 
 interface Testimonial {
@@ -23,159 +22,120 @@ interface TestimonialsCarouselProps {
   testimonials: Testimonial[];
 }
 
+// Fallback testimonials data when Sanity returns empty
+const FALLBACK_TESTIMONIALS: Testimonial[] = [
+  {
+    _id: "fallback-1",
+    customerName: "Sarah Mitchell",
+    role: "Production Director, AutoTech Industries",
+    content:
+      "Shiner Machinery transformed our production line with their precision CNC equipment. The build quality is exceptional, and their technical support team has been outstanding. We've seen a 40% increase in efficiency since implementation.",
+    rating: 5,
+  },
+  {
+    _id: "fallback-2",
+    customerName: "James Rodriguez",
+    role: "Manufacturing Engineer, Precision Parts Co.",
+    content:
+      "Working with Shiner has been a game-changer for our fabrication processes. Their machinery delivers consistent precision, and the training they provided ensured our team was productive from day one. Highly recommended for serious manufacturing operations.",
+    rating: 5,
+  },
+  {
+    _id: "fallback-3",
+    customerName: "Emily Chen",
+    role: "Operations Manager, Industrial Solutions Ltd.",
+    content:
+      "The quality and reliability of Shiner's equipment is unmatched. We've been running their machines 24/7 for over two years with minimal downtime. Their preventive maintenance program keeps everything running smoothly.",
+    rating: 5,
+  },
+  {
+    _id: "fallback-4",
+    customerName: "Michael Thompson",
+    role: "Quality Control Lead, Advanced Manufacturing",
+    content:
+      "Shiner Machinery's attention to detail and precision engineering standards align perfectly with our quality requirements. Their equipment consistently delivers parts within tight tolerances, which is critical for our aerospace applications.",
+    rating: 5,
+  },
+  {
+    _id: "fallback-5",
+    customerName: "Priya Sharma",
+    role: "Plant Manager, Metro Fabrication",
+    content:
+      "From initial consultation to installation and ongoing support, Shiner has exceeded our expectations. Their team understood our unique requirements and delivered a custom solution that perfectly fits our workflow. Outstanding partnership.",
+    rating: 5,
+  },
+  {
+    _id: "fallback-6",
+    customerName: "David Anderson",
+    role: "CEO, Precision Machining Group",
+    content:
+      "We've invested in multiple Shiner machines across our facilities. The ROI has been excellent, and the consistency across all units makes training and maintenance much easier. Their commitment to innovation keeps us competitive.",
+    rating: 5,
+  },
+];
+
 export function TestimonialsCarousel({
   testimonials,
 }: TestimonialsCarouselProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  if (!testimonials || testimonials.length === 0) {
-    return (
-      <section className="py-24 md:py-32 bg-secondary/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              What Our Customers Say
-            </h2>
-            <p className="text-muted-foreground">Testimonials coming soon!</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentIndex(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
-    );
-  };
-
-  // Show 3 testimonials at a time on desktop, 1 on mobile
-  const visibleTestimonials = [
-    testimonials[currentIndex],
-    testimonials[(currentIndex + 1) % testimonials.length],
-    testimonials[(currentIndex + 2) % testimonials.length],
-  ];
+  // Use fallback data if no testimonials from Sanity
+  const displayTestimonials =
+    testimonials && testimonials.length > 0 ? testimonials : FALLBACK_TESTIMONIALS;
 
   return (
-    <section className="py-24 md:py-32 bg-secondary/30">
+    <section className="py-24 md:py-32 bg-white" aria-labelledby="testimonials-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              What Our Customers Say
+          {/* Header - Two Column Layout */}
+          <div className="flex flex-col md:flex-row gap-8 items-start mb-10">
+            <h2
+              id="testimonials-heading"
+              className="flex-1 font-medium text-[30px] leading-[40px] tracking-[-0.75px] text-[#18181b]"
+              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+            >
+              Testimonials
             </h2>
-            <p className="text-lg text-muted-foreground">
-              Trusted by industry leaders worldwide
+            <p
+              className="flex-1 font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-[#71717a]"
+              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+            >
+              Lorem ipsum dolor sit amet consectetur. Turpis bibendum eget
+              adipiscing scelerisque proin. Neque tincidunt et pellentesque proin
             </p>
           </div>
 
-          <div className="relative">
-            {/* Navigation Buttons */}
-            {testimonials.length > 3 && (
-              <>
-                <button
-                  onClick={prevTestimonial}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 h-12 w-12 rounded-full bg-card border shadow-lg flex items-center justify-center hover:bg-accent transition-colors"
-                  aria-label="Previous testimonial"
-                >
-                  <ChevronLeft className="h-6 w-6" />
-                </button>
-                <button
-                  onClick={nextTestimonial}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 h-12 w-12 rounded-full bg-card border shadow-lg flex items-center justify-center hover:bg-accent transition-colors"
-                  aria-label="Next testimonial"
-                >
-                  <ChevronRight className="h-6 w-6" />
-                </button>
-              </>
-            )}
+          {/* Testimonials Carousel */}
+          <ContentSlider
+            items={displayTestimonials}
+            renderItem={(testimonial) => {
+              const imageUrl = testimonial.image
+                ? imageBuilder.image(testimonial.image).width(80).height(80).url()
+                : undefined;
 
-            {/* Testimonials Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {visibleTestimonials.map((testimonial, idx) => {
-                const imageUrl = testimonial.image
-                  ? imageBuilder
-                      .image(testimonial.image)
-                      .width(100)
-                      .height(100)
-                      .url()
-                  : "/placeholder-avatar.jpg";
-
-                return (
-                  <div
-                    key={`${testimonial._id}-${idx}`}
-                    className="rounded-2xl border bg-card p-8 space-y-6 shadow-lg hover:shadow-xl transition-shadow"
-                  >
-                    {/* Rating */}
-                    <div className="flex gap-1">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`h-5 w-5 ${
-                            i < testimonial.rating
-                              ? "fill-brand-green text-brand-green"
-                              : "text-muted-foreground"
-                          }`}
-                        />
-                      ))}
-                    </div>
-
-                    {/* Content */}
-                    <p className="text-foreground leading-relaxed">
-                      "{testimonial.content}"
-                    </p>
-
-                    {/* Customer Info */}
-                    <div className="flex items-center gap-4 pt-4 border-t">
-                      <div className="relative h-12 w-12 rounded-full overflow-hidden bg-muted flex-shrink-0">
-                        <Image
-                          src={imageUrl}
-                          alt={
-                            testimonial.image?.alt || testimonial.customerName
-                          }
-                          fill
-                          className="object-cover"
-                          sizes="48px"
-                        />
-                      </div>
-                      <div>
-                        <p className="font-semibold">
-                          {testimonial.customerName}
-                        </p>
-                        {testimonial.role && (
-                          <p className="text-sm text-muted-foreground">
-                            {testimonial.role}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Indicators */}
-            {testimonials.length > 3 && (
-              <div className="flex justify-center gap-2 mt-8">
-                {testimonials.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentIndex(idx)}
-                    className={`h-2 rounded-full transition-all ${
-                      idx === currentIndex
-                        ? "w-8 bg-gradient-to-r from-brand-blue to-brand-green"
-                        : "w-2 bg-muted-foreground/30"
-                    }`}
-                    aria-label={`Go to testimonial ${idx + 1}`}
-                  />
-                ))}
-              </div>
-            )}
-          </div>
+              return (
+                <TestimonialCard
+                  content={testimonial.content}
+                  customerName={testimonial.customerName}
+                  role={testimonial.role || "Customer"}
+                  rating={testimonial.rating}
+                  imageUrl={imageUrl}
+                />
+              );
+            }}
+            itemsPerView={{
+              mobile: 1,
+              tablet: 2,
+              desktop: 3,
+            }}
+            slidesToScroll={{
+              mobile: 1,
+              tablet: 2,
+              desktop: 3,
+            }}
+            gap={24}
+            showNavigation={displayTestimonials.length > 3}
+            showDots={false}
+            className="relative"
+          />
         </div>
       </div>
     </section>

@@ -5,6 +5,7 @@ import { client } from "@/sanity/lib/client";
 interface ContactFormData {
   name: string;
   email: string;
+  contactNumber: string;
   message: string;
 }
 
@@ -19,7 +20,7 @@ export async function submitContactForm(
 ): Promise<ContactFormResponse> {
   try {
     // Validate input
-    if (!formData.name || !formData.email || !formData.message) {
+    if (!formData.name || !formData.email || !formData.contactNumber || !formData.message) {
       return {
         success: false,
         message: "All fields are required.",
@@ -40,6 +41,7 @@ export async function submitContactForm(
       _type: "contactSubmission",
       name: formData.name.trim(),
       email: formData.email.trim().toLowerCase(),
+      contactNumber: formData.contactNumber.trim(),
       message: formData.message.trim(),
       submittedAt: new Date().toISOString(),
       status: "new",

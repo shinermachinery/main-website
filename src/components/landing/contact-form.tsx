@@ -4,18 +4,16 @@ import {
   AlertCircle,
   CheckCircle2,
   Loader2,
-  Mail,
-  MessageSquare,
-  User,
+  ArrowRight,
 } from "lucide-react";
 import { useState, useTransition } from "react";
 import { submitContactForm } from "@/app/actions/submit-contact";
-import { GradientButton } from "@/components/ui/gradient-button";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    contactNumber: "",
     message: "",
   });
   const [responseMessage, setResponseMessage] = useState<{
@@ -34,7 +32,7 @@ export function ContactForm() {
       if (result.success) {
         setResponseMessage({ type: "success", text: result.message });
         // Reset form
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", contactNumber: "", message: "" });
       } else {
         setResponseMessage({ type: "error", text: result.message });
       }
@@ -53,33 +51,35 @@ export function ContactForm() {
   return (
     <section
       id="contact"
-      className="py-24 md:py-32 bg-background"
+      className="py-24 md:py-32 bg-white"
       aria-labelledby="contact-heading"
     >
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="mb-12 text-center">
-            <h2
-              id="contact-heading"
-              className="text-4xl md:text-5xl font-bold mb-4"
-            >
-              Get In Touch
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Have questions? We'd love to hear from you. Send us a message and
-              we'll respond as soon as possible.
-            </p>
-          </div>
+        <div className="max-w-7xl mx-auto">
+          {/* Two Column Layout - Heading and Form Side by Side */}
+          <div className="flex flex-col md:flex-row gap-10 items-start">
+            {/* Left Column - Heading */}
+            <div className="flex-1">
+              <h2
+                id="contact-heading"
+                className="font-medium text-[30px] leading-[40px] tracking-[-0.75px] text-[#18181b]"
+                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+              >
+                Get in touch for queries, demos, or technical assistance.
+              </h2>
+            </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Name Field */}
-            <div className="space-y-2">
+            {/* Right Column - Form */}
+            <div className="flex-1">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            {/* Full Name Field */}
+            <div className="flex flex-col gap-2">
               <label
                 htmlFor="name"
-                className="text-sm font-medium flex items-center gap-2"
+                className="font-medium text-[14px] leading-[20px] text-[#18181b]"
+                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
               >
-                <User className="h-4 w-4" />
-                Name
+                Full Name
               </label>
               <input
                 id="name"
@@ -89,18 +89,19 @@ export function ContactForm() {
                 onChange={handleChange}
                 disabled={isPending}
                 required
-                className="w-full px-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 focus:ring-brand-blue disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-                placeholder="Your name"
+                className="w-full h-[48px] px-4 rounded-xl bg-[#f9f9fb] border-none text-[14px] text-[#18181b] placeholder:text-[#71717a] focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                placeholder="Enter your full name"
               />
             </div>
 
             {/* Email Field */}
-            <div className="space-y-2">
+            <div className="flex flex-col gap-2">
               <label
                 htmlFor="email"
-                className="text-sm font-medium flex items-center gap-2"
+                className="font-medium text-[14px] leading-[20px] text-[#18181b]"
+                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
               >
-                <Mail className="h-4 w-4" />
                 Email
               </label>
               <input
@@ -111,18 +112,42 @@ export function ContactForm() {
                 onChange={handleChange}
                 disabled={isPending}
                 required
-                className="w-full px-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 focus:ring-brand-blue disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-                placeholder="your.email@example.com"
+                className="w-full h-[48px] px-4 rounded-xl bg-[#f9f9fb] border-none text-[14px] text-[#18181b] placeholder:text-[#71717a] focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                placeholder="Enter your email address"
+              />
+            </div>
+
+            {/* Contact Number Field */}
+            <div className="flex flex-col gap-2">
+              <label
+                htmlFor="contactNumber"
+                className="font-medium text-[14px] leading-[20px] text-[#18181b]"
+                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+              >
+                Contact Number
+              </label>
+              <input
+                id="contactNumber"
+                name="contactNumber"
+                type="tel"
+                value={formData.contactNumber}
+                onChange={handleChange}
+                disabled={isPending}
+                required
+                className="w-full h-[48px] px-4 rounded-xl bg-[#f9f9fb] border-none text-[14px] text-[#18181b] placeholder:text-[#71717a] focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                placeholder="Enter your contact number"
               />
             </div>
 
             {/* Message Field */}
-            <div className="space-y-2">
+            <div className="flex flex-col gap-2">
               <label
                 htmlFor="message"
-                className="text-sm font-medium flex items-center gap-2"
+                className="font-medium text-[14px] leading-[20px] text-[#18181b]"
+                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
               >
-                <MessageSquare className="h-4 w-4" />
                 Message
               </label>
               <textarea
@@ -133,8 +158,9 @@ export function ContactForm() {
                 disabled={isPending}
                 required
                 rows={6}
-                className="w-full px-4 py-3 rounded-xl border bg-background focus:outline-none focus:ring-2 focus:ring-brand-blue disabled:opacity-50 disabled:cursor-not-allowed transition-all resize-none"
-                placeholder="Tell us about your project or inquiry..."
+                className="w-full px-4 py-3 rounded-xl bg-[#f9f9fb] border-none text-[14px] text-[#18181b] placeholder:text-[#71717a] focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all resize-none"
+                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                placeholder="Enter your message"
               />
             </div>
 
@@ -143,7 +169,7 @@ export function ContactForm() {
               <div
                 className={`flex items-center gap-3 p-4 rounded-xl ${
                   responseMessage.type === "success"
-                    ? "bg-brand-green-10 text-brand-green border border-brand-green/20"
+                    ? "bg-[#18B75A]/10 text-[#18B75A] border border-[#18B75A]/20"
                     : "bg-red-500/10 text-red-500 border border-red-500/20"
                 }`}
               >
@@ -152,30 +178,51 @@ export function ContactForm() {
                 ) : (
                   <AlertCircle className="h-5 w-5 flex-shrink-0" />
                 )}
-                <p className="text-sm font-medium">{responseMessage.text}</p>
+                <p
+                  className="text-sm font-medium"
+                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                >
+                  {responseMessage.text}
+                </p>
               </div>
             )}
 
             {/* Submit Button */}
-            <GradientButton
+            <button
               type="submit"
-              size="lg"
               disabled={isPending}
-              className="w-full md:w-auto md:min-w-[200px]"
+              className="flex gap-2 h-[48px] items-center justify-center px-6 rounded-full w-full relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              style={{
+                background:
+                  "linear-gradient(88.66deg, var(--brand-blue) 27.51%, var(--brand-green) 115.04%)",
+              }}
             >
               {isPending ? (
                 <>
-                  <Loader2 className="h-5 w-5 animate-spin" />
-                  Sending...
+                  <Loader2 className="h-5 w-5 text-[#fafafa] animate-spin relative z-10" />
+                  <span
+                    className="text-[14px] font-medium leading-[20px] text-[#fafafa] relative z-10"
+                    style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                  >
+                    Sending...
+                  </span>
                 </>
               ) : (
                 <>
-                  <Mail className="h-5 w-5" />
-                  Send Message
+                  <span
+                    className="text-[14px] font-medium leading-[20px] text-[#fafafa] relative z-10"
+                    style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                  >
+                    Send Message
+                  </span>
+                  <ArrowRight className="h-4 w-4 text-[#fafafa] relative z-10" />
                 </>
               )}
-            </GradientButton>
+              <div className="absolute inset-0 pointer-events-none shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)]" />
+            </button>
           </form>
+            </div>
+          </div>
         </div>
       </div>
     </section>

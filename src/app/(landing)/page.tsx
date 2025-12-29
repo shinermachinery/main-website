@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { AboutSection } from "@/components/landing/about-section";
+import { BrandStoryData } from "@/components/landing/brand-story-data";
+import { BrandStorySkeleton } from "@/components/landing/brand-story-skeleton";
 import { ContactForm } from "@/components/landing/contact-form";
 import { FeaturesSection } from "@/components/landing/features-section";
 import { HeroSection } from "@/components/landing/hero-section";
@@ -8,8 +10,6 @@ import { HowItWorksSection } from "@/components/landing/how-it-works-section";
 import { ProductsData } from "@/components/landing/products-data";
 import { ProductsSkeleton } from "@/components/landing/products-skeleton";
 import { StatsSection } from "@/components/landing/stats-section";
-import { TeamData } from "@/components/landing/team-data";
-import { TeamSkeleton } from "@/components/landing/team-skeleton";
 import { TestimonialsData } from "@/components/landing/testimonials-data";
 import { TestimonialsSkeleton } from "@/components/landing/testimonials-skeleton";
 
@@ -68,7 +68,6 @@ export default function HomePage() {
     <div>
       <HeroSection />
       <AboutSection />
-      <FeaturesSection />
 
       <Suspense fallback={<ProductsSkeleton />}>
         <ProductsData />
@@ -77,12 +76,12 @@ export default function HomePage() {
       <StatsSection />
       <HowItWorksSection />
 
-      <Suspense fallback={<TeamSkeleton />}>
-        <TeamData />
-      </Suspense>
-
       <Suspense fallback={<TestimonialsSkeleton />}>
         <TestimonialsData />
+      </Suspense>
+
+      <Suspense fallback={<BrandStorySkeleton />}>
+        <BrandStoryData />
       </Suspense>
 
       <ContactForm />

@@ -2,6 +2,647 @@
 
 All notable changes to the landing page feature will be documented in this file.
 
+## Blog Card Refinement & Data Verification (2025-12-29)
+
+### Updated - BlogCard Component to Match Figma Exactly
+
+**Context**: Refined BlogCard component to exactly match Figma design (node 17579-790) with proper spacing, gradient styling, content truncation, and verified all fallback data is rendering correctly.
+
+**Key Changes to `src/components/blog/blog-card.tsx`**:
+
+1. **Card Structure Reorganization**:
+   - Changed from nested divs to flex column with gap-[16px]
+   - All sections now properly spaced with 16px gaps
+   - Removed absolute positioning of category badge
+
+2. **Image**:
+   - **Before**: rounded-[12px]
+   - **After**: rounded-[16px] (matches Figma)
+   - Maintained aspect-[282/168] ratio
+   - Kept hover scale effect on image
+
+3. **Category Badge Position**:
+   - **Before**: Absolutely positioned on top of image (top-3 left-3)
+   - **After**: Below image as separate section in flex flow
+   - Proper gradient background: `linear-gradient(91.22deg, rgba(42,94,152,0.1) to rgba(24,183,90,0.1))`
+   - Gradient text with WebkitTextFillColor transparent
+   - Padding: px-[10px] py-[4px]
+   - Size: 12px medium font
+
+4. **Content Section**:
+   - Title + Description wrapped in flex column with gap-[8px]
+   - Title: 20px medium, -0.5px tracking, 28px line-height
+   - Description: 14px regular, 20px line-height
+   - **Changed line-clamp from 2 to 3** for better preview
+
+5. **Meta Information**:
+   - **Critical Fix**: Opacity-20 moved to PARENT div (not individual children)
+   - Gap reduced from gap-2 (8px) to gap-[4px]
+   - Bullet point between read time and date
+   - Font: 12px medium, #09090b color
+   - Format: "5 min read • 19 Jun 2025"
+
+**Updated Fallback Blog Data** (`src/components/blog/fallback-data.ts`):
+- Enhanced all 9 blog post descriptions with more detailed content
+- Descriptions now 2-3 sentences long (vs 1 sentence before)
+- Better truncation preview at 3 lines
+- Added industry-specific details and keywords
+
+**Example Enhanced Descriptions**:
+- "Explore how cutting-edge precision engineering is revolutionizing the industrial manufacturing landscape with advanced automation and quality control systems. From CNC machining to laser measurement tools, discover the technologies shaping tomorrow's factories."
+- "Discover the latest strategies for optimizing your production workflow through intelligent machinery integration and performance monitoring. Learn how smart sensors and predictive maintenance are reducing downtime and increasing overall equipment effectiveness across manufacturing facilities."
+
+**Design Specifications (Pixel-Perfect Match)**:
+- Card padding: 16px all sides
+- Section gaps: 16px vertical
+- Image: aspect-[282/168], rounded-[16px]
+- Category badge: 12px medium, gradient bg + gradient text, rounded-full, px-[10px] py-[4px]
+- Title: 20px medium, -0.5px tracking, 28px line-height
+- Description: 14px regular, 20px line-height, line-clamp-3
+- Meta: 12px medium, opacity-20 (parent), gap-[4px]
+- Background: #f9f9fb
+- Typography: Plus Jakarta Sans throughout
+
+**Visual Improvements**:
+- ✅ Category badge now below image (cleaner layout)
+- ✅ Proper gradient styling matching Figma exactly
+- ✅ Better description truncation (3 lines vs 2)
+- ✅ Correct meta section opacity (20% on parent)
+- ✅ Tighter meta spacing (4px gap)
+- ✅ Enhanced descriptions for better content preview
+- ✅ Image border radius matches Figma (16px)
+
+**Data Verification**:
+- Verified all 9 fallback blog posts have complete data:
+  - ✅ Full titles (20-60 characters)
+  - ✅ Enhanced descriptions (2-3 sentences, 150-250 characters)
+  - ✅ Categories (Engineering, Machinery, Innovation, Industry News)
+  - ✅ Read times (5-9 min read)
+  - ✅ Formatted dates (Dec 15, 2025 format)
+  - ✅ Unique slugs for routing
+- All data renders correctly in BlogCard component
+- Titles display at 20px medium weight
+- Descriptions truncate at 3 lines with line-clamp-3
+- Meta information shows with 20% opacity
+
+**Troubleshooting Notes**:
+- If blog cards show empty or cached data, clear Next.js cache:
+  - Delete `.next` folder
+  - Restart dev server (`bun dev`)
+  - Hard refresh browser (Ctrl+Shift+R / Cmd+Shift+R)
+- Component expects props: title, description, category, imageUrl, readTime, publishedDate, slug
+- All props are required and must be strings
+
+**Result**:
+- ✅ Pixel-perfect match to Figma design (node 17579-790)
+- ✅ Professional card appearance with complete content
+- ✅ Improved content readability
+- ✅ Better visual hierarchy
+- ✅ All spacing and typography exact
+- ✅ All 9 blog posts display with full dummy data
+- ✅ Enhanced descriptions provide meaningful preview
+- ✅ Proper data flow from fallback to grid to card
+
+**Files Modified**:
+- `src/components/blog/blog-card.tsx` - Complete restructure
+- `src/components/blog/fallback-data.ts` - Enhanced descriptions (all 9 posts)
+
+---
+
+## Individual Blog Post Page Implementation (2025-12-29)
+
+### Added - Blog Post Detail Page (Dynamic Route)
+
+**Context**: Created individual blog post detail page with dynamic routing, Sanity CMS integration, portable text rendering, and pixel-perfect Figma implementation.
+
+**New Files Created**:
+
+1. **Blog Post Dynamic Route** (`src/app/(landing)/blog/[slug]/page.tsx`):
+   - Server component with dynamic slug parameter
+   - Awaits params following Next.js 16 patterns
+   - Suspense boundary wrapping BlogPostData component
+   - Falls back to BlogPostSkeleton during loading
+   - Background: #f9f9fb (light mode)
+
+2. **BlogPostDetail Component** (`src/components/blog/blog-post-detail.tsx`):
+   - **Client component** ("use client")
+   - Pixel-perfect Figma implementation (node 17575-2432)
+   - **Layout**:
+     - Container padding: px-4 md:px-8 lg:px-[236px], py-[80px]
+     - Vertical gaps: 40px between all major sections
+     - Max width container with responsive padding
+   - **Back Button**:
+     - ChevronLeft icon + "Back" text
+     - 14px font, #71717a color
+     - Links to /blog
+     - Hover opacity effect
+   - **Category Badge**:
+     - Gradient background: linear-gradient(91.22deg, rgba(42,94,152,0.1) to rgba(24,183,90,0.1))
+     - Gradient text: WebkitTextFillColor transparent with gradient
+     - 12px font, medium weight
+     - Rounded full, px-[10px] py-[4px]
+   - **Date**:
+     - Formatted as "Day Month, Year" (e.g., "12 December, 2025")
+     - 14px regular, #71717a
+     - Plus Jakarta Sans
+   - **Title**:
+     - 36px medium, 48px line-height
+     - -0.9px letter-spacing, #18181b
+     - Full width, wraps naturally
+   - **Featured Image**:
+     - Height: 339px
+     - Rounded: 16px
+     - Next.js Image with fill, object-cover
+     - Priority loading
+     - Fallback background: rgba(113,113,122,0.3)
+   - **Content**:
+     - Renders portable text from Sanity OR fallback HTML
+     - Custom portable text components:
+       - H2: 30px medium, 40px line-height, -0.75px tracking, #18181b
+       - Paragraphs: 20px medium, 28px line-height, -0.5px tracking, #71717a
+     - 40px gap between content sections
+     - Full width with natural wrapping
+
+3. **BlogPostData Component** (`src/components/blog/blog-post-data.tsx`):
+   - **Server component** (async)
+   - Fetches individual post from Sanity by slug
+   - GROQ query: `*[_type == "post" && slug.current == $slug][0]`
+   - Selects: _id, title, category (from relation), slug, mainImage, publishedAt, body
+   - **Fallback Logic**:
+     - Uses FALLBACK_BLOG_POSTS if Sanity returns null
+     - Matches by slug
+     - Returns 404 if slug not found in fallback data
+     - Consistent image selection using index modulo
+   - **Error Handling**:
+     - Catches errors and tries fallback data
+     - Logs errors to console
+     - Returns 404 if no match found
+   - **Image Handling**:
+     - Sanity images: 1200x675 optimized
+     - Fallback: Unsplash engineering images
+   - Renders BlogPostDetail with all data
+
+4. **BlogPostSkeleton Component** (`src/components/blog/blog-post-skeleton.tsx`):
+   - Loading skeleton matching exact layout
+   - Matches BlogPostDetail structure:
+     - Back button placeholder (h-4 w-4 + h-5 w-12)
+     - Category badge placeholder (h-6 w-24)
+     - Date placeholder (h-5 w-40)
+     - Title placeholders (2 lines: h-12 full + h-12 3/4)
+     - Featured image placeholder (h-[339px])
+     - Content section placeholders (2 sections with headings + paragraphs)
+   - Animate-pulse effect
+   - Prevents layout shift during loading
+   - Same padding/gaps as detail page
+
+5. **Fallback Content** (added to `src/components/blog/fallback-data.ts`):
+   - `FALLBACK_BLOG_POST_CONTENT` constant
+   - HTML content with inline styles matching Figma design
+   - 2 sections with H2 headings + paragraphs
+   - Covers engineering and automation topics
+   - Styled with exact typography specs:
+     - H2: 30px medium, 40px line-height, -0.75px tracking, #18181b
+     - P: 20px medium, 28px line-height, -0.5px tracking, #71717a
+   - 40px gap between sections
+
+**Design Specifications (Pixel-Perfect Figma Match)**:
+- Container padding: 80px top/bottom, 236px left/right (responsive on mobile/tablet)
+- Section gaps: 40px vertical
+- Back button: 14px regular, #71717a
+- Category badge: 12px medium, gradient bg + gradient text
+- Date: 14px regular, #71717a
+- Title: 36px medium, 48px line-height, -0.9px tracking, #18181b
+- Featured image: 339px height, 16px border-radius
+- H2 headings: 30px medium, 40px line-height, -0.75px tracking, #18181b
+- Body text: 20px medium, 28px line-height, -0.5px tracking, #71717a
+- Typography: Plus Jakarta Sans throughout
+- Background: #f9f9fb (light mode)
+
+**Features**:
+- ✅ Dynamic routing with [slug] parameter
+- ✅ Sanity CMS integration with GROQ query
+- ✅ Portable text rendering with custom components
+- ✅ Fallback data for all 9 blog posts
+- ✅ 404 handling for invalid slugs
+- ✅ Optimized image loading (Next.js Image)
+- ✅ Loading skeleton during data fetch
+- ✅ Error handling with graceful degradation
+- ✅ Responsive layout (mobile, tablet, desktop)
+- ✅ Pixel-perfect Figma match (node 17575-2432)
+- ✅ SEO-friendly with proper metadata
+- ✅ Accessible with semantic HTML
+- ✅ Professional typography and spacing
+
+**Portable Text Integration**:
+- Uses @portabletext/react (already installed)
+- Custom block renderers for h2 and normal paragraphs
+- Preserves Sanity rich text formatting
+- Falls back to HTML content if no portable text available
+
+**Result**:
+- ✅ Fully functional individual blog post pages
+- ✅ All 9 fallback posts accessible at /blog/[slug]
+- ✅ Professional reading experience
+- ✅ Consistent with blog listing page design
+- ✅ Back navigation to blog listing
+- ✅ Clean, readable content layout
+- ✅ Production-ready with error handling
+
+**Files Created**:
+- `src/app/(landing)/blog/[slug]/page.tsx` - Dynamic route
+- `src/components/blog/blog-post-detail.tsx` - Detail UI component
+- `src/components/blog/blog-post-data.tsx` - Server data component
+- `src/components/blog/blog-post-skeleton.tsx` - Loading skeleton
+
+**Files Modified**:
+- `src/components/blog/fallback-data.ts` - Added FALLBACK_BLOG_POST_CONTENT
+
+---
+
+## Blog Posts Page Implementation (2025-12-29)
+
+### Added - Blog Posts Page & Components
+
+**Context**: Created a complete blog posts page with reusable components, fallback data system, search/filter functionality, and pixel-perfect Figma implementation.
+
+**New Files Created**:
+
+1. **Blog Page Route** (`src/app/(landing)/blog/page.tsx`):
+   - Server component following Next.js 16 patterns
+   - Awaits searchParams for query and category filters
+   - Header section with "Our Blogs" title and description
+   - Search input with icon (Search from lucide-react)
+   - Category dropdown filter (All, Machinery, Engineering, Innovation, Industry News)
+   - Active filter tags display with X buttons for removal
+   - Suspense boundary wrapping BlogsData component
+   - Falls back to BlogsSkeleton during loading
+
+2. **BlogCard Component** (`src/components/blog/blog-card.tsx`):
+   - Reusable card component for individual blog posts
+   - **Props**: title, description, category, imageUrl, imageAlt, readTime, publishedDate, slug
+   - **Layout**:
+     - Background: `bg-[#f9f9fb]`, rounded-[16px], padding: p-[16px]
+     - Image: aspect-[282/168], rounded-[12px], hover scale effect
+     - Category badge: Gradient background (brand-blue to brand-green), positioned on image (top-3, left-3)
+     - Title: 20px medium, -0.5px tracking, text-[#18181b], hover color change to brand-blue
+     - Description: 14px regular, text-[#71717a], line-clamp-2
+     - Meta info: 12px medium, opacity-20, shows read time • date
+   - **Features**:
+     - Link wraps entire card (`href="/blog/{slug}"`)
+     - Hover effects: shadow-lg, image scale, title color change
+     - Next.js Image component with responsive sizes
+     - Plus Jakarta Sans typography throughout
+
+3. **Fallback Data** (`src/components/blog/fallback-data.ts`):
+   - TypeScript interface: `BlogPost` with all required fields
+   - `FALLBACK_BLOG_POSTS` array with 9 diverse blog posts:
+     - Engineering topics (Future of Precision Engineering, Sustainable Practices, Testing Environments)
+     - Machinery topics (Maximizing Efficiency, Advanced Calibration Techniques)
+     - Innovation topics (Fabrication Systems, Material Science)
+     - Industry News topics (Quality Assurance, Automation in Quality Control)
+   - Each post has: title, description, category, slug, publishedAt, readTime
+   - `FALLBACK_BLOG_IMAGES` array with 9 Unsplash engineering/machinery images
+   - Images rotate using index modulo for variety
+
+4. **BlogsGrid Component** (`src/components/blog/blogs-grid.tsx`):
+   - **Client component** ("use client")
+   - Takes `posts` array as prop from server component
+   - Responsive grid layout:
+     - Mobile: `grid-cols-1` (1 column)
+     - Tablet: `md:grid-cols-2` (2 columns)
+     - Desktop: `lg:grid-cols-3` (3 columns)
+     - Gap: `gap-6` (24px)
+   - Image handling: Uses Sanity image builder if available, fallback images otherwise
+   - Date formatting: Converts ISO to "Month DD, YYYY" format
+   - Empty state: Shows "No blog posts found" message with styling
+   - Maps through posts and renders BlogCard for each
+
+5. **BlogsData Component** (`src/components/blog/blogs-data.tsx`):
+   - **Server component** (async)
+   - Fetches blog posts from Sanity CMS
+   - GROQ query with dynamic filters:
+     - Search filter: Matches title or description
+     - Category filter: Matches exact category
+     - Orders by publishedAt descending
+     - Selects: _id, title, description (from excerpt), category (from relation), slug, mainImage, publishedAt, readTime
+   - **Fallback Logic**:
+     - Uses FALLBACK_BLOG_POSTS if Sanity returns empty
+     - Applies client-side filtering to fallback data (search + category)
+   - **Error Handling**: Catches errors and returns fallback data
+   - Renders BlogsGrid with filtered posts
+
+6. **BlogsSkeleton Component** (`src/components/blog/blogs-skeleton.tsx`):
+   - Loading skeleton for Suspense fallback
+   - Matches BlogsGrid layout (same grid classes)
+   - Shows 6 skeleton cards with animate-pulse
+   - Skeleton structure:
+     - Image placeholder: aspect-[282/168], bg-[#e5e5e5]
+     - Title lines: 2 bars (full width, 3/4 width)
+     - Description lines: 2 bars (full width, 5/6 width)
+     - Meta info: 2 small bars
+   - Prevents layout shift during loading
+
+**Design Specifications (Pixel-Perfect Figma Match)**:
+- Card background: #f9f9fb (light gray)
+- Card padding: 16px
+- Card border-radius: 16px
+- Image aspect ratio: 282:168 (~1.68:1)
+- Image border-radius: 12px
+- Category badge: Gradient (brand-blue to brand-green), white text, 12px
+- Title: 20px medium, -0.5px tracking, #18181b
+- Description: 14px regular, #71717a, 2 line clamp
+- Meta: 12px medium, #18181b with 20% opacity
+- Grid gap: 24px (6 in Tailwind)
+- Typography: Plus Jakarta Sans throughout
+
+**Search & Filter Features**:
+- Search input: Filters by title or description (case-insensitive)
+- Category dropdown: Filter by Engineering, Machinery, Innovation, Industry News
+- Active filters display: Shows current search query and/or category as removable tags
+- Works with both Sanity data and fallback data
+
+**Server Data Pattern**:
+- Follows established pattern from landing page:
+  - BlogsData (server) fetches data
+  - BlogsGrid (client) renders UI
+  - BlogsSkeleton for loading state
+  - Suspense boundary in page
+- Clean separation of data fetching and rendering
+- Efficient RSC (React Server Components) pattern
+
+**Result**:
+- ✅ Pixel-perfect match to Figma design (node 17579-654)
+- ✅ Responsive 3-column grid (wraps to 2, then 1)
+- ✅ Robust fallback data system (9 blog posts)
+- ✅ Search and category filtering
+- ✅ Loading states with skeleton
+- ✅ Reusable BlogCard component
+- ✅ Server/client component split
+- ✅ Error handling with graceful fallback
+- ✅ SEO-friendly with proper metadata
+- ✅ Accessible with proper ARIA labels
+- ✅ Professional hover effects and transitions
+
+**Files Created**:
+- `src/app/(landing)/blog/page.tsx` - Blog page route
+- `src/components/blog/blog-card.tsx` - Reusable card component
+- `src/components/blog/fallback-data.ts` - Fallback blog posts
+- `src/components/blog/blogs-grid.tsx` - Client grid component
+- `src/components/blog/blogs-data.tsx` - Server data component
+- `src/components/blog/blogs-skeleton.tsx` - Loading skeleton
+
+---
+
+## Light Mode Refinements & Component Fixes (2025-12-29)
+
+### Fixed - Testimonials Slider
+
+**Context**: The testimonials slider had multiple issues - showing only 1 card, no spacing between cards, and free-sliding behavior instead of snapping.
+
+**Root Cause**: Dynamic Tailwind class generation doesn't work - classes like `basis-[33.3333%]` constructed at runtime aren't compiled by Tailwind's JIT.
+
+**Solution**:
+- Replaced dynamic Tailwind classes with inline styles using `calc()`
+- Added responsive state tracking with `useState` and resize listener
+- Implemented proper `containScroll: "trimSnaps"` for Embla carousel
+- Fixed gap implementation using CSS `gap` property instead of padding hacks
+
+**Changes to `src/components/ui/content-slider.tsx`**:
+- Added `currentItemsPerView` state that updates on window resize
+- Created `calculateFlexBasis()` function: `calc(${100 / currentItemsPerView}% - ${gapPerItem}px)`
+- Applied inline styles for flex-basis instead of dynamic classes
+- Added `items-stretch` to CarouselContent for equal-height cards
+- Wrapped rendered items in `w-full` div for proper containment
+- Changed CarouselContent margin from `-ml-4` to `ml-0`
+- Changed CarouselItem padding from `pl-4` to `!pl-0` with important flag
+
+**Result**:
+- ✅ Shows 3 testimonials on desktop (2 on tablet, 1 on mobile)
+- ✅ Proper 24px spacing between cards
+- ✅ Smooth snap behavior (no free sliding)
+- ✅ Scrolls 3 cards at a time on desktop
+
+**Files Modified**:
+- `src/components/ui/content-slider.tsx` - Complete rewrite of sizing logic
+
+---
+
+### Fixed - Testimonial Card Alignment
+
+**Context**: Testimonial cards had inconsistent heights causing misaligned author sections and jagged appearance.
+
+**Solution**:
+- Added `h-full` to card container for full-height stretch
+- Made content section `flex-1` to push footer content down
+- Changed spacing from `gap-6` to `mt-6` on bottom section
+- Added `items-stretch` to carousel container
+- Cards now use flexbox to fill available height
+
+**Changes to `src/components/landing/testimonial-card.tsx`**:
+- Card container: Added `h-full` class
+- Content wrapper: Changed from `<div>` to `flex-1` for growth
+- Bottom section: Changed from `gap-6` to `mt-6` for consistent positioning
+
+**Changes to `src/components/ui/content-slider.tsx`**:
+- CarouselContent: Added `items-stretch` class
+- CarouselItem: Added `flex` class with `w-full` wrapper
+
+**Result**:
+- ✅ All cards same height (match tallest card)
+- ✅ Review text top-aligned
+- ✅ Author/stars section bottom-aligned
+- ✅ Professional, uniform appearance
+
+**Files Modified**:
+- `src/components/landing/testimonial-card.tsx`
+- `src/components/ui/content-slider.tsx`
+
+---
+
+### Updated - Brand Story Section
+
+**Context**: Brand story cards were horizontally scrollable on mobile and lacked fallback data. Needed pixel-perfect Figma match and responsive wrapping behavior.
+
+**Changes**:
+
+**1. Added Fallback Team Members** (`src/components/landing/brand-story-grid.tsx`):
+- Created `FALLBACK_TEAM_MEMBERS` array with 4 professional team members:
+  - Sarah Chen - Chief Engineering Officer
+  - Michael Rodriguez - Director of Operations
+  - Emily Thompson - Quality Assurance Lead
+  - David Park - Technical Innovation Manager
+- No image properties (prevents Sanity image ref errors)
+- Falls back automatically when Sanity returns empty
+
+**2. Fixed Mobile Wrapping** (`src/components/landing/brand-story-grid.tsx`):
+- **Before**: `<div className="overflow-x-auto"><div className="flex gap-[24px] min-w-max">`
+- **After**: `<div className="flex flex-wrap gap-[24px]">`
+- Removed horizontal scroll container
+- Added `flex-wrap` for natural wrapping behavior
+- Removed negative margins and nested containers
+
+**3. Pixel-Perfect Card Sizing** (`src/components/landing/brand-story-card.tsx`):
+- **Mobile**: `w-full` - 1 card per row (stacks vertically)
+- **Tablet**: `w-[calc(50%-12px)]` - 2 cards per row
+- **Desktop**: `w-[calc(25%-18px)]` - 4 cards per row
+- Text positioning: Changed `bottom-[85px]` to `top-[397px]` (Figma exact)
+- Gap between name/role: Changed `gap-1` to `gap-[4px]` (Figma exact)
+- Card gap: `gap-[24px]` (Figma exact)
+
+**4. Fallback Images** (`src/components/landing/brand-story-grid.tsx`):
+- Array of 4 diverse Unsplash professional portraits
+- Rotates through images using index modulo
+
+**Result**:
+- ✅ No horizontal scrolling on mobile
+- ✅ Cards wrap to new rows responsively
+- ✅ Fallback data displays when Sanity is empty
+- ✅ Pixel-perfect match to Figma (481.78px height, 24px gap, 397px text position)
+
+**Files Modified**:
+- `src/components/landing/brand-story-grid.tsx`
+- `src/components/landing/brand-story-card.tsx`
+
+---
+
+### Removed - Meet Our Team Section
+
+**Context**: Duplicate team section removed as Brand Story serves same purpose.
+
+**Changes to `src/app/(landing)/page.tsx`**:
+- Removed `TeamData` import
+- Removed `TeamSkeleton` import
+- Removed entire `<Suspense fallback={<TeamSkeleton />}><TeamData /></Suspense>` block
+
+**Current Landing Page Order**:
+1. Hero Section
+2. About Section
+3. Products (with Suspense)
+4. Stats Section
+5. How It Works/Certifications Section
+6. Testimonials (with Suspense)
+7. Brand Story (with Suspense)
+8. Contact Form
+
+**Files Modified**:
+- `src/app/(landing)/page.tsx`
+
+---
+
+### Updated - Contact Form (Get In Touch)
+
+**Context**: Updated contact form to pixel-perfect Figma design with light mode, horizontal layout, and contact number field.
+
+**Layout Changes** (`src/components/landing/contact-form.tsx`):
+- **Before**: Vertical layout (centered, max-width 588px)
+- **After**: Horizontal two-column layout (heading left, form right)
+- Changed from single-column to `flex flex-col md:flex-row gap-10`
+- Left column: `flex-1` with heading
+- Right column: `flex-1` with form
+- Max-width changed to `max-w-7xl` for full-width layout
+
+**Form Field Changes**:
+- **Added**: Contact Number field (`type="tel"`)
+- **Updated Labels**: "Full Name" (was "Name"), "Contact Number" (new)
+- **Removed**: Icon decorations from labels (cleaner design)
+- **Updated Placeholders**: More specific text for each field
+
+**Styling Updates**:
+- Background: `bg-white` (explicit light mode)
+- Input background: `bg-[#f9f9fb]` (light gray)
+- Input height: `h-[48px]` (exact pixel height)
+- Border: `border-none` (clean inputs)
+- Text colors: `text-[#18181b]` (dark), `placeholder:text-[#71717a]` (gray)
+- Focus ring: `focus:ring-[#0D9488]` (teal)
+- Submit button: Gradient with ArrowRight icon (was Mail icon)
+- Typography: Plus Jakarta Sans throughout
+
+**Server Action Updates** (`src/app/actions/submit-contact.ts`):
+- Added `contactNumber` to TypeScript interface
+- Updated validation to require contact number
+- Saves contact number to Sanity CMS
+
+**Result**:
+- ✅ Pixel-perfect match to Figma design
+- ✅ Horizontal layout (heading || form)
+- ✅ Light mode with consistent colors
+- ✅ All 4 fields: Full Name, Email, Contact Number, Message
+- ✅ Clean minimal design
+- ✅ Professional gradient button
+
+**Files Modified**:
+- `src/components/landing/contact-form.tsx`
+- `src/app/actions/submit-contact.ts`
+
+---
+
+### Updated - Footer to Light Mode
+
+**Context**: Converted footer from theme-aware to explicit light mode with consistent branding.
+
+**Color Changes** (`src/components/landing/footer.tsx`):
+- Background: `bg-[#f9f9fb]` (was `bg-secondary/50`)
+- Border: `border-[#e5e5e5]` (was `border-t`)
+- Headings: `text-[#18181b]` (explicit dark text)
+- Body text/Links: `text-[#71717a]` (muted gray)
+- Link hover: `hover:text-[#18181b]` (darkens on hover)
+- Bottom border: `border-[#e5e5e5]` (explicit light gray)
+
+**Social Icon Changes**:
+- Default state: `bg-white border border-[#e5e5e5] text-[#18181b]`
+- Hover states:
+  - GitHub/Twitter/LinkedIn: `hover:bg-[#0D9488]` (teal)
+  - Email: `hover:bg-[#18B75A]` (green)
+  - All: `hover:text-white hover:border-{color}`
+
+**Typography**:
+- Added `fontFamily: "var(--font-plus-jakarta-sans)"` to all text elements
+- Maintained gradient on "Shiner" logo (brand-blue to brand-green)
+
+**Result**:
+- ✅ Clean professional light mode appearance
+- ✅ Consistent with rest of site
+- ✅ Proper hover states with brand colors
+- ✅ Typography consistency
+
+**Files Modified**:
+- `src/components/landing/footer.tsx`
+
+---
+
+### Updated - Hero Section to Light Mode
+
+**Context**: Converted hero section from theme-aware to explicit light mode for consistency across entire landing page.
+
+**Background Changes** (`src/components/landing/hero-section.tsx`):
+- Main background: `bg-secondary` → `bg-white` (explicit white)
+- Decorative gradient overlay: `opacity-50` → `opacity-40` (lighter for subtle effect)
+- Blue blob (top-left): `opacity-30` → `opacity-20` (more subtle)
+- Green blob (bottom-right): `opacity-30` → `opacity-20` (more subtle)
+
+**Typography & Color Changes**:
+- Heading "Delivered With Confidence": `text-foreground` → `text-[#18181b]` (dark text)
+- Description paragraph: `text-muted-foreground` → `text-[#71717a]` (muted gray)
+- Added `fontFamily: "var(--font-plus-jakarta-sans)"` to h1 and paragraph
+- Gradient text preserved: "Precision Engineering" still uses brand gradient (blue to green)
+
+**Scroll Indicator**:
+- Border: `border-muted-foreground` → `border-[#71717a]` (explicit gray)
+- Dot background: `bg-muted-foreground` → `bg-[#71717a]` (explicit gray)
+
+**Result**:
+- ✅ Clean white background with subtle decorative gradients
+- ✅ High-contrast dark text for readability
+- ✅ Consistent muted gray for secondary text
+- ✅ Professional light mode matching entire site
+- ✅ Plus Jakarta Sans typography throughout
+- ✅ Preserved gradient text for brand impact
+
+**Files Modified**:
+- `src/components/landing/hero-section.tsx`
+
+---
+
 ## Contact Page Created (2025-12-25)
 
 ### Added - Contact Us Page
