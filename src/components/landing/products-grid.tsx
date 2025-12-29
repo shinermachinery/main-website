@@ -93,8 +93,8 @@ export function ProductsGrid({ products }: ProductsGridProps) {
                     )}
 
                     {product.price !== undefined && (
-                      <p className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-brand-green">
-                        ${product.price.toFixed(2)}
+                      <p className="text-xl font-bold bg-clip-text text-transparent bg-linear-gradient(to right, #007bff, #00ff00)">
+                        {/* ${product.price.toFixed(2)} */}
                       </p>
                     )}
 
