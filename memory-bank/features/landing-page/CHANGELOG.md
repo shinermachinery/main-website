@@ -2,6 +2,132 @@
 
 All notable changes to the landing page feature will be documented in this file.
 
+## Services Page Implementation (2025-12-29)
+
+### Added - Services Page (Pixel-Perfect Figma Implementation)
+
+**Context**: Created comprehensive services page showcasing 5 key service offerings with pixel-perfect Figma design implementation (node 17579-2121).
+
+**New Files Created**:
+
+1. **Services Page Route** (`src/app/(landing)/services/page.tsx`):
+   - Server component with static service data
+   - Responsive layout (mobile, tablet, desktop)
+   - Background: white
+
+**Page Structure**:
+
+1. **Page Header**:
+   - Title: "Our Services" (36px medium, 48px line-height, -0.9px tracking, #18181b)
+   - Description: Lorem ipsum text (20px medium, 28px line-height, -0.5px tracking, #71717a)
+   - Gap: 16px between title and description
+   - Bottom margin: 40px
+
+2. **Services List** (5 Services):
+   - Vertical layout with 40px gaps between cards
+   - Horizontal card layout (image left, content right)
+   - 24px gap between image and content
+
+**Service Card Layout**:
+- **Image Section**:
+  - Width: 330px (fixed on desktop, full-width on mobile)
+  - Aspect ratio: 282/168
+  - Border radius: 16px
+  - Background: #f9f9fb
+  - Object fit: cover
+
+- **Content Section** (flex-1):
+  - Title: 20px medium, 28px line-height, -0.5px tracking, #18181b
+  - Description: 14px regular, 20px line-height, #71717a
+  - "View Details" button with phone icon
+  - Gap: 16px between all elements
+
+**View Details Button**:
+- Gradient background: `linear-gradient(89.24deg, rgba(42, 94, 152, 1) 27.51%, rgba(24, 183, 90, 1) 115.04%)`
+- Inner shadow: `inset 0px 4px 28.9px 0px rgba(244, 244, 245, 0.2)`
+- Border radius: rounded-full
+- Height: 40px
+- Padding: px-[16px] py-[8px]
+- Gap: 8px (between icon and text)
+- Phone icon from lucide-react (20px, white)
+- Text: 14px medium, white
+
+**Services Included**:
+
+1. **Training**:
+   - Online and on-site training
+   - Equipment installation teaching
+   - Image: Team training scene
+
+2. **Spare Parts and Materials**:
+   - Certified genuine components
+   - Quick response time with stock availability
+   - Maintenance contracts
+   - Image: Industrial warehouse
+
+3. **After-Sale Service**:
+   - Expert service engineers across regions
+   - Pre-emptive maintenance
+   - Operator safety focus
+   - Image: Handshake/service scene
+
+4. **Equipment Modernization**:
+   - Extend equipment life
+   - Meet new regulatory standards
+   - Performance improvements
+   - Image: Modern manufacturing facility
+
+5. **Consultancy Services**:
+   - Maximize machine performance
+   - Industrial best practices
+   - Revenue generation support
+   - Image: Consultation meeting
+
+**Design Specifications (Pixel-Perfect)**:
+- Container: max-w-[1156px], mx-auto
+- Page padding: py-16 md:py-24, px-4
+- Header gap: 16px
+- Services gap: 40px
+- Card gap: 24px
+- Image width: 330px (desktop), full (mobile)
+- Typography: Plus Jakarta Sans throughout
+- Background: white
+- Service card: flex-col (mobile), flex-row (desktop)
+
+**Routing**:
+- Page URL: `/services`
+- Service detail URLs: `/services/{slug}`
+  - `/services/training`
+  - `/services/spare-parts`
+  - `/services/after-sale-service`
+  - `/services/equipment-modernization`
+  - `/services/consultancy-services`
+
+**Features**:
+- ✅ Pixel-perfect match to Figma design (node 17579-2121)
+- ✅ Responsive layout (mobile stacks vertically, desktop side-by-side)
+- ✅ 5 comprehensive service offerings
+- ✅ Professional gradient buttons with phone icons
+- ✅ Next.js Image optimization
+- ✅ Clean, readable service descriptions
+- ✅ Ready for service detail pages (routing in place)
+- ✅ Plus Jakarta Sans typography
+- ✅ Light mode design
+- ✅ Accessible with semantic HTML
+
+**Result**:
+- ✅ Complete services page matching Figma exactly
+- ✅ Professional presentation of all service offerings
+- ✅ Clear visual hierarchy with image-text layout
+- ✅ CTA buttons ready for contact/detail pages
+- ✅ Mobile-responsive design
+- ✅ Production-ready with Next.js 16 patterns
+
+**Files Created**:
+- `src/app/(landing)/services/page.tsx` - Services page route
+
+---
+
 ## Blog Card Refinement & Data Verification (2025-12-29)
 
 ### Updated - BlogCard Component to Match Figma Exactly

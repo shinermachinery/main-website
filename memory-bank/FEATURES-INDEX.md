@@ -155,6 +155,7 @@ Features currently implemented and in use.
 - **About** (`/about`) - Company overview and values
 - **Contact** (`/contact`) - Contact form and office locations
 - **Blog** (`/blog`) - Blog posts listing with search and filters
+- **Services** (`/services`) - Service offerings overview (5 services)
 
 **Home Page Sections:**
 - Hero section (static)
@@ -188,6 +189,7 @@ Features currently implemented and in use.
 - ✅ Phase 9: Light Mode Refinements (Completed 2025-12-29)
 - ✅ Phase 10: Blog Posts Page (Completed 2025-12-29)
 - ✅ Phase 11: Individual Blog Post Page (Completed 2025-12-29)
+- ✅ Phase 12: Services Page (Completed 2025-12-29)
 
 ---
 
@@ -328,7 +330,7 @@ Features scheduled for future implementation:
 | Sanity Integration | ✅ | `sanity.config.ts`<br>`src/sanity/**/*` | [View](./features/sanity-integration/README.md) |
 | UI Components | 🚧 | `src/components/ui/**/*`<br>`src/lib/utils.ts` | [View](./features/ui-components/README.md) |
 | MCP Integration | ✅ | `.mcp.json`<br>`.claude/settings.local.json` | [View](../MCP-SETUP.md) |
-| Landing Pages | ✅ | `src/app/(landing)/**/*`<br>4 pages: Home, About, Contact, Blog | [View](./features/landing-page/README.md) |
+| Landing Pages | ✅ | `src/app/(landing)/**/*`<br>5 pages: Home, About, Contact, Blog, Services | [View](./features/landing-page/README.md) |
 
 ## Feature Statistics
 
@@ -338,8 +340,8 @@ Features scheduled for future implementation:
 - 📋 Planned: 3
 
 **Last Feature Completed**: Landing Pages (2025-12-29)
-**Recently Updated**: Landing Pages - Blog cards pixel-perfect with complete dummy data (9 posts), individual blog post pages with portable text, blog listing with search/filters, light mode refinements
-**Next Planned**: Products Page, Product Detail Pages
+**Recently Updated**: Landing Pages - Services page with 5 service offerings, blog cards pixel-perfect with complete dummy data (9 posts), individual blog post pages with portable text, blog listing with search/filters
+**Next Planned**: Service Detail Pages, Products Page, Product Detail Pages
 
 ## Related Documentation
 

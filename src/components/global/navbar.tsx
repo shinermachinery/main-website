@@ -13,7 +13,7 @@ const navLinks = [
   },
   {
     name: "Services",
-    href: "#services",
+    href: "/services",
     hasDropdown: false,
   },
   {
@@ -67,6 +67,7 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
+            type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden p-2 text-zinc-900 hover:bg-zinc-100 rounded-lg transition-colors"
             aria-label="Toggle menu"
