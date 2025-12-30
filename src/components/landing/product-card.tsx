@@ -21,7 +21,10 @@ export function ProductCard({
   return (
     <div className="bg-[#f9f9fb] flex flex-col gap-4 items-center justify-center px-4 py-3 rounded-2xl">
       {/* Product Image */}
-      <div className="relative w-full rounded-2xl overflow-hidden" style={{ aspectRatio: "282/168" }}>
+      <div
+        className="relative w-full rounded-2xl overflow-hidden"
+        style={{ aspectRatio: "282/168" }}
+      >
         <Image
           src={imageUrl}
           alt={imageAlt}

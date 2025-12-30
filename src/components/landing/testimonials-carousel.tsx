@@ -79,10 +79,15 @@ export function TestimonialsCarousel({
 }: TestimonialsCarouselProps) {
   // Use fallback data if no testimonials from Sanity
   const displayTestimonials =
-    testimonials && testimonials.length > 0 ? testimonials : FALLBACK_TESTIMONIALS;
+    testimonials && testimonials.length > 0
+      ? testimonials
+      : FALLBACK_TESTIMONIALS;
 
   return (
-    <section className="py-24 md:py-32 bg-white" aria-labelledby="testimonials-heading">
+    <section
+      className="py-24 md:py-32 bg-white"
+      aria-labelledby="testimonials-heading"
+    >
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header - Two Column Layout */}
@@ -99,7 +104,8 @@ export function TestimonialsCarousel({
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Lorem ipsum dolor sit amet consectetur. Turpis bibendum eget
-              adipiscing scelerisque proin. Neque tincidunt et pellentesque proin
+              adipiscing scelerisque proin. Neque tincidunt et pellentesque
+              proin
             </p>
           </div>
 
@@ -108,7 +114,11 @@ export function TestimonialsCarousel({
             items={displayTestimonials}
             renderItem={(testimonial) => {
               const imageUrl = testimonial.image
-                ? imageBuilder.image(testimonial.image).width(80).height(80).url()
+                ? imageBuilder
+                    .image(testimonial.image)
+                    .width(80)
+                    .height(80)
+                    .url()
                 : undefined;
 
               return (

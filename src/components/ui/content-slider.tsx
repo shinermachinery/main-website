@@ -3,11 +3,11 @@
 import * as React from "react";
 import {
   Carousel,
+  type CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi,
 } from "@/components/ui/carousel";
 
 interface ContentSliderProps<T> {
@@ -142,7 +142,10 @@ export function ContentSlider<T>({
         }}
         className="w-full"
       >
-        <CarouselContent style={{ gap: `${gap}px` }} className="ml-0 items-stretch">
+        <CarouselContent
+          style={{ gap: `${gap}px` }}
+          className="ml-0 items-stretch"
+        >
           {items.map((item, index) => (
             <CarouselItem
               key={index}
@@ -151,9 +154,7 @@ export function ContentSlider<T>({
               }}
               className="!pl-0 flex"
             >
-              <div className="w-full">
-                {renderItem(item, index)}
-              </div>
+              <div className="w-full">{renderItem(item, index)}</div>
             </CarouselItem>
           ))}
         </CarouselContent>

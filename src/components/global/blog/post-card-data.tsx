@@ -5,8 +5,8 @@
  */
 
 import { notFound } from "next/navigation";
-import { client } from "@/sanity/lib/client";
 import type { PostWithRelations } from "@/lib/sanity-types";
+import { client } from "@/sanity/lib/client";
 import { PostCard } from "./post-card";
 
 export interface PostCardDataProps {

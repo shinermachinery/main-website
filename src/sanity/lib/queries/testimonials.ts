@@ -47,7 +47,11 @@ export function getAllTestimonialsQuery(
   }
 
   const filterString = buildFilterString("testimonial", conditions);
-  const orderString = buildOrderString(["order asc", "rating desc", "_createdAt desc"]);
+  const orderString = buildOrderString([
+    "order asc",
+    "rating desc",
+    "_createdAt desc",
+  ]);
   const paginationString = buildPaginationString(limit);
 
   return {

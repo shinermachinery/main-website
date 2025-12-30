@@ -1,9 +1,26 @@
 import { Phone } from "lucide-react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
 
-// Services data
-const services = [
+export const metadata: Metadata = {
+  title: "Our Services | Shiner",
+  description:
+    "Explore our comprehensive services including training, spare parts, after-sale service, equipment modernization, and consultancy services.",
+};
+
+interface Service {
+  id: string | number;
+  title: string;
+  description: string;
+  image: string;
+  slug: string;
+}
+
+// Dummy services data as fallback
+const dummyServices: Service[] = [
   {
     id: 1,
     title: "Training",
@@ -51,7 +68,47 @@ const services = [
   },
 ];
 
-export default function ServicesPage() {
+async function getServices() {
+  try {
+    const services = await client.fetch(
+      `*[_type == "service"] | order(order asc, _createdAt desc) {
+        _id,
+        title,
+        description,
+        image,
+        "slug": slug.current
+      }`,
+    );
+
+    if (!services || services.length === 0) {
+      return dummyServices;
+    }
+
+    return services.map(
+      (service: {
+        _id: string;
+        title: string;
+        description: string;
+        image?: any;
+        slug: string;
+      }) => ({
+        id: service._id,
+        title: service.title,
+        description: service.description,
+        image: service.image
+          ? urlFor(service.image).url()
+          : dummyServices[0].image,
+        slug: service.slug,
+      }),
+    );
+  } catch (error) {
+    console.error("Error fetching services:", error);
+    return dummyServices;
+  }
+}
+
+export default async function ServicesPage() {
+  const services = await getServices();
   return (
     <div className="min-h-screen bg-white">
       <div className="container mx-auto px-4 py-16 md:py-24">
@@ -75,7 +132,7 @@ export default function ServicesPage() {
 
           {/* Services List */}
           <div className="flex flex-col gap-[40px]">
-            {services.map((service) => (
+            {services.map((service: Service) => (
               <div
                 key={service.id}
                 className="flex flex-col md:flex-row gap-[24px] items-start"

@@ -52,16 +52,14 @@ export function PostGrid({
     lg:grid-cols-${columns.desktop}`;
 
   return (
-    <div 
-      className={gridClasses}
-      role="list"
-      aria-label="Blog posts"
-    >
+    <div className={gridClasses} role="list" aria-label="Blog posts">
       {posts.map((post, index) => (
         <div key={post._id} role="listitem">
           <PostCard
             post={post}
-            variant={index === 0 && variant === "featured" ? "featured" : variant}
+            variant={
+              index === 0 && variant === "featured" ? "featured" : variant
+            }
             showExcerpt={showExcerpt}
             showAuthor={showAuthor}
             showCategories={showCategories}

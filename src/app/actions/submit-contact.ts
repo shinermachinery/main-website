@@ -20,7 +20,12 @@ export async function submitContactForm(
 ): Promise<ContactFormResponse> {
   try {
     // Validate input
-    if (!formData.name || !formData.email || !formData.contactNumber || !formData.message) {
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.contactNumber ||
+      !formData.message
+    ) {
       return {
         success: false,
         message: "All fields are required.",

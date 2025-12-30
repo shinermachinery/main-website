@@ -10,8 +10,8 @@ import { ArrowRight, Calendar } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { PostWithRelations } from "@/lib/sanity-types";
-import { CategoryBadge } from "./category-badge";
 import { imageBuilder } from "@/sanity/lib/image";
+import { CategoryBadge } from "./category-badge";
 
 export interface PostCardProps {
   post: PostWithRelations;
@@ -93,19 +93,22 @@ export function PostCard({
       {/* Content */}
       <div className={`p-6 space-y-4 ${isCompact ? "p-0 space-y-2" : ""}`}>
         {/* Categories */}
-        {showCategories && post.categories && post.categories.length > 0 && !isCompact && (
-          <div className="flex flex-wrap gap-2">
-            {post.categories.slice(0, 3).map((category) => (
-              <CategoryBadge
-                key={category._id}
-                category={category}
-                size="sm"
-                variant="subtle"
-                clickable
-              />
-            ))}
-          </div>
-        )}
+        {showCategories &&
+          post.categories &&
+          post.categories.length > 0 &&
+          !isCompact && (
+            <div className="flex flex-wrap gap-2">
+              {post.categories.slice(0, 3).map((category) => (
+                <CategoryBadge
+                  key={category._id}
+                  category={category}
+                  size="sm"
+                  variant="subtle"
+                  clickable
+                />
+              ))}
+            </div>
+          )}
 
         {/* Title */}
         <Link href={`/blog/${post.slug.current}`}>

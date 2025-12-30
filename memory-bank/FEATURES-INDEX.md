@@ -2,7 +2,7 @@
 
 Master index of all features in this project. Each feature has detailed documentation in its respective folder.
 
-**Last Updated**: 2025-12-29
+**Last Updated**: 2025-12-30
 
 ## Active Features
 
@@ -54,6 +54,21 @@ Features currently implemented and in use.
 - Author - Author profiles
 - Category - Post categories
 - Block Content - Rich text
+- Product - Product catalog items
+- Product Collection - Product groupings
+- Project - Products/projects (with gallery)
+- Service - Service offerings
+- Team Member - Team profiles
+- Testimonial - Customer testimonials
+- Contact Submission - Contact form data
+- Event - Events and news
+- Certification - Company certifications
+- Achievement - Company achievements
+- Installation - Installation projects
+- Client - Client information
+- Why Choose Us - Reasons to choose (singleton)
+- Mission & Vision - Mission/vision statements (singleton)
+- Director - Director profile (singleton)
 
 **Dependencies:**
 - sanity@4
@@ -190,6 +205,101 @@ Features currently implemented and in use.
 - ✅ Phase 10: Blog Posts Page (Completed 2025-12-29)
 - ✅ Phase 11: Individual Blog Post Page (Completed 2025-12-29)
 - ✅ Phase 12: Services Page (Completed 2025-12-29)
+
+---
+
+### 6. Projects & Products System
+
+**Status**: ✅ Completed
+**Location**: `memory-bank/features/projects-products/`
+**Description**: Complete product catalog and detail pages with image galleries, specifications, and CMS integration
+**Key Tech**: Next.js 16 App Router, Sanity CMS, Server Components, Dynamic Routes
+**Created**: 2025-12-30
+
+**Quick Links:**
+- [Full Documentation](./features/projects-products/README.md)
+- [Changelog](./features/projects-products/CHANGELOG.md)
+
+**Key Files:**
+- `src/app/(landing)/projects/page.tsx` - Product grid listing
+- `src/app/(landing)/projects/[slug]/page.tsx` - Product detail page
+- `src/components/projects/*` - All product components
+- `src/sanity/schemaTypes/projectType.ts` - Product schema
+
+**Features:**
+- Product catalog with 4-column grid
+- Search bar and category filtering
+- Dynamic product detail pages
+- Interactive image gallery (5 thumbnails)
+- Features and specifications sections
+- Related products recommendations
+- Comprehensive skeleton loading states
+- Full Sanity CMS integration with fallback data
+
+**Components:**
+- ProjectCard - Product card in grid
+- ProjectsGridSection - Main catalog layout
+- ProductImageGallery - Interactive gallery
+- ProductFeaturesList - Star-icon features
+- ProductSpecificationsSection - Tech specs
+- OtherProductsSection - Related products
+
+**Dependencies:**
+- Sanity CMS Integration
+- UI Components (Button, GradientButton)
+- lucide-react (icons)
+
+**Pages:**
+- `/projects` - Product catalog (grid view)
+- `/projects/[slug]` - Individual product detail
+
+---
+
+### 7. About Us Pages
+
+**Status**: ✅ Completed
+**Location**: `memory-bank/features/about-us-pages/`
+**Description**: Complete About Us section with three dedicated pages, navbar dropdown, and rich content management
+**Key Tech**: Next.js 16, Sanity Singleton Documents, Portable Text, Server Components
+**Created**: 2025-12-30
+
+**Quick Links:**
+- [Full Documentation](./features/about-us-pages/README.md)
+- [Changelog](./features/about-us-pages/CHANGELOG.md)
+
+**Key Files:**
+- `src/app/(landing)/about/why-choose-us/page.tsx` - Why Choose Us
+- `src/app/(landing)/about/mission-vision/page.tsx` - Mission & Vision
+- `src/app/(landing)/about/director/page.tsx` - Director profile
+- `src/components/global/navbar.tsx` - About Us dropdown
+- `src/sanity/schemaTypes/whyChooseUsType.ts` - Why Choose schema
+- `src/sanity/schemaTypes/missionVisionType.ts` - Mission schema
+- `src/sanity/schemaTypes/directorType.ts` - Director schema
+
+**Features:**
+- Navbar dropdown with 4 About options
+- Why Choose Us page (3-column grid, hero image)
+- Mission & Vision page (alternating image/text layout)
+- Director profile (photo, bio, achievements, contact)
+- Portable Text for rich director biography
+- Singleton Sanity documents for easy management
+- Comprehensive dummy data fallbacks
+- Responsive layouts with custom skeletons
+
+**Pages:**
+- `/about/why-choose-us` - Reasons to choose company
+- `/about/mission-vision` - Mission and vision statements
+- `/about/director` - Director/leadership profile
+
+**Sanity Schemas:**
+- whyChooseUsType - Hero image, reasons array with icons
+- missionVisionType - Mission/vision text and images
+- directorType - Full profile with Portable Text bio
+
+**Dependencies:**
+- Sanity CMS Integration
+- Portable Text component
+- lucide-react (icons)
 
 ---
 
@@ -331,17 +441,21 @@ Features scheduled for future implementation:
 | UI Components | 🚧 | `src/components/ui/**/*`<br>`src/lib/utils.ts` | [View](./features/ui-components/README.md) |
 | MCP Integration | ✅ | `.mcp.json`<br>`.claude/settings.local.json` | [View](../MCP-SETUP.md) |
 | Landing Pages | ✅ | `src/app/(landing)/**/*`<br>5 pages: Home, About, Contact, Blog, Services | [View](./features/landing-page/README.md) |
+| Projects & Products | ✅ | `src/app/(landing)/projects/**/*`<br>`src/components/projects/*` | [View](./features/projects-products/README.md) |
+| About Us Pages | ✅ | `src/app/(landing)/about/*`<br>3 pages: Why Choose, Mission/Vision, Director | [View](./features/about-us-pages/README.md) |
 
 ## Feature Statistics
 
-**Total Features**: 5
-- ✅ Completed: 4
+**Total Features**: 7
+- ✅ Completed: 6
 - 🚧 In Development: 1
 - 📋 Planned: 3
 
-**Last Feature Completed**: Landing Pages (2025-12-29)
-**Recently Updated**: Landing Pages - Services page with 5 service offerings, blog cards pixel-perfect with complete dummy data (9 posts), individual blog post pages with portable text, blog listing with search/filters
-**Next Planned**: Service Detail Pages, Products Page, Product Detail Pages
+**Last Feature Completed**: About Us Pages (2025-12-30)
+**Recently Updated**:
+- Projects & Products System - Product catalog grid, dynamic detail pages with image galleries, specifications, related products, full Sanity integration
+- About Us Pages - 3 new pages (Why Choose Us, Mission & Vision, Director), navbar dropdown, Portable Text support, singleton Sanity documents
+**Next Planned**: Events Page, Contact Form Enhancement, Service Detail Pages
 
 ## Related Documentation
 
@@ -355,4 +469,4 @@ Features scheduled for future implementation:
 
 **Maintenance Schedule**: Review and update this index when features change
 **Owner**: Team
-**Last Review**: 2025-12-29
+**Last Review**: 2025-12-30

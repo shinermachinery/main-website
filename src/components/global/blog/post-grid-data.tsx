@@ -4,8 +4,8 @@
  * Follows component-based server data pattern
  */
 
-import { client } from "@/sanity/lib/client";
 import type { PostWithRelations } from "@/lib/sanity-types";
+import { client } from "@/sanity/lib/client";
 import { PostGrid } from "./post-grid";
 
 export interface PostGridDataProps {

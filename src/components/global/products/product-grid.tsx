@@ -50,16 +50,14 @@ export function ProductGrid({
     lg:grid-cols-${columns.desktop}`;
 
   return (
-    <div 
-      className={gridClasses}
-      role="list"
-      aria-label="Product grid"
-    >
+    <div className={gridClasses} role="list" aria-label="Product grid">
       {products.map((product, index) => (
         <div key={product._id} role="listitem">
           <ProductCard
             product={product}
-            variant={index === 0 && variant === "featured" ? "featured" : variant}
+            variant={
+              index === 0 && variant === "featured" ? "featured" : variant
+            }
             showPrice={showPrice}
             showFeatures={showFeatures}
           />

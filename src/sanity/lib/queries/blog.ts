@@ -96,7 +96,9 @@ export function getAllPostsQuery(
  * @param slug - Post slug
  * @returns Query object
  */
-export function getPostBySlugQuery(slug: string): QueryResult<{ slug: string }> {
+export function getPostBySlugQuery(
+  slug: string,
+): QueryResult<{ slug: string }> {
   return {
     query: `*[_type == "post" && slug.current == $slug && defined(publishedAt)][0] {
       ${POST_FULL_PROJECTION.replace("{", "").replace("}", "").trim()},
@@ -221,7 +223,9 @@ export function getAllAuthorsQuery(): QueryResult {
  * @param slug - Author slug
  * @returns Query object
  */
-export function getAuthorBySlugQuery(slug: string): QueryResult<{ slug: string }> {
+export function getAuthorBySlugQuery(
+  slug: string,
+): QueryResult<{ slug: string }> {
   return {
     query: `*[_type == "author" && slug.current == $slug][0] ${AUTHOR_FULL_PROJECTION}`,
     params: { slug },
@@ -283,7 +287,9 @@ export function getAllCategoriesQuery(): QueryResult {
  * @param slug - Category slug
  * @returns Query object
  */
-export function getCategoryBySlugQuery(slug: string): QueryResult<{ slug: string }> {
+export function getCategoryBySlugQuery(
+  slug: string,
+): QueryResult<{ slug: string }> {
   return {
     query: `*[_type == "category" && slug.current == $slug][0] ${CATEGORY_SUMMARY_PROJECTION}`,
     params: { slug },

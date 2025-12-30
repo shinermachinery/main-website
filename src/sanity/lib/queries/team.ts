@@ -41,7 +41,9 @@ export function getAllTeamMembersQuery(limit?: number): QueryResult {
  * @param id - Document ID
  * @returns Query object
  */
-export function getTeamMemberByIdQuery(id: string): QueryResult<{ id: string }> {
+export function getTeamMemberByIdQuery(
+  id: string,
+): QueryResult<{ id: string }> {
   return {
     query: `*[_type == "teamMember" && _id == $id][0] ${TEAM_MEMBER_PROJECTION}`,
     params: { id },

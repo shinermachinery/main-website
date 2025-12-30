@@ -1,10 +1,10 @@
 /**
  * Sanity GROQ Queries - Central Export
- * 
+ *
  * This module provides a centralized, type-safe, and optimized query library
  * for fetching data from Sanity CMS. All queries use consistent patterns,
  * reusable fragments, and are performance-optimized.
- * 
+ *
  * @module sanity/lib/queries
  */
 
@@ -13,24 +13,24 @@
 // ============================================================================
 
 export {
-  // Projections
-  IMAGE_PROJECTION,
-  SLUG_PROJECTION,
-  BASE_DOCUMENT_FIELDS,
-  AUTHOR_SUMMARY_PROJECTION,
   AUTHOR_FULL_PROJECTION,
-  CATEGORY_SUMMARY_PROJECTION,
-  PRODUCT_SUMMARY_PROJECTION,
-  PRODUCT_FULL_PROJECTION,
-  COLLECTION_SUMMARY_PROJECTION,
-  POST_SUMMARY_PROJECTION,
-  POST_FULL_PROJECTION,
-  TEAM_MEMBER_PROJECTION,
-  TESTIMONIAL_PROJECTION,
+  AUTHOR_SUMMARY_PROJECTION,
+  BASE_DOCUMENT_FIELDS,
   // Utilities
   buildFilterString,
-  buildPaginationString,
   buildOrderString,
+  buildPaginationString,
+  CATEGORY_SUMMARY_PROJECTION,
+  COLLECTION_SUMMARY_PROJECTION,
+  // Projections
+  IMAGE_PROJECTION,
+  POST_FULL_PROJECTION,
+  POST_SUMMARY_PROJECTION,
+  PRODUCT_FULL_PROJECTION,
+  PRODUCT_SUMMARY_PROJECTION,
+  SLUG_PROJECTION,
+  TEAM_MEMBER_PROJECTION,
+  TESTIMONIAL_PROJECTION,
 } from "./common";
 
 // ============================================================================
@@ -39,12 +39,12 @@ export {
 
 export {
   getAllProductsQuery,
-  getProductBySlugQuery,
   getFeaturedProductsQuery,
-  getProductsByCollectionQuery,
-  searchProductsQuery,
+  getProductBySlugQuery,
   getProductCountQuery,
+  getProductsByCollectionQuery,
   type ProductListParams,
+  searchProductsQuery,
 } from "./products";
 
 // ============================================================================
@@ -52,24 +52,24 @@ export {
 // ============================================================================
 
 export {
-  // Posts
-  getAllPostsQuery,
-  getPostBySlugQuery,
-  getRecentPostsQuery,
-  getFeaturedPostsQuery,
-  searchPostsQuery,
-  getPostCountQuery,
   // Authors
   getAllAuthorsQuery,
-  getAuthorBySlugQuery,
-  getAuthorWithPostsQuery,
   // Categories
   getAllCategoriesQuery,
+  // Posts
+  getAllPostsQuery,
+  getAuthorBySlugQuery,
+  getAuthorWithPostsQuery,
   getCategoryBySlugQuery,
   getCategoryWithPostsQuery,
+  getFeaturedPostsQuery,
   getPopularCategoriesQuery,
+  getPostBySlugQuery,
+  getPostCountQuery,
+  getRecentPostsQuery,
   // Types
   type PostListParams,
+  searchPostsQuery,
 } from "./blog";
 
 // ============================================================================
@@ -78,8 +78,8 @@ export {
 
 export {
   getAllTeamMembersQuery,
-  getTeamMemberByIdQuery,
   getTeamCountQuery,
+  getTeamMemberByIdQuery,
 } from "./team";
 
 // ============================================================================
@@ -88,10 +88,10 @@ export {
 
 export {
   getAllTestimonialsQuery,
-  getFeaturedTestimonialsQuery,
-  getTopRatedTestimonialsQuery,
-  getTestimonialCountQuery,
   getAverageRatingQuery,
+  getFeaturedTestimonialsQuery,
+  getTestimonialCountQuery,
+  getTopRatedTestimonialsQuery,
   type TestimonialListParams,
 } from "./testimonials";
 
@@ -102,8 +102,8 @@ export {
 export {
   getAllCollectionsQuery,
   getCollectionBySlugQuery,
-  getFeaturedCollectionsQuery,
   getCollectionCountQuery,
+  getFeaturedCollectionsQuery,
   getPopularCollectionsQuery,
 } from "./collections";
 

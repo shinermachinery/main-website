@@ -41,7 +41,10 @@ export function TestimonialCard({
       }`}
     >
       {/* Rating */}
-      <div className="flex gap-1" aria-label={`${testimonial.rating} out of 5 stars`}>
+      <div
+        className="flex gap-1"
+        aria-label={`${testimonial.rating} out of 5 stars`}
+      >
         {Array.from({ length: 5 }).map((_, i) => (
           <Star
             key={i}
@@ -59,7 +62,9 @@ export function TestimonialCard({
       <blockquote
         className={`text-foreground leading-relaxed ${isCompact ? "text-sm" : ""}`}
       >
-        {isQuote && <span className="text-6xl text-brand-green/20 leading-none">❝</span>}
+        {isQuote && (
+          <span className="text-6xl text-brand-green/20 leading-none">❝</span>
+        )}
         <p className={isQuote ? "mt-2" : ""}>"{testimonial.content}"</p>
       </blockquote>
 

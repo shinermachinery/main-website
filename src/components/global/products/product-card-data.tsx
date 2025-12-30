@@ -5,8 +5,8 @@
  */
 
 import { notFound } from "next/navigation";
-import { client } from "@/sanity/lib/client";
 import type { Product } from "@/lib/sanity-types";
+import { client } from "@/sanity/lib/client";
 import { ProductCard } from "./product-card";
 
 export interface ProductCardDataProps {

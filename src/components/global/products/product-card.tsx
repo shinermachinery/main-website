@@ -9,8 +9,8 @@
 import { ArrowRight, Download } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import type { Product } from "@/lib/sanity-types";
 import { GradientButton } from "@/components/ui/gradient-button";
+import type { Product } from "@/lib/sanity-types";
 import { imageBuilder } from "@/sanity/lib/image";
 
 export interface ProductCardProps {
@@ -118,7 +118,10 @@ export function ProductCard({
         {/* Actions */}
         <div className="flex gap-2 pt-2">
           <Link href={`/products/${product.slug.current}`} className="flex-1">
-            <GradientButton className="w-full" size={isCompact ? "sm" : "default"}>
+            <GradientButton
+              className="w-full"
+              size={isCompact ? "sm" : "default"}
+            >
               View Details
               <ArrowRight className="h-4 w-4" />
             </GradientButton>

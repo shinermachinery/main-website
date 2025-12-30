@@ -51,9 +51,7 @@ const portableTextComponents = {
   },
   block: {
     h1: ({ children }: any) => (
-      <h1 className="text-4xl font-bold mb-4 mt-8 scroll-m-20">
-        {children}
-      </h1>
+      <h1 className="text-4xl font-bold mb-4 mt-8 scroll-m-20">{children}</h1>
     ),
     h2: ({ children }: any) => (
       <h2 className="text-3xl font-semibold mb-3 mt-6 scroll-m-20">
@@ -68,9 +66,7 @@ const portableTextComponents = {
     h4: ({ children }: any) => (
       <h4 className="text-xl font-semibold mb-2 mt-4">{children}</h4>
     ),
-    normal: ({ children }: any) => (
-      <p className="mb-4 leading-7">{children}</p>
-    ),
+    normal: ({ children }: any) => <p className="mb-4 leading-7">{children}</p>,
     blockquote: ({ children }: any) => (
       <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-6 italic text-muted-foreground">
         {children}
@@ -79,9 +75,7 @@ const portableTextComponents = {
   },
   list: {
     bullet: ({ children }: any) => (
-      <ul className="list-disc list-inside mb-4 space-y-2 ml-4">
-        {children}
-      </ul>
+      <ul className="list-disc list-inside mb-4 space-y-2 ml-4">{children}</ul>
     ),
     number: ({ children }: any) => (
       <ol className="list-decimal list-inside mb-4 space-y-2 ml-4">
@@ -90,12 +84,8 @@ const portableTextComponents = {
     ),
   },
   listItem: {
-    bullet: ({ children }: any) => (
-      <li className="leading-7">{children}</li>
-    ),
-    number: ({ children }: any) => (
-      <li className="leading-7">{children}</li>
-    ),
+    bullet: ({ children }: any) => <li className="leading-7">{children}</li>,
+    number: ({ children }: any) => <li className="leading-7">{children}</li>,
   },
   marks: {
     strong: ({ children }: any) => (

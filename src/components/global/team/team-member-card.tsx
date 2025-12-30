@@ -57,9 +57,7 @@ export function TeamMemberCard({
 
       {/* Info */}
       <div className={`space-y-2 ${isDetailed ? "text-left" : ""}`}>
-        <h3
-          className={`font-semibold ${isCompact ? "text-lg" : "text-xl"}`}
-        >
+        <h3 className={`font-semibold ${isCompact ? "text-lg" : "text-xl"}`}>
           {member.name}
         </h3>
         <p

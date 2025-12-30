@@ -71,6 +71,33 @@ This project supports Model Context Protocol (MCP) servers for extended function
 }
 ```
 
+## Critical Design Rule: Light Mode Only
+
+**IMPORTANT: This project is LIGHT MODE ONLY. Do NOT create dark mode styles.**
+
+When creating or updating UI components:
+- ❌ **DO NOT** add `dark:` prefixed Tailwind classes
+- ❌ **DO NOT** add dark mode variants or theming
+- ❌ **DO NOT** use classes like `dark:bg-zinc-950`, `dark:text-zinc-50`, etc.
+- ✅ **DO** use light mode colors only: `bg-white`, `text-zinc-950`, `border-zinc-200`, etc.
+
+**Examples:**
+```tsx
+// ❌ WRONG - Contains dark mode styles
+<div className="bg-white dark:bg-zinc-950">
+
+// ✅ CORRECT - Light mode only
+<div className="bg-white">
+
+// ❌ WRONG - Dark mode border
+<div className="border-zinc-200 dark:border-zinc-800">
+
+// ✅ CORRECT - Light mode border
+<div className="border-zinc-200">
+```
+
+This rule applies to ALL components including buttons, popovers, dropdowns, modals, cards, etc.
+
 ## Project Architecture
 
 This is a Next.js 16.1 application integrated with Sanity CMS for content management. The project uses TypeScript, Tailwind CSS v4, and Biome for linting/formatting.

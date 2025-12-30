@@ -56,12 +56,7 @@ export interface QueryResult<TParams = Record<string, unknown>> {
 export function getAllProductsQuery(
   options: ProductListParams = {},
 ): QueryResult<{ collectionSlug?: string }> {
-  const {
-    featured,
-    collectionSlug,
-    limit,
-    offset = 0,
-  } = options;
+  const { featured, collectionSlug, limit, offset = 0 } = options;
 
   // Build filter conditions
   const conditions: string[] = [];
@@ -99,7 +94,9 @@ export function getAllProductsQuery(
  * if (!product) notFound();
  * ```
  */
-export function getProductBySlugQuery(slug: string): QueryResult<{ slug: string }> {
+export function getProductBySlugQuery(
+  slug: string,
+): QueryResult<{ slug: string }> {
   return {
     query: `*[_type == "product" && slug.current == $slug][0] {
       ${PRODUCT_FULL_PROJECTION.replace("{", "").replace("}", "").trim()},
@@ -120,9 +117,7 @@ export function getProductBySlugQuery(slug: string): QueryResult<{ slug: string 
  * @param limit - Maximum number of products (default: 3)
  * @returns Query object
  */
-export function getFeaturedProductsQuery(
-  limit: number = 3,
-): QueryResult {
+export function getFeaturedProductsQuery(limit: number = 3): QueryResult {
   return getAllProductsQuery({ featured: true, limit });
 }
 
@@ -181,9 +176,7 @@ export function searchProductsQuery(
  * @param featured - Optional filter by featured status
  * @returns Query object
  */
-export function getProductCountQuery(
-  featured?: boolean,
-): QueryResult {
+export function getProductCountQuery(featured?: boolean): QueryResult {
   const conditions: string[] = [];
   if (featured !== undefined) {
     conditions.push(`featured == ${featured}`);

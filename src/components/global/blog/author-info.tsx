@@ -9,8 +9,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Author } from "@/lib/sanity-types";
-import { PortableText } from "./portable-text";
 import { imageBuilder } from "@/sanity/lib/image";
+import { PortableText } from "./portable-text";
 
 export interface AuthorInfoProps {
   author: Author;

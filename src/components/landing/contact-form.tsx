@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  AlertCircle,
-  CheckCircle2,
-  Loader2,
-  ArrowRight,
-} from "lucide-react";
+import { AlertCircle, ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 import { useState, useTransition } from "react";
 import { submitContactForm } from "@/app/actions/submit-contact";
 
@@ -72,155 +67,155 @@ export function ContactForm() {
             {/* Right Column - Form */}
             <div className="flex-1">
               <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-            {/* Full Name Field */}
-            <div className="flex flex-col gap-2">
-              <label
-                htmlFor="name"
-                className="font-medium text-[14px] leading-[20px] text-[#18181b]"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-              >
-                Full Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                value={formData.name}
-                onChange={handleChange}
-                disabled={isPending}
-                required
-                className="w-full h-[48px] px-4 rounded-xl bg-[#f9f9fb] border-none text-[14px] text-[#18181b] placeholder:text-[#71717a] focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-                placeholder="Enter your full name"
-              />
-            </div>
+                {/* Full Name Field */}
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="name"
+                    className="font-medium text-[14px] leading-[20px] text-[#18181b]"
+                    style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                  >
+                    Full Name
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    value={formData.name}
+                    onChange={handleChange}
+                    disabled={isPending}
+                    required
+                    className="w-full h-[48px] px-4 rounded-xl bg-[#f9f9fb] border-none text-[14px] text-[#18181b] placeholder:text-[#71717a] focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                    style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                    placeholder="Enter your full name"
+                  />
+                </div>
 
-            {/* Email Field */}
-            <div className="flex flex-col gap-2">
-              <label
-                htmlFor="email"
-                className="font-medium text-[14px] leading-[20px] text-[#18181b]"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-              >
-                Email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                disabled={isPending}
-                required
-                className="w-full h-[48px] px-4 rounded-xl bg-[#f9f9fb] border-none text-[14px] text-[#18181b] placeholder:text-[#71717a] focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-                placeholder="Enter your email address"
-              />
-            </div>
+                {/* Email Field */}
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="email"
+                    className="font-medium text-[14px] leading-[20px] text-[#18181b]"
+                    style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                  >
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    disabled={isPending}
+                    required
+                    className="w-full h-[48px] px-4 rounded-xl bg-[#f9f9fb] border-none text-[14px] text-[#18181b] placeholder:text-[#71717a] focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                    style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                    placeholder="Enter your email address"
+                  />
+                </div>
 
-            {/* Contact Number Field */}
-            <div className="flex flex-col gap-2">
-              <label
-                htmlFor="contactNumber"
-                className="font-medium text-[14px] leading-[20px] text-[#18181b]"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-              >
-                Contact Number
-              </label>
-              <input
-                id="contactNumber"
-                name="contactNumber"
-                type="tel"
-                value={formData.contactNumber}
-                onChange={handleChange}
-                disabled={isPending}
-                required
-                className="w-full h-[48px] px-4 rounded-xl bg-[#f9f9fb] border-none text-[14px] text-[#18181b] placeholder:text-[#71717a] focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-                placeholder="Enter your contact number"
-              />
-            </div>
+                {/* Contact Number Field */}
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="contactNumber"
+                    className="font-medium text-[14px] leading-[20px] text-[#18181b]"
+                    style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                  >
+                    Contact Number
+                  </label>
+                  <input
+                    id="contactNumber"
+                    name="contactNumber"
+                    type="tel"
+                    value={formData.contactNumber}
+                    onChange={handleChange}
+                    disabled={isPending}
+                    required
+                    className="w-full h-[48px] px-4 rounded-xl bg-[#f9f9fb] border-none text-[14px] text-[#18181b] placeholder:text-[#71717a] focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                    style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                    placeholder="Enter your contact number"
+                  />
+                </div>
 
-            {/* Message Field */}
-            <div className="flex flex-col gap-2">
-              <label
-                htmlFor="message"
-                className="font-medium text-[14px] leading-[20px] text-[#18181b]"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-              >
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                disabled={isPending}
-                required
-                rows={6}
-                className="w-full px-4 py-3 rounded-xl bg-[#f9f9fb] border-none text-[14px] text-[#18181b] placeholder:text-[#71717a] focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all resize-none"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-                placeholder="Enter your message"
-              />
-            </div>
+                {/* Message Field */}
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="message"
+                    className="font-medium text-[14px] leading-[20px] text-[#18181b]"
+                    style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    disabled={isPending}
+                    required
+                    rows={6}
+                    className="w-full px-4 py-3 rounded-xl bg-[#f9f9fb] border-none text-[14px] text-[#18181b] placeholder:text-[#71717a] focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all resize-none"
+                    style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                    placeholder="Enter your message"
+                  />
+                </div>
 
-            {/* Response Message */}
-            {responseMessage.type && (
-              <div
-                className={`flex items-center gap-3 p-4 rounded-xl ${
-                  responseMessage.type === "success"
-                    ? "bg-[#18B75A]/10 text-[#18B75A] border border-[#18B75A]/20"
-                    : "bg-red-500/10 text-red-500 border border-red-500/20"
-                }`}
-              >
-                {responseMessage.type === "success" ? (
-                  <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
-                ) : (
-                  <AlertCircle className="h-5 w-5 flex-shrink-0" />
+                {/* Response Message */}
+                {responseMessage.type && (
+                  <div
+                    className={`flex items-center gap-3 p-4 rounded-xl ${
+                      responseMessage.type === "success"
+                        ? "bg-[#18B75A]/10 text-[#18B75A] border border-[#18B75A]/20"
+                        : "bg-red-500/10 text-red-500 border border-red-500/20"
+                    }`}
+                  >
+                    {responseMessage.type === "success" ? (
+                      <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
+                    ) : (
+                      <AlertCircle className="h-5 w-5 flex-shrink-0" />
+                    )}
+                    <p
+                      className="text-sm font-medium"
+                      style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                    >
+                      {responseMessage.text}
+                    </p>
+                  </div>
                 )}
-                <p
-                  className="text-sm font-medium"
-                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-                >
-                  {responseMessage.text}
-                </p>
-              </div>
-            )}
 
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={isPending}
-              className="flex gap-2 h-[48px] items-center justify-center px-6 rounded-full w-full relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-              style={{
-                background:
-                  "linear-gradient(88.66deg, var(--brand-blue) 27.51%, var(--brand-green) 115.04%)",
-              }}
-            >
-              {isPending ? (
-                <>
-                  <Loader2 className="h-5 w-5 text-[#fafafa] animate-spin relative z-10" />
-                  <span
-                    className="text-[14px] font-medium leading-[20px] text-[#fafafa] relative z-10"
-                    style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-                  >
-                    Sending...
-                  </span>
-                </>
-              ) : (
-                <>
-                  <span
-                    className="text-[14px] font-medium leading-[20px] text-[#fafafa] relative z-10"
-                    style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-                  >
-                    Send Message
-                  </span>
-                  <ArrowRight className="h-4 w-4 text-[#fafafa] relative z-10" />
-                </>
-              )}
-              <div className="absolute inset-0 pointer-events-none shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)]" />
-            </button>
-          </form>
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={isPending}
+                  className="flex gap-2 h-[48px] items-center justify-center px-6 rounded-full w-full relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  style={{
+                    background:
+                      "linear-gradient(88.66deg, var(--brand-blue) 27.51%, var(--brand-green) 115.04%)",
+                  }}
+                >
+                  {isPending ? (
+                    <>
+                      <Loader2 className="h-5 w-5 text-[#fafafa] animate-spin relative z-10" />
+                      <span
+                        className="text-[14px] font-medium leading-[20px] text-[#fafafa] relative z-10"
+                        style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                      >
+                        Sending...
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <span
+                        className="text-[14px] font-medium leading-[20px] text-[#fafafa] relative z-10"
+                        style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                      >
+                        Send Message
+                      </span>
+                      <ArrowRight className="h-4 w-4 text-[#fafafa] relative z-10" />
+                    </>
+                  )}
+                  <div className="absolute inset-0 pointer-events-none shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)]" />
+                </button>
+              </form>
             </div>
           </div>
         </div>
