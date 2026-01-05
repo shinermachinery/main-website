@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { Button } from "../ui/button";
 
 interface ProductCardProps {
   title: string;
@@ -47,9 +48,9 @@ export function ProductCard({
       </div>
 
       {/* CTA Button */}
-      <button
+      <Button
         onClick={onViewDetails}
-        className="flex gap-2 h-10 items-center justify-center px-4 py-2 rounded-full w-full relative overflow-hidden"
+        className="flex gap-2 h-10 items-center justify-center px-4 py-2 rounded-full w-full relative overflow-hidden cursor-pointer"
         style={{
           background:
             "linear-gradient(88.66deg, var(--brand-blue) 27.51%, var(--brand-green) 115.04%)",
@@ -62,7 +63,7 @@ export function ProductCard({
 
         {/* Inner shadow overlay */}
         <div className="absolute inset-0 pointer-events-none shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)]" />
-      </button>
+      </Button>
     </div>
   );
 }

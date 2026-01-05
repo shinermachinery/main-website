@@ -1,40 +1,30 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { ClientsListSection } from "@/components/products/clients-list-section";
-import { ClientsListSectionSkeleton } from "@/components/products/clients-list-section-skeleton";
-import { FlowChartSection } from "@/components/products/flowchart-section";
-import { InstallationsSection } from "@/components/products/installations-section";
-import { InstallationsSectionSkeleton } from "@/components/products/installations-section-skeleton";
-import { OtherClientsSection } from "@/components/products/other-clients-section";
-import { OtherClientsSectionSkeleton } from "@/components/products/other-clients-section-skeleton";
+import { SanityLive } from "@/sanity/lib/live";
+import { getAllCategories, getAllProducts } from "@/app/actions/products";
+import { ProductsGridSectionSkeleton } from "@/components/products/products-grid-section-skeleton";
+import { ProductsGridSection } from "@/components/products/products-grid-section";
+
 
 export const metadata: Metadata = {
-  title: "Our Products | SHINER",
+  title: "Our Projects | SHINER",
   description:
-    "Explore our installations, flow charts, and client projects. Precision engineering solutions for food processing plants.",
+    "Explore our comprehensive range of products and projects. High-quality machinery and equipment for food processing plants.",
 };
 
-export default function ProductsPage() {
+
+
+
+export default async function ProjectsPage() {
+  const [products, categories] = await Promise.all([getAllProducts(), getAllCategories()]);
   return (
-    <div className="bg-white">
+    <div className="bg-secondary">
       <div className="container mx-auto px-6 py-24">
-        {/* All sections with 160px gap between them */}
-        <div className="flex flex-col gap-40">
-          <Suspense fallback={<InstallationsSectionSkeleton />}>
-            <InstallationsSection />
-          </Suspense>
-
-          <FlowChartSection />
-
-          <Suspense fallback={<ClientsListSectionSkeleton />}>
-            <ClientsListSection />
-          </Suspense>
-
-          <Suspense fallback={<OtherClientsSectionSkeleton />}>
-            <OtherClientsSection />
-          </Suspense>
-        </div>
-      </div>
+        <Suspense fallback={<ProductsGridSectionSkeleton />}>
+        <ProductsGridSection products={products}  categories={categories}/>
+        <SanityLive />
+      </Suspense>
     </div>
+  </div>
   );
 }

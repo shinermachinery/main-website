@@ -2,6 +2,27 @@
 
 All notable changes to the UI component library will be documented in this file.
 
+## [2.0.0] - 2026-01-05
+
+### Changed
+- **MAJOR: Migration to shadcn/ui** - Adopted shadcn/ui as the primary UI component library
+- **Light Mode Only** - Removed all dark mode styles, project is now light mode only
+- **Bun Integration** - All commands now use `bunx` instead of `npx`
+- **Ultra-thin Design** - Updated all components to follow ultra-thin design principles
+
+### Added
+- shadcn/ui CLI integration for component installation
+- Comprehensive shadcn/ui usage guidelines in CLAUDE.md
+- Light mode only design enforcement
+- Button component integration in product-image-gallery.tsx
+- Component customization patterns for ultra-thin design
+
+### Updated
+- Documentation to reflect shadcn/ui as primary component source
+- Installation commands to use Bun package manager
+- Component patterns to emphasize light mode only
+- README with shadcn/ui architecture and best practices
+
 ## [1.0.0] - 2025-12-23
 
 ### Added

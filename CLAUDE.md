@@ -79,15 +79,15 @@ When creating or updating UI components:
 - ❌ **DO NOT** add `dark:` prefixed Tailwind classes
 - ❌ **DO NOT** add dark mode variants or theming
 - ❌ **DO NOT** use classes like `dark:bg-zinc-950`, `dark:text-zinc-50`, etc.
-- ✅ **DO** use light mode colors only: `bg-white`, `text-zinc-950`, `border-zinc-200`, etc.
+- ✅ **DO** use light mode colors only: `bg-secondary`, `text-zinc-950`, `border-zinc-200`, etc.
 
 **Examples:**
 ```tsx
 // ❌ WRONG - Contains dark mode styles
-<div className="bg-white dark:bg-zinc-950">
+<div className="bg-secondary dark:bg-zinc-950">
 
 // ✅ CORRECT - Light mode only
-<div className="bg-white">
+<div className="bg-secondary">
 
 // ❌ WRONG - Dark mode border
 <div className="border-zinc-200 dark:border-zinc-800">
@@ -109,8 +109,9 @@ This is a Next.js 16.1 application integrated with Sanity CMS for content manage
 - **Sanity CMS** for content management with embedded Studio
 - **Biome** for linting and formatting (not ESLint/Prettier)
 - **Tailwind CSS v4** with PostCSS
-- **next-themes** for theme switching
-- **Radix UI** for accessible component primitives
+- **shadcn/ui** for modern, accessible UI components (PREFERRED for new components)
+- **Radix UI** for accessible component primitives (used by shadcn/ui)
+- **next-themes** for theme switching (light mode only)
 - **TypeScript** with strict mode enabled
 
 ### Directory Structure
@@ -122,8 +123,10 @@ src/
 │   ├── layout.tsx          # Root layout with ThemeProvider
 │   └── page.tsx            # Home page
 ├── components/
-│   ├── global/             # Global components (mode-toggle, etc.)
-│   └── ui/                 # UI components (button, accordion, dropdown-menu)
+│   ├── global/             # Global components (navbar, footer, mode-toggle)
+│   ├── ui/                 # shadcn/ui components (button, dialog, form, etc.)
+│   ├── landing/            # Landing page specific components
+│   └── products/           # Product page specific components
 ├── lib/
 │   ├── theme-provider.tsx  # next-themes provider wrapper
 │   └── utils.ts            # Utility functions (cn helper)
@@ -269,6 +272,110 @@ export function BlogList({ posts }) {
 ```
 
 **For comprehensive patterns and examples**, see [Architecture Patterns Documentation](memory-bank/architecture/patterns.md).
+
+## UI Component Development with shadcn/ui
+
+**IMPORTANT: Always use shadcn/ui components when building new UI elements.**
+
+### Why shadcn/ui?
+- **Modern & Accessible**: Built on Radix UI primitives with full accessibility support
+- **Customizable**: Components are copied to your codebase, not installed as dependencies
+- **Tailwind-first**: Perfect integration with our Tailwind CSS v4 setup
+- **Type-safe**: Full TypeScript support with proper types
+- **Light mode optimized**: Works perfectly with our light-mode-only design
+
+### Installing shadcn/ui Components
+
+**Use the CLI to add components:**
+```bash
+bunx shadcn@latest add <component-name>
+
+# Examples:
+bunx shadcn@latest add button
+bunx shadcn@latest add dialog
+bunx shadcn@latest add form
+bunx shadcn@latest add card
+bunx shadcn@latest add select
+```
+
+**Components are installed to:** `src/components/ui/`
+
+### Usage Guidelines
+
+1. **Always prefer shadcn/ui components over custom implementations**
+   ```tsx
+   // ✅ CORRECT - Use shadcn/ui Button
+   import { Button } from "@/components/ui/button"
+   <Button variant="outline" size="sm">Click me</Button>
+
+   // ❌ WRONG - Custom button implementation
+   <button className="px-4 py-2 border rounded">Click me</button>
+   ```
+
+2. **Customize with className, not by modifying component files**
+   ```tsx
+   // ✅ CORRECT - Add custom styles via className
+   <Button className="bg-brand-blue hover:bg-brand-blue/90">
+     Custom Blue
+   </Button>
+
+   // ❌ WRONG - Don't modify the Button component file directly
+   ```
+
+3. **Use the cn() utility for conditional classes**
+   ```tsx
+   import { cn } from "@/lib/utils"
+
+   <Button
+     className={cn(
+       "transition-all duration-300",
+       isActive && "scale-105 shadow-lg"
+     )}
+   >
+     Dynamic Button
+   </Button>
+   ```
+
+### Available shadcn/ui Components
+
+Common components to use:
+- **Button**: Primary interactive element
+- **Card**: Content containers
+- **Dialog/Modal**: Overlays and modals
+- **Form**: Form controls with react-hook-form
+- **Select/Dropdown**: Selection controls
+- **Tabs**: Tabbed interfaces
+- **Toast**: Notifications
+- **Tooltip**: Hover hints
+- **Accordion**: Collapsible content
+- **Alert**: Information displays
+
+### Component Styling Patterns
+
+**Ultra-thin design approach for shadcn/ui:**
+```tsx
+// Example: Ultra-thin Button variant
+<Button
+  variant="ghost"
+  className="border border-zinc-100 hover:border-zinc-200 font-light"
+>
+  Ultra-thin Button
+</Button>
+
+// Example: Light Card styling
+<Card className="border-zinc-100 shadow-sm">
+  <CardContent className="p-4">
+    Light mode content
+  </CardContent>
+</Card>
+```
+
+### Important Notes
+
+- **NO DARK MODE**: Remove any `dark:` classes from shadcn/ui components
+- **Use Bun**: Install components with `bunx` not `npx`
+- **Check existing components**: Look in `src/components/ui/` before adding new ones
+- **Follow the design system**: Maintain consistency with existing ultra-thin styling
 
 ## Memory Bank System
 

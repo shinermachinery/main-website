@@ -1,13 +1,13 @@
 # UI Component Library
 
-> **Status**: In Development
+> **Status**: In Development (Migrating to shadcn/ui)
 > **Created**: 2025-12-23
-> **Last Modified**: 2025-12-23
+> **Last Modified**: 2026-01-05
 > **Owner/Lead**: Team
 
 ## Overview
 
-A collection of reusable, accessible UI components built on Radix UI primitives and styled with Tailwind CSS. Components follow a consistent pattern of unstyled primitives enhanced with utility classes and variants using class-variance-authority.
+A modern, accessible UI component library built with **shadcn/ui** components. The project uses shadcn/ui as the primary source for UI components, which provides copy-paste components built on Radix UI primitives and styled with Tailwind CSS. All components are fully customizable and follow a consistent pattern of accessibility-first design.
 
 ## User Story / Use Case
 
@@ -25,18 +25,40 @@ A collection of reusable, accessible UI components built on Radix UI primitives 
 
 ### Architecture
 
+**shadcn/ui Component System:**
 ```
+shadcn/ui CLI
+    ↓
+Copy component to src/components/ui/
+    ↓
 Radix UI Primitive (unstyled, accessible)
     ↓
-Wrapper Component (src/components/ui/)
-    ↓
-Tailwind CSS Styling
+Tailwind CSS Styling (Light Mode Only)
     ↓
 Class Variance Authority (variants)
     ↓
 cn() utility (className merging)
     ↓
-Exported Component
+Ready-to-use Component
+```
+
+### Installing shadcn/ui Components
+
+**IMPORTANT: Always use `bunx` instead of `npx` for consistency with Bun package manager.**
+
+```bash
+# Initialize shadcn/ui (only needed once)
+bunx shadcn@latest init
+
+# Add individual components
+bunx shadcn@latest add button
+bunx shadcn@latest add card
+bunx shadcn@latest add dialog
+bunx shadcn@latest add form
+bunx shadcn@latest add input
+bunx shadcn@latest add select
+bunx shadcn@latest add tabs
+bunx shadcn@latest add toast
 ```
 
 ### Key Components
@@ -84,7 +106,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground",
+        default: "bg-secondary text-primary-foreground",
         destructive: "bg-destructive text-destructive-foreground",
         outline: "border border-input",
       },
@@ -311,18 +333,27 @@ export {
 ### Tailwind Classes to Use
 
 - **Spacing**: `px-4`, `py-2`, `gap-2`
-- **Colors**: Use CSS variables: `bg-primary`, `text-foreground`
+- **Colors**: Use CSS variables: `bg-secondary`, `text-foreground`
 - **Borders**: `border`, `rounded-md`
 - **Transitions**: `transition-colors`, `duration-200`
 - **Focus**: `focus-visible:outline-none focus-visible:ring-2`
 
-### Dark Mode
+### Light Mode Only Design
 
-Always include dark mode variants:
+**CRITICAL: This project is LIGHT MODE ONLY. Never add dark mode styles.**
+
 ```typescript
-"bg-white dark:bg-slate-900"
-"text-slate-900 dark:text-slate-50"
+// ✅ CORRECT - Light mode only
+"bg-secondary text-zinc-900 border-zinc-200"
+
+// ❌ WRONG - No dark mode variants
+"bg-secondary dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50"
 ```
+
+When customizing shadcn/ui components:
+1. Remove any `dark:` prefixed classes
+2. Use light colors only (white, zinc-50, zinc-100, etc.)
+3. Maintain ultra-thin design with light borders and subtle shadows
 
 ### Accessibility
 

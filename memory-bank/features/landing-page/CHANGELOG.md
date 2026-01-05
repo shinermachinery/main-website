@@ -674,7 +674,7 @@ All notable changes to the landing page feature will be documented in this file.
 - **Updated Placeholders**: More specific text for each field
 
 **Styling Updates**:
-- Background: `bg-white` (explicit light mode)
+- Background: `bg-secondary` (explicit light mode)
 - Input background: `bg-[#f9f9fb]` (light gray)
 - Input height: `h-[48px]` (exact pixel height)
 - Border: `border-none` (clean inputs)
@@ -715,7 +715,7 @@ All notable changes to the landing page feature will be documented in this file.
 - Bottom border: `border-[#e5e5e5]` (explicit light gray)
 
 **Social Icon Changes**:
-- Default state: `bg-white border border-[#e5e5e5] text-[#18181b]`
+- Default state: `bg-secondary border border-[#e5e5e5] text-[#18181b]`
 - Hover states:
   - GitHub/Twitter/LinkedIn: `hover:bg-[#0D9488]` (teal)
   - Email: `hover:bg-[#18B75A]` (green)
@@ -741,7 +741,7 @@ All notable changes to the landing page feature will be documented in this file.
 **Context**: Converted hero section from theme-aware to explicit light mode for consistency across entire landing page.
 
 **Background Changes** (`src/components/landing/hero-section.tsx`):
-- Main background: `bg-secondary` → `bg-white` (explicit white)
+- Main background: `bg-secondary` → `bg-secondary` (explicit white)
 - Decorative gradient overlay: `opacity-50` → `opacity-40` (lighter for subtle effect)
 - Blue blob (top-left): `opacity-30` → `opacity-20` (more subtle)
 - Green blob (bottom-right): `opacity-30` → `opacity-20` (more subtle)
@@ -1029,7 +1029,7 @@ All notable changes to the landing page feature will be documented in this file.
 ### Modified
 
 - `src/components/landing/stats-section.tsx`
-  - Converted to light mode with `bg-white` background
+  - Converted to light mode with `bg-secondary` background
   - Added centered heading: "A few more facts about us"
   - Updated typography for light mode compatibility:
     - Stats values: `text-gray-900` instead of gradient text
@@ -1085,7 +1085,7 @@ All notable changes to the landing page feature will be documented in this file.
       - Global Reach, Local Support (globe icon)
     - Teal icon accents (text-teal-600) for visual consistency
     - Light mode compatible text colors
-  - Changed background from bg-white to bg-gray-50 for light mode
+  - Changed background from bg-secondary to bg-gray-50 for light mode
   - Added vertical spacing between two parts (space-y-24)
   - Responsive 2-column grid for features on mobile/desktop
 

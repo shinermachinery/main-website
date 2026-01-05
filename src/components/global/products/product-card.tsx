@@ -11,7 +11,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { GradientButton } from "@/components/ui/gradient-button";
 import type { Product } from "@/lib/sanity-types";
-import { imageBuilder } from "@/sanity/lib/image";
+import { urlFor } from "@/sanity/lib/image";
 
 export interface ProductCardProps {
   product: Product;
@@ -31,7 +31,7 @@ export function ProductCard({
   // Get primary image
   const primaryImage = product.images?.[0];
   const imageUrl = primaryImage
-    ? imageBuilder.image(primaryImage).width(600).height(600).url()
+    ? urlFor(primaryImage).width(600).height(600).url()
     : "/placeholder-product.jpg";
 
   // Get brochure URL if available

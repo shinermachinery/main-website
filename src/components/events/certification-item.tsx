@@ -1,5 +1,4 @@
-import { Check } from "lucide-react";
-
+import WheatIcon from "@/icons/wheat-icon";
 interface CertificationItemProps {
   title: string;
   description: string;
@@ -13,10 +12,7 @@ export function CertificationItem({
     <div className="flex gap-6 items-center">
       {/* Check Icon - Mirrored Double Check */}
       <div className="flex items-center shrink-0">
-        <div className="transform scale-x-[-1]">
-          <Check className="w-[30px] h-12 text-brand-green" strokeWidth={2} />
-        </div>
-        <Check className="w-[30px] h-12 text-brand-green" strokeWidth={2} />
+        <WheatIcon/>
       </div>
 
       {/* Content */}

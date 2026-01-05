@@ -1,6 +1,6 @@
 export function BrandStorySkeleton() {
   return (
-    <section className="py-24 md:py-32 bg-white">
+    <section className="py-24 md:py-32 bg-secondary">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header Skeleton */}

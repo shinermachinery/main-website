@@ -123,7 +123,7 @@ export function Component() {
 Tailwind CSS automatically handles dark mode via the `dark:` prefix:
 ```css
 /* Light mode */
-.element { @apply bg-white text-black; }
+.element { @apply bg-secondary text-black; }
 
 /* Dark mode */
 .element { @apply dark:bg-black dark:text-white; }

@@ -46,7 +46,7 @@ export function ContactForm() {
   return (
     <section
       id="contact"
-      className="py-24 md:py-32 bg-white"
+      className="py-24 md:py-32 bg-secondary"
       aria-labelledby="contact-heading"
     >
       <div className="container mx-auto px-4">

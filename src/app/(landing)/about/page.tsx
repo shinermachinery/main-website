@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div className="bg-white">
+    <div className="bg-secondary">
       {/* Hero Section */}
       <section className="mx-auto max-w-[1200px] px-6 py-16 md:py-24">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-6">

@@ -110,7 +110,7 @@ async function getServices() {
 export default async function ServicesPage() {
   const services = await getServices();
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-secondary">
       <div className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-[1156px] mx-auto">
           {/* Page Header */}

@@ -8,7 +8,7 @@
 
 import Image from "next/image";
 import type { TeamMember } from "@/lib/sanity-types";
-import { imageBuilder } from "@/sanity/lib/image";
+import { imageBuilder, urlFor } from "@/sanity/lib/image";
 
 export interface TeamMemberCardProps {
   member: TeamMember;
@@ -22,7 +22,7 @@ export function TeamMemberCard({
   showBio = true,
 }: TeamMemberCardProps) {
   const imageUrl = member.image
-    ? imageBuilder.image(member.image).width(400).height(400).url()
+    ? urlFor(member.image).width(400).height(400).url()
     : "/placeholder-avatar.jpg";
 
   const isCompact = variant === "compact";

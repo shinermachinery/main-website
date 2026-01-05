@@ -9,7 +9,7 @@
 import { Star } from "lucide-react";
 import Image from "next/image";
 import type { Testimonial } from "@/lib/sanity-types";
-import { imageBuilder } from "@/sanity/lib/image";
+import { urlFor } from "@/sanity/lib/image";
 
 export interface TestimonialCardProps {
   testimonial: Testimonial;
@@ -23,7 +23,7 @@ export function TestimonialCard({
   showImage = true,
 }: TestimonialCardProps) {
   const imageUrl = testimonial.image
-    ? imageBuilder.image(testimonial.image).width(100).height(100).url()
+    ? urlFor(testimonial.image).width(100).height(100).url()
     : "/placeholder-avatar.jpg";
 
   const isCard = variant === "card";
@@ -41,10 +41,7 @@ export function TestimonialCard({
       }`}
     >
       {/* Rating */}
-      <div
-        className="flex gap-1"
-        aria-label={`${testimonial.rating} out of 5 stars`}
-      >
+      <div className="flex gap-1">
         {Array.from({ length: 5 }).map((_, i) => (
           <Star
             key={i}

@@ -13,21 +13,21 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { GradientButton } from "@/components/ui/gradient-button";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { GradientButton } from "../ui/gradient-button";
 
 const navLinks = [
   {
     name: "Products",
-    href: "/projects",
+    href: "/products",
   },
   {
     name: "Projects",
-    href: "/products",
+    href: "/projects",
   },
   {
     name: "Services",
@@ -81,15 +81,15 @@ export function Navbar() {
   const [morePopoverOpen, setMorePopoverOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-secondary shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-1">
             <div className="flex items-center gap-1">
-              {/* Logo Icon - Using gradient colors */}
-              <div className="w-7 h-7 rounded-md bg-gradient-to-br from-brand-blue to-brand-green flex items-center justify-center">
-                <div className="w-4 h-4 bg-white rounded-sm" />
+              {/* Logo Icon - Using linear colors */}
+              <div className="w-7 h-7 rounded-md bg-linear-to-br from-brand-blue to-brand-green flex items-center justify-center">
+                <div className="w-4 h-4 bg-secondary rounded-sm" />
               </div>
               {/* Logo Text */}
               <span className="text-xl font-bold text-zinc-900">SHINER</span>
@@ -143,7 +143,7 @@ export function Navbar() {
                         onClick={() => setAboutPopoverOpen(false)}
                         className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-zinc-900 rounded-lg hover:bg-zinc-100 transition-colors group"
                       >
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-blue/10 to-brand-green/10 flex items-center justify-center group-hover:from-brand-blue/20 group-hover:to-brand-green/20 transition-colors">
+                        <div className="w-8 h-8 rounded-lg bg-linear-to-br from-brand-blue/10 to-brand-green/10 flex items-center justify-center group-hover:from-brand-blue/20 group-hover:to-brand-green/20 transition-colors">
                           <Icon className="w-4 h-4 text-brand-blue" />
                         </div>
                         <span>{link.name}</span>
@@ -189,7 +189,7 @@ export function Navbar() {
                         onClick={() => setMorePopoverOpen(false)}
                         className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-zinc-900 rounded-lg hover:bg-zinc-100 transition-colors group"
                       >
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-blue/10 to-brand-green/10 flex items-center justify-center group-hover:from-brand-blue/20 group-hover:to-brand-green/20 transition-colors">
+                        <div className="w-8 h-8 rounded-lg bg-linear-to-br from-brand-blue/10 to-brand-green/10 flex items-center justify-center group-hover:from-brand-blue/20 group-hover:to-brand-green/20 transition-colors">
                           <Icon className="w-4 h-4 text-brand-blue" />
                         </div>
                         <span>{link.name}</span>
@@ -201,7 +201,7 @@ export function Navbar() {
             </Popover>
 
             <GradientButton size="default" className="ml-2">
-              Get a Quote
+              <Link href="/contact">Get a Quote</Link>
             </GradientButton>
           </div>
 
@@ -271,7 +271,7 @@ export function Navbar() {
 
             <div className="px-4 pt-2">
               <GradientButton size="default" className="w-full">
-                Get a Quote
+                <Link href="/contact">Get a Quote</Link>
               </GradientButton>
             </div>
           </div>

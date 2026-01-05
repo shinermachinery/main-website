@@ -9,7 +9,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Author } from "@/lib/sanity-types";
-import { imageBuilder } from "@/sanity/lib/image";
+import { urlFor } from "@/sanity/lib/image";
 import { PortableText } from "./portable-text";
 
 export interface AuthorInfoProps {
@@ -26,7 +26,7 @@ export function AuthorInfo({
   clickable = true,
 }: AuthorInfoProps) {
   const imageUrl = author.image
-    ? imageBuilder.image(author.image).width(200).height(200).url()
+    ? urlFor(author.image).width(200).height(200).url()
     : "/placeholder-avatar.jpg";
 
   const isInline = variant === "inline";

@@ -4,7 +4,7 @@ import { GradientButton } from "@/components/ui/gradient-button";
 export function HeroSection() {
   return (
     <section
-      className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center bg-white overflow-hidden"
+      className="relative min-h-[calc(100vh-5rem)] flex items-center justify-center bg-secondary overflow-hidden"
       aria-label="Hero section"
     >
       {/* Decorative Background - Light Mode */}

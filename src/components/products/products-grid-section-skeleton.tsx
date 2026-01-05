@@ -2,7 +2,7 @@ const SKELETON_PROJECTS = Array.from({ length: 16 }, (_, i) => ({
   id: `skeleton-project-${i}`,
 }));
 
-export function ProjectsGridSectionSkeleton() {
+export function ProductsGridSectionSkeleton() {
   return (
     <section className="flex flex-col gap-[40px] w-full">
       {/* Header Skeleton */}
@@ -32,7 +32,7 @@ export function ProjectsGridSectionSkeleton() {
             className="bg-[#f9f9fb] flex flex-col gap-[16px] px-[16px] py-[12px] rounded-[16px] w-full"
           >
             {/* Image Skeleton */}
-            <div className="aspect-[282/168] rounded-[16px] bg-zinc-200 animate-pulse" />
+            <div className="aspect-282/168 rounded-[16px] bg-zinc-200 animate-pulse" />
 
             {/* Content Skeleton */}
             <div className="flex flex-col gap-[8px]">

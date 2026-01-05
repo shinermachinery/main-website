@@ -2,7 +2,7 @@
 
 import { BlogCard } from "@/components/blog/blog-card";
 import { FALLBACK_BLOG_IMAGES } from "@/components/blog/fallback-data";
-import { imageBuilder } from "@/sanity/lib/image";
+import { urlFor } from "@/sanity/lib/image";
 
 interface BlogPost {
   _id: string;
@@ -43,7 +43,7 @@ export function BlogsGrid({ posts }: BlogsGridProps) {
       {posts.map((post, index) => {
         // Get image URL from Sanity or use fallback
         const imageUrl = post.mainImage
-          ? imageBuilder.image(post.mainImage).width(600).height(400).url()
+          ? urlFor(post.mainImage).width(600).height(400).url()
           : FALLBACK_BLOG_IMAGES[index % FALLBACK_BLOG_IMAGES.length];
 
         // Format date

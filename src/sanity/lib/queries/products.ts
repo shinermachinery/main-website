@@ -97,9 +97,12 @@ export function getAllProductsQuery(
 export function getProductBySlugQuery(
   slug: string,
 ): QueryResult<{ slug: string }> {
+  // Remove outer braces from PRODUCT_FULL_PROJECTION since we're already inside a projection block
+  const productFields = PRODUCT_FULL_PROJECTION.trim().replace(/^\{/, "").replace(/\}$/, "").trim();
+  
   return {
     query: `*[_type == "product" && slug.current == $slug][0] {
-      ${PRODUCT_FULL_PROJECTION.replace("{", "").replace("}", "").trim()},
+      ${productFields},
       collection-> ${COLLECTION_SUMMARY_PROJECTION},
       relatedProducts[]-> ${PRODUCT_SUMMARY_PROJECTION}
     }`,

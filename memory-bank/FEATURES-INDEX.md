@@ -83,32 +83,38 @@ Features currently implemented and in use.
 
 ---
 
-### 3. UI Component Library
+### 3. UI Component Library (shadcn/ui)
 
-**Status**: 🚧 In Development
+**Status**: 🚧 In Development (Migrating to shadcn/ui)
 **Location**: `memory-bank/features/ui-components/`
-**Description**: Reusable, accessible components built on Radix UI and Tailwind CSS
-**Key Tech**: Radix UI, Tailwind CSS, CVA
+**Description**: Modern, accessible UI components using shadcn/ui - copy-paste components built on Radix UI
+**Key Tech**: shadcn/ui, Radix UI, Tailwind CSS, CVA
 **Created**: 2025-12-23
+**Last Updated**: 2026-01-05
 
 **Quick Links:**
 - [Full Documentation](./features/ui-components/README.md)
 - [Changelog](./features/ui-components/CHANGELOG.md)
 
 **Key Files:**
-- `src/components/ui/*.tsx` - Reusable components
+- `src/components/ui/*.tsx` - shadcn/ui components
 - `src/components/global/*.tsx` - App-specific components
-- `src/lib/utils.ts` - Utility functions
+- `src/lib/utils.ts` - Utility functions (cn helper)
+
+**Component System:**
+- **Primary Source**: shadcn/ui (installed via CLI)
+- **Design**: Ultra-thin, light mode only
+- **Installation**: `bunx shadcn@latest add [component]`
 
 **Available Components:**
-- Button (variants: default, destructive, outline, etc.)
+- Button (with ultra-thin variants)
 - Accordion (collapsible content)
 - DropdownMenu (context menus)
-- ModeToggle (theme switcher)
+- Card, Dialog, Form, Input, Select, Tabs (available to install)
 
 **Dependencies:**
-- @radix-ui/react-accordion@1.2.12
-- @radix-ui/react-dropdown-menu@2.1.16
+- shadcn/ui CLI tool
+- @radix-ui/* (via shadcn/ui)
 - class-variance-authority@0.7.1
 - tailwind-merge@3.4.0
 - lucide-react@0.562.0
@@ -438,7 +444,7 @@ Features scheduled for future implementation:
 |---------|--------|-------|------|
 | Theme System | ✅ | `src/lib/theme-provider.tsx`<br>`src/components/global/mode-toggle.tsx` | [View](./features/theme-system/README.md) |
 | Sanity Integration | ✅ | `sanity.config.ts`<br>`src/sanity/**/*` | [View](./features/sanity-integration/README.md) |
-| UI Components | 🚧 | `src/components/ui/**/*`<br>`src/lib/utils.ts` | [View](./features/ui-components/README.md) |
+| UI Components (shadcn/ui) | 🚧 | `src/components/ui/**/*`<br>`src/lib/utils.ts` | [View](./features/ui-components/README.md) |
 | MCP Integration | ✅ | `.mcp.json`<br>`.claude/settings.local.json` | [View](../MCP-SETUP.md) |
 | Landing Pages | ✅ | `src/app/(landing)/**/*`<br>5 pages: Home, About, Contact, Blog, Services | [View](./features/landing-page/README.md) |
 | Projects & Products | ✅ | `src/app/(landing)/projects/**/*`<br>`src/components/projects/*` | [View](./features/projects-products/README.md) |

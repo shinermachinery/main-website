@@ -1,18 +1,19 @@
-import { ProjectCard } from "./project-card";
+"use client"
+import type { Category, Product } from "@/lib/sanity-types";
+import { ProductCard } from "../landing/product-card";
+import { imageBuilder } from "@/sanity/lib/image";
+import { useRouter } from "next/navigation";
 
-interface Project {
-  id: string | number;
-  title: string;
-  description: string;
-  image: string;
-  slug: string;
+interface ProductsGridSectionProps {
+  products: Product[];
+  categories: Category[];
 }
 
-interface ProjectsGridSectionProps {
-  projects: Project[];
-}
-
-export function ProjectsGridSection({ projects }: ProjectsGridSectionProps) {
+export function ProductsGridSection({
+  products,
+  categories,
+}: ProductsGridSectionProps) {
+  const router = useRouter();
   return (
     <section className="flex flex-col gap-[40px] w-full">
       {/* Header */}
@@ -77,36 +78,35 @@ export function ProjectsGridSection({ projects }: ProjectsGridSectionProps) {
             >
               Categories
             </span>
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M4 6L8 10L12 6"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
           </button>
         </div>
       </div>
 
       {/* Products Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[24px]">
-        {projects.map((project) => (
-          <ProjectCard
-            key={project.id}
-            title={project.title}
-            description={project.description}
-            image={project.image}
-            slug={project.slug}
-          />
-        ))}
+        {products.map((product) => {
+          console.log("PRODUCT", product);
+          const imageUrl = product?.images?.[0]
+            ? imageBuilder
+                .image(product.images?.[0])
+                .width(600)
+                .height(400)
+                .url()
+            : "/placeholder-product.jpg";
+
+          return (
+            <ProductCard
+              key={product._id}
+              title={product.title}
+              description={product.description}
+              imageUrl={imageUrl}
+              imageAlt={product.images?.[0]?.alt || product.title}
+              onViewDetails={() => {
+                router.push(`/products/${product.slug.current}`);
+              }}
+            />
+          );
+        })}
       </div>
     </section>
   );

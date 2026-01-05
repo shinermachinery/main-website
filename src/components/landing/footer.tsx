@@ -134,7 +134,7 @@ export function Footer() {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-white border border-[#e5e5e5] text-[#18181b] flex items-center justify-center hover:bg-[#0D9488] hover:text-white hover:border-[#0D9488] transition-all"
+                className="h-10 w-10 rounded-full bg-secondary border border-[#e5e5e5] text-[#18181b] flex items-center justify-center hover:bg-[#0D9488] hover:text-white hover:border-[#0D9488] transition-all"
                 aria-label="GitHub"
               >
                 <Github className="h-5 w-5" />
@@ -143,7 +143,7 @@ export function Footer() {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-white border border-[#e5e5e5] text-[#18181b] flex items-center justify-center hover:bg-[#0D9488] hover:text-white hover:border-[#0D9488] transition-all"
+                className="h-10 w-10 rounded-full bg-secondary border border-[#e5e5e5] text-[#18181b] flex items-center justify-center hover:bg-[#0D9488] hover:text-white hover:border-[#0D9488] transition-all"
                 aria-label="Twitter"
               >
                 <Twitter className="h-5 w-5" />
@@ -152,14 +152,14 @@ export function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-white border border-[#e5e5e5] text-[#18181b] flex items-center justify-center hover:bg-[#0D9488] hover:text-white hover:border-[#0D9488] transition-all"
+                className="h-10 w-10 rounded-full bg-secondary border border-[#e5e5e5] text-[#18181b] flex items-center justify-center hover:bg-[#0D9488] hover:text-white hover:border-[#0D9488] transition-all"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
                 href="mailto:contact@example.com"
-                className="h-10 w-10 rounded-full bg-white border border-[#e5e5e5] text-[#18181b] flex items-center justify-center hover:bg-[#18B75A] hover:text-white hover:border-[#18B75A] transition-all"
+                className="h-10 w-10 rounded-full bg-secondary border border-[#e5e5e5] text-[#18181b] flex items-center justify-center hover:bg-[#18B75A] hover:text-white hover:border-[#18B75A] transition-all"
                 aria-label="Email"
               >
                 <Mail className="h-5 w-5" />

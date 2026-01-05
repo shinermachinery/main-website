@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { imageBuilder } from "@/sanity/lib/image";
+import { imageBuilder, urlFor } from "@/sanity/lib/image";
 
 interface TeamMember {
   _id: string;
@@ -54,7 +54,7 @@ export function TeamGrid({ teamMembers }: TeamGridProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member) => {
               const imageUrl = member.image
-                ? imageBuilder.image(member.image).width(400).height(400).url()
+                ? urlFor(member.image).width(400).height(400).url()
                 : "/placeholder-avatar.jpg";
 
               return (

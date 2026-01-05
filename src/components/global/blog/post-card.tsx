@@ -10,7 +10,7 @@ import { ArrowRight, Calendar } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { PostWithRelations } from "@/lib/sanity-types";
-import { imageBuilder } from "@/sanity/lib/image";
+import {  urlFor } from "@/sanity/lib/image";
 import { CategoryBadge } from "./category-badge";
 
 export interface PostCardProps {
@@ -29,7 +29,7 @@ export function PostCard({
   showCategories = true,
 }: PostCardProps) {
   const imageUrl = post.mainImage
-    ? imageBuilder.image(post.mainImage).width(800).height(500).url()
+    ? urlFor(post.mainImage).width(800).height(500).url()
     : "/placeholder-blog.jpg";
 
   const isFeatured = variant === "featured";

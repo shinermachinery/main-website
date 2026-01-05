@@ -36,7 +36,7 @@ export function ContactPageClient() {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-secondary">
       {/* Main Content */}
       <section className="mx-auto max-w-[1200px] px-6 py-16 md:py-24">
         {/* Hero Section & Form */}
@@ -71,7 +71,7 @@ export function ContactPageClient() {
               {/* Contact Info Grid */}
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                 {/* Phone 1 */}
-                <div className="flex items-center gap-2 rounded-xl bg-white px-3 py-2">
+                <div className="flex items-center gap-2 rounded-xl bg-secondary px-3 py-2">
                   <Phone className="size-5 text-gray-900" />
                   <p className="text-sm font-medium text-gray-900">
                     +91-90443 20555
@@ -79,7 +79,7 @@ export function ContactPageClient() {
                 </div>
 
                 {/* Email 1 */}
-                <div className="flex items-center gap-2 rounded-xl bg-white px-3 py-2">
+                <div className="flex items-center gap-2 rounded-xl bg-secondary px-3 py-2">
                   <Mail className="size-5 text-gray-900" />
                   <p className="text-sm font-medium text-gray-900">
                     contact@shinermachinery.com
@@ -87,7 +87,7 @@ export function ContactPageClient() {
                 </div>
 
                 {/* Phone 2 */}
-                <div className="flex items-center gap-2 rounded-xl bg-white px-3 py-2">
+                <div className="flex items-center gap-2 rounded-xl bg-secondary px-3 py-2">
                   <Phone className="size-5 text-gray-900" />
                   <p className="text-sm font-medium text-gray-900">
                     +91-90443 20555
@@ -95,7 +95,7 @@ export function ContactPageClient() {
                 </div>
 
                 {/* Email 2 */}
-                <div className="flex items-center gap-2 rounded-xl bg-white px-3 py-2">
+                <div className="flex items-center gap-2 rounded-xl bg-secondary px-3 py-2">
                   <Mail className="size-5 text-gray-900" />
                   <p className="text-sm font-medium text-gray-900">
                     sales@shinermachinery.com
@@ -124,7 +124,7 @@ export function ContactPageClient() {
                   onChange={handleChange}
                   placeholder="John Doe"
                   required
-                  className="h-10 rounded-2xl bg-white px-3 py-2 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-blue"
+                  className="h-10 rounded-2xl bg-secondary px-3 py-2 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-blue"
                 />
               </div>
 
@@ -144,7 +144,7 @@ export function ContactPageClient() {
                   onChange={handleChange}
                   placeholder="sample@email.com"
                   required
-                  className="h-10 rounded-2xl bg-white px-3 py-2 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-blue"
+                  className="h-10 rounded-2xl bg-secondary px-3 py-2 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-blue"
                 />
               </div>
 
@@ -164,7 +164,7 @@ export function ContactPageClient() {
                   onChange={handleChange}
                   placeholder="+91-90443 20555"
                   required
-                  className="h-10 rounded-2xl bg-white px-3 py-2 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-blue"
+                  className="h-10 rounded-2xl bg-secondary px-3 py-2 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-blue"
                 />
               </div>
 
@@ -184,7 +184,7 @@ export function ContactPageClient() {
                   placeholder="Placeholder"
                   rows={4}
                   required
-                  className="min-h-[96px] rounded-2xl bg-white p-3 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-blue"
+                  className="min-h-[96px] rounded-2xl bg-secondary p-3 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-blue"
                 />
               </div>
 

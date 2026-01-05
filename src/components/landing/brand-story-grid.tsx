@@ -1,7 +1,7 @@
 "use client";
 
 import { BrandStoryCard } from "@/components/landing/brand-story-card";
-import { imageBuilder } from "@/sanity/lib/image";
+import { imageBuilder, urlFor } from "@/sanity/lib/image";
 
 interface TeamMember {
   _id: string;
@@ -50,7 +50,7 @@ export function BrandStoryGrid({ teamMembers }: BrandStoryGridProps) {
 
   return (
     <section
-      className="py-24 md:py-32 bg-white"
+      className="py-24 md:py-32 bg-secondary"
       aria-labelledby="brand-story-heading"
     >
       <div className="container mx-auto px-4">
@@ -89,7 +89,7 @@ export function BrandStoryGrid({ teamMembers }: BrandStoryGridProps) {
               ];
 
               const imageUrl = member.image
-                ? imageBuilder.image(member.image).width(600).height(1000).url()
+                ? urlFor(member.image).width(600).height(1000).url()
                 : fallbackImages[index % fallbackImages.length];
 
               return (

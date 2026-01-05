@@ -8,6 +8,7 @@ import { clientType } from "./clientType";
 import { contactSubmissionType } from "./contactSubmissionType";
 import { directorType } from "./directorType";
 import { eventType } from "./eventType";
+import { homeType } from "./homeType";
 import { installationType } from "./installationType";
 import { missionVisionType } from "./missionVisionType";
 import { postType } from "./postType";
@@ -21,6 +22,7 @@ import { whyChooseUsType } from "./whyChooseUsType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
+    homeType,
     blockContentType,
     categoryType,
     postType,
@@ -40,5 +42,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     whyChooseUsType,
     missionVisionType,
     directorType,
+
   ],
 };

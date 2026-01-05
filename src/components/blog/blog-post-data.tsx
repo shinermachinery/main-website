@@ -6,7 +6,7 @@ import {
   FALLBACK_BLOG_POSTS,
 } from "@/components/blog/fallback-data";
 import { client } from "@/sanity/lib/client";
-import { imageBuilder } from "@/sanity/lib/image";
+import { urlFor } from "@/sanity/lib/image";
 
 interface BlogPostDataProps {
   slug: string;
@@ -70,7 +70,7 @@ export async function BlogPostData({ slug }: BlogPostDataProps) {
 
     // Build image URL from Sanity
     const imageUrl = post.mainImage
-      ? imageBuilder.image(post.mainImage).width(1200).height(675).url()
+      ? urlFor(post.mainImage).width(1200).height(675).url()
       : undefined;
 
     return (

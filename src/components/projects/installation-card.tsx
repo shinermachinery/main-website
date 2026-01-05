@@ -29,7 +29,7 @@ export function InstallationCard({
       </div>
 
       {/* Content */}
-      <div className="flex flex-col gap-4 bg-white rounded-2xl">
+      <div className="flex flex-col gap-4 bg-secondary rounded-2xl">
         {/* Badge */}
         <div className="flex items-center">
           <div

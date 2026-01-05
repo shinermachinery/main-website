@@ -1,85 +1,39 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { ProjectsGridSection } from "@/components/projects/projects-grid-section";
-import { ProjectsGridSectionSkeleton } from "@/components/projects/projects-grid-section-skeleton";
-import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
+import { ClientsListSection } from "@/components/projects/clients-list-section";
+import { ClientsListSectionSkeleton } from "@/components/projects/clients-list-section-skeleton";
+import { FlowChartSection } from "@/components/projects/flowchart-section";
+import { InstallationsSection } from "@/components/projects/installations-section";
+import { InstallationsSectionSkeleton } from "@/components/projects/installations-section-skeleton";
+import { OtherClientsSection } from "@/components/projects/other-clients-section";
+import { OtherClientsSectionSkeleton } from "@/components/projects/other-clients-section-skeleton";
 
 export const metadata: Metadata = {
-  title: "Our Projects | SHINER",
+  title: "Our Products | SHINER",
   description:
-    "Explore our comprehensive range of products and projects. High-quality machinery and equipment for food processing plants.",
+    "Explore our installations, flow charts, and client projects. Precision engineering solutions for food processing plants.",
 };
 
-interface Project {
-  id: string | number;
-  title: string;
-  description: string;
-  image: string;
-  slug: string;
-}
-
-// Dummy projects data as fallback
-const dummyProjects: Project[] = Array.from({ length: 16 }, (_, i) => ({
-  id: `project-${i + 1}`,
-  title: `Vernier Calipar Mitutoyo ${i + 1}`,
-  description:
-    "Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst ullamcorper purus mollis phasellus.",
-  image: `https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&h=400&fit=crop&q=80&sig=${i}`,
-  slug: `project-${i + 1}`,
-}));
-
-async function getProjects() {
-  try {
-    const projects = await client.fetch(
-      `*[_type == "project"] | order(order asc, _createdAt desc) {
-        _id,
-        title,
-        description,
-        "image": images[0],
-        "slug": slug.current
-      }`,
-    );
-
-    if (!projects || projects.length === 0) {
-      return dummyProjects;
-    }
-
-    return projects.map(
-      (project: {
-        _id: string;
-        title: string;
-        description: string;
-        image?: { asset: { _ref: string } };
-        slug: string;
-      }) => ({
-        id: project._id,
-        title: project.title,
-        description: project.description,
-        image: project.image
-          ? urlFor(project.image).url()
-          : dummyProjects[0].image,
-        slug: project.slug,
-      }),
-    );
-  } catch (error) {
-    console.error("Error fetching projects:", error);
-    return dummyProjects;
-  }
-}
-
-async function ProjectsContent() {
-  const projects = await getProjects();
-  return <ProjectsGridSection projects={projects} />;
-}
-
-export default function ProjectsPage() {
+export default async function ProductsPage() {
   return (
-    <div className="bg-white">
+    <div className="bg-secondary">
       <div className="container mx-auto px-6 py-24">
-        <Suspense fallback={<ProjectsGridSectionSkeleton />}>
-          <ProjectsContent />
-        </Suspense>
+        {/* All sections with 160px gap between them */}
+        <div className="flex flex-col gap-40">
+          <Suspense fallback={<InstallationsSectionSkeleton />}>
+            <InstallationsSection />
+          </Suspense>
+
+          <FlowChartSection />
+
+          <Suspense fallback={<ClientsListSectionSkeleton />}>
+            <ClientsListSection />
+          </Suspense>
+
+          <Suspense fallback={<OtherClientsSectionSkeleton />}>
+            <OtherClientsSection />
+          </Suspense>
+        </div>
       </div>
     </div>
   );

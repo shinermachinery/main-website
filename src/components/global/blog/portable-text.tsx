@@ -10,7 +10,7 @@ import { PortableText as PortableTextReact } from "@portabletext/react";
 import Image from "next/image";
 import Link from "next/link";
 import type { PortableTextBlock } from "@/lib/sanity-types";
-import { imageBuilder } from "@/sanity/lib/image";
+import { urlFor } from "@/sanity/lib/image";
 
 export interface PortableTextProps {
   value: PortableTextBlock[];
@@ -27,7 +27,7 @@ const portableTextComponents = {
         return null;
       }
 
-      const imageUrl = imageBuilder.image(value).width(1200).url();
+      const imageUrl = urlFor(value).width(1200).url();
 
       return (
         <figure className="my-8">
