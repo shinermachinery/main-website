@@ -9,7 +9,7 @@ export default function LandingLayout({
   return (
     <>
       <Navbar />
-      <main className="pt-20">{children}</main>
+      <main className="pt-5">{children}</main>
       <Footer />
     </>
   );

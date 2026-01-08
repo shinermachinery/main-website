@@ -1,7 +1,9 @@
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { Suspense } from "react";
 import { BlogsData } from "@/components/blog/blogs-data";
 import { BlogsSkeleton } from "@/components/blog/blogs-skeleton";
+import { Button } from "@/components/ui/button";
+import { CategoryFilter } from "@/components/blog/category-filter";
 
 interface BlogPageProps {
   searchParams: Promise<{
@@ -20,13 +22,13 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           {/* Header */}
           <div className="mb-12">
             <h1
-              className="font-semibold text-[36px] leading-[44px] tracking-[-0.9px] text-[#18181b] mb-4"
+              className="font-semibold text-4xl text-primary mb-4"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Our Blogs
             </h1>
             <p
-              className="font-normal text-[16px] leading-[24px] text-[#71717a] max-w-2xl"
+              className="font-normal text-lg text-muted-foreground max-w-2xl"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Insights, updates, and stories from the world of precision
@@ -39,37 +41,27 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
             <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
               {/* Search Input */}
               <div className="relative flex-1 max-w-md">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-[#71717a]" />
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 size-5 text-muted-foreground" />
                 <input
                   type="text"
                   placeholder="Search blogs"
                   defaultValue={params.q || ""}
-                  className="w-full h-12 pl-12 pr-4 rounded-xl bg-[#f9f9fb] border-none text-[#18181b] placeholder:text-[#71717a] focus:outline-none focus:ring-2 focus:ring-brand-blue"
+                  className="w-full h-12 pl-12 pr-4 rounded-xl bg-background border-none text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-blue"
                   style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                   name="q"
                 />
               </div>
 
               {/* Category Filter Dropdown */}
-              <select
-                name="category"
-                defaultValue={params.category || ""}
-                className="h-12 px-4 rounded-xl bg-[#f9f9fb] border-none text-[#18181b] focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-              >
-                <option value="">All Categories</option>
-                <option value="machinery">Machinery</option>
-                <option value="engineering">Engineering</option>
-                <option value="innovation">Innovation</option>
-                <option value="industry">Industry News</option>
-              </select>
+              {/* todo: */}
+              <CategoryFilter />
             </div>
 
             {/* Active Filters (if any) */}
             {(params.q || params.category) && (
               <div className="flex flex-wrap gap-2 mt-4">
                 {params.q && (
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-[#f9f9fb] rounded-full">
+                  <div className="flex items-center gap-2 px-3 py-1.5 bg-background rounded-full">
                     <span
                       className="font-medium text-[14px] text-[#18181b]"
                       style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
@@ -78,7 +70,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                     </span>
                     <button
                       type="button"
-                      className="h-4 w-4 rounded-full bg-[#18181b] text-white flex items-center justify-center text-xs hover:bg-brand-blue transition-colors"
+                      className="h-4 w-4 rounded-full bg-primary text-white flex items-center justify-center text-xs hover:bg-brand-blue transition-colors"
                       aria-label="Remove search filter"
                     >
                       ×
@@ -86,20 +78,20 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                   </div>
                 )}
                 {params.category && (
-                  <div className="flex items-center gap-2 px-3 py-1.5 bg-[#f9f9fb] rounded-full">
+                  <div className="flex items-center gap-2 px-3 py-1.5 bg-background rounded-full">
                     <span
-                      className="font-medium text-[14px] text-[#18181b]"
+                      className="font-medium text-sm text-primary"
                       style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                     >
                       {params.category}
                     </span>
-                    <button
+                    <Button
+                      variant={"ghost"}
                       type="button"
-                      className="h-4 w-4 rounded-full bg-[#18181b] text-white flex items-center justify-center text-xs hover:bg-brand-blue transition-colors"
                       aria-label="Remove category filter"
                     >
-                      ×
-                    </button>
+                    <X className="size-4 text-primary" />
+                    </Button>
                   </div>
                 )}
               </div>

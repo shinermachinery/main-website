@@ -106,10 +106,10 @@ export async function InstallationsSection() {
     <section className="flex flex-col gap-6 w-full">
       {/* Header */}
       <div className="flex flex-col gap-4 font-medium">
-        <h1 className="text-4xl font-medium leading-[48px] text-zinc-900 tracking-[-0.9px]">
+        <h1 className="text-4xl font-medium text-primary">
           Some of Our Installations
         </h1>
-        <p className="text-xl leading-7 text-zinc-500 tracking-[-0.5px]">
+        <p className="text-lg text-muted-foreground tracking-[-0.5px]">
           Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst
           ullamcorper purus
         </p>

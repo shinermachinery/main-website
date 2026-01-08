@@ -3,6 +3,15 @@ import type { Category, Product } from "@/lib/sanity-types";
 import { ProductCard } from "../landing/product-card";
 import { imageBuilder } from "@/sanity/lib/image";
 import { useRouter } from "next/navigation";
+import { Button } from "../ui/button";
+import { X } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 
 interface ProductsGridSectionProps {
   products: Product[];
@@ -15,17 +24,17 @@ export function ProductsGridSection({
 }: ProductsGridSectionProps) {
   const router = useRouter();
   return (
-    <section className="flex flex-col gap-[40px] w-full">
+    <section className="flex flex-col gap-y-10 w-full">
       {/* Header */}
-      <div className="flex flex-col gap-[16px]">
+      <div className="flex flex-col gap-y-4">
         <h1
-          className="font-medium text-[36px] leading-[48px] tracking-[-0.9px] text-[#18181b]"
+          className="font-medium text-4xl leading-10 tracking-[-0.9px] text-primary"
           style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
         >
           Our Products
         </h1>
         <p
-          className="font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-[#71717a]"
+          className="font-medium text-lg leading-6 tracking-[-0.5px] text-muted-foreground"
           style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
         >
           Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst
@@ -40,7 +49,7 @@ export function ProductsGridSection({
           <input
             type="text"
             placeholder="Search products..."
-            className="w-full h-[48px] px-[24px] rounded-full bg-[#f9f9fb] text-[14px] text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-300"
+            className="w-full h-12 px-6 rounded-full bg-background text-sm text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-blue"
             style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           />
         </div>
@@ -48,42 +57,53 @@ export function ProductsGridSection({
         {/* Filter & Categories */}
         <div className="flex items-center gap-[16px]">
           {/* Active Filter Chip */}
-          <div className="flex items-center gap-[8px] px-[16px] h-[40px] rounded-full bg-[#f9f9fb]">
+          <div className="flex items-center gap-2 px-4 h-10 rounded-full bg-background">
             <span
-              className="text-[14px] font-medium text-zinc-900"
+              className="text-sm font-medium text-primary"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Machinery
             </span>
-            <button
+            <Button
+            variant={"ghost"}
               type="button"
-              className="text-zinc-500 hover:text-zinc-900"
+              className="text-muted-foreground hover:text-primary px-0"
               aria-label="Remove filter"
             >
-              ×
-            </button>
+              <X className="size-4" />
+            </Button>
           </div>
-
+    
           {/* Divider */}
-          <div className="h-[24px] w-px bg-zinc-300" />
+          <div className="h-6 w-px bg-primary" />
 
           {/* Categories Dropdown */}
-          <button
-            type="button"
-            className="flex items-center gap-[8px] px-[16px] h-[40px] rounded-full bg-[#f9f9fb] hover:bg-zinc-200 transition-colors"
-          >
-            <span
-              className="text-[14px] font-medium text-zinc-900"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-            >
-              Categories
-            </span>
-          </button>
+          <Select>
+            <SelectTrigger className="w-[180px] h-10 rounded-full border-zinc-200">
+              <SelectValue
+                placeholder="Categories"
+                className="text-[14px] font-medium text-zinc-900"
+                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+              />
+            </SelectTrigger>
+            <SelectContent>
+              {categories.map((category) => (
+                <SelectItem
+                  key={category._id}
+                  value={category.slug.current}
+                  className="text-[14px]"
+                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                >
+                  {category.title}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
       </div>
 
       {/* Products Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[24px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-8">
         {products.map((product) => {
           console.log("PRODUCT", product);
           const imageUrl = product?.images?.[0]

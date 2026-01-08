@@ -116,13 +116,13 @@ export default async function ServicesPage() {
           {/* Page Header */}
           <div className="flex flex-col gap-[16px] mb-[40px]">
             <h1
-              className="font-medium text-[36px] leading-[48px] tracking-[-0.9px] text-[#18181b]"
+              className="font-medium text-4xl text-primary"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Our Services
             </h1>
             <p
-              className="font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-[#71717a]"
+              className="font-medium text-lg text-muted-foreground"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Lorem ipsum dolor sit amet consectetur. Luctus arcu congue
@@ -138,8 +138,8 @@ export default async function ServicesPage() {
                 className="flex flex-col md:flex-row gap-[24px] items-start"
               >
                 {/* Image */}
-                <div className="bg-[#f9f9fb] rounded-[16px] flex-shrink-0 w-full md:w-[330px]">
-                  <div className="relative w-full aspect-[282/168] rounded-[16px] overflow-hidden">
+                <div className="bg-background rounded-2xl shrink-0 w-full md:w-[330px]">
+                  <div className="relative w-full aspect-282/168 rounded-2xl overflow-hidden">
                     <Image
                       src={service.image}
                       alt={service.title}
@@ -153,13 +153,13 @@ export default async function ServicesPage() {
                 {/* Content */}
                 <div className="flex-1 flex flex-col gap-[16px]">
                   <h2
-                    className="font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-[#18181b]"
+                    className="font-medium text-lg text-primary"
                     style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                   >
                     {service.title}
                   </h2>
                   <p
-                    className="font-normal text-[14px] leading-[20px] text-[#71717a]"
+                    className="font-normal text-sm text-muted-foreground"
                     style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                   >
                     {service.description}

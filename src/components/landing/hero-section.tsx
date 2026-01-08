@@ -9,7 +9,7 @@ export function HeroSection() {
     >
       {/* Decorative Background - Light Mode */}
       <div
-        className="absolute inset-0 bg-gradient-to-br from-brand-blue-10 via-transparent to-brand-green-10 opacity-40"
+        className="absolute inset-0 bg-linear-to-br from-brand-blue-10 via-transparent to-brand-green-10 opacity-40"
         aria-hidden="true"
       />
       <div

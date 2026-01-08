@@ -1,4 +1,6 @@
+import { Button } from "@/components/ui/button";
 import {
+  ArrowRight,
   Award,
   Building2,
   Globe,
@@ -22,14 +24,14 @@ export default function AboutPage() {
   return (
     <div className="bg-secondary">
       {/* Hero Section */}
-      <section className="mx-auto max-w-[1200px] px-6 py-16 md:py-24">
+      <section className="container mx-auto px-6 py-16 md:py-24">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-6">
           {/* Left: Text Content */}
           <div className="flex flex-1 flex-col gap-6">
-            <h1 className="text-4xl font-medium leading-[48px] tracking-[-0.9px] text-gray-900 md:text-[36px]">
+            <h1 className="text-4xl font-medium leading-12 tracking-[-0.9px] text-primary md:text-3xl">
               Engineering Excellence for Modern Manufacturing
             </h1>
-            <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-500 md:text-[20px]">
+            <p className="text-xl font-medium leading-6 tracking-[-0.5px] text-muted-foreground md:text-lg">
               Shiner Machinery designs and delivers precision-engineered
               machines that empower manufacturers to build faster, smarter, and
               more efficiently.
@@ -37,12 +39,12 @@ export default function AboutPage() {
           </div>
 
           {/* Right: Image Placeholder */}
-          <div className="h-[240px] w-full flex-1 rounded-2xl bg-gray-100 md:h-[337px] md:w-[566px]" />
+          <div className="h-60 w-full flex-1 rounded-2xl bg-muted md:h-80 md:w-[566px]" />
         </div>
       </section>
 
       {/* Who We Are & Mission Section */}
-      <section className="mx-auto max-w-[1200px] px-6 py-16">
+      <section className="container mx-auto px-6 py-16">
         <div className="flex flex-col gap-6 md:flex-row">
           {/* Left Column: Who We Are + Mission */}
           <div className="flex flex-1 flex-col gap-6">
@@ -52,10 +54,10 @@ export default function AboutPage() {
                 Who We Are
               </p>
               <div className="flex flex-col gap-3">
-                <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-900">
+                <p className="text-xl font-medium leading-6 tracking-[-0.5px] text-primary">
                   Built on Precision. Driven by Performance.
                 </p>
-                <p className="text-sm leading-5 text-gray-500">
+                <p className="text-sm leading-5 text-muted-foreground">
                   Shiner Machinery is a global provider of industrial
                   fabrication machinery, specializing in high-performance
                   solutions for window, door, and glass production lines. With a
@@ -67,11 +69,11 @@ export default function AboutPage() {
             </div>
 
             {/* Our Mission Card */}
-            <div className="flex flex-1 flex-col justify-end gap-10 rounded-2xl bg-brand-blue-10 p-6">
-              <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-brand-blue">
+            <div className="flex flex-1 flex-col justify-between gap-10 rounded-2xl bg-brand-blue-10 p-6">
+              <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-xl leading-6 tracking-[-0 .5px] ">
                 Our Mission
               </p>
-              <p className="text-2xl font-medium leading-8 tracking-[-0.6px] text-gray-900">
+              <p className="text-2xl font-medium leading-8 tracking-[-0.6px] text-primary">
                 To enable manufacturers worldwide with reliable, efficient, and
                 future-ready machinery.
               </p>
@@ -81,53 +83,74 @@ export default function AboutPage() {
           {/* Right Column: 4 Feature Cards */}
           <div className="flex flex-1 flex-col gap-6">
             {/* Precision Engineering */}
-            <div className="flex flex-col gap-3 rounded-2xl border border-gray-200 p-6">
+            <div className="flex flex-col gap-3 rounded-2xl border border-border p-6">
               <div className="flex items-center gap-2">
-                <Settings className="size-6 text-gray-900" />
-                <p className="bg-gradient-to-r from-brand-blue to-brand-green bg-clip-text text-xl font-medium leading-[28px] tracking-[-0.5px] text-transparent">
+                <Settings className="size-6 text-primary" />
+                <p className="bg-clip-text font-medium text-xl leading-6 tracking-[-0.5px] text-primary">
                   Precision Engineering
                 </p>
               </div>
-              <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-900">
+              <p className="text-xl font-medium leading-6 tracking-[-0.5px] text-primary">
                 Every machine is built for accuracy and consistency.
               </p>
             </div>
 
             {/* Customer-First Support */}
-            <div className="flex flex-col gap-3 rounded-2xl border border-gray-200 p-6">
+            <div className="flex flex-col gap-3 rounded-2xl border border-border p-6">
               <div className="flex items-center gap-2">
-                <Headset className="size-6 text-gray-900" />
-                <p className="bg-gradient-to-r from-brand-blue to-brand-green bg-clip-text text-xl font-medium leading-[28px] tracking-[-0.5px] text-transparent">
+                <div 
+                  className="size-6 relative"
+                  style={{
+                    background: 'linear-gradient(to right, var(--brand-blue), var(--brand-green))',
+                  }}
+                >
+                  <Headset 
+                    className="size-6 absolute inset-0" 
+                    style={{ 
+                      stroke: 'url(#headset-gradient)',
+                      fill: 'none'
+                    }} 
+                  />
+                  <svg className="absolute w-0 h-0" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="headset-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="var(--brand-blue)" />
+                        <stop offset="100%" stopColor="var(--brand-green)" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-xl leading-6 tracking-[-0.5px] ">
                   Customer-First Support
                 </p>
               </div>
-              <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-900">
+              <p className="text-xl font-medium leading-6 tracking-[-0.5px] text-primary">
                 Long-term partnerships over one-time sales.
               </p>
             </div>
 
             {/* Innovation-Driven */}
-            <div className="flex flex-col gap-3 rounded-2xl border border-gray-200 p-6">
+            <div className="flex flex-col gap-3 rounded-2xl border border-border p-6">
               <div className="flex items-center gap-2">
                 <Sparkles className="size-6 text-gray-900" />
-                <p className="bg-gradient-to-r from-brand-blue to-brand-green bg-clip-text text-xl font-medium leading-[28px] tracking-[-0.5px] text-transparent">
+                <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-xl leading-6 tracking-[-0.5px] ">
                   Innovation-Driven
                 </p>
               </div>
-              <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-900">
+              <p className="text-xl font-medium leading-6 tracking-[-0.5px] text-primary">
                 Continuous improvement in automation and design.
               </p>
             </div>
 
             {/* Global Standards */}
-            <div className="flex flex-col gap-3 rounded-2xl border border-gray-200 p-6">
+            <div className="flex flex-col gap-3 rounded-2xl border border-border p-6">
               <div className="flex items-center gap-2">
                 <Globe className="size-6 text-gray-900" />
-                <p className="bg-gradient-to-r from-brand-blue to-brand-green bg-clip-text text-xl font-medium leading-[28px] tracking-[-0.5px] text-transparent">
+                <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-xl leading-6 tracking-[-0.5px] ">
                   Global Standards
                 </p>
               </div>
-              <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-900">
+              <p className="text-xl font-medium leading-6 tracking-[-0.5px] text-primary">
                 Built to perform across markets and climates.
               </p>
             </div>
@@ -137,7 +160,7 @@ export default function AboutPage() {
         {/* Bottom 4 Cards */}
         <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
           {/* Industry-tested components */}
-          <div className="flex flex-col justify-end gap-10 rounded-2xl bg-gray-50 p-6">
+          <div className="flex flex-col justify-end gap-10 rounded-2xl bg-background p-6">
             <Building2 className="size-6 text-gray-900" />
             <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-900">
               Industry-tested components
@@ -145,24 +168,24 @@ export default function AboutPage() {
           </div>
 
           {/* Scalable production solutions */}
-          <div className="flex flex-col justify-end gap-10 rounded-2xl bg-gray-50 p-6">
-            <TrendingUp className="size-6 text-gray-900" />
-            <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-900">
+          <div className="flex flex-col justify-end gap-10 rounded-2xl bg-background p-6">
+            <TrendingUp className="size-6 text-primary" />
+            <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-primary">
               Scalable production solutions
             </p>
           </div>
 
           {/* Dedicated after-sales support */}
-          <div className="flex flex-col justify-end gap-10 rounded-2xl bg-gray-50 p-6">
-            <Phone className="size-6 text-gray-900" />
+          <div className="flex flex-col justify-end gap-10 rounded-2xl bg-background p-6">
+            <Phone className="size-6 text-primary" />
             <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-900">
               Dedicated after-sales support
             </p>
           </div>
 
           {/* Proven results worldwide */}
-          <div className="flex flex-col justify-end gap-10 rounded-2xl bg-gray-50 p-6">
-            <Award className="size-6 text-gray-900" />
+          <div className="flex flex-col justify-end gap-10 rounded-2xl bg-background p-6">
+            <Award className="size-6 text-primary" />
             <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-900">
               Proven results worldwide
             </p>
@@ -174,30 +197,17 @@ export default function AboutPage() {
       <section className="mx-auto max-w-[1200px] px-6 py-16">
         {/* Section Header */}
         <div className="mb-10 flex items-center justify-between">
-          <h2 className="text-3xl font-medium leading-10 tracking-[-0.75px] text-gray-900">
+          <h2 className="text-3xl font-medium leading-10 tracking-[-0.75px] text-primary">
             Featured Products
           </h2>
           <Link
             href="/products"
-            className="flex h-10 items-center gap-2 rounded-full bg-gradient-to-r from-brand-blue/10 to-brand-green/10 px-4 py-2 shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.4)]"
+            className="flex h-10 items-center gap-2 rounded-full bg-linear-to-r from-brand-blue/10 to-brand-green/10 px-4 py-2 shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.4)]"
           >
-            <span className="bg-gradient-to-r from-brand-blue to-brand-green bg-clip-text text-sm font-medium leading-5 text-transparent">
+            <span className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-sm leading-5 ">
               Explore Products
             </span>
-            <svg
-              className="size-5"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M4.66675 15.3333L15.3334 4.66663M15.3334 4.66663H4.66675M15.3334 4.66663V15.3333"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+        
           </Link>
         </div>
 
@@ -206,10 +216,10 @@ export default function AboutPage() {
           {products.map((product) => (
             <div
               key={product.id}
-              className="flex flex-col gap-4 rounded-2xl bg-gray-50 p-4"
+              className="flex flex-col gap-4 rounded-2xl bg-background p-4"
             >
               {/* Product Image */}
-              <div className="relative aspect-[282/168] w-full overflow-hidden rounded-2xl bg-gray-200">
+              <div className="relative aspect-282/168 w-full overflow-hidden rounded-2xl bg-muted">
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -230,25 +240,12 @@ export default function AboutPage() {
               </div>
 
               {/* CTA Button */}
-              <button className="flex h-10 w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-green shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)]">
+              <Button className="flex h-10 w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-brand-blue to-brand-green shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)]">
                 <span className="text-sm font-medium leading-5 text-white">
                   View Details
                 </span>
-                <svg
-                  className="size-4"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3.33325 8H12.6666M12.6666 8L8.66659 4M12.6666 8L8.66659 12"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
+              <ArrowRight className="size-4 text-white" />
+              </Button>
             </div>
           ))}
         </div>

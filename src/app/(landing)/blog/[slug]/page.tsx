@@ -12,7 +12,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
 
   return (
-    <div className="min-h-screen bg-[#f9f9fb]">
+    <div className="min-h-screen bg-secondary">
       <Suspense fallback={<BlogPostSkeleton />}>
         <BlogPostData slug={slug} />
       </Suspense>

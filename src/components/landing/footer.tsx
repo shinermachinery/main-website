@@ -5,13 +5,13 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#f9f9fb] border-t border-[#e5e5e5]">
+    <footer className="bg-secondary border-t border-border">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div className="space-y-4">
             <h3
-              className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-brand-green"
+              className="text-xl font-bold bg-clip-text text-transparent bg-linear-to-r from-brand-blue to-brand-green"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Shiner
@@ -28,7 +28,7 @@ export function Footer() {
           {/* Quick Links */}
           <div className="space-y-4">
             <h4
-              className="font-semibold text-[#18181b]"
+              className="font-semibold text-primary"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Quick Links
@@ -37,7 +37,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#about"
-                  className="text-[#71717a] hover:text-[#18181b] transition-colors"
+                  className="text-muted-foreground hover:text-brand-blue transition-colors"
                   style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   About Us
@@ -46,7 +46,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#features"
-                  className="text-[#71717a] hover:text-[#18181b] transition-colors"
+                  className="text-muted-foreground hover:text-brand-blue transition-colors"
                   style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   Features
@@ -55,7 +55,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#products"
-                  className="text-[#71717a] hover:text-[#18181b] transition-colors"
+                  className="text-muted-foreground hover:text-brand-blue transition-colors"
                   style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   Products
@@ -64,7 +64,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#contact"
-                  className="text-[#71717a] hover:text-[#18181b] transition-colors"
+                  className="text-muted-foreground hover:text-brand-blue transition-colors"
                   style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   Contact
@@ -76,7 +76,7 @@ export function Footer() {
           {/* Resources */}
           <div className="space-y-4">
             <h4
-              className="font-semibold text-[#18181b]"
+              className="font-semibold text-primary"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Resources
@@ -85,7 +85,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/studio"
-                  className="text-[#71717a] hover:text-[#18181b] transition-colors"
+                  className="text-muted-foreground hover:text-brand-blue transition-colors"
                   style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   Content Studio
@@ -94,7 +94,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-[#71717a] hover:text-[#18181b] transition-colors"
+                  className="text-muted-foreground hover:text-brand-blue transition-colors"
                   style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   Documentation
@@ -103,7 +103,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-[#71717a] hover:text-[#18181b] transition-colors"
+                  className="text-muted-foreground hover:text-brand-blue transition-colors"
                   style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   Support
@@ -112,7 +112,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="text-[#71717a] hover:text-[#18181b] transition-colors"
+                  className="text-muted-foreground hover:text-brand-blue transition-colors"
                   style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   Privacy Policy
@@ -124,7 +124,7 @@ export function Footer() {
           {/* Contact & Social */}
           <div className="space-y-4">
             <h4
-              className="font-semibold text-[#18181b]"
+              className="font-semibold text-primary"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Connect With Us
@@ -134,7 +134,7 @@ export function Footer() {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-secondary border border-[#e5e5e5] text-[#18181b] flex items-center justify-center hover:bg-[#0D9488] hover:text-white hover:border-[#0D9488] transition-all"
+                className="h-10 w-10 rounded-full bg-secondary border border-border text-primary flex items-center justify-center hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-all"
                 aria-label="GitHub"
               >
                 <Github className="h-5 w-5" />
@@ -143,7 +143,7 @@ export function Footer() {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-secondary border border-[#e5e5e5] text-[#18181b] flex items-center justify-center hover:bg-[#0D9488] hover:text-white hover:border-[#0D9488] transition-all"
+                className="h-10 w-10 rounded-full bg-secondary border border-border text-primary flex items-center justify-center hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-all"
                 aria-label="Twitter"
               >
                 <Twitter className="h-5 w-5" />
@@ -152,21 +152,21 @@ export function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-secondary border border-[#e5e5e5] text-[#18181b] flex items-center justify-center hover:bg-[#0D9488] hover:text-white hover:border-[#0D9488] transition-all"
+                className="h-10 w-10 rounded-full bg-secondary border border-border text-primary flex items-center justify-center hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-all"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
                 href="mailto:contact@example.com"
-                className="h-10 w-10 rounded-full bg-secondary border border-[#e5e5e5] text-[#18181b] flex items-center justify-center hover:bg-[#18B75A] hover:text-white hover:border-[#18B75A] transition-all"
+                className="h-10 w-10 rounded-full bg-secondary border border-border text-primary flex items-center justify-center hover:bg-brand-green hover:text-white hover:border-brand-green transition-all"
                 aria-label="Email"
               >
                 <Mail className="h-5 w-5" />
               </a>
             </div>
             <p
-              className="text-sm text-[#71717a]"
+              className="text-sm text-muted-foreground"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               <a
@@ -180,9 +180,9 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-[#e5e5e5]">
+        <div className="pt-8 border-t border-border">
           <div
-            className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[#71717a]"
+            className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground"
             style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           >
             <p>© {currentYear} Shiner. All rights reserved.</p>

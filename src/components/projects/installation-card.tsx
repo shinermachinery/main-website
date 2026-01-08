@@ -18,7 +18,7 @@ export function InstallationCard({
   return (
     <div className="flex flex-col gap-6">
       {/* Image */}
-      <div className="relative h-[480px] w-full rounded-[24px] overflow-hidden">
+      <div className="relative h-[480px] w-full rounded-2xl overflow-hidden">
         <Image
           src={image}
           alt={title}
@@ -54,10 +54,10 @@ export function InstallationCard({
 
         {/* Title and Location */}
         <div className="flex flex-col gap-1">
-          <h3 className="text-xl font-medium leading-7 text-zinc-900 tracking-[-0.5px]">
+          <h3 className="text-xl font-medium text-primary">
             {title}
           </h3>
-          <p className="text-sm font-normal leading-5 text-zinc-500 line-clamp-1">
+          <p className="text-sm font-normal text-muted-foreground line-clamp-1">
             {location}
           </p>
         </div>

@@ -4,7 +4,6 @@ import { AboutSection } from "@/components/landing/about-section";
 import { BrandStoryData } from "@/components/landing/brand-story-data";
 import { BrandStorySkeleton } from "@/components/landing/brand-story-skeleton";
 import { ContactForm } from "@/components/landing/contact-form";
-import { FeaturesSection } from "@/components/landing/features-section";
 import { HeroSection } from "@/components/landing/hero-section";
 import { HowItWorksSection } from "@/components/landing/how-it-works-section";
 import { ProductsData } from "@/components/landing/products-data";
@@ -12,6 +11,7 @@ import { ProductsSkeleton } from "@/components/landing/products-skeleton";
 import { StatsSection } from "@/components/landing/stats-section";
 import { TestimonialsData } from "@/components/landing/testimonials-data";
 import { TestimonialsSkeleton } from "@/components/landing/testimonials-skeleton";
+import { getAllHomeData } from "@/actions/home";
 
 export const metadata: Metadata = {
   title: "Shiner - Precision Engineering Delivered With Confidence",
@@ -63,25 +63,41 @@ export const metadata: Metadata = {
   },
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const homeData = await getAllHomeData();
+  
   return (
-    <div>
+    <div className="bg-secondary">
       <HeroSection />
-      <AboutSection />
+      <AboutSection 
+        title={homeData.home?.wordAboutUsTitle}
+        description={homeData.home?.wordAboutUsDescription}
+      />
 
       <Suspense fallback={<ProductsSkeleton />}>
         <ProductsData />
       </Suspense>
 
-      <StatsSection />
-      <HowItWorksSection />
+      <StatsSection 
+        title={homeData.home?.fewMoreFactsTitle}
+        facts={homeData.home?.facts || []}
+      />
+      <HowItWorksSection 
+        title={homeData.home?.trustedByFounderTitle}
+        certificates={homeData.home?.certificates || []}
+      />
 
       <Suspense fallback={<TestimonialsSkeleton />}>
-        <TestimonialsData />
+        <TestimonialsData testimonials={homeData.testimonials} />
       </Suspense>
 
       <Suspense fallback={<BrandStorySkeleton />}>
-        <BrandStoryData />
+        <BrandStoryData 
+          title={homeData.home?.brandStoryTitle}
+          description={homeData.home?.brandStoryDescription}
+          videos={homeData.home?.brandStoryVideos || []}
+          teamMembers={homeData.teamMembers}
+        />
       </Suspense>
 
       <ContactForm />

@@ -31,16 +31,16 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
   });
 
   return (
-    <div className="container mx-auto px-4 md:px-8 lg:px-[236px] py-[80px]">
+    <div className="container mx-auto px-4 md:px-8 lg:px-24 py-20">
       <div className="flex flex-col gap-[40px]">
         {/* Back Button */}
         <Link
           href="/blog"
           className="flex gap-2 items-center group transition-colors hover:opacity-70"
         >
-          <ChevronLeft className="h-4 w-4 text-[#71717a]" />
+          <ChevronLeft className="size-4 text-muted-foreground" />
           <span
-            className="font-normal text-[14px] leading-[20px] text-[#71717a]"
+            className="font-normal text-sm leading-5 text-muted-foreground"
             style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           >
             Back
@@ -48,15 +48,15 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
         </Link>
 
         {/* Category Badge */}
-        <div
-          className="inline-flex items-start px-[10px] py-[4px] rounded-full self-start"
+       {post.category && <div
+          className="inline-flex items-start px-2.5 py-1 rounded-full self-start"
           style={{
             backgroundImage:
               "linear-gradient(91.22deg, rgba(42, 94, 152, 0.1) 15.88%, rgba(24, 183, 90, 0.1) 115.02%)",
           }}
         >
           <span
-            className="bg-clip-text font-medium text-[12px] leading-[16px]"
+            className="bg-clip-text font-medium text-sm leading-4"
             style={{
               fontFamily: "var(--font-plus-jakarta-sans)",
               WebkitTextFillColor: "transparent",
@@ -66,18 +66,18 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
           >
             {post.category}
           </span>
-        </div>
+        </div>}
 
         {/* Date and Title */}
-        <div className="flex flex-col gap-[16px]">
+        <div className="flex flex-col gap-4">
           <p
-            className="font-normal text-[14px] leading-[20px] text-[#71717a]"
+            className="font-normal text-sm leading-5 text-muted-foreground"
             style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           >
             {formattedDate}
           </p>
           <h1
-            className="font-medium text-[36px] leading-[48px] tracking-[-0.9px] text-[#18181b]"
+            className="font-medium text-4xl leading-12 tracking-[-0.9px] text-primary"
             style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           >
             {post.title}
@@ -86,7 +86,7 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
 
         {/* Featured Image */}
         {post.imageUrl && (
-          <div className="relative w-full h-[339px] rounded-[16px] overflow-hidden bg-[rgba(113,113,122,0.3)]">
+          <div className="relative w-full h-80 rounded-2xl overflow-hidden bg-muted">
             <Image
               src={post.imageUrl}
               alt={post.mainImage?.alt || post.title}
@@ -99,7 +99,7 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
         )}
 
         {/* Content */}
-        <div className="flex flex-col gap-[40px]">
+        <div className="flex flex-col gap-10">
           {post.body ? (
             <PortableText
               value={post.body}
@@ -107,7 +107,7 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
                 block: {
                   h2: ({ children }) => (
                     <h2
-                      className="font-medium text-[30px] leading-[40px] tracking-[-0.75px] text-[#18181b]"
+                      className="font-medium text-3xl leading-8 tracking-[-0.75px] text-primary"
                       style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                     >
                       {children}
@@ -115,7 +115,7 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
                   ),
                   normal: ({ children }) => (
                     <p
-                      className="font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-[#71717a]"
+                      className="font-medium text-lg leading-6 tracking-[-0.5px] text-muted-foreground"
                       style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                     >
                       {children}
@@ -127,7 +127,7 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
           ) : (
             // Fallback HTML content
             <div
-              className="prose prose-lg max-w-none"
+              className="prose prose-lg max-w-none dark:prose-invert"
               // biome-ignore lint/security/noDangerouslySetInnerHtml: Fallback content is safe
               dangerouslySetInnerHTML={{ __html: post.content || "" }}
             />

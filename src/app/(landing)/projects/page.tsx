@@ -19,7 +19,7 @@ export default async function ProductsPage() {
     <div className="bg-secondary">
       <div className="container mx-auto px-6 py-24">
         {/* All sections with 160px gap between them */}
-        <div className="flex flex-col gap-40">
+        <div className="flex flex-col xl:gap-40 gap-20">
           <Suspense fallback={<InstallationsSectionSkeleton />}>
             <InstallationsSection />
           </Suspense>

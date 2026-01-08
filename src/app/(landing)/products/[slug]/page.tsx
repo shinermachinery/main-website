@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { ProductDetailSkeleton } from "@/components/products/product-detail-skeleton";
 import { urlFor } from "@/sanity/lib/image";
-import { getProductBySlug, getAllProducts } from "@/app/actions/products";
+import { getProductBySlug, getAllProducts } from "@/actions/products";
 import { ProductSpecificationsSection } from "@/components/products/product-specifications-section";
 import { ProductImageGallery } from "@/components/products/product-image-gallery";
 import { ProductInfo } from "@/components/products/product-info";

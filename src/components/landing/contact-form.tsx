@@ -2,7 +2,7 @@
 
 import { AlertCircle, ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 import { useState, useTransition } from "react";
-import { submitContactForm } from "@/app/actions/submit-contact";
+import { submitContactForm } from "@/actions/submit-contact";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({

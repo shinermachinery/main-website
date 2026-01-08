@@ -1,12 +1,13 @@
 "use client";
 
 import { BrandStoryCard } from "@/components/landing/brand-story-card";
-import { imageBuilder, urlFor } from "@/sanity/lib/image";
+import { urlFor } from "@/sanity/lib/image";
+import { PortableText } from "@/components/global/blog/portable-text";
 
 interface TeamMember {
   _id: string;
   name: string;
-  role: string;
+  role?: string;
   image?: {
     asset: {
       _ref: string;
@@ -16,7 +17,14 @@ interface TeamMember {
 }
 
 interface BrandStoryGridProps {
-  teamMembers: TeamMember[];
+  title?: string;
+  description?: any[];
+  videos?: Array<{
+    _key: string;
+    title: string;
+    subText: string;
+  }>;
+  teamMembers?: TeamMember[];
 }
 
 // Fallback team members data when Sanity returns empty (no image property - will use Unsplash placeholders)
@@ -43,7 +51,12 @@ const FALLBACK_TEAM_MEMBERS: TeamMember[] = [
   },
 ];
 
-export function BrandStoryGrid({ teamMembers }: BrandStoryGridProps) {
+export function BrandStoryGrid({ 
+  title, 
+  description, 
+  videos = [], 
+  teamMembers = [] 
+}: BrandStoryGridProps) {
   // Use fallback data if no team members from Sanity
   const displayMembers =
     teamMembers && teamMembers.length > 0 ? teamMembers : FALLBACK_TEAM_MEMBERS;
@@ -63,18 +76,21 @@ export function BrandStoryGrid({ teamMembers }: BrandStoryGridProps) {
                 className="flex-1 font-medium text-[30px] leading-[40px] tracking-[-0.75px] text-[#18181b]"
                 style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
               >
-                Our Brand Story
+                {title || "Our Brand Story"}
               </h2>
             </div>
-            <p
-              className="flex-1 font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-[#71717a]"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-            >
-              With decades of experience in industrial fabrication systems,
-              Shiner Machinery combines precision engineering with world-class
-              support. We empower fabricators globally to build faster, cleaner,
-              and smarter.
-            </p>
+            <div className="flex-1 font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-[#71717a]">
+              {description && description.length > 0 ? (
+                <PortableText value={description} />
+              ) : (
+                <p style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                  With decades of experience in industrial fabrication systems,
+                  Shiner Machinery combines precision engineering with world-class
+                  support. We empower fabricators globally to build faster, cleaner,
+                  and smarter.
+                </p>
+              )}
+            </div>
           </div>
 
           {/* Team Cards Grid - Flex wrap on all screen sizes */}
@@ -96,7 +112,7 @@ export function BrandStoryGrid({ teamMembers }: BrandStoryGridProps) {
                 <BrandStoryCard
                   key={member._id}
                   name={member.name}
-                  role={member.role}
+                  role={member.role || ""}
                   imageUrl={imageUrl}
                   imageAlt={member.image?.alt || member.name}
                 />

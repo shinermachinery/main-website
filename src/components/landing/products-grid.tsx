@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { ProductCard } from "@/components/landing/product-card";
 import type { Product } from "@/lib/sanity-types";
-import { imageBuilder, urlFor } from "@/sanity/lib/image";
+import {  urlFor } from "@/sanity/lib/image";
 
 interface ProductsGridProps {
   products: Product[];
@@ -12,7 +12,7 @@ export function ProductsGrid({ products }: ProductsGridProps) {
   const router = useRouter();
   if (!products || products.length === 0) {
     return (
-      <section className="py-24 md:py-32 bg-secondary">
+      <section className="py-24 md:py-32">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#18181b]">

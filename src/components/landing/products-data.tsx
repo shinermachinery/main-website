@@ -1,4 +1,4 @@
-import { getAllProducts } from "@/app/actions/products";
+import { getAllProducts } from "@/actions/products";
 import { ProductsGrid } from "./products-grid";
 
 

@@ -1,4 +1,3 @@
-import { client } from "@/sanity/lib/client";
 import { TestimonialsCarousel } from "./testimonials-carousel";
 
 interface Testimonial {
@@ -15,20 +14,16 @@ interface Testimonial {
   };
 }
 
-export async function TestimonialsData() {
-  const query = `*[_type == "testimonial" && featured == true] | order(order asc) {
-    _id,
-    customerName,
-    role,
-    content,
-    rating,
-    image {
-      asset,
-      alt
-    }
-  }`;
+interface TestimonialsDataProps {
+  testimonials?: Testimonial[];
+}
 
-  const testimonials = await client.fetch<Testimonial[]>(query);
-
-  return <TestimonialsCarousel testimonials={testimonials} />;
+export function TestimonialsData({ testimonials = [] }: TestimonialsDataProps) {
+  // Ensure all testimonials have a rating (default to 5 if missing)
+  const testimonialsWithRating = testimonials.map((testimonial) => ({
+    ...testimonial,
+    rating: testimonial.rating ?? 5,
+  }));
+  
+  return <TestimonialsCarousel testimonials={testimonialsWithRating} />;
 }

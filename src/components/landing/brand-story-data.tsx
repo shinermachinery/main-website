@@ -1,10 +1,9 @@
-import { client } from "@/sanity/lib/client";
 import { BrandStoryGrid } from "./brand-story-grid";
 
 interface TeamMember {
   _id: string;
   name: string;
-  role: string;
+  role?: string;
   image?: {
     asset: {
       _ref: string;
@@ -13,18 +12,31 @@ interface TeamMember {
   };
 }
 
-export async function BrandStoryData() {
-  const query = `*[_type == "teamMember"] | order(order asc) [0...4] {
-    _id,
-    name,
-    role,
-    image {
-      asset,
-      alt
-    }
-  }`;
+interface Video {
+  _key: string;
+  title: string;
+  subText: string;
+}
 
-  const teamMembers = await client.fetch<TeamMember[]>(query);
+interface BrandStoryDataProps {
+  title?: string;
+  description?: any[];
+  videos?: Video[];
+  teamMembers?: TeamMember[];
+}
 
-  return <BrandStoryGrid teamMembers={teamMembers} />;
+export function BrandStoryData({ 
+  title, 
+  description, 
+  videos = [], 
+  teamMembers = [] 
+}: BrandStoryDataProps) {
+  return (
+    <BrandStoryGrid 
+      title={title}
+      description={description}
+      videos={videos}
+      teamMembers={teamMembers} 
+    />
+  );
 }

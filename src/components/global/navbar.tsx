@@ -92,7 +92,7 @@ export function Navbar() {
                 <div className="w-4 h-4 bg-secondary rounded-sm" />
               </div>
               {/* Logo Text */}
-              <span className="text-xl font-bold text-zinc-900">SHINER</span>
+              <span className="text-xl font-bold text-brand-blue ">SHINER</span>
             </div>
           </Link>
 
@@ -102,7 +102,7 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="px-4 py-2 text-sm font-medium text-zinc-900 rounded-xl hover:bg-zinc-100 transition-colors"
+                className="px-4 py-2 text-sm font-medium text-secondary-foreground rounded-xl hover:bg-brand-blue-10 transition-colors"
               >
                 {link.name}
               </Link>
@@ -117,7 +117,7 @@ export function Navbar() {
               >
                 <button
                   type="button"
-                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-900 rounded-xl hover:bg-zinc-100 transition-colors outline-hidden"
+                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-secondary-foreground rounded-xl hover:bg-brand-blue-10 transition-colors outline-hidden"
                 >
                   About Us
                   <ChevronDown
@@ -141,7 +141,7 @@ export function Navbar() {
                         key={link.name}
                         href={link.href}
                         onClick={() => setAboutPopoverOpen(false)}
-                        className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-zinc-900 rounded-lg hover:bg-zinc-100 transition-colors group"
+                        className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-secondary-foreground rounded-lg hover:bg-brand-blue-10 transition-colors group"
                       >
                         <div className="w-8 h-8 rounded-lg bg-linear-to-br from-brand-blue/10 to-brand-green/10 flex items-center justify-center group-hover:from-brand-blue/20 group-hover:to-brand-green/20 transition-colors">
                           <Icon className="w-4 h-4 text-brand-blue" />
@@ -163,7 +163,7 @@ export function Navbar() {
               >
                 <button
                   type="button"
-                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-zinc-900 rounded-xl hover:bg-zinc-100 transition-colors outline-hidden"
+                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-secondary-foreground rounded-xl hover:bg-brand-blue-10 transition-colors outline-hidden"
                 >
                   More
                   <ChevronDown
@@ -187,7 +187,7 @@ export function Navbar() {
                         key={link.name}
                         href={link.href}
                         onClick={() => setMorePopoverOpen(false)}
-                        className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-zinc-900 rounded-lg hover:bg-zinc-100 transition-colors group"
+                        className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-secondary-foreground rounded-lg hover:bg-brand-blue-10 transition-colors group"
                       >
                         <div className="w-8 h-8 rounded-lg bg-linear-to-br from-brand-blue/10 to-brand-green/10 flex items-center justify-center group-hover:from-brand-blue/20 group-hover:to-brand-green/20 transition-colors">
                           <Icon className="w-4 h-4 text-brand-blue" />
@@ -209,7 +209,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-zinc-900 hover:bg-zinc-100 rounded-lg transition-colors"
+            className="lg:hidden p-2 text-secondary-foreground hover:bg-brand-blue-10 rounded-lg transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
@@ -222,21 +222,21 @@ export function Navbar() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-zinc-200 py-4 space-y-2">
+          <div className="lg:hidden border-t border-primary py-4 space-y-2">
             {/* Main nav links */}
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="block px-4 py-3 text-sm font-medium text-zinc-900 rounded-xl hover:bg-zinc-100 transition-colors"
+                className="block px-4 py-3 text-sm font-medium text-secondary-foreground rounded-xl hover:bg-brand-blue-10 transition-colors"
               >
                 {link.name}
               </Link>
             ))}
 
             {/* About Us section - expanded for mobile */}
-            <div className="pt-2 mt-2 border-t border-zinc-200">
+            <div className="pt-2 mt-2 border-t border-primary">
               <div className="px-4 py-2 text-xs font-semibold text-zinc-500 uppercase tracking-wider">
                 About Us
               </div>
@@ -245,7 +245,7 @@ export function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 text-sm font-medium text-zinc-900 rounded-xl hover:bg-zinc-100 transition-colors"
+                  className="block px-4 py-3 text-sm font-medium text-secondary-foreground rounded-xl hover:bg-brand-blue-10 transition-colors"
                 >
                   {link.name}
                 </Link>
@@ -253,7 +253,7 @@ export function Navbar() {
             </div>
 
             {/* More section - expanded for mobile */}
-            <div className="pt-2 mt-2 border-t border-zinc-200">
+            <div className="pt-2 mt-2 border-t border-primary">
               <div className="px-4 py-2 text-xs font-semibold text-zinc-500 uppercase tracking-wider">
                 More
               </div>
@@ -262,7 +262,7 @@ export function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-4 py-3 text-sm font-medium text-zinc-900 rounded-xl hover:bg-zinc-100 transition-colors"
+                  className="block px-4 py-3 text-sm font-medium text-secondary-foreground rounded-xl hover:bg-brand-blue-10 transition-colors"
                 >
                   {link.name}
                 </Link>

@@ -1,23 +1,23 @@
-const stats = [
-  {
-    value: "500+",
-    label: "Companies served",
-  },
-  {
-    value: "500+",
-    label: "Companies served",
-  },
-  {
-    value: "500+",
-    label: "Companies served",
-  },
-  {
-    value: "500+",
-    label: "Companies served",
-  },
-];
+interface Fact {
+  _key: string;
+  number: number;
+  text: string;
+}
 
-export function StatsSection() {
+interface StatsSectionProps {
+  title?: string;
+  facts?: Fact[];
+}
+
+export function StatsSection({ title, facts = [] }: StatsSectionProps) {
+  // Fallback stats if no facts provided
+  const displayFacts = facts.length > 0 ? facts : [
+    { _key: "1", number: 500, text: "Companies served" },
+    { _key: "2", number: 1000, text: "Projects completed" },
+    { _key: "3", number: 50, text: "Countries reached" },
+    { _key: "4", number: 24, text: "Hours support" },
+  ];
+
   return (
     <section className="py-24 md:py-32 bg-secondary">
       <div className="container mx-auto px-4">
@@ -25,22 +25,22 @@ export function StatsSection() {
           {/* Heading */}
           <div className="text-center mb-16">
             <h2 className="text-base font-normal text-gray-600">
-              A few more facts about us
+              {title || "A few more facts about us"}
             </h2>
           </div>
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-            {stats.map((stat, index) => (
+            {displayFacts.map((fact) => (
               <div
-                key={`${stat.label}-${index}`}
+                key={fact._key}
                 className="text-center space-y-2"
               >
                 <div className="text-4xl md:text-5xl font-normal text-gray-900">
-                  {stat.value}
+                  {fact.number}+
                 </div>
                 <div className="text-sm font-normal text-gray-600">
-                  {stat.label}
+                  {fact.text}
                 </div>
               </div>
             ))}

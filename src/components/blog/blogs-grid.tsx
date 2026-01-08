@@ -29,7 +29,7 @@ export function BlogsGrid({ posts }: BlogsGridProps) {
     return (
       <div className="text-center py-16">
         <p
-          className="text-[18px] text-[#71717a]"
+          className="text-lg text-muted-foreground"
           style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
         >
           No blog posts found. Try adjusting your search or filters.

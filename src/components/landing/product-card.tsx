@@ -20,7 +20,7 @@ export function ProductCard({
   onViewDetails,
 }: ProductCardProps) {
   return (
-    <div className="bg-[#f9f9fb] flex flex-col gap-4 items-center justify-center px-4 py-3 rounded-2xl">
+    <div className="bg-background flex flex-col gap-4 items-center justify-center px-4 py-3 rounded-2xl">
       {/* Product Image */}
       <div
         className="relative w-full rounded-2xl overflow-hidden"
