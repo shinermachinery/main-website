@@ -14,7 +14,8 @@
       "Bash(bunx biome:*)",
       "Bash(bunx tsc:*)",
       "Bash(pkill:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(wc:*)"
     ]
   },
   "enableAllProjectMcpServers": true
