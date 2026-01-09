@@ -6,11 +6,11 @@ export function BrandStorySkeleton() {
           {/* Header Skeleton */}
           <div className="flex flex-col md:flex-row gap-10 items-start mb-10">
             <div className="flex-1">
-              <div className="h-10 bg-gray-200 rounded w-48 animate-pulse" />
+              <div className="h-10 bg-muted rounded w-48 animate-pulse" />
             </div>
             <div className="flex-1 space-y-2">
-              <div className="h-7 bg-gray-200 rounded w-full animate-pulse" />
-              <div className="h-7 bg-gray-200 rounded w-3/4 animate-pulse" />
+              <div className="h-7 bg-muted rounded w-full animate-pulse" />
+              <div className="h-7 bg-muted rounded w-3/4 animate-pulse" />
             </div>
           </div>
 
@@ -20,7 +20,7 @@ export function BrandStorySkeleton() {
               {Array.from({ length: 4 }).map((_, i) => (
                 <div
                   key={i}
-                  className="flex-1 min-w-[240px] h-[481.78px] bg-gray-200 rounded-[24px] animate-pulse"
+                  className="flex-1 min-w-[15rem] h-[30.11rem] bg-muted rounded-[1.5rem] animate-pulse"
                 />
               ))}
             </div>

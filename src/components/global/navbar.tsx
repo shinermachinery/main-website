@@ -1,16 +1,6 @@
 "use client";
 
-import {
-  Award,
-  Calendar,
-  ChevronDown,
-  Eye,
-  Info,
-  Mail,
-  Menu,
-  User,
-  X,
-} from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import {
@@ -19,61 +9,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { GradientButton } from "../ui/gradient-button";
-
-const navLinks = [
-  {
-    name: "Products",
-    href: "/products",
-  },
-  {
-    name: "Projects",
-    href: "/projects",
-  },
-  {
-    name: "Services",
-    href: "/services",
-  },
-  {
-    name: "Blog",
-    href: "/blog",
-  },
-];
-
-const aboutLinks = [
-  {
-    name: "About Us",
-    href: "/about",
-    icon: Info,
-  },
-  {
-    name: "Why Choose Us",
-    href: "/about/why-choose-us",
-    icon: Award,
-  },
-  {
-    name: "Mission & Vision",
-    href: "/about/mission-vision",
-    icon: Eye,
-  },
-  {
-    name: "About Director",
-    href: "/about/director",
-    icon: User,
-  },
-];
-
-const moreLinks = [
-  {
-    name: "Events",
-    href: "/events",
-    icon: Calendar,
-  },
-  {
-    name: "Contact",
-    href: "/contact",
-    icon: Mail,
-  },
-];
+import { navLinks, aboutLinks, moreLinks } from "@/data/navigation";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -237,7 +173,7 @@ export function Navbar() {
 
             {/* About Us section - expanded for mobile */}
             <div className="pt-2 mt-2 border-t border-primary">
-              <div className="px-4 py-2 text-xs font-semibold text-zinc-500 uppercase tracking-wider">
+              <div className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                 About Us
               </div>
               {aboutLinks.map((link) => (
@@ -254,7 +190,7 @@ export function Navbar() {
 
             {/* More section - expanded for mobile */}
             <div className="pt-2 mt-2 border-t border-primary">
-              <div className="px-4 py-2 text-xs font-semibold text-zinc-500 uppercase tracking-wider">
+              <div className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                 More
               </div>
               {moreLinks.map((link) => (

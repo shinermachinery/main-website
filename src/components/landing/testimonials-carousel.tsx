@@ -94,13 +94,13 @@ export function TestimonialsCarousel({
           <div className="flex flex-col md:flex-row gap-8 items-start mb-10">
             <h2
               id="testimonials-heading"
-              className="flex-1 font-medium text-[30px] leading-[40px] tracking-[-0.75px] text-[#18181b]"
+              className="flex-1 font-medium text-[1.875rem] leading-[2.5rem] tracking-[-0.0469rem] text-foreground"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Testimonials
             </h2>
             <p
-              className="flex-1 font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-[#71717a]"
+              className="flex-1 font-medium text-[1.25rem] leading-7 tracking-[-0.0313rem] text-muted-foreground"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Lorem ipsum dolor sit amet consectetur. Turpis bibendum eget

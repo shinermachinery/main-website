@@ -40,32 +40,32 @@ export async function generateMetadata({
 
 export default async function ProductDetailPage({ params }: PageProps) {
   const { slug } = await params;
-  const product = await 
-    getProductBySlug(slug);
+  const product = await getProductBySlug(slug);
 
-  console.log("Produt page product",product);
+  console.log("Produt page product", product);
 
   if (!product) {
     return notFound();
   }
 
   // Get related products (same collection or random)
-  const relatedProducts = product.relatedProducts && product.relatedProducts.length > 0
-    ? product.relatedProducts : [];
+  const relatedProducts =
+    product.relatedProducts && product.relatedProducts.length > 0
+      ? product.relatedProducts
+      : [];
   return (
     <div className="min-h-screen bg-secondary">
       {/* Ultra-thin Header */}
-     
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-          <Link
-            href="/products"
-            className="inline-flex items-center gap-2 text-sm font-light text-zinc-600 hover:text-zinc-900 transition-colors"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" strokeWidth={1} />
-            Back to Products
-          </Link>
-        </div>
-     
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+        <Link
+          href="/products"
+          className="inline-flex items-center gap-2 text-sm font-light text-zinc-600 hover:text-zinc-900 transition-colors"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" strokeWidth={1} />
+          Back to Products
+        </Link>
+      </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:pb-12">
         <Suspense fallback={<ProductDetailSkeleton />}>
@@ -88,11 +88,12 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </div>
 
           {/* Specifications Section */}
-          {product.specifications?.description && product.specifications.description.length > 0 && (
-            <div className="mb-16">
-              <ProductSpecificationsSection product={product} />
-            </div>
-          )}
+          {product.specifications?.description &&
+            product.specifications.description.length > 0 && (
+              <div className="mb-16">
+                <ProductSpecificationsSection product={product} />
+              </div>
+            )}
 
           {/* Related Products */}
           {relatedProducts.length > 0 && (
@@ -112,7 +113,8 @@ export default async function ProductDetailPage({ params }: PageProps) {
               Need More Information?
             </h3>
             <p className="text-sm font-light text-zinc-600 max-w-2xl mx-auto">
-              Our team is here to help you choose the right solution for your needs
+              Our team is here to help you choose the right solution for your
+              needs
             </p>
             <div className="flex items-center justify-center gap-4 pt-4">
               <Link

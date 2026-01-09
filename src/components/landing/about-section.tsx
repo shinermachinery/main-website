@@ -21,7 +21,7 @@ export function AboutSection({ title, description }: AboutSectionProps) {
             <div className="flex-1">
               <h2
                 id="about-heading"
-                className="text-[32px] leading-[42px] font-normal text-foreground tracking-[-0.5px] max-w-sm"
+                className="text-[2rem] leading-[2.625rem] font-normal text-foreground tracking-[-0.0313rem] max-w-sm"
               >
                 {title || "A Word About Us and Our Mission"}
               </h2>
@@ -35,7 +35,8 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                 </div>
               ) : (
                 <p className="text-base leading-relaxed font-normal text-muted-foreground tracking-normal">
-                  Precision-engineered components and solutions built to perform and built to last.
+                  Precision-engineered components and solutions built to perform
+                  and built to last.
                 </p>
               )}
             </div>
@@ -45,7 +46,7 @@ export function AboutSection({ title, description }: AboutSectionProps) {
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-24 items-start">
             {/* Tagline Column */}
             <div className="flex-1">
-              <h3 className="text-[28px] leading-[38px] font-normal text-primary tracking-[-0.5px] max-w-sm">
+              <h3 className="text-[1.75rem] leading-[2.375rem] font-normal text-foreground tracking-[-0.0313rem] max-w-sm">
                 Built to Perform
                 <br />
                 Built to Last
@@ -58,9 +59,9 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                 {/* Feature 1 */}
                 <div className="space-y-3 bg-background">
                   <div className="w-6 h-6 text-brand-green">
-                  <Wrench className="w-6 h-6" />
+                    <Wrench className="w-6 h-6" />
                   </div>
-                  <h4 className="text-sm font-semibold text-primary">
+                  <h4 className="text-sm font-semibold text-foreground">
                     Highest Precision Components
                   </h4>
                   <p className="text-sm leading-relaxed font-normal text-muted-foreground">
@@ -71,9 +72,9 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                 {/* Feature 2 */}
                 <div className="space-y-3 bg-background">
                   <div className="w-6 h-6 text-brand-green">
-                   <Settings className="w-6 h-6" />
+                    <Settings className="w-6 h-6" />
                   </div>
-                  <h4 className="text-sm font-semibold text-primary">
+                  <h4 className="text-sm font-semibold text-foreground">
                     24/7 Support & Service
                   </h4>
                   <p className="text-sm leading-relaxed font-normal text-muted-foreground">
@@ -84,9 +85,9 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                 {/* Feature 3 */}
                 <div className="space-y-3 bg-background">
                   <div className="w-6 h-6 text-brand-green">
-                  <TrendingUp className="w-6 h-6" />
+                    <TrendingUp className="w-6 h-6" />
                   </div>
-                  <h4 className="text-sm font-semibold text-primary">
+                  <h4 className="text-sm font-semibold text-foreground">
                     Productivity Focused
                   </h4>
                   <p className="text-sm leading-relaxed font-normal text-muted-foreground">
@@ -97,9 +98,9 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                 {/* Feature 4 */}
                 <div className="space-y-3 bg-background">
                   <div className="w-6 h-6 text-brand-green">
-                  <Globe className="w-6 h-6" />
+                    <Globe className="w-6 h-6" />
                   </div>
-                  <h4 className="text-sm font-semibold text-primary">
+                  <h4 className="text-sm font-semibold text-foreground">
                     Global Reach, Local Support
                   </h4>
                   <p className="text-sm leading-relaxed font-normal text-muted-foreground">

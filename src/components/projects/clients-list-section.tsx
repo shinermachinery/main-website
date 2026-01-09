@@ -1,64 +1,8 @@
 import { client } from "@/sanity/lib/client";
-import { ClientCard } from "./client-card";
+import { ClientCard } from "@/components/global/cards";
+import { dummyClients } from "@/data/fallback/clients";
 
-const dummyClientsData = [
-  // Column 1
-  [
-    {
-      companyName: "SUNSTAR OVERSEAS LIMITED, AMRITSAR",
-      projects: [
-        "24 METRIC TONNE PADDY TO RICE PLANT",
-        "12 METRIC TONNE RICE TO RICE PLANT) – FULLY AUTOMATIC",
-      ],
-    },
-    {
-      companyName: "JASMER FOODS, LADWA",
-      projects: ["8 METRIC TONNE PADDY TO RICE PLANT - Fully Automatic"],
-    },
-    {
-      companyName: "DUNAR FOOD, AMRITSAR",
-      projects: [
-        "24 METRIC TONNE PADDY TO RICE PLANT",
-        "12 METRIC TONNE RICE TO RICE PLANT - Fully Automatic",
-      ],
-    },
-  ],
-  // Column 2
-  [
-    {
-      companyName: "DUNAR FOOD, AMRITSAR",
-      projects: [
-        "24 METRIC TONNE PADDY TO RICE PLANT",
-        "12 METRIC TONNE RICE TO RICE PLANT - Fully Automatic",
-      ],
-    },
-    {
-      companyName: "SUNSTAR OVERSEAS LIMITED, AMRITSAR",
-      projects: [
-        "24 METRIC TONNE PADDY TO RICE PLANT",
-        "12 METRIC TONNE RICE TO RICE PLANT) – FULLY AUTOMATIC",
-      ],
-    },
-    {
-      companyName: "JASMER FOODS, LADWA",
-      projects: ["8 METRIC TONNE PADDY TO RICE PLANT - Fully Automatic"],
-    },
-  ],
-  // Column 3
-  [
-    {
-      companyName: "JASMER FOODS, LADWA",
-      projects: ["8 METRIC TONNE PADDY TO RICE PLANT - Fully Automatic"],
-    },
-    {
-      companyName: "SUNSTAR OVERSEAS LIMITED, AMRITSAR",
-      projects: [
-        "24 METRIC TONNE PADDY TO RICE PLANT",
-        "12 METRIC TONNE RICE TO RICE PLANT) – FULLY AUTOMATIC",
-      ],
-    },
-  ],
-];
+const dummyClientsData = dummyClients;
 
 async function getClients() {
   try {

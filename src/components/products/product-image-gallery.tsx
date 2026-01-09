@@ -13,7 +13,10 @@ interface ProductImageGalleryProps {
   title: string;
 }
 
-export function ProductImageGallery({ images, title }: ProductImageGalleryProps) {
+export function ProductImageGallery({
+  images,
+  title,
+}: ProductImageGalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
@@ -34,8 +37,10 @@ export function ProductImageGallery({ images, title }: ProductImageGalleryProps)
   if (!images || images.length === 0) {
     return (
       <div className="flex-1 w-full">
-        <div className="aspect-4/3 rounded-2xl bg-linear-to-br from-zinc-50 to-zinc-100 flex items-center justify-center border border-zinc-100">
-          <span className="text-zinc-400 text-sm font-light">No images available</span>
+        <div className="aspect-4/3 rounded-2xl bg-linear-to-br from-muted to-muted flex items-center justify-center border border-muted">
+          <span className="text-muted-foreground text-sm font-light">
+            No images available
+          </span>
         </div>
       </div>
     );
@@ -71,7 +76,7 @@ export function ProductImageGallery({ images, title }: ProductImageGalleryProps)
       <div className="flex-1 w-full flex flex-col gap-4">
         {/* Main Image with Ultra-thin Navigation */}
         <div className="relative group">
-          <div className="aspect-4/3 rounded-2xl overflow-hidden bg-zinc-50 border border-zinc-100/50 shadow-sm">
+          <div className="aspect-4/3 rounded-2xl overflow-hidden bg-muted border border-muted/50 shadow-sm">
             <Image
               src={getImageUrl(currentImage, 1200, 900)}
               alt={currentImage.alt || title}
@@ -87,17 +92,23 @@ export function ProductImageGallery({ images, title }: ProductImageGalleryProps)
             <>
               <Button
                 onClick={handlePrevious}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-secondary/80 backdrop-blur-md border border-zinc-200/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-secondary hover:scale-110"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-secondary/80 backdrop-blur-md border border-muted/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-secondary hover:scale-110"
                 aria-label="Previous image"
               >
-                <ChevronLeft className="w-4 h-4 text-zinc-600" strokeWidth={1} />
+                <ChevronLeft
+                  className="w-4 h-4 text-muted-foreground"
+                  strokeWidth={1}
+                />
               </Button>
               <Button
                 onClick={handleNext}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-secondary/80 backdrop-blur-md border border-zinc-200/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-secondary hover:scale-110"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-secondary/80 backdrop-blur-md border border-muted/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-secondary hover:scale-110"
                 aria-label="Next image"
               >
-                <ChevronRight className="w-4 h-4 text-zinc-600" strokeWidth={1} />
+                <ChevronRight
+                  className="w-4 h-4 text-muted-foreground"
+                  strokeWidth={1}
+                />
               </Button>
             </>
           )}
@@ -105,16 +116,16 @@ export function ProductImageGallery({ images, title }: ProductImageGalleryProps)
           {/* Fullscreen Button */}
           <Button
             onClick={() => setIsFullscreen(true)}
-            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-secondary/80 backdrop-blur-md border border-zinc-200/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-secondary hover:scale-110"
+            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-secondary/80 backdrop-blur-md border border-muted/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-secondary hover:scale-110"
             aria-label="View fullscreen"
           >
-            <Expand className="w-4 h-4 text-zinc-600" strokeWidth={1} />
+            <Expand className="w-4 h-4 text-muted-foreground" strokeWidth={1} />
           </Button>
 
           {/* Ultra-thin Image Counter */}
           {images.length > 1 && (
             <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-black/10 backdrop-blur-md">
-              <span className="text-[11px] font-light text-white">
+              <span className="text-[0.6875rem] font-light text-white">
                 {selectedIndex + 1} of {images.length}
               </span>
             </div>
@@ -135,11 +146,13 @@ export function ProductImageGallery({ images, title }: ProductImageGalleryProps)
                 }`}
                 aria-label={`View image ${index + 1}`}
               >
-                <div className={`aspect-4/3 w-20 rounded-xl overflow-hidden border transition-all duration-300 ${
-                  selectedIndex === index
-                    ? "border-brand-blue shadow-md"
-                    : "border-zinc-100 hover:border-zinc-200"
-                }`}>
+                <div
+                  className={`aspect-4/3 w-20 rounded-xl overflow-hidden border transition-all duration-300 ${
+                    selectedIndex === index
+                      ? "border-brand-blue shadow-md"
+                      : "border-muted hover:border-muted-foreground"
+                  }`}
+                >
                   <Image
                     src={getImageUrl(image, 160, 120)}
                     alt={`${title} thumbnail ${index + 1}`}

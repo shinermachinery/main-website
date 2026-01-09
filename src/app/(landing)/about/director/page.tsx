@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import { PortableText } from "@/components/global/blog/portable-text";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
+import { directorData } from "@/data/fallback/about-pages";
 
 export const metadata: Metadata = {
   title: "About Our Director | SHINER",
@@ -14,45 +15,7 @@ export const metadata: Metadata = {
 };
 
 // Dummy data as fallback
-const dummyData = {
-  pageTitle: "About Our Director",
-  pageSubtitle:
-    "Meet the visionary leader driving SHINER's commitment to excellence and innovation",
-  name: "John Doe",
-  title: "Managing Director & CEO",
-  image:
-    "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=800&fit=crop&q=80",
-  bio: [
-    {
-      _type: "block",
-      children: [
-        {
-          _type: "span",
-          text: "With over 25 years of experience in the food processing industry, John Doe has been instrumental in shaping SHINER into a global leader in manufacturing excellence. His vision and strategic leadership have driven the company's expansion across international markets while maintaining an unwavering commitment to quality and innovation.",
-        },
-      ],
-    },
-    {
-      _type: "block",
-      children: [
-        {
-          _type: "span",
-          text: "Under his guidance, SHINER has achieved numerous milestones, including the development of cutting-edge optical sorting technology and the establishment of strategic partnerships with leading food processing companies worldwide. His dedication to customer success and operational excellence has earned SHINER recognition as a trusted partner in the industry.",
-        },
-      ],
-    },
-  ],
-  achievements: [
-    "Led company growth from regional to global presence",
-    "Pioneered innovative optical sorting technology",
-    "Established partnerships with Fortune 500 companies",
-    "Implemented sustainable manufacturing practices",
-    "Recipient of Industry Innovation Award 2023",
-  ],
-  email: "director@shiner.com",
-  phone: "+1 234 567 8900",
-  linkedin: "https://linkedin.com/in/johndoe",
-};
+const dummyData = directorData;
 
 async function getDirectorData() {
   try {
@@ -100,18 +63,18 @@ async function DirectorContent() {
   const data = await getDirectorData();
 
   return (
-    <div className="flex flex-col gap-[80px]">
+    <div className="flex flex-col gap-20">
       {/* Page Header */}
-      <section className="flex flex-col gap-[16px]">
+      <section className="flex flex-col gap-4">
         <h1
-          className="font-medium text-[36px] leading-[48px] tracking-[-0.9px] text-[#18181b]"
+          className="font-medium text-[2.25rem] leading-[3rem] tracking-[-0.0563rem] text-foreground"
           style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
         >
           {data.pageTitle}
         </h1>
         {data.pageSubtitle && (
           <p
-            className="font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-[#71717a]"
+            className="font-medium text-[1.25rem] leading-[1.75rem] tracking-[-0.0313rem] text-muted-foreground"
             style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           >
             {data.pageSubtitle}
@@ -120,11 +83,11 @@ async function DirectorContent() {
       </section>
 
       {/* Director Profile */}
-      <section className="flex flex-col lg:flex-row gap-[60px]">
+      <section className="flex flex-col lg:flex-row gap-[3.75rem]">
         {/* Left: Photo & Contact */}
-        <div className="lg:w-[400px] flex flex-col gap-[32px]">
+        <div className="lg:w-[25rem] flex flex-col gap-8">
           {/* Photo */}
-          <div className="relative w-full aspect-square rounded-[24px] overflow-hidden">
+          <div className="relative w-full aspect-square rounded-[1.5rem] overflow-hidden">
             <Image
               src={data.image}
               alt={data.name}
@@ -136,15 +99,15 @@ async function DirectorContent() {
           </div>
 
           {/* Name & Title */}
-          <div className="flex flex-col gap-[8px]">
+          <div className="flex flex-col gap-2">
             <h2
-              className="font-medium text-[30px] leading-[40px] tracking-[-0.75px] text-[#18181b]"
+              className="font-medium text-[1.875rem] leading-[2.5rem] tracking-[-0.0469rem] text-foreground"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               {data.name}
             </h2>
             <p
-              className="font-medium text-[16px] leading-[24px] text-[#71717a]"
+              className="font-medium text-base leading-6 text-muted-foreground"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               {data.title}
@@ -152,15 +115,15 @@ async function DirectorContent() {
           </div>
 
           {/* Contact Information */}
-          <div className="flex flex-col gap-[16px]">
+          <div className="flex flex-col gap-4">
             {data.email && (
               <Link
                 href={`mailto:${data.email}`}
-                className="flex items-center gap-[12px] text-[#71717a] hover:text-brand-blue transition-colors"
+                className="flex items-center gap-3 text-muted-foreground hover:text-brand-blue transition-colors"
               >
-                <Mail className="size-[20px]" />
+                <Mail className="size-5" />
                 <span
-                  className="font-normal text-[14px] leading-[20px]"
+                  className="font-normal text-sm leading-5"
                   style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   {data.email}
@@ -170,11 +133,11 @@ async function DirectorContent() {
             {data.phone && (
               <Link
                 href={`tel:${data.phone}`}
-                className="flex items-center gap-[12px] text-[#71717a] hover:text-brand-blue transition-colors"
+                className="flex items-center gap-3 text-muted-foreground hover:text-brand-blue transition-colors"
               >
-                <Phone className="size-[20px]" />
+                <Phone className="size-5" />
                 <span
-                  className="font-normal text-[14px] leading-[20px]"
+                  className="font-normal text-sm leading-5"
                   style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   {data.phone}
@@ -186,11 +149,11 @@ async function DirectorContent() {
                 href={data.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-[12px] text-[#71717a] hover:text-brand-blue transition-colors"
+                className="flex items-center gap-3 text-muted-foreground hover:text-brand-blue transition-colors"
               >
-                <Linkedin className="size-[20px]" />
+                <Linkedin className="size-5" />
                 <span
-                  className="font-normal text-[14px] leading-[20px]"
+                  className="font-normal text-sm leading-5"
                   style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   LinkedIn Profile
@@ -201,11 +164,11 @@ async function DirectorContent() {
         </div>
 
         {/* Right: Biography & Achievements */}
-        <div className="flex-1 flex flex-col gap-[40px]">
+        <div className="flex-1 flex flex-col gap-10">
           {/* Biography */}
-          <div className="flex flex-col gap-[16px]">
+          <div className="flex flex-col gap-4">
             <h3
-              className="font-medium text-[24px] leading-[32px] tracking-[-0.6px] text-[#18181b]"
+              className="font-medium text-[1.5rem] leading-8 tracking-[-0.0375rem] text-foreground"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Biography
@@ -220,19 +183,19 @@ async function DirectorContent() {
 
           {/* Key Achievements */}
           {data.achievements && data.achievements.length > 0 && (
-            <div className="flex flex-col gap-[16px]">
+            <div className="flex flex-col gap-4">
               <h3
-                className="font-medium text-[24px] leading-[32px] tracking-[-0.6px] text-[#18181b]"
+                className="font-medium text-[1.5rem] leading-8 tracking-[-0.0375rem] text-foreground"
                 style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
               >
                 Key Achievements
               </h3>
-              <ul className="flex flex-col gap-[12px]">
+              <ul className="flex flex-col gap-3">
                 {data.achievements.map((achievement: string, index: number) => (
-                  <li key={index} className="flex gap-[12px] items-start">
-                    <div className="w-[6px] h-[6px] rounded-full bg-brand-blue mt-[7px] shrink-0" />
+                  <li key={index} className="flex gap-3 items-start">
+                    <div className="w-[0.375rem] h-[0.375rem] rounded-full bg-brand-blue mt-[0.438rem] shrink-0" />
                     <p
-                      className="font-normal text-[16px] leading-[24px] text-[#71717a]"
+                      className="font-normal text-base leading-6 text-muted-foreground"
                       style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                     >
                       {achievement}
@@ -250,35 +213,35 @@ async function DirectorContent() {
 
 function DirectorSkeleton() {
   return (
-    <div className="flex flex-col gap-[80px] animate-pulse">
-      <section className="flex flex-col gap-[16px]">
-        <div className="h-[48px] bg-zinc-200 rounded-md w-80" />
-        <div className="h-[28px] bg-zinc-200 rounded-md w-96" />
+    <div className="flex flex-col gap-20 animate-pulse">
+      <section className="flex flex-col gap-4">
+        <div className="h-12 bg-muted rounded-md w-80" />
+        <div className="h-7 bg-muted rounded-md w-96" />
       </section>
-      <section className="flex flex-col lg:flex-row gap-[60px]">
-        <div className="lg:w-[400px] flex flex-col gap-[32px]">
-          <div className="aspect-square rounded-[24px] bg-zinc-200" />
-          <div className="flex flex-col gap-[8px]">
-            <div className="h-[40px] bg-zinc-200 rounded-md w-48" />
-            <div className="h-[24px] bg-zinc-200 rounded-md w-64" />
+      <section className="flex flex-col lg:flex-row gap-[3.75rem]">
+        <div className="lg:w-[25rem] flex flex-col gap-8">
+          <div className="aspect-square rounded-[1.5rem] bg-muted" />
+          <div className="flex flex-col gap-2">
+            <div className="h-10 bg-secondary rounded-md w-48" />
+            <div className="h-6 bg-secondary rounded-md w-64" />
           </div>
-          <div className="flex flex-col gap-[16px]">
+          <div className="flex flex-col gap-4">
             {Array.from({ length: 3 }).map((_, i) => (
-              <div key={i} className="h-[20px] bg-zinc-200 rounded-md w-full" />
+              <div key={i} className="h-5 bg-secondary rounded-md w-full" />
             ))}
           </div>
         </div>
-        <div className="flex-1 flex flex-col gap-[40px]">
-          <div className="flex flex-col gap-[16px]">
-            <div className="h-[32px] bg-zinc-200 rounded-md w-32" />
+        <div className="flex-1 flex flex-col gap-10">
+          <div className="flex flex-col gap-4">
+            <div className="h-8 bg-secondary rounded-md w-32" />
             {Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="h-[24px] bg-zinc-200 rounded-md w-full" />
+              <div key={i} className="h-6 bg-secondary rounded-md w-full" />
             ))}
           </div>
-          <div className="flex flex-col gap-[16px]">
-            <div className="h-[32px] bg-zinc-200 rounded-md w-48" />
+          <div className="flex flex-col gap-4">
+            <div className="h-8 bg-secondary rounded-md w-48" />
             {Array.from({ length: 5 }).map((_, i) => (
-              <div key={i} className="h-[24px] bg-zinc-200 rounded-md w-full" />
+              <div key={i} className="h-6 bg-secondary rounded-md w-full" />
             ))}
           </div>
         </div>
@@ -290,7 +253,7 @@ function DirectorSkeleton() {
 export default function DirectorPage() {
   return (
     <div className="bg-secondary">
-      <div className="container mx-auto px-6 py-24">
+      <div className="container mx-auto px-6 py-16 md:py-24">
         <Suspense fallback={<DirectorSkeleton />}>
           <DirectorContent />
         </Suspense>

@@ -1,6 +1,6 @@
 "use client";
 
-import { BrandStoryCard } from "@/components/landing/brand-story-card";
+import { BrandStoryCard } from "@/components/global/cards";
 import { urlFor } from "@/sanity/lib/image";
 import { PortableText } from "@/components/global/blog/portable-text";
 
@@ -51,11 +51,11 @@ const FALLBACK_TEAM_MEMBERS: TeamMember[] = [
   },
 ];
 
-export function BrandStoryGrid({ 
-  title, 
-  description, 
-  videos = [], 
-  teamMembers = [] 
+export function BrandStoryGrid({
+  title,
+  description,
+  videos = [],
+  teamMembers = [],
 }: BrandStoryGridProps) {
   // Use fallback data if no team members from Sanity
   const displayMembers =
@@ -73,28 +73,28 @@ export function BrandStoryGrid({
             <div className="flex-1 flex items-start">
               <h2
                 id="brand-story-heading"
-                className="flex-1 font-medium text-[30px] leading-[40px] tracking-[-0.75px] text-[#18181b]"
+                className="flex-1 font-medium text-[1.875rem] leading-[2.5rem] tracking-[-0.0469rem] text-foreground"
                 style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
               >
                 {title || "Our Brand Story"}
               </h2>
             </div>
-            <div className="flex-1 font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-[#71717a]">
+            <div className="flex-1 font-medium text-[1.25rem] leading-7 tracking-[-0.0313rem] text-muted-foreground">
               {description && description.length > 0 ? (
                 <PortableText value={description} />
               ) : (
                 <p style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
                   With decades of experience in industrial fabrication systems,
-                  Shiner Machinery combines precision engineering with world-class
-                  support. We empower fabricators globally to build faster, cleaner,
-                  and smarter.
+                  Shiner Machinery combines precision engineering with
+                  world-class support. We empower fabricators globally to build
+                  faster, cleaner, and smarter.
                 </p>
               )}
             </div>
           </div>
 
           {/* Team Cards Grid - Flex wrap on all screen sizes */}
-          <div className="flex flex-wrap gap-[24px]">
+          <div className="flex flex-wrap gap-6">
             {displayMembers.slice(0, 4).map((member, index) => {
               // Fallback images for each team member
               const fallbackImages = [

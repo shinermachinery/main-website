@@ -17,7 +17,7 @@ export function InstallationsSectionSkeleton() {
         {SKELETON_IDS.slice(0, 3).map((id) => (
           <div key={id} className="flex flex-col gap-6">
             {/* Image Skeleton */}
-            <div className="h-[480px] w-full rounded-2xl bg-muted animate-pulse" />
+            <div className="h-[30rem] w-full rounded-2xl bg-muted animate-pulse" />
 
             {/* Content Skeleton */}
             <div className="flex flex-col gap-4">
@@ -39,7 +39,7 @@ export function InstallationsSectionSkeleton() {
         {SKELETON_IDS.slice(3, 6).map((id) => (
           <div key={id} className="flex flex-col gap-6">
             {/* Image Skeleton */}
-            <div className="h-[480px] w-full rounded-2xl bg-muted animate-pulse" />
+            <div className="h-[30rem] w-full rounded-2xl bg-muted animate-pulse" />
 
             {/* Content Skeleton */}
             <div className="flex flex-col gap-4">

@@ -2,7 +2,7 @@
 
 Master index of all features in this project. Each feature has detailed documentation in its respective folder.
 
-**Last Updated**: 2025-12-30
+**Last Updated**: 2026-01-09
 
 ## Active Features
 
@@ -268,6 +268,7 @@ Features currently implemented and in use.
 **Description**: Complete About Us section with three dedicated pages, navbar dropdown, and rich content management
 **Key Tech**: Next.js 16, Sanity Singleton Documents, Portable Text, Server Components
 **Created**: 2025-12-30
+**Last Updated**: 2026-01-09
 
 **Quick Links:**
 - [Full Documentation](./features/about-us-pages/README.md)
@@ -306,6 +307,13 @@ Features currently implemented and in use.
 - Sanity CMS Integration
 - Portable Text component
 - lucide-react (icons)
+
+**Recent Updates:**
+- **v1.1.0 (2026-01-09)**: Codebase-wide design system refactoring
+  - Converted all px units to rem (36 files total)
+  - Replaced hardcoded colors with semantic tokens
+  - Improved accessibility and maintainability
+  - Full build verification completed
 
 ---
 
@@ -459,6 +467,7 @@ Features scheduled for future implementation:
 
 **Last Feature Completed**: About Us Pages (2025-12-30)
 **Recently Updated**:
+- **Design System Refactoring (2026-01-09)** - Codebase-wide conversion of px to rem units (36 files), hardcoded colors to semantic tokens, full accessibility and maintainability improvements
 - Projects & Products System - Product catalog grid, dynamic detail pages with image galleries, specifications, related products, full Sanity integration
 - About Us Pages - 3 new pages (Why Choose Us, Mission & Vision, Director), navbar dropdown, Portable Text support, singleton Sanity documents
 **Next Planned**: Events Page, Contact Form Enhancement, Service Detail Pages
@@ -475,4 +484,4 @@ Features scheduled for future implementation:
 
 **Maintenance Schedule**: Review and update this index when features change
 **Owner**: Team
-**Last Review**: 2025-12-30
+**Last Review**: 2026-01-09

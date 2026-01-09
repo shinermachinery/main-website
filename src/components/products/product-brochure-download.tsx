@@ -1,6 +1,6 @@
 "use client";
 
-import { Download,Share } from "lucide-react";
+import { Download, Share } from "lucide-react";
 import type { SanityFile } from "@/lib/sanity-types";
 import { Button } from "../ui/button";
 import { GradientButton } from "../ui/gradient-button";
@@ -38,14 +38,14 @@ export function ProductBrochureDownload({
 
   return (
     <div className="space-y-4">
-
-
       {/* Alternative Actions */}
       <div className="flex gap-3 justify-between">
-      <GradientButton onClick={handleDownload} className="w-full">
-        <Download className="w-4 h-4 text-white" strokeWidth={1.5} />
-        <span className="text-sm font-light text-white">Download Brochure</span>
-      </GradientButton>
+        <GradientButton onClick={handleDownload} className="w-full">
+          <Download className="w-4 h-4 text-white" strokeWidth={1.5} />
+          <span className="text-sm font-light text-white">
+            Download Brochure
+          </span>
+        </GradientButton>
 
         <Button
           onClick={() => {
@@ -63,12 +63,11 @@ export function ProductBrochureDownload({
             }
           }}
           variant={"secondary"}
-         className="w-fit cursor-pointer rounded-full bg-secondary/10"
+          className="w-fit cursor-pointer rounded-full bg-secondary/10"
         >
-          <Share className="w-8 h-8 text-zinc-400" strokeWidth={1.5} />
-         
+          <Share className="w-8 h-8 text-muted-foreground" strokeWidth={1.5} />
         </Button>
-      </div>  
+      </div>
     </div>
   );
 }

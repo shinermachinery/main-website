@@ -1,6 +1,7 @@
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import { InstallationCard } from "./installation-card";
+import { InstallationCard } from "@/components/global/cards";
+import { dummyInstallations } from "@/data/fallback/installations";
 
 interface Installation {
   id: string | number;
@@ -9,57 +10,6 @@ interface Installation {
   title: string;
   location: string;
 }
-
-const dummyInstallations: Installation[] = [
-  {
-    id: 1,
-    image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
-    type: "Machinery Type",
-    title: "JASMER FOODS",
-    location: "Ladwa (Haryana)",
-  },
-  {
-    id: 2,
-    image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
-    type: "Machinery Type",
-    title: "JASMER FOODS",
-    location: "Ladwa (Haryana)",
-  },
-  {
-    id: 3,
-    image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
-    type: "Machinery Type",
-    title: "JASMER FOODS",
-    location: "Ladwa (Haryana)",
-  },
-  {
-    id: 4,
-    image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
-    type: "Machinery Type",
-    title: "JASMER FOODS",
-    location: "Ladwa (Haryana)",
-  },
-  {
-    id: 5,
-    image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
-    type: "Machinery Type",
-    title: "JASMER FOODS",
-    location: "Ladwa (Haryana)",
-  },
-  {
-    id: 6,
-    image:
-      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
-    type: "Machinery Type",
-    title: "JASMER FOODS",
-    location: "Ladwa (Haryana)",
-  },
-];
 
 async function getInstallations() {
   try {
@@ -106,10 +56,10 @@ export async function InstallationsSection() {
     <section className="flex flex-col gap-6 w-full">
       {/* Header */}
       <div className="flex flex-col gap-4 font-medium">
-        <h1 className="text-4xl font-medium text-primary">
+        <h1 className="text-4xl font-medium text-foreground">
           Some of Our Installations
         </h1>
-        <p className="text-lg text-muted-foreground tracking-[-0.5px]">
+        <p className="text-lg text-muted-foreground tracking-[-0.0313rem]">
           Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst
           ullamcorper purus
         </p>

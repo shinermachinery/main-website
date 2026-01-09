@@ -22,47 +22,43 @@ export function ProductInfo({ product }: ProductInfoProps) {
         )}
 
         {/* Title */}
-        <h1 className="text-3xl lg:text-4xl font-light text-zinc-900 tracking-tight">
+        <h1 className="text-3xl lg:text-4xl font-light text-foreground tracking-tight">
           {product.title}
         </h1>
 
         {/* Description */}
         {product.description && (
-          <p className="text-base font-light text-zinc-600 leading-relaxed">
+          <p className="text-base font-light text-muted-foreground leading-relaxed">
             {product.description}
           </p>
         )}
       </div>
 
       {/* Features / Bullet Points */}
-      {product.descriptionBulletPoints && product.descriptionBulletPoints.length > 0 && (
-        <div className="space-y-3">
-        
-          <ul className="space-y-2">
-            {product.descriptionBulletPoints.map((point, index) => (
-              <li
-                key={index}
-                className="flex items-start gap-3 group"
-              >
-                <Star className="fill-brand-green"/>
-                <span className="text-sm font-light text-zinc-600 leading-relaxed">
-                  {point}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
+      {product.descriptionBulletPoints &&
+        product.descriptionBulletPoints.length > 0 && (
+          <div className="space-y-3">
+            <ul className="space-y-2">
+              {product.descriptionBulletPoints.map((point, index) => (
+                <li key={index} className="flex items-start gap-3 group">
+                  <Star className="fill-brand-green" />
+                  <span className="text-sm font-light text-muted-foreground leading-relaxed">
+                    {point}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
       {/* Price (if available) */}
       {product.price && (
-        <div className="pt-4 border-t border-zinc-100">
+        <div className="pt-4 border-t border-border">
           <div className="flex items-baseline gap-2">
-            <span className="text-xs font-medium text-zinc-500 uppercase tracking-wider">
+            <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
               Starting from
             </span>
-            <span className="text-2xl font-light text-zinc-900">
+            <span className="text-2xl font-light text-foreground">
               ${product.price.toLocaleString()}
             </span>
           </div>

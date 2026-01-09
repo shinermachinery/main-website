@@ -176,7 +176,7 @@ export function ContentSlider<T>({
               className={`h-2 rounded-full transition-all ${
                 index === current - 1
                   ? "w-8 bg-gradient-to-r from-brand-blue to-brand-green"
-                  : "w-2 bg-gray-300"
+                  : "w-2 bg-muted"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

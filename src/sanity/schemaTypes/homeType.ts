@@ -53,7 +53,6 @@ export const homeType = defineType({
         }),
       ],
     }),
-  
 
     // Section 2: Grid Section - Explore Description
     defineField({

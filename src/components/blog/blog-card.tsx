@@ -62,9 +62,9 @@ export function BlogCard({
       </div>
 
       {/* Title and Description */}
-      <div className="flex flex-col gap-[8px] w-full">
+      <div className="flex flex-col gap-2 w-full">
         <h3
-          className="font-medium text-lg leading-6 tracking-[-0.5px] text-primary group-hover:text-brand-blue transition-colors"
+          className="font-medium text-lg leading-6 tracking-[-0.0313rem] text-foreground group-hover:text-brand-blue transition-colors"
           style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
         >
           {title}
@@ -79,19 +79,17 @@ export function BlogCard({
 
       {/* Meta Info - opacity on parent */}
       <div
-        className="flex gap-[4px] items-center opacity-20 w-full"
+        className="flex gap-1 items-center opacity-20 w-full"
         style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
       >
-        <span className="font-medium text-sm leading-4 text-primary">
+        <span className="font-medium text-sm leading-4 text-foreground">
           {readTime}
         </span>
-        <span className="font-medium text-sm leading-4 text-primary">
-          •
-        </span>
-        <span className="font-medium text-sm leading-4 text-primary">
+        <span className="font-medium text-sm leading-4 text-foreground">•</span>
+        <span className="font-medium text-sm leading-4 text-foreground">
           {publishedDate}
         </span>
       </div>
-    </Link> 
+    </Link>
   );
 }

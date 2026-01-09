@@ -24,6 +24,6 @@ export function TestimonialsData({ testimonials = [] }: TestimonialsDataProps) {
     ...testimonial,
     rating: testimonial.rating ?? 5,
   }));
-  
+
   return <TestimonialsCarousel testimonials={testimonialsWithRating} />;
 }

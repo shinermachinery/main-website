@@ -22,7 +22,8 @@ export const demoProducts: Product[] = [
     _updatedAt: new Date().toISOString(),
     title: "Advanced Processing Unit X200",
     slug: { current: "advanced-processing-unit-x200", _type: "slug" },
-    description: "State-of-the-art processing unit designed for maximum efficiency and reliability in industrial applications.",
+    description:
+      "State-of-the-art processing unit designed for maximum efficiency and reliability in industrial applications.",
     descriptionBulletPoints: [
       "High-speed processing with 99.9% uptime guarantee",
       "Energy-efficient design reducing power consumption by 40%",
@@ -51,7 +52,11 @@ export const demoProducts: Product[] = [
         { _key: "spec-2", label: "Power Consumption", value: "450W" },
         { _key: "spec-3", label: "Dimensions", value: "200cm x 150cm x 180cm" },
         { _key: "spec-4", label: "Weight", value: "850 kg" },
-        { _key: "spec-5", label: "Operating Temperature", value: "-10°C to 45°C" },
+        {
+          _key: "spec-5",
+          label: "Operating Temperature",
+          value: "-10°C to 45°C",
+        },
         { _key: "spec-6", label: "Warranty", value: "5 years comprehensive" },
       ],
     },
@@ -74,7 +79,8 @@ export const demoProducts: Product[] = [
     _updatedAt: new Date().toISOString(),
     title: "Precision Cutting System Pro",
     slug: { current: "precision-cutting-system-pro", _type: "slug" },
-    description: "Ultra-precise cutting system with advanced laser technology for industrial manufacturing.",
+    description:
+      "Ultra-precise cutting system with advanced laser technology for industrial manufacturing.",
     descriptionBulletPoints: [
       "Laser precision with 0.001mm accuracy",
       "Automatic calibration system",
@@ -109,7 +115,8 @@ export const demoProducts: Product[] = [
     _updatedAt: new Date().toISOString(),
     title: "Smart Control Hub Elite",
     slug: { current: "smart-control-hub-elite", _type: "slug" },
-    description: "Centralized control system for managing multiple industrial processes with AI-driven optimization.",
+    description:
+      "Centralized control system for managing multiple industrial processes with AI-driven optimization.",
     descriptionBulletPoints: [
       "Manage up to 100 connected devices",
       "Real-time data visualization",
@@ -144,7 +151,8 @@ export const demoProducts: Product[] = [
     _updatedAt: new Date().toISOString(),
     title: "Automated Assembly Line V5",
     slug: { current: "automated-assembly-line-v5", _type: "slug" },
-    description: "Complete automated assembly solution with robotic integration and quality control systems.",
+    description:
+      "Complete automated assembly solution with robotic integration and quality control systems.",
     descriptionBulletPoints: [
       "Fully automated operation with minimal supervision",
       "Integrated quality control at every stage",
@@ -176,7 +184,7 @@ export const demoProducts: Product[] = [
 
 // Helper to get demo product by slug
 export function getDemoProductBySlug(slug: string): Product | null {
-  return demoProducts.find(p => p.slug.current === slug) || null;
+  return demoProducts.find((p) => p.slug.current === slug) || null;
 }
 
 // Helper to get demo products with optional limit
@@ -185,23 +193,32 @@ export function getDemoProducts(limit?: number): Product[] {
 }
 
 // Helper to get related demo products
-export function getDemoRelatedProducts(currentProductId: string, limit: number = 4): Product[] {
-  return demoProducts
-    .filter(p => p._id !== currentProductId)
-    .slice(0, limit);
+export function getDemoRelatedProducts(
+  currentProductId: string,
+  limit: number = 4,
+): Product[] {
+  return demoProducts.filter((p) => p._id !== currentProductId).slice(0, limit);
 }
 
 // Demo placeholder image URLs (using placeholder service)
 export const demoImageUrls = {
-  "image-1": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&h=900&fit=crop",
-  "image-2": "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1200&h=900&fit=crop",
-  "image-3": "https://images.unsplash.com/photo-1581092160607-ee22df5ceb4a?w=1200&h=900&fit=crop",
-  "image-4": "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=1200&h=900&fit=crop",
-  "image-5": "https://images.unsplash.com/photo-1581092334319-83c4a3f8f7f1?w=1200&h=900&fit=crop",
-  "image-6": "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=1200&h=900&fit=crop",
+  "image-1":
+    "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&h=900&fit=crop",
+  "image-2":
+    "https://images.unsplash.com/photo-1565043666747-69f6646db940?w=1200&h=900&fit=crop",
+  "image-3":
+    "https://images.unsplash.com/photo-1581092160607-ee22df5ceb4a?w=1200&h=900&fit=crop",
+  "image-4":
+    "https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=1200&h=900&fit=crop",
+  "image-5":
+    "https://images.unsplash.com/photo-1581092334319-83c4a3f8f7f1?w=1200&h=900&fit=crop",
+  "image-6":
+    "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?w=1200&h=900&fit=crop",
 };
 
 // Helper to get demo image URL
 export function getDemoImageUrl(ref: string): string {
-  return demoImageUrls[ref as keyof typeof demoImageUrls] || demoImageUrls["image-1"];
+  return (
+    demoImageUrls[ref as keyof typeof demoImageUrls] || demoImageUrls["image-1"]
+  );
 }

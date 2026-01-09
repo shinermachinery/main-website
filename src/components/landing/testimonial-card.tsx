@@ -19,11 +19,11 @@ export function TestimonialCard({
   imageUrl,
 }: TestimonialCardProps) {
   return (
-    <div className="bg-[#f9f9fb] flex flex-col items-start min-w-[240px] p-6 rounded-xl h-full">
+    <div className="bg-muted flex flex-col items-start min-w-[15rem] p-6 rounded-xl h-full">
       {/* Testimonial Content - Top Aligned */}
       <div className="flex items-start w-full flex-1">
         <p
-          className="font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-[#18181b]"
+          className="font-medium text-[1.25rem] leading-7 tracking-[-0.0313rem] text-foreground"
           style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
         >
           {content}
@@ -35,7 +35,7 @@ export function TestimonialCard({
         {/* Avatar Block */}
         <div className="flex flex-1 gap-3 items-start">
           {/* Avatar */}
-          <div className="overflow-hidden relative rounded-full shrink-0 size-[40px] bg-[#e5e5e5]">
+          <div className="overflow-hidden relative rounded-full shrink-0 size-10 bg-muted">
             {imageUrl ? (
               <Image
                 src={imageUrl}
@@ -52,11 +52,11 @@ export function TestimonialCard({
           </div>
 
           {/* Info */}
-          <div className="flex flex-1 flex-col gap-[2px] items-start text-[14px] text-[#71717a]">
+          <div className="flex flex-1 flex-col gap-[0.125rem] items-start text-sm text-muted-foreground">
             {/* Name/Title */}
             <div className="flex flex-col justify-center w-full">
               <p
-                className="font-medium leading-[20px]"
+                className="font-medium leading-5"
                 style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
               >
                 {customerName}
@@ -65,7 +65,7 @@ export function TestimonialCard({
             {/* Role/Description */}
             <div className="flex flex-col justify-center w-full">
               <p
-                className="font-normal leading-[20px]"
+                className="font-normal leading-5"
                 style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
               >
                 {role}

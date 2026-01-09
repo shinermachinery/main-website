@@ -4,10 +4,10 @@
  */
 
 import type { QueryResult } from "./products";
-import { 
-  PRODUCT_SUMMARY_PROJECTION, 
-  TEAM_MEMBER_PROJECTION, 
-  TESTIMONIAL_PROJECTION
+import {
+  PRODUCT_SUMMARY_PROJECTION,
+  TEAM_MEMBER_PROJECTION,
+  TESTIMONIAL_PROJECTION,
 } from "./common";
 
 /**
@@ -92,10 +92,19 @@ export function getHomeTestimonialsQuery(limit: number = 6): QueryResult {
  */
 export function getCompleteHomePageQuery(): QueryResult {
   // Remove outer braces from projections since we're inside a projection block
-  const productFields = PRODUCT_SUMMARY_PROJECTION.trim().replace(/^\{/, "").replace(/\}$/, "").trim();
-  const teamFields = TEAM_MEMBER_PROJECTION.trim().replace(/^\{/, "").replace(/\}$/, "").trim();
-  const testimonialFields = TESTIMONIAL_PROJECTION.trim().replace(/^\{/, "").replace(/\}$/, "").trim();
-  
+  const productFields = PRODUCT_SUMMARY_PROJECTION.trim()
+    .replace(/^\{/, "")
+    .replace(/\}$/, "")
+    .trim();
+  const teamFields = TEAM_MEMBER_PROJECTION.trim()
+    .replace(/^\{/, "")
+    .replace(/\}$/, "")
+    .trim();
+  const testimonialFields = TESTIMONIAL_PROJECTION.trim()
+    .replace(/^\{/, "")
+    .replace(/\}$/, "")
+    .trim();
+
   return {
     query: `{
       "home": *[_type == "home"][0] {

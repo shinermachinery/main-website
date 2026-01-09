@@ -22,7 +22,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           {/* Header */}
           <div className="mb-12">
             <h1
-              className="font-semibold text-4xl text-primary mb-4"
+              className="font-semibold text-4xl text-foreground mb-4"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Our Blogs
@@ -46,7 +46,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                   type="text"
                   placeholder="Search blogs"
                   defaultValue={params.q || ""}
-                  className="w-full h-12 pl-12 pr-4 rounded-xl bg-background border-none text-primary placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-blue"
+                  className="w-full h-12 pl-12 pr-4 rounded-xl bg-background border-none text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-blue"
                   style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                   name="q"
                 />
@@ -63,7 +63,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 {params.q && (
                   <div className="flex items-center gap-2 px-3 py-1.5 bg-background rounded-full">
                     <span
-                      className="font-medium text-[14px] text-[#18181b]"
+                      className="font-medium text-sm text-foreground"
                       style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                     >
                       Search: {params.q}
@@ -80,7 +80,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 {params.category && (
                   <div className="flex items-center gap-2 px-3 py-1.5 bg-background rounded-full">
                     <span
-                      className="font-medium text-sm text-primary"
+                      className="font-medium text-sm text-foreground"
                       style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                     >
                       {params.category}
@@ -90,7 +90,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                       type="button"
                       aria-label="Remove category filter"
                     >
-                    <X className="size-4 text-primary" />
+                      <X className="size-4 text-foreground" />
                     </Button>
                   </div>
                 )}

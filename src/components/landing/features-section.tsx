@@ -1,27 +1,4 @@
-import { Globe, Hammer, Settings, TrendingUp } from "lucide-react";
-
-const features = [
-  {
-    icon: Hammer,
-    title: "Highest Precision Components",
-    description: "Engineered for accurate, consistent performance.",
-  },
-  {
-    icon: Settings,
-    title: "24/7 Support & Service",
-    description: "Dedicated support team available around the clock.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Productivity Focused",
-    description: "Tools designed to maximize efficiency and output.",
-  },
-  {
-    icon: Globe,
-    title: "Global Reach, Local Support",
-    description: "Worldwide distribution with personalized service.",
-  },
-];
+import { features } from "@/data/features";
 
 export function FeaturesSection() {
   return (

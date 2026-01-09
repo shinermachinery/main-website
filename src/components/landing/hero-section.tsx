@@ -32,10 +32,10 @@ export function HeroSection() {
               Precision Engineering
             </span>
             <br />
-            <span className="text-[#18181b]">Delivered With Confidence</span>
+            <span className="text-foreground">Delivered With Confidence</span>
           </h1>
           <p
-            className="text-xl md:text-2xl text-[#71717a] mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed"
             style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           >
             Shiner brings you laboratory-grade precision instruments engineered
@@ -63,8 +63,8 @@ export function HeroSection() {
         aria-label="Scroll down indicator"
         role="img"
       >
-        <div className="w-6 h-10 border-2 border-[#71717a] rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-3 bg-[#71717a] rounded-full" />
+        <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex items-start justify-center p-2">
+          <div className="w-1 h-3 bg-muted-foreground rounded-full" />
         </div>
       </div>
     </section>

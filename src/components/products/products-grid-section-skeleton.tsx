@@ -4,20 +4,20 @@ const SKELETON_PROJECTS = Array.from({ length: 16 }, (_, i) => ({
 
 export function ProductsGridSectionSkeleton() {
   return (
-    <section className="flex flex-col gap-[40px] w-full">
+    <section className="flex flex-col gap-10 w-full">
       {/* Header Skeleton */}
-      <div className="flex flex-col gap-[16px]">
-        <div className="h-12 bg-muted rounded-md w-[300px] animate-pulse" />
-        <div className="h-7 bg-muted rounded-md w-[500px] animate-pulse" />
+      <div className="flex flex-col gap-4">
+        <div className="h-12 bg-muted rounded-md w-[18.75rem] animate-pulse" />
+        <div className="h-7 bg-muted rounded-md w-[31.25rem] animate-pulse" />
       </div>
 
       {/* Search & Filter Bar Skeleton */}
-      <div className="flex flex-col md:flex-row gap-[24px] items-start md:items-center justify-between">
+      <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
         {/* Search Input Skeleton */}
-        <div className="w-full md:w-[566px] h-12 rounded-full bg-muted animate-pulse" />
+        <div className="w-full md:w-[35.375rem] h-12 rounded-full bg-muted animate-pulse" />
 
         {/* Filter & Categories Skeleton */}
-        <div className="flex items-center gap-[16px]">
+        <div className="flex items-center gap-4">
           <div className="w-28 h-10 rounded-full bg-muted animate-pulse" />
           <div className="h-6 w-px bg-muted" />
           <div className="w-28 h-10 rounded-full bg-muted animate-pulse" />
@@ -25,24 +25,24 @@ export function ProductsGridSectionSkeleton() {
       </div>
 
       {/* Products Grid Skeleton */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[24px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {SKELETON_PROJECTS.map((project) => (
           <div
             key={project.id}
-            className="bg-muted flex flex-col gap-[16px] px-[16px] py-[12px] rounded-[16px] w-full"
+            className="bg-muted flex flex-col gap-4 px-4 py-3 rounded-2xl w-full"
           >
             {/* Image Skeleton */}
-            <div className="aspect-282/168 rounded-[16px] bg-muted animate-pulse" />
+            <div className="aspect-282/168 rounded-2xl bg-muted animate-pulse" />
 
             {/* Content Skeleton */}
-            <div className="flex flex-col gap-[8px]">
-              <div className="h-[14px] bg-muted rounded-md w-3/4 animate-pulse" />
-              <div className="h-[14px] bg-muted rounded-md w-full animate-pulse" />
-              <div className="h-[14px] bg-muted rounded-md w-5/6 animate-pulse" />
+            <div className="flex flex-col gap-2">
+              <div className="h-[0.875rem] bg-muted rounded-md w-3/4 animate-pulse" />
+              <div className="h-[0.875rem] bg-muted rounded-md w-full animate-pulse" />
+              <div className="h-[0.875rem] bg-muted rounded-md w-5/6 animate-pulse" />
             </div>
 
             {/* Button Skeleton */}
-            <div className="h-[40px] rounded-full bg-muted animate-pulse w-full" />
+            <div className="h-10 rounded-full bg-muted animate-pulse w-full" />
           </div>
         ))}
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Mail, Phone } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useState, useTransition } from "react";
 
 export function ContactPageClient() {
@@ -36,83 +36,41 @@ export function ContactPageClient() {
   };
 
   return (
-    <div className="bg-secondary">
-      {/* Main Content */}
-      <section className="mx-auto max-w-[1200px] px-6 py-16 md:py-24">
-        {/* Hero Section & Form */}
-        <div className="flex flex-col gap-6 md:flex-row md:items-start">
-          {/* Left Column */}
-          <div className="flex flex-1 flex-col gap-10">
-            {/* Heading */}
-            <div className="flex flex-col gap-6">
-              <h1 className="text-4xl font-medium leading-[48px] tracking-[-0.9px] text-gray-900 md:text-[36px]">
-                Let's Build Better Production Together
-              </h1>
-              <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-500 md:text-[20px]">
-                Get in touch with our team for quotes, demos, or technical
-                support.
-              </p>
-            </div>
-
-            {/* Get In Touch Card */}
-            <div className="flex flex-col gap-6 rounded-2xl bg-gray-50 p-5">
-              {/* Header */}
-              <div className="flex flex-col gap-6">
-                <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-900">
-                  Get In Touch
-                </p>
-                <p className="text-sm leading-5 text-gray-500">
-                  Lorem ipsum dolor sit amet consectetur. Et semper sed lacus
-                  dignissim senectus nullam eget. At dolor purus orci sit.
-                  Turpis vitae mattis egestas quis etiam.
-                </p>
-              </div>
-
-              {/* Contact Info Grid */}
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                {/* Phone 1 */}
-                <div className="flex items-center gap-2 rounded-xl bg-secondary px-3 py-2">
-                  <Phone className="size-5 text-gray-900" />
-                  <p className="text-sm font-medium text-gray-900">
-                    +91-90443 20555
-                  </p>
-                </div>
-
-                {/* Email 1 */}
-                <div className="flex items-center gap-2 rounded-xl bg-secondary px-3 py-2">
-                  <Mail className="size-5 text-gray-900" />
-                  <p className="text-sm font-medium text-gray-900">
-                    contact@shinermachinery.com
-                  </p>
-                </div>
-
-                {/* Phone 2 */}
-                <div className="flex items-center gap-2 rounded-xl bg-secondary px-3 py-2">
-                  <Phone className="size-5 text-gray-900" />
-                  <p className="text-sm font-medium text-gray-900">
-                    +91-90443 20555
-                  </p>
-                </div>
-
-                {/* Email 2 */}
-                <div className="flex items-center gap-2 rounded-xl bg-secondary px-3 py-2">
-                  <Mail className="size-5 text-gray-900" />
-                  <p className="text-sm font-medium text-gray-900">
-                    sales@shinermachinery.com
-                  </p>
-                </div>
-              </div>
-            </div>
+    <div className="bg-background">
+      {/* Contact Form Section - Matching Figma Design */}
+      <section className="mx-auto max-w-[1156px] px-6 py-16 md:py-24">
+        <div className="flex flex-col gap-10 lg:flex-row lg:gap-10">
+          {/* Left Column - Heading & CTA */}
+          <div className="flex w-full flex-col gap-6 lg:w-[588px]">
+            <h1 className="whitespace-pre-wrap font-['Plus_Jakarta_Sans'] text-[30px] font-medium leading-[40px] tracking-[-0.75px] text-primary">
+              Get in touch for quotes, demos, or technical guidance.
+            </h1>
+            <button
+              type="button"
+              className="inline-flex h-10 w-fit items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-blue-10 to-brand-green-10 px-4 py-2 shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.4)]"
+            >
+              <span
+                className="bg-gradient-to-r from-brand-blue to-brand-green bg-clip-text text-sm font-medium leading-5 text-transparent"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90.59deg, var(--brand-blue) 15.881%, var(--brand-green) 115.02%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Contact Sales
+              </span>
+            </button>
           </div>
 
           {/* Right Column - Contact Form */}
-          <div className="flex flex-1 flex-col gap-7 rounded-3xl border border-gray-200 bg-gray-50 p-5">
+          <div className="flex flex-1 flex-col gap-7 rounded-3xl border border-border bg-background p-5">
             <form onSubmit={handleSubmit} className="flex flex-col gap-7">
               {/* Full Name */}
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="fullName"
-                  className="text-sm font-semibold text-gray-900"
+                  className="font-['Plus_Jakarta_Sans'] text-sm font-semibold leading-5 text-primary"
                 >
                   Full Name
                 </label>
@@ -124,7 +82,7 @@ export function ContactPageClient() {
                   onChange={handleChange}
                   placeholder="John Doe"
                   required
-                  className="h-10 rounded-2xl bg-secondary px-3 py-2 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-blue"
+                  className="h-10 rounded-2xl bg-secondary px-3 py-2 font-['Plus_Jakarta_Sans'] text-sm leading-5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-blue"
                 />
               </div>
 
@@ -132,7 +90,7 @@ export function ContactPageClient() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="email"
-                  className="text-sm font-semibold text-gray-900"
+                  className="font-['Plus_Jakarta_Sans'] text-sm font-semibold leading-5 text-primary"
                 >
                   Email
                 </label>
@@ -144,7 +102,7 @@ export function ContactPageClient() {
                   onChange={handleChange}
                   placeholder="sample@email.com"
                   required
-                  className="h-10 rounded-2xl bg-secondary px-3 py-2 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-blue"
+                  className="h-10 rounded-2xl bg-secondary px-3 py-2 font-['Plus_Jakarta_Sans'] text-sm leading-5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-blue"
                 />
               </div>
 
@@ -152,7 +110,7 @@ export function ContactPageClient() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="contactNumber"
-                  className="text-sm font-semibold text-gray-900"
+                  className="font-['Plus_Jakarta_Sans'] text-sm font-semibold leading-5 text-primary"
                 >
                   Contact Number
                 </label>
@@ -164,7 +122,7 @@ export function ContactPageClient() {
                   onChange={handleChange}
                   placeholder="+91-90443 20555"
                   required
-                  className="h-10 rounded-2xl bg-secondary px-3 py-2 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-blue"
+                  className="h-10 rounded-2xl bg-secondary px-3 py-2 font-['Plus_Jakarta_Sans'] text-sm leading-5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-blue"
                 />
               </div>
 
@@ -172,7 +130,7 @@ export function ContactPageClient() {
               <div className="flex flex-col gap-2">
                 <label
                   htmlFor="message"
-                  className="text-sm font-semibold text-gray-900"
+                  className="font-['Plus_Jakarta_Sans'] text-sm font-semibold leading-5 text-primary"
                 >
                   Your Message
                 </label>
@@ -181,32 +139,37 @@ export function ContactPageClient() {
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Placeholder"
+                  placeholder="Your message here..."
                   rows={4}
                   required
-                  className="min-h-[96px] rounded-2xl bg-secondary p-3 text-sm text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-blue"
+                  className="min-h-24 rounded-2xl bg-secondary p-3 font-['Plus_Jakarta_Sans'] text-sm leading-5 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-blue"
                 />
               </div>
 
-              {/* Submit Button */}
+              {/* Submit Button - Matching Figma Gradient */}
               <button
                 type="submit"
                 disabled={isPending}
-                className="flex h-[52px] w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-green px-5 py-4 shadow-[-3px_1px_24px_0px_rgba(0,0,0,0.15)] shadow-[inset_0px_-1px_4px_0px_rgba(255,255,255,0.4)] shadow-[inset_0px_2px_6px_0px_rgba(244,244,245,0.4)] transition-opacity hover:opacity-90 disabled:opacity-50"
+                className="flex h-[52px] w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-green px-4 py-2 shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)] transition-opacity hover:opacity-90 disabled:opacity-50"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(88.66deg, var(--brand-blue) 27.509%, var(--brand-green) 115.04%)",
+                }}
               >
-                <span className="text-sm font-semibold text-gray-900">
-                  {isPending ? "Sending..." : "Get a Solution"}
+                <span className="font-['Plus_Jakarta_Sans'] text-sm font-semibold leading-5 text-primary-foreground">
+                  {isPending ? "Sending..." : "Send Message"}
                 </span>
+                <ArrowRight className="h-4 w-4 text-primary-foreground" />
               </button>
 
               {/* Status Messages */}
               {status === "success" && (
-                <p className="text-center text-sm text-brand-green">
+                <p className="text-center font-['Plus_Jakarta_Sans'] text-sm text-brand-green">
                   Message sent successfully!
                 </p>
               )}
               {status === "error" && (
-                <p className="text-center text-sm text-red-600">
+                <p className="text-center font-['Plus_Jakarta_Sans'] text-sm text-red-600">
                   Failed to send message. Please try again.
                 </p>
               )}
@@ -216,48 +179,84 @@ export function ContactPageClient() {
       </section>
 
       {/* Office Locations */}
-      <section className="mx-auto max-w-[1200px] px-6 pb-16">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <section className="mx-auto max-w-[1156px] px-6 pb-16">
+        <h2 className="mb-10 font-['Plus_Jakarta_Sans'] text-[30px] font-medium leading-[40px] tracking-[-0.75px] text-primary">
+          Our Locations
+        </h2>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* Corporate Office */}
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-2">
-              <h2 className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-900">
+          <div className="flex h-full flex-col gap-4">
+            <div className="flex min-h-[120px] flex-col gap-2">
+              <h3 className="font-['Plus_Jakarta_Sans'] text-xl font-medium leading-7 tracking-[-0.0313rem] text-foreground">
                 Corporate Office
-              </h2>
-              <p className="text-sm leading-5 text-gray-500">
+              </h3>
+              <p className="font-['Plus_Jakarta_Sans'] text-sm leading-5 text-muted-foreground">
                 Office No.2, 1st Floor, Horizon Exotica, New D P RD, Haware
                 City, Thane West, Thane, Maharashtra 400615, India
               </p>
             </div>
-            <div className="aspect-square w-full rounded-3xl bg-gray-100" />
+            <div className="aspect-square w-full flex-shrink-0 overflow-hidden rounded-3xl border border-border">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.268489383847!2d72.96215607584634!3d19.21831548203891!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b9229e67d2e5%3A0x9e7c7f2b8c9a8b7c!2sHorizon%20Exotica%2C%20New%20D%20P%20Rd%2C%20Haware%20City%2C%20Thane%20West%2C%20Thane%2C%20Maharashtra%20400615!5e0!3m2!1sen!2sin!4v1704886800000!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Corporate Office Location - Thane, Maharashtra"
+              />
+            </div>
           </div>
 
           {/* Manufacturing Office */}
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-2">
-              <h2 className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-900">
+          <div className="flex h-full flex-col gap-4">
+            <div className="flex min-h-[120px] flex-col gap-2">
+              <h3 className="font-['Plus_Jakarta_Sans'] text-xl font-medium leading-7 tracking-[-0.0313rem] text-foreground">
                 Manufacturing Office
-              </h2>
-              <p className="text-sm leading-5 text-gray-500">
+              </h3>
+              <p className="font-['Plus_Jakarta_Sans'] text-sm leading-5 text-muted-foreground">
                 Plot no. 5-6, Jajru Road, Near sector 59, Faridabad,
                 Haryana-121004, India
               </p>
             </div>
-            <div className="aspect-square w-full rounded-3xl bg-gray-100" />
+            <div className="aspect-square w-full flex-shrink-0 overflow-hidden rounded-3xl border border-border">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.5298423847!2d77.31561357585234!3d28.408901075788893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cdc2f2f2f2f2f%3A0x1a1a1a1a1a1a1a1a!2sJajru%20Road%2C%20Near%20Sector%2059%2C%20Faridabad%2C%20Haryana%20121004!5e0!3m2!1sen!2sin!4v1704886900000!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Manufacturing Office Location - Faridabad, Haryana"
+              />
+            </div>
           </div>
 
           {/* Branch Office */}
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-2">
-              <h2 className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-900">
+          <div className="flex h-full flex-col gap-4">
+            <div className="flex min-h-[120px] flex-col gap-2">
+              <h3 className="font-['Plus_Jakarta_Sans'] text-xl font-medium leading-7 tracking-[-0.0313rem] text-foreground">
                 Branch Office
-              </h2>
-              <p className="text-sm leading-5 text-gray-500">
+              </h3>
+              <p className="font-['Plus_Jakarta_Sans'] text-sm leading-5 text-muted-foreground">
                 Palm enclave, Street no- 3, Near Heritage Lawn, Behind Sector
                 04, Karnal, Haryana – 132001, India
               </p>
             </div>
-            <div className="aspect-square w-full rounded-3xl bg-gray-100" />
+            <div className="aspect-square w-full flex-shrink-0 overflow-hidden rounded-3xl border border-border">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3456.9298423847!2d76.98247007585634!3d29.685701975788893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390e65f5f5f5f5f5%3A0x2b2b2b2b2b2b2b2b!2sPalm%20Enclave%2C%20Street%20No%203%2C%20Near%20Heritage%20Lawn%2C%20Behind%20Sector%2004%2C%20Karnal%2C%20Haryana%20132001!5e0!3m2!1sen!2sin!4v1704887000000!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Branch Office Location - Karnal, Haryana"
+              />
+            </div>
           </div>
         </div>
       </section>

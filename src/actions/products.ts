@@ -2,10 +2,20 @@
 
 import type { Category, Product } from "@/lib/sanity-types";
 import { sanityFetch } from "@/sanity/lib/live";
-import { getAllCategoriesQuery, getAllProductsQuery, getProductBySlugQuery, type ProductListParams } from "@/sanity/lib/queries";
-import { getDemoProducts, getDemoProductBySlug } from "@/lib/demo-data/products";
+import {
+  getAllCategoriesQuery,
+  getAllProductsQuery,
+  getProductBySlugQuery,
+  type ProductListParams,
+} from "@/sanity/lib/queries";
+import {
+  getDemoProducts,
+  getDemoProductBySlug,
+} from "@/lib/demo-data/products";
 
-export const getAllProducts = async ( options: ProductListParams = {}): Promise<Product[]> => {
+export const getAllProducts = async (
+  options: ProductListParams = {},
+): Promise<Product[]> => {
   try {
     const { query, params } = getAllProductsQuery(options);
     const result = await sanityFetch({ query, params });
@@ -25,7 +35,6 @@ export const getAllProducts = async ( options: ProductListParams = {}): Promise<
   }
 };
 
-
 export const getAllCategories = async (): Promise<Category[]> => {
   try {
     const { query, params } = getAllCategoriesQuery();
@@ -37,8 +46,9 @@ export const getAllCategories = async (): Promise<Category[]> => {
   }
 };
 
-
-export const getProductBySlug = async (slug: string): Promise<Product | null> => {
+export const getProductBySlug = async (
+  slug: string,
+): Promise<Product | null> => {
   try {
     const { query, params } = getProductBySlugQuery(slug);
     const result = await sanityFetch({ query, params });

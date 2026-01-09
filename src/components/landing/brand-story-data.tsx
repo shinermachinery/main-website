@@ -25,18 +25,18 @@ interface BrandStoryDataProps {
   teamMembers?: TeamMember[];
 }
 
-export function BrandStoryData({ 
-  title, 
-  description, 
-  videos = [], 
-  teamMembers = [] 
+export function BrandStoryData({
+  title,
+  description,
+  videos = [],
+  teamMembers = [],
 }: BrandStoryDataProps) {
   return (
-    <BrandStoryGrid 
+    <BrandStoryGrid
       title={title}
       description={description}
       videos={videos}
-      teamMembers={teamMembers} 
+      teamMembers={teamMembers}
     />
   );
 }

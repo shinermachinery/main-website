@@ -10,7 +10,7 @@ import { ArrowRight, Calendar } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { PostWithRelations } from "@/lib/sanity-types";
-import {  urlFor } from "@/sanity/lib/image";
+import { urlFor } from "@/sanity/lib/image";
 import { CategoryBadge } from "./category-badge";
 
 export interface PostCardProps {

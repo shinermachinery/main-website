@@ -42,6 +42,5 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     whyChooseUsType,
     missionVisionType,
     directorType,
-
   ],
 };

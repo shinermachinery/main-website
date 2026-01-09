@@ -28,9 +28,7 @@ export async function OtherClientsSection() {
     <section className="flex flex-col gap-10 w-full">
       {/* Header */}
       <div className="flex flex-col gap-4 font-medium">
-        <h2 className="text-4xl font-medium text-primary">
-          Other Clients
-        </h2>
+        <h2 className="text-4xl font-medium text-foreground">Other Clients</h2>
         <p className="text-lg text-muted-foreground">
           Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst
           ullamcorper purus
@@ -54,7 +52,7 @@ export async function OtherClientsSection() {
                 return (
                   <div
                     key={logoIndex}
-                    className="w-[120px] h-[120px] rounded-2xl bg-primary/10 relative overflow-hidden flex items-center justify-center"
+                    className="w-[7.5rem] h-[7.5rem] rounded-2xl bg-primary/10 relative overflow-hidden flex items-center justify-center"
                     title={client?.companyName}
                   >
                     {client?.logo ? (

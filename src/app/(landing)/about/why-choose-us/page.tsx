@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Suspense } from "react";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
+import { whyChooseUsData } from "@/data/fallback/about-pages";
 
 export const metadata: Metadata = {
   title: "Why Choose Us | SHINER",
@@ -18,51 +19,7 @@ interface Reason {
 }
 
 // Dummy data as fallback
-const dummyData = {
-  title: "Why Choose Us",
-  subtitle:
-    "Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst ullamcorper purus",
-  heroImage:
-    "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=600&fit=crop&q=80",
-  reasons: [
-    {
-      title: "Quality Assurance",
-      description:
-        "Our products meet the highest quality standards with rigorous testing and certification processes to ensure reliability and performance.",
-      order: 1,
-    },
-    {
-      title: "Expert Team",
-      description:
-        "Our experienced engineers and technicians provide comprehensive support from installation to maintenance, ensuring your operations run smoothly.",
-      order: 2,
-    },
-    {
-      title: "Innovation & Technology",
-      description:
-        "We leverage cutting-edge technology and continuous innovation to deliver state-of-the-art solutions that meet evolving industry demands.",
-      order: 3,
-    },
-    {
-      title: "Customer-Centric Approach",
-      description:
-        "Your success is our priority. We provide personalized solutions and dedicated support to help you achieve your business goals.",
-      order: 4,
-    },
-    {
-      title: "Competitive Pricing",
-      description:
-        "We offer premium quality equipment at competitive prices, ensuring excellent value for your investment without compromising on quality.",
-      order: 5,
-    },
-    {
-      title: "Global Reach",
-      description:
-        "With distributors worldwide and proven track record across diverse markets, we bring global expertise to your local operations.",
-      order: 6,
-    },
-  ],
-};
+const dummyData = whyChooseUsData;
 
 async function getWhyChooseUsData() {
   try {
@@ -116,20 +73,20 @@ async function WhyChooseUsContent() {
   const data = await getWhyChooseUsData();
 
   return (
-    <div className="flex flex-col gap-[80px]">
+    <div className="flex flex-col gap-20">
       {/* Hero Section */}
-      <section className="flex flex-col gap-[24px]">
+      <section className="flex flex-col gap-6">
         {/* Header */}
-        <div className="flex flex-col gap-[16px]">
+        <div className="flex flex-col gap-4">
           <h1
-            className="font-medium text-[36px] leading-[48px] tracking-[-0.9px] text-[#18181b]"
+            className="font-medium text-[2.25rem] leading-[3rem] tracking-[-0.0563rem] text-foreground"
             style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           >
             {data.title}
           </h1>
           {data.subtitle && (
             <p
-              className="font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-[#71717a]"
+              className="font-medium text-[1.25rem] leading-[1.75rem] tracking-[-0.0313rem] text-muted-foreground"
               style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               {data.subtitle}
@@ -139,7 +96,7 @@ async function WhyChooseUsContent() {
 
         {/* Hero Image */}
         {data.heroImage && (
-          <div className="relative w-full aspect-[16/6] rounded-[24px] overflow-hidden">
+          <div className="relative w-full aspect-[16/6] rounded-[1.5rem] overflow-hidden">
             <Image
               src={data.heroImage}
               alt={data.title}
@@ -153,14 +110,14 @@ async function WhyChooseUsContent() {
       </section>
 
       {/* Reasons Grid */}
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[40px]">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {data.reasons.map((reason: Reason, index: number) => (
           <div
             key={index}
-            className="flex flex-col gap-[16px] p-[24px] rounded-[16px] bg-[#f9f9fb]"
+            className="flex flex-col gap-4 p-6 rounded-2xl bg-muted"
           >
             {reason.icon && (
-              <div className="relative w-[64px] h-[64px] rounded-[12px] overflow-hidden">
+              <div className="relative w-16 h-16 rounded-xl overflow-hidden">
                 <Image
                   src={reason.icon}
                   alt={reason.title}
@@ -170,15 +127,15 @@ async function WhyChooseUsContent() {
                 />
               </div>
             )}
-            <div className="flex flex-col gap-[8px]">
+            <div className="flex flex-col gap-2">
               <h3
-                className="font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-[#18181b]"
+                className="font-medium text-[1.25rem] leading-[1.75rem] tracking-[-0.0313rem] text-foreground"
                 style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
               >
                 {reason.title}
               </h3>
               <p
-                className="font-normal text-[14px] leading-[20px] text-[#71717a]"
+                className="font-normal text-sm leading-5 text-muted-foreground"
                 style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
               >
                 {reason.description}
@@ -193,25 +150,22 @@ async function WhyChooseUsContent() {
 
 function WhyChooseUsSkeleton() {
   return (
-    <div className="flex flex-col gap-[80px] animate-pulse">
-      <section className="flex flex-col gap-[24px]">
-        <div className="flex flex-col gap-[16px]">
-          <div className="h-[48px] bg-zinc-200 rounded-md w-64" />
-          <div className="h-[28px] bg-zinc-200 rounded-md w-96" />
+    <div className="flex flex-col gap-20 animate-pulse">
+      <section className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4">
+          <div className="h-12 bg-muted rounded-md w-64" />
+          <div className="h-7 bg-muted rounded-md w-96" />
         </div>
-        <div className="w-full aspect-[16/6] rounded-[24px] bg-zinc-200" />
+        <div className="w-full aspect-[16/6] rounded-[1.5rem] bg-muted" />
       </section>
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[40px]">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {Array.from({ length: 6 }).map((_, i) => (
-          <div
-            key={i}
-            className="flex flex-col gap-[16px] p-[24px] rounded-[16px] bg-[#f9f9fb]"
-          >
-            <div className="w-[64px] h-[64px] rounded-[12px] bg-zinc-200" />
-            <div className="flex flex-col gap-[8px]">
-              <div className="h-[28px] bg-zinc-200 rounded-md w-3/4" />
-              <div className="h-[20px] bg-zinc-200 rounded-md w-full" />
-              <div className="h-[20px] bg-zinc-200 rounded-md w-5/6" />
+          <div key={i} className="flex flex-col gap-4 p-6 rounded-2xl bg-muted">
+            <div className="w-16 h-16 rounded-xl bg-secondary" />
+            <div className="flex flex-col gap-2">
+              <div className="h-7 bg-secondary rounded-md w-3/4" />
+              <div className="h-5 bg-secondary rounded-md w-full" />
+              <div className="h-5 bg-secondary rounded-md w-5/6" />
             </div>
           </div>
         ))}
@@ -223,7 +177,7 @@ function WhyChooseUsSkeleton() {
 export default function WhyChooseUsPage() {
   return (
     <div className="bg-secondary">
-      <div className="container mx-auto px-6 py-24">
+      <div className="container mx-auto px-6 py-16 md:py-24">
         <Suspense fallback={<WhyChooseUsSkeleton />}>
           <WhyChooseUsContent />
         </Suspense>

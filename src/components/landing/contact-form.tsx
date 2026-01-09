@@ -57,7 +57,7 @@ export function ContactForm() {
             <div className="flex-1">
               <h2
                 id="contact-heading"
-                className="font-medium text-[30px] leading-[40px] tracking-[-0.75px] text-[#18181b]"
+                className="font-medium text-[1.875rem] leading-[2.5rem] tracking-[-0.0469rem] text-foreground"
                 style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
               >
                 Get in touch for queries, demos, or technical assistance.
@@ -71,7 +71,7 @@ export function ContactForm() {
                 <div className="flex flex-col gap-2">
                   <label
                     htmlFor="name"
-                    className="font-medium text-[14px] leading-[20px] text-[#18181b]"
+                    className="font-medium text-sm leading-5 text-foreground"
                     style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                   >
                     Full Name
@@ -84,7 +84,7 @@ export function ContactForm() {
                     onChange={handleChange}
                     disabled={isPending}
                     required
-                    className="w-full h-[48px] px-4 rounded-xl bg-[#f9f9fb] border-none text-[14px] text-[#18181b] placeholder:text-[#71717a] focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                    className="w-full h-12 px-4 rounded-xl bg-muted border-none text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                     style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                     placeholder="Enter your full name"
                   />
@@ -94,7 +94,7 @@ export function ContactForm() {
                 <div className="flex flex-col gap-2">
                   <label
                     htmlFor="email"
-                    className="font-medium text-[14px] leading-[20px] text-[#18181b]"
+                    className="font-medium text-sm leading-5 text-foreground"
                     style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                   >
                     Email
@@ -107,7 +107,7 @@ export function ContactForm() {
                     onChange={handleChange}
                     disabled={isPending}
                     required
-                    className="w-full h-[48px] px-4 rounded-xl bg-[#f9f9fb] border-none text-[14px] text-[#18181b] placeholder:text-[#71717a] focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                    className="w-full h-12 px-4 rounded-xl bg-muted border-none text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                     style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                     placeholder="Enter your email address"
                   />
@@ -117,7 +117,7 @@ export function ContactForm() {
                 <div className="flex flex-col gap-2">
                   <label
                     htmlFor="contactNumber"
-                    className="font-medium text-[14px] leading-[20px] text-[#18181b]"
+                    className="font-medium text-sm leading-5 text-foreground"
                     style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                   >
                     Contact Number
@@ -130,7 +130,7 @@ export function ContactForm() {
                     onChange={handleChange}
                     disabled={isPending}
                     required
-                    className="w-full h-[48px] px-4 rounded-xl bg-[#f9f9fb] border-none text-[14px] text-[#18181b] placeholder:text-[#71717a] focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                    className="w-full h-12 px-4 rounded-xl bg-muted border-none text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                     style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                     placeholder="Enter your contact number"
                   />
@@ -140,7 +140,7 @@ export function ContactForm() {
                 <div className="flex flex-col gap-2">
                   <label
                     htmlFor="message"
-                    className="font-medium text-[14px] leading-[20px] text-[#18181b]"
+                    className="font-medium text-sm leading-5 text-foreground"
                     style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                   >
                     Message
@@ -153,7 +153,7 @@ export function ContactForm() {
                     disabled={isPending}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 rounded-xl bg-[#f9f9fb] border-none text-[14px] text-[#18181b] placeholder:text-[#71717a] focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-xl bg-muted border-none text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-[#0D9488] disabled:opacity-50 disabled:cursor-not-allowed transition-all resize-none"
                     style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                     placeholder="Enter your message"
                   />
@@ -186,7 +186,7 @@ export function ContactForm() {
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="flex gap-2 h-[48px] items-center justify-center px-6 rounded-full w-full relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                  className="flex gap-2 h-12 items-center justify-center px-6 rounded-full w-full relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                   style={{
                     background:
                       "linear-gradient(88.66deg, var(--brand-blue) 27.51%, var(--brand-green) 115.04%)",
@@ -194,9 +194,9 @@ export function ContactForm() {
                 >
                   {isPending ? (
                     <>
-                      <Loader2 className="h-5 w-5 text-[#fafafa] animate-spin relative z-10" />
+                      <Loader2 className="h-5 w-5 text-white animate-spin relative z-10" />
                       <span
-                        className="text-[14px] font-medium leading-[20px] text-[#fafafa] relative z-10"
+                        className="text-sm font-medium leading-5 text-white relative z-10"
                         style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                       >
                         Sending...
@@ -205,12 +205,12 @@ export function ContactForm() {
                   ) : (
                     <>
                       <span
-                        className="text-[14px] font-medium leading-[20px] text-[#fafafa] relative z-10"
+                        className="text-sm font-medium leading-5 text-white relative z-10"
                         style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                       >
                         Send Message
                       </span>
-                      <ArrowRight className="h-4 w-4 text-[#fafafa] relative z-10" />
+                      <ArrowRight className="h-4 w-4 text-white relative z-10" />
                     </>
                   )}
                   <div className="absolute inset-0 pointer-events-none shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)]" />

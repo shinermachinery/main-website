@@ -12,7 +12,10 @@ interface RelatedProductsProps {
   currentProductId: string;
 }
 
-export function RelatedProducts({ products, currentProductId }: RelatedProductsProps) {
+export function RelatedProducts({
+  products,
+  currentProductId,
+}: RelatedProductsProps) {
   // Filter out current product and limit to 4
   const relatedProducts = products
     .filter((p) => p._id !== currentProductId)
@@ -42,16 +45,19 @@ export function RelatedProducts({ products, currentProductId }: RelatedProductsP
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Sparkles className="w-4 h-4 text-brand-blue" strokeWidth={1} />
-          <h2 className="text-2xl font-light text-zinc-900">
+          <h2 className="text-2xl font-light text-foreground">
             Related Products
           </h2>
         </div>
         <Link
           href="/products"
-          className="group flex items-center gap-2 text-sm font-light text-zinc-600 hover:text-brand-blue transition-colors"
+          className="group flex items-center gap-2 text-sm font-light text-muted-foreground hover:text-brand-blue transition-colors"
         >
           View all
-          <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" strokeWidth={1} />
+          <ArrowRight
+            className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1"
+            strokeWidth={1}
+          />
         </Link>
       </div>
 
@@ -61,10 +67,10 @@ export function RelatedProducts({ products, currentProductId }: RelatedProductsP
           <Link
             key={product._id}
             href={`/products/${product.slug.current}`}
-            className="group relative overflow-hidden rounded-2xl bg-secondary border border-zinc-100 transition-all duration-300 hover:border-zinc-200 hover:shadow-lg"
+            className="group relative overflow-hidden rounded-2xl bg-secondary border border-muted transition-all duration-300 hover:border-muted-foreground hover:shadow-lg"
           >
             {/* Image */}
-            <div className="aspect-[4/3] overflow-hidden bg-gradient-to-br from-zinc-50 to-zinc-100">
+            <div className="aspect-[4/3] overflow-hidden bg-gradient-to-br from-muted to-muted">
               {product.images?.[0] ? (
                 <Image
                   src={getImageUrl(product)}
@@ -75,7 +81,9 @@ export function RelatedProducts({ products, currentProductId }: RelatedProductsP
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center">
-                  <span className="text-zinc-400 text-xs font-light">No image</span>
+                  <span className="text-muted-foreground text-xs font-light">
+                    No image
+                  </span>
                 </div>
               )}
             </div>
@@ -84,19 +92,19 @@ export function RelatedProducts({ products, currentProductId }: RelatedProductsP
             <div className="p-4 space-y-2">
               {/* Collection Badge */}
               {product.collection && (
-                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-brand-blue/5 text-brand-blue">
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[0.625rem] font-medium bg-brand-blue/5 text-brand-blue">
                   {product.collection.title}
                 </span>
               )}
 
               {/* Title */}
-              <h3 className="text-sm font-medium text-zinc-900 line-clamp-1 group-hover:text-brand-blue transition-colors">
+              <h3 className="text-sm font-medium text-foreground line-clamp-1 group-hover:text-brand-blue transition-colors">
                 {product.title}
               </h3>
 
               {/* Description */}
               {product.description && (
-                <p className="text-xs font-light text-zinc-500 line-clamp-2">
+                <p className="text-xs font-light text-muted-foreground line-clamp-2">
                   {product.description}
                 </p>
               )}
@@ -104,15 +112,18 @@ export function RelatedProducts({ products, currentProductId }: RelatedProductsP
               {/* Price or CTA */}
               <div className="pt-2 flex items-center justify-between">
                 {product.price ? (
-                  <span className="text-sm font-light text-zinc-900">
+                  <span className="text-sm font-light text-foreground">
                     ${product.price.toLocaleString()}
                   </span>
                 ) : (
-                  <span className="text-xs font-light text-zinc-500">
+                  <span className="text-xs font-light text-muted-foreground">
                     Learn more
                   </span>
                 )}
-                <ArrowRight className="w-3.5 h-3.5 text-zinc-400 transition-all duration-300 group-hover:text-brand-blue group-hover:translate-x-1" strokeWidth={1} />
+                <ArrowRight
+                  className="w-3.5 h-3.5 text-muted-foreground transition-all duration-300 group-hover:text-brand-blue group-hover:translate-x-1"
+                  strokeWidth={1}
+                />
               </div>
             </div>
 
@@ -127,10 +138,13 @@ export function RelatedProducts({ products, currentProductId }: RelatedProductsP
         <div className="flex justify-center pt-4">
           <Link
             href="/products"
-            className="group relative inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-zinc-200 bg-secondary text-sm font-light text-zinc-700 transition-all duration-300 hover:border-brand-blue hover:text-brand-blue hover:shadow-md hover:shadow-brand-blue/10"
+            className="group relative inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-muted bg-secondary text-sm font-light text-muted-foreground transition-all duration-300 hover:border-brand-blue hover:text-brand-blue hover:shadow-md hover:shadow-brand-blue/10"
           >
             Discover More Products
-            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" strokeWidth={1} />
+            <ArrowRight
+              className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1"
+              strokeWidth={1}
+            />
           </Link>
         </div>
       )}

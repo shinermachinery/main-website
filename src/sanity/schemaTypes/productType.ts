@@ -79,7 +79,6 @@ export const productType = defineType({
           rows: 2,
           description: "Overview of product specifications",
         }),
-      
       ],
     }),
     defineField({

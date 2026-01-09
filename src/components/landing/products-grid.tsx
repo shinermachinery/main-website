@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { ProductCard } from "@/components/landing/product-card";
 import type { Product } from "@/lib/sanity-types";
-import {  urlFor } from "@/sanity/lib/image";
+import { urlFor } from "@/sanity/lib/image";
 
 interface ProductsGridProps {
   products: Product[];
@@ -49,7 +49,7 @@ export function ProductsGrid({ products }: ProductsGridProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product) => {
-              console.log("PRODUCT",product);
+              console.log("PRODUCT", product);
               const imageUrl = product?.images?.[0]
                 ? urlFor(product.images?.[0]).width(600).height(400).url()
                 : "/placeholder-product.jpg";
@@ -63,7 +63,6 @@ export function ProductsGrid({ products }: ProductsGridProps) {
                   imageAlt={product.images?.[0]?.alt || product.title}
                   onViewDetails={() => {
                     router.push(`/products/${product.slug.current}`);
-                   
                   }}
                 />
               );

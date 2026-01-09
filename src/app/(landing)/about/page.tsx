@@ -28,10 +28,10 @@ export default function AboutPage() {
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-6">
           {/* Left: Text Content */}
           <div className="flex flex-1 flex-col gap-6">
-            <h1 className="text-4xl font-medium leading-12 tracking-[-0.9px] text-primary md:text-3xl">
+            <h1 className="text-[2.5rem] font-medium leading-[3rem] tracking-[-0.0563rem] text-foreground md:text-[1.875rem]">
               Engineering Excellence for Modern Manufacturing
             </h1>
-            <p className="text-xl font-medium leading-6 tracking-[-0.5px] text-muted-foreground md:text-lg">
+            <p className="text-[1.25rem] font-medium leading-6 tracking-[-0.0313rem] text-muted-foreground md:text-lg">
               Shiner Machinery designs and delivers precision-engineered
               machines that empower manufacturers to build faster, smarter, and
               more efficiently.
@@ -39,7 +39,7 @@ export default function AboutPage() {
           </div>
 
           {/* Right: Image Placeholder */}
-          <div className="h-60 w-full flex-1 rounded-2xl bg-muted md:h-80 md:w-[566px]" />
+          <div className="h-[15rem] w-full flex-1 rounded-2xl bg-muted md:h-[20rem] md:w-[35.375rem]" />
         </div>
       </section>
 
@@ -50,11 +50,11 @@ export default function AboutPage() {
           <div className="flex flex-1 flex-col gap-6">
             {/* Who We Are Card */}
             <div className="flex flex-1 flex-col gap-10 rounded-2xl bg-brand-green-10 p-6">
-              <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-brand-green">
+              <p className="text-[1.25rem] font-medium leading-[1.75rem] tracking-[-0.0313rem] text-brand-green">
                 Who We Are
               </p>
               <div className="flex flex-col gap-3">
-                <p className="text-xl font-medium leading-6 tracking-[-0.5px] text-primary">
+                <p className="text-[1.25rem] font-medium leading-6 tracking-[-0.0313rem] text-foreground">
                   Built on Precision. Driven by Performance.
                 </p>
                 <p className="text-sm leading-5 text-muted-foreground">
@@ -70,10 +70,10 @@ export default function AboutPage() {
 
             {/* Our Mission Card */}
             <div className="flex flex-1 flex-col justify-between gap-10 rounded-2xl bg-brand-blue-10 p-6">
-              <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-xl leading-6 tracking-[-0 .5px] ">
+              <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-[1.25rem] leading-6 tracking-[-0.0313rem]">
                 Our Mission
               </p>
-              <p className="text-2xl font-medium leading-8 tracking-[-0.6px] text-primary">
+              <p className="text-[1.5rem] font-medium leading-8 tracking-[-0.0375rem] text-foreground">
                 To enable manufacturers worldwide with reliable, efficient, and
                 future-ready machinery.
               </p>
@@ -85,12 +85,12 @@ export default function AboutPage() {
             {/* Precision Engineering */}
             <div className="flex flex-col gap-3 rounded-2xl border border-border p-6">
               <div className="flex items-center gap-2">
-                <Settings className="size-6 text-primary" />
-                <p className="bg-clip-text font-medium text-xl leading-6 tracking-[-0.5px] text-primary">
+                <Settings className="size-6 text-foreground" />
+                <p className="bg-clip-text font-medium text-[1.25rem] leading-6 tracking-[-0.0313rem] text-foreground">
                   Precision Engineering
                 </p>
               </div>
-              <p className="text-xl font-medium leading-6 tracking-[-0.5px] text-primary">
+              <p className="text-[1.25rem] font-medium leading-6 tracking-[-0.0313rem] text-foreground">
                 Every machine is built for accuracy and consistency.
               </p>
             </div>
@@ -98,33 +98,40 @@ export default function AboutPage() {
             {/* Customer-First Support */}
             <div className="flex flex-col gap-3 rounded-2xl border border-border p-6">
               <div className="flex items-center gap-2">
-                <div 
+                <div
                   className="size-6 relative"
                   style={{
-                    background: 'linear-gradient(to right, var(--brand-blue), var(--brand-green))',
+                    background:
+                      "linear-gradient(to right, var(--brand-blue), var(--brand-green))",
                   }}
                 >
-                  <Headset 
-                    className="size-6 absolute inset-0" 
-                    style={{ 
-                      stroke: 'url(#headset-gradient)',
-                      fill: 'none'
-                    }} 
+                  <Headset
+                    className="size-6 absolute inset-0"
+                    style={{
+                      stroke: "url(#headset-gradient)",
+                      fill: "none",
+                    }}
                   />
                   <svg className="absolute w-0 h-0" aria-hidden="true">
                     <defs>
-                      <linearGradient id="headset-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <linearGradient
+                        id="headset-gradient"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="0%"
+                      >
                         <stop offset="0%" stopColor="var(--brand-blue)" />
                         <stop offset="100%" stopColor="var(--brand-green)" />
                       </linearGradient>
                     </defs>
                   </svg>
                 </div>
-                <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-xl leading-6 tracking-[-0.5px] ">
+                <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-[1.25rem] leading-6 tracking-[-0.0313rem]">
                   Customer-First Support
                 </p>
               </div>
-              <p className="text-xl font-medium leading-6 tracking-[-0.5px] text-primary">
+              <p className="text-[1.25rem] font-medium leading-6 tracking-[-0.0313rem] text-foreground">
                 Long-term partnerships over one-time sales.
               </p>
             </div>
@@ -132,12 +139,12 @@ export default function AboutPage() {
             {/* Innovation-Driven */}
             <div className="flex flex-col gap-3 rounded-2xl border border-border p-6">
               <div className="flex items-center gap-2">
-                <Sparkles className="size-6 text-gray-900" />
-                <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-xl leading-6 tracking-[-0.5px] ">
+                <Sparkles className="size-6 text-foreground" />
+                <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-[1.25rem] leading-6 tracking-[-0.0313rem]">
                   Innovation-Driven
                 </p>
               </div>
-              <p className="text-xl font-medium leading-6 tracking-[-0.5px] text-primary">
+              <p className="text-[1.25rem] font-medium leading-6 tracking-[-0.0313rem] text-foreground">
                 Continuous improvement in automation and design.
               </p>
             </div>
@@ -145,12 +152,12 @@ export default function AboutPage() {
             {/* Global Standards */}
             <div className="flex flex-col gap-3 rounded-2xl border border-border p-6">
               <div className="flex items-center gap-2">
-                <Globe className="size-6 text-gray-900" />
-                <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-xl leading-6 tracking-[-0.5px] ">
+                <Globe className="size-6 text-foreground" />
+                <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-[1.25rem] leading-6 tracking-[-0.0313rem]">
                   Global Standards
                 </p>
               </div>
-              <p className="text-xl font-medium leading-6 tracking-[-0.5px] text-primary">
+              <p className="text-[1.25rem] font-medium leading-6 tracking-[-0.0313rem] text-foreground">
                 Built to perform across markets and climates.
               </p>
             </div>
@@ -161,32 +168,32 @@ export default function AboutPage() {
         <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
           {/* Industry-tested components */}
           <div className="flex flex-col justify-end gap-10 rounded-2xl bg-background p-6">
-            <Building2 className="size-6 text-gray-900" />
-            <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-900">
+            <Building2 className="size-6 text-foreground" />
+            <p className="text-[1.25rem] font-medium leading-[1.75rem] tracking-[-0.0313rem] text-foreground">
               Industry-tested components
             </p>
           </div>
 
           {/* Scalable production solutions */}
           <div className="flex flex-col justify-end gap-10 rounded-2xl bg-background p-6">
-            <TrendingUp className="size-6 text-primary" />
-            <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-primary">
+            <TrendingUp className="size-6 text-foreground" />
+            <p className="text-[1.25rem] font-medium leading-[1.75rem] tracking-[-0.0313rem] text-foreground">
               Scalable production solutions
             </p>
           </div>
 
           {/* Dedicated after-sales support */}
           <div className="flex flex-col justify-end gap-10 rounded-2xl bg-background p-6">
-            <Phone className="size-6 text-primary" />
-            <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-900">
+            <Phone className="size-6 text-foreground" />
+            <p className="text-[1.25rem] font-medium leading-[1.75rem] tracking-[-0.0313rem] text-foreground">
               Dedicated after-sales support
             </p>
           </div>
 
           {/* Proven results worldwide */}
           <div className="flex flex-col justify-end gap-10 rounded-2xl bg-background p-6">
-            <Award className="size-6 text-primary" />
-            <p className="text-xl font-medium leading-[28px] tracking-[-0.5px] text-gray-900">
+            <Award className="size-6 text-foreground" />
+            <p className="text-[1.25rem] font-medium leading-[1.75rem] tracking-[-0.0313rem] text-foreground">
               Proven results worldwide
             </p>
           </div>
@@ -194,20 +201,19 @@ export default function AboutPage() {
       </section>
 
       {/* Featured Products Section */}
-      <section className="mx-auto max-w-[1200px] px-6 py-16">
+      <section className="mx-auto max-w-[75rem] px-6 py-16">
         {/* Section Header */}
         <div className="mb-10 flex items-center justify-between">
-          <h2 className="text-3xl font-medium leading-10 tracking-[-0.75px] text-primary">
+          <h2 className="text-[1.875rem] font-medium leading-10 tracking-[-0.0469rem] text-foreground">
             Featured Products
           </h2>
           <Link
             href="/products"
             className="flex h-10 items-center gap-2 rounded-full bg-linear-to-r from-brand-blue/10 to-brand-green/10 px-4 py-2 shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.4)]"
           >
-            <span className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-sm leading-5 ">
+            <span className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-sm leading-5">
               Explore Products
             </span>
-        
           </Link>
         </div>
 
@@ -231,10 +237,10 @@ export default function AboutPage() {
 
               {/* Product Info */}
               <div className="flex flex-col gap-2">
-                <p className="text-sm font-medium leading-5 text-gray-900">
+                <p className="text-sm font-medium leading-5 text-foreground">
                   {product.name}
                 </p>
-                <p className="line-clamp-2 text-sm leading-5 text-gray-500">
+                <p className="line-clamp-2 text-sm leading-5 text-muted-foreground">
                   {product.description}
                 </p>
               </div>
@@ -244,7 +250,7 @@ export default function AboutPage() {
                 <span className="text-sm font-medium leading-5 text-white">
                   View Details
                 </span>
-              <ArrowRight className="size-4 text-white" />
+                <ArrowRight className="size-4 text-white" />
               </Button>
             </div>
           ))}

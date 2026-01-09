@@ -4,31 +4,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import { AchievementCard } from "./achievement-card";
-
-const dummyAchievements = [
-  {
-    id: 1,
-    image:
-      "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=800&q=80",
-    awardGiver: "Bihar Chamber of Commerce",
-    awardName: "Best Regional Award",
-  },
-  {
-    id: 2,
-    image:
-      "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=800&q=80",
-    awardGiver: "Bihar Chamber of Commerce",
-    awardName: "Best Regional Award",
-  },
-  {
-    id: 3,
-    image:
-      "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=800&q=80",
-    awardGiver: "Bihar Chamber of Commerce",
-    awardName: "Best Regional Award",
-  },
-];
+import { AchievementCard } from "@/components/global/cards";
+import { dummyAchievements } from "@/data/fallback/achievements";
 
 async function getAchievements() {
   try {
@@ -69,7 +46,7 @@ export function AchievementsSection() {
     <section className="flex flex-col gap-10 w-full">
       {/* Header with Navigation */}
       <div className="flex items-center justify-between">
-        <h2 className="text-[30px] font-medium leading-10 text-zinc-900 tracking-[-0.75px]">
+        <h2 className="text-[1.875rem] font-medium leading-10 text-foreground tracking-[-0.0469rem]">
           Our Achievements
         </h2>
 

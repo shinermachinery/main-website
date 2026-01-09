@@ -2,7 +2,7 @@
 
 **Status**: ✅ Completed
 **Created**: 2025-12-30
-**Last Modified**: 2025-12-30
+**Last Modified**: 2026-01-09
 **Owner**: Development Team
 
 ## Overview
@@ -264,67 +264,68 @@ const aboutLinks = [
 
 ### Typography Hierarchy
 
-All pages use consistent typography:
+All pages use consistent typography with rem units and semantic colors:
 
 ```css
 /* Page Title (H1) */
-font-size: 36px;
-line-height: 48px;
-letter-spacing: -0.9px;
-color: #18181b;
+font-size: 2.25rem;        /* 36px */
+line-height: 3rem;         /* 48px */
+letter-spacing: -0.0563rem; /* -0.9px */
+color: foreground;
 
 /* Page Subtitle */
-font-size: 20px;
-line-height: 28px;
-letter-spacing: -0.5px;
-color: #71717a;
+font-size: 1.25rem;        /* 20px */
+line-height: 1.75rem;      /* 28px */
+letter-spacing: -0.0313rem; /* -0.5px */
+color: muted-foreground;
 
 /* Section Title (H2) */
-font-size: 30px;
-line-height: 40px;
-letter-spacing: -0.75px;
-color: #18181b;
+font-size: 1.875rem;       /* 30px */
+line-height: 2.5rem;       /* 40px */
+letter-spacing: -0.0469rem; /* -0.75px */
+color: foreground;
 
 /* Subsection Title (H3) */
-font-size: 24px;
-line-height: 32px;
-letter-spacing: -0.6px;
-color: #18181b;
+font-size: 1.5rem;         /* 24px */
+line-height: 2rem;         /* 32px */
+letter-spacing: -0.0375rem; /* -0.6px */
+color: foreground;
 
 /* Body Text */
-font-size: 16px;
-line-height: 24px;
-color: #71717a;
+font-size: 1rem;           /* 16px - text-base */
+line-height: 1.5rem;       /* 24px */
+color: muted-foreground;
 
 /* Card Text */
-font-size: 14px;
-line-height: 20px;
-color: #71717a;
+font-size: 0.875rem;       /* 14px - text-sm */
+line-height: 1.25rem;      /* 20px */
+color: muted-foreground;
 ```
 
 ### Spacing System
 
 **Section Gaps:**
-- Between major sections: 80px
-- Page header to content: 80px
-- Internal section gaps: 40px
-- Card internal gaps: 16px, 8px
+- Between major sections: 5rem (80px - gap-20)
+- Page header to content: 5rem (80px - gap-20)
+- Internal section gaps: 2.5rem (40px - gap-10)
+- Card internal gaps: 1rem (16px - gap-4), 0.5rem (8px - gap-2)
 
 **Grid Gaps:**
-- Why Choose Us grid: 40px
-- Mission/Vision sections: 40px
-- Director layout: 60px
+- Why Choose Us grid: 2.5rem (40px - gap-10)
+- Mission/Vision sections: 2.5rem (40px - gap-10)
+- Director layout: 3.75rem (60px)
 
 ### Color Palette
 
 **Text:**
-- Primary: #18181b
-- Muted: #71717a
+- Primary: `text-foreground` (semantic token)
+- Muted: `text-muted-foreground` (semantic token)
 
 **Backgrounds:**
-- Card background: #f9f9fb
-- Page background: white
-- Skeleton: zinc-200
+- Card background: `bg-muted` (semantic token)
+- Page background: `bg-secondary` (semantic token)
+- Skeleton outer: `bg-muted` (semantic token)
+- Skeleton inner: `bg-secondary` (semantic token)
 
 **Accents:**
 - Brand blue: var(--brand-blue)
@@ -335,7 +336,7 @@ color: #71717a;
 
 **Card Pattern** (Why Choose Us):
 ```tsx
-<div className="flex flex-col gap-[16px] p-[24px] rounded-[16px] bg-[#f9f9fb]">
+<div className="flex flex-col gap-4 p-6 rounded-2xl bg-muted">
   {/* Icon */}
   {/* Title */}
   {/* Description */}
@@ -344,11 +345,20 @@ color: #71717a;
 
 **Two-Column Pattern** (Mission/Vision, Director):
 ```tsx
-<section className="flex flex-col lg:flex-row gap-[40px]">
+<section className="flex flex-col lg:flex-row gap-10">
   <div className="flex-1">{/* Image */}</div>
   <div className="flex-1">{/* Content */}</div>
 </section>
 ```
+
+### Design System Benefits
+
+**Version 1.1.0 Improvements:**
+1. **Accessibility**: rem units scale with user font size preferences
+2. **Maintainability**: Semantic color tokens centralize theme management
+3. **Consistency**: Design system tokens ensure visual uniformity
+4. **Future-proof**: Easy to adapt for theme variations
+5. **Developer Experience**: Readable semantic names vs hex codes
 
 ## Data Management
 
@@ -720,5 +730,5 @@ None currently identified.
 
 ---
 
-**Version**: 1.0.0
-**Last Reviewed**: 2025-12-30
+**Version**: 1.1.0
+**Last Reviewed**: 2026-01-09

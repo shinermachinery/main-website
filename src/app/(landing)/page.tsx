@@ -65,11 +65,11 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const homeData = await getAllHomeData();
-  
+
   return (
     <div className="bg-secondary">
       <HeroSection />
-      <AboutSection 
+      <AboutSection
         title={homeData.home?.wordAboutUsTitle}
         description={homeData.home?.wordAboutUsDescription}
       />
@@ -78,11 +78,11 @@ export default async function HomePage() {
         <ProductsData />
       </Suspense>
 
-      <StatsSection 
+      <StatsSection
         title={homeData.home?.fewMoreFactsTitle}
         facts={homeData.home?.facts || []}
       />
-      <HowItWorksSection 
+      <HowItWorksSection
         title={homeData.home?.trustedByFounderTitle}
         certificates={homeData.home?.certificates || []}
       />
@@ -92,7 +92,7 @@ export default async function HomePage() {
       </Suspense>
 
       <Suspense fallback={<BrandStorySkeleton />}>
-        <BrandStoryData 
+        <BrandStoryData
           title={homeData.home?.brandStoryTitle}
           description={homeData.home?.brandStoryDescription}
           videos={homeData.home?.brandStoryVideos || []}

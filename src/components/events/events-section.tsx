@@ -1,63 +1,13 @@
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import { EventCard } from "./event-card";
+import { EventCard } from "@/components/global/cards";
+import { dummyEvents } from "@/data/fallback/events";
 
 interface Event {
   id: string | number;
   image: string;
   title: string;
 }
-
-const dummyEvents: Event[] = [
-  {
-    id: 1,
-    image:
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-    title: "Food Show 2019, Patna",
-  },
-  {
-    id: 2,
-    image:
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-    title: "Food Show 2019, Karnal",
-  },
-  {
-    id: 3,
-    image:
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-    title: "Food Show 2019, Patna",
-  },
-  {
-    id: 4,
-    image:
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-    title: "Food Show 2019, Karnal",
-  },
-  {
-    id: 5,
-    image:
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-    title: "Food Show 2019, Patna",
-  },
-  {
-    id: 6,
-    image:
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-    title: "Food Show 2019, Karnal",
-  },
-  {
-    id: 7,
-    image:
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-    title: "Food Show 2019, Patna",
-  },
-  {
-    id: 8,
-    image:
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-    title: "Food Show 2019, Karnal",
-  },
-];
 
 async function getEvents() {
   try {
@@ -90,10 +40,10 @@ export async function EventsSection() {
     <section className="flex flex-col gap-10 w-full">
       {/* Header */}
       <div className="flex flex-col gap-4 font-medium">
-        <h1 className="text-4xl font-medium leading-[48px] text-zinc-900 tracking-[-0.9px]">
+        <h1 className="text-4xl font-medium leading-[3rem] text-foreground tracking-[-0.0563rem]">
           Some of Our Events
         </h1>
-        <p className="text-xl leading-7 text-zinc-500 tracking-[-0.5px]">
+        <p className="text-xl leading-7 text-muted-foreground tracking-[-0.0313rem]">
           Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst
           ullamcorper purus
         </p>
