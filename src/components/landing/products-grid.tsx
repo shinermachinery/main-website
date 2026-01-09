@@ -1,5 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { ArrowRight } from "lucide-react";
 import { ProductCard } from "@/components/landing/product-card";
 import type { Product } from "@/lib/sanity-types";
 import { urlFor } from "@/sanity/lib/image";
@@ -12,13 +13,13 @@ export function ProductsGrid({ products }: ProductsGridProps) {
   const router = useRouter();
   if (!products || products.length === 0) {
     return (
-      <section className="py-24 md:py-32">
+      <section className="py-40">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-[#18181b]">
+            <h2 className="text-[30px] leading-[40px] font-medium tracking-[-0.75px] mb-4 text-primary">
               Featured Products
             </h2>
-            <p className="text-[#71717a]">
+            <p className="text-muted-foreground">
               No products available at the moment. Check back soon!
             </p>
           </div>
@@ -30,26 +31,45 @@ export function ProductsGrid({ products }: ProductsGridProps) {
   return (
     <section
       id="products"
-      className="py-24 md:py-32 bg-secondary"
+      className="py-40"
       aria-labelledby="products-heading"
     >
       <div className="container mx-auto px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-12">
-            <h2
-              id="products-heading"
-              className="text-4xl md:text-5xl font-bold mb-4 text-[#18181b]"
+        <div className="max-w-7xl mx-auto flex flex-col gap-10">
+          {/* Header with Title and Button */}
+          <div className="flex items-center gap-6">
+            <div className="flex-1">
+              <h2
+                id="products-heading"
+                className="text-[30px] leading-[40px] font-medium text-foreground tracking-[-0.75px]"
+              >
+                Featured Products
+              </h2>
+            </div>
+            <button
+              onClick={() => router.push("/products")}
+              className="flex items-center gap-2 px-4 py-2 rounded-full h-10 font-medium text-sm leading-5"
+              style={{
+                background: "linear-gradient(91.23deg, rgba(42, 94, 152, 0.1) 15.88%, rgba(24, 183, 90, 0.1) 115.02%)",
+                boxShadow: "inset 0px 4px 28.9px 0px rgba(244, 244, 245, 0.4)",
+              }}
             >
-              Featured Products
-            </h2>
-            <p className="text-lg text-[#71717a]">
-              Discover our precision-engineered solutions built to perform
-            </p>
+              <span
+                className="bg-clip-text"
+                style={{
+                  WebkitTextFillColor: "transparent",
+                  backgroundImage: "linear-gradient(90.59deg, #2a5e98 15.88%, #18b75a 115.02%)",
+                }}
+              >
+                Explore Products
+              </span>
+              <ArrowRight className="w-5 h-5" style={{ color: "#18181b" }} />
+            </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Products Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {products.map((product) => {
-              console.log("PRODUCT", product);
               const imageUrl = product?.images?.[0]
                 ? urlFor(product.images?.[0]).width(600).height(400).url()
                 : "/placeholder-product.jpg";

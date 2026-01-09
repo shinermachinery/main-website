@@ -85,23 +85,21 @@ export function TestimonialsCarousel({
 
   return (
     <section
-      className="py-24 md:py-32 bg-secondary"
+      className="py-40"
       aria-labelledby="testimonials-heading"
     >
       <div className="container mx-auto px-4">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto flex flex-col gap-10">
           {/* Header - Two Column Layout */}
-          <div className="flex flex-col md:flex-row gap-8 items-start mb-10">
+          <div className="flex flex-col md:flex-row gap-8 items-start">
             <h2
               id="testimonials-heading"
-              className="flex-1 font-medium text-[1.875rem] leading-[2.5rem] tracking-[-0.0469rem] text-foreground"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+              className="flex-1 font-medium text-[30px] leading-[40px] tracking-[-0.75px] text-primary"
             >
               Testimonials
             </h2>
             <p
-              className="flex-1 font-medium text-[1.25rem] leading-7 tracking-[-0.0313rem] text-muted-foreground"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+              className="flex-1 font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-muted-foreground"
             >
               Lorem ipsum dolor sit amet consectetur. Turpis bibendum eget
               adipiscing scelerisque proin. Neque tincidunt et pellentesque

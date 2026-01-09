@@ -3,7 +3,7 @@
  * Shows how to use the home actions in a server component
  */
 
-import { getAllHomeData } from "@/actions";
+import { getAllHomeData } from "@/actions/home";
 
 export async function HomePageDataExample() {
   // Fetch all home page data in a single request

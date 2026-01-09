@@ -19,19 +19,16 @@ export function TestimonialCard({
   imageUrl,
 }: TestimonialCardProps) {
   return (
-    <div className="bg-muted flex flex-col items-start min-w-[15rem] p-6 rounded-xl h-full">
-      {/* Testimonial Content - Top Aligned */}
+    <div className="bg-background flex flex-col items-start min-w-[240px] p-6 rounded-xl h-full gap-6">
+      {/* Testimonial Content */}
       <div className="flex items-start w-full flex-1">
-        <p
-          className="font-medium text-[1.25rem] leading-7 tracking-[-0.0313rem] text-foreground"
-          style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-        >
+        <p className="font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-primary">
           {content}
         </p>
       </div>
 
-      {/* Bottom Row - Avatar Block + Rating - Bottom Aligned */}
-      <div className="flex gap-6 items-center w-full mt-6">
+      {/* Bottom Row - Avatar Block + Rating */}
+      <div className="flex gap-6 items-center w-full">
         {/* Avatar Block */}
         <div className="flex flex-1 gap-3 items-start">
           {/* Avatar */}
@@ -45,29 +42,23 @@ export function TestimonialCard({
                 sizes="40px"
               />
             ) : (
-              <div className="flex items-center justify-center size-full text-[#71717a] text-sm font-medium">
+              <div className="flex items-center justify-center size-full text-muted-foreground text-sm font-medium">
                 {customerName.charAt(0)}
               </div>
             )}
           </div>
 
           {/* Info */}
-          <div className="flex flex-1 flex-col gap-[0.125rem] items-start text-sm text-muted-foreground">
+          <div className="flex flex-1 flex-col gap-0.5 items-start text-sm text-muted-foreground">
             {/* Name/Title */}
             <div className="flex flex-col justify-center w-full">
-              <p
-                className="font-medium leading-5"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-              >
+              <p className="font-medium leading-5">
                 {customerName}
               </p>
             </div>
             {/* Role/Description */}
             <div className="flex flex-col justify-center w-full">
-              <p
-                className="font-normal leading-5"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-              >
+              <p className="font-normal leading-5">
                 {role}
               </p>
             </div>
