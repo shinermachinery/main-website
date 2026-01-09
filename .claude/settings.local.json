@@ -15,7 +15,8 @@
       "Bash(bunx tsc:*)",
       "Bash(pkill:*)",
       "Bash(cat:*)",
-      "Bash(wc:*)"
+      "Bash(wc:*)",
+      "mcp__figma__get_metadata"
     ]
   },
   "enableAllProjectMcpServers": true

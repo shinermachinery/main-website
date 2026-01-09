@@ -2,6 +2,165 @@
 
 All notable changes to the landing page feature will be documented in this file.
 
+## Hero Section Redesign (2026-01-10)
+
+### Updated - Hero Section to Match Reference Design & Figma Specs
+
+**Context**: Completely redesigned hero section to match reference image with gray background, light typography card, and Figma-perfect featured product card (node 17560-473). Multiple iterations to achieve pixel-perfect design matching site-wide patterns.
+
+**Key Changes to `src/components/landing/hero-section.tsx`**:
+
+1. **Container Structure (Final)**:
+   - Added proper container pattern matching other sections
+   - Structure: `<section>` → `container mx-auto` → `max-w-7xl mx-auto` → gray bg → cards
+   - Gray background and cards both constrained within `max-w-7xl` (not full-width)
+   - No extra horizontal padding on container (cards go edge-to-edge within max-width)
+
+2. **Background Architecture**:
+   - Outer section: Light background, `overflow-hidden`
+   - Gray area: `bg-zinc-400 min-h-screen flex items-end`
+   - Gray background contained within `max-w-7xl` (same width as other sections)
+   - Cards positioned at bottom with `items-end`
+
+3. **Layout Pattern - Separate Cards with Flex**:
+   - **Before**: Nested grid layout with single rounded card
+   - **After**: Two separate sibling cards in flex container
+   - Flex container: `flex flex-col lg:flex-row gap-6 items-end justify-between`
+   - Typography card and Featured card are **separate** (not nested)
+   - `justify-between` creates space between the two cards
+   - Both align at bottom with `items-end`
+
+4. **Typography Card (Left) - Less than 50% Width**:
+   - Width: `w-full lg:max-w-[45%]` (45% max width on desktop)
+   - Background: `bg-background` (light - matches About/Contact sections)
+   - Border radius: `rounded-t-[3rem]` (48px top radius only)
+   - Padding: `px-6 lg:px-8 py-12 lg:py-16` (content padding inside card)
+
+   **Heading**:
+   - Font size: `text-3xl md:text-4xl lg:text-[2.5rem]` (40px desktop)
+   - Line height: `leading-[1.15]`
+   - Font weight: `font-normal` (400)
+   - Color: `text-primary` (dark text on light background)
+   - Margin bottom: `mb-4`
+   - Text: "Precision Engineered Machinery. Delivered With Confidence."
+
+   **Description**:
+   - Font size: `text-sm md:text-base` (14px mobile, 16px desktop)
+   - Font weight: `font-light` (300)
+   - Color: `text-muted-foreground` (muted gray)
+   - Margin bottom: `mb-6`
+
+   **CTA Buttons (Rounded with Gradient)**:
+   - Gap between buttons: `gap-3` (12px)
+
+   - **Request a Quote** (Outline):
+     - Height: `h-10` (40px)
+     - Padding: `px-5`
+     - Font: `text-sm font-normal`
+     - Border radius: `rounded-full` (pill-shaped)
+     - Uses shadcn Button `outline` variant
+
+   - **View Products** (Gradient - Navbar Style):
+     - Height: `h-10` (40px)
+     - Padding: `px-5`
+     - Font: `text-sm font-semibold`
+     - Border radius: `rounded-full` (pill-shaped)
+     - Gradient: `bg-gradient-to-r from-brand-blue to-brand-green`
+     - Text: `text-white`
+     - Shadow: `shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)]` (inset highlight)
+     - Hover: `hover:shadow-lg`
+     - Icon: ArrowRight (14px, `w-3.5 h-3.5`)
+     - **Matches navbar "Get a Quote" button exactly**
+
+5. **Featured Product Card (Right) - Figma Design (17560-473)**:
+   - Width: `w-full lg:w-[270px]` (270px exact on desktop)
+   - Background: `bg-background` (light card)
+   - Border radius: `rounded-[16px]`
+   - Padding: `p-3` (12px)
+   - Gap: `gap-4` (16px between header and image)
+
+   **Header Row**:
+   - Layout: `flex items-start justify-between gap-4`
+   - Text: "Featured Product"
+     - Font: `text-sm font-medium leading-5`
+     - Color: `text-primary`
+     - Width: `flex-1`
+   - Arrow Icon:
+     - Size: `w-4 h-4` (16px)
+     - Transform: `rotate-180 scale-y-[-1]` (flipped diagonally)
+     - Opacity: `opacity-50`
+     - Padding: `pt-[2px]` (2px top alignment)
+     - Color: `text-primary`
+
+   **Image Placeholder**:
+   - Dimensions: `w-full h-[160.85px]` (270×160.85px exact)
+   - Background: `bg-muted-foreground/30` (30% opacity gray)
+   - Border radius: `rounded-[16px]`
+   - Gray placeholder (will be replaced with actual product image)
+
+   **Pagination Dots**:
+   - Position: Absolute, centered bottom with `bottom-3 left-1/2 -translate-x-1/2`
+   - Size: `w-3 h-3` (12px)
+   - Gap: `gap-2` (8px)
+   - Active: `bg-white` (full opacity)
+   - Inactive: `bg-white/50` (50% opacity)
+   - 3 dots total (1 active, 2 inactive)
+
+**Design Specifications (Final, Pixel-Perfect)**:
+- Container: `container mx-auto` → `max-w-7xl mx-auto` (matches site sections)
+- Gray background: `bg-zinc-400`, `min-h-screen`, contained within max-width
+- Typography card width: 45% max (less than half)
+- Featured card width: 270px exact (Figma spec)
+- Flex layout: `justify-between` creates space between cards
+- Both cards: Light `bg-background` (consistent with site)
+- Both cards: Align at bottom with `items-end`
+- Heading: 40px (2.5rem), normal weight
+- Description: 16px (base), light weight
+- Buttons: 40px height, rounded-full, smaller than original
+- View Products button: Exact navbar gradient match
+- Featured card: Exact Figma design (node 17560-473)
+
+**Iterations Made**:
+1. Initial: Dark design with nested grid layout
+2. Fixed: Changed to light background matching other sections
+3. Fixed: Added container structure (max-w-7xl)
+4. Fixed: Removed extra padding for edge-to-edge cards
+5. Fixed: Gray background also contained (not full-width)
+6. Fixed: Separated cards into flex layout with justify-between
+7. Fixed: Reduced typography card to <50% width (45% max)
+8. Fixed: Reduced all element sizes (heading, description, buttons)
+9. Fixed: Made buttons rounded-full (pill-shaped)
+10. Final: Applied exact navbar gradient to View Products button
+11. Final: Implemented Figma-perfect featured card design (17560-473)
+
+**Component Pattern**:
+- Server component (no client-side JavaScript)
+- Uses shadcn/ui Button for Request Quote
+- Custom gradient button for View Products (navbar style)
+- Fully responsive (stacks on mobile, side-by-side on desktop)
+- Ultra-thin design aesthetic (light font weights, minimal borders)
+- Light mode only (no dark mode classes)
+- Follows established site container patterns
+
+**Result**:
+- ✅ Pixel-perfect match to reference image structure
+- ✅ Gray background constrained within max-w-7xl container
+- ✅ Light background cards (matches About/Contact/Stats sections)
+- ✅ Separate typography and featured cards with space-between
+- ✅ Typography card <50% width with reduced element sizes
+- ✅ Both buttons rounded-full (pill-shaped)
+- ✅ View Products button matches navbar gradient exactly
+- ✅ Featured card matches Figma design perfectly (17560-473)
+- ✅ Both cards align at bottom of gray area
+- ✅ Proper container structure matching other sections
+- ✅ Fully responsive layout
+- ✅ Light mode only (project requirement)
+
+**Files Modified**:
+- `src/components/landing/hero-section.tsx` - Complete redesign with multiple iterations
+
+---
+
 ## Services Page Implementation (2025-12-29)
 
 ### Added - Services Page (Pixel-Perfect Figma Implementation)

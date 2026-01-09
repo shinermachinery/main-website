@@ -1,54 +1,83 @@
 import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 overflow-hidden"
+      className="relative overflow-hidden"
       aria-label="Hero section"
     >
-      {/* Decorative Background Pattern */}
-      <div
-        className="absolute inset-0 opacity-10 dark:opacity-10"
-        style={{
-          backgroundImage: `radial-gradient(circle at 50% 50%, rgba(42, 94, 152, 0.3) 0%, transparent 50%),
-                           radial-gradient(circle at 80% 20%, rgba(24, 183, 90, 0.2) 0%, transparent 50%)`,
-        }}
-        aria-hidden="true"
-      />
+      {/* Container wrapper for consistent width */}
+      <div className="container mx-auto">
+        <div className="max-w-7xl mx-auto">
+          {/* Gray Background Area */}
+          <div className="bg-zinc-400 min-h-screen flex items-end">
+            {/* Flex container for Typography Card and Featured Product Card */}
+            <div className="w-full flex flex-col lg:flex-row gap-6 items-end justify-between pb-0">
+              {/* Typography Card - Left (Less than 50%) */}
+              <div className="bg-background rounded-t-[3rem] w-full lg:max-w-[45%] px-6 lg:px-8 py-12 lg:py-16">
+                {/* Main Heading */}
+                <h1 className="text-3xl md:text-4xl lg:text-[2.5rem] font-normal tracking-tight mb-4 leading-[1.15] text-primary">
+                  Precision Engineered Machinery. Delivered With Confidence.
+                </h1>
 
-      {/* Content */}
-      <div className="container relative z-10 mx-auto px-4 py-20">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Main Heading */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 leading-tight">
-            <span className="text-foreground dark:text-white">
-              Precision Engineering Machinery,
-            </span>
-            <br />
-            <span className="text-foreground dark:text-white">Delivered With</span>{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#2a5e98] to-[#18b75a]">
-              Confidence
-            </span>
-          </h1>
+                {/* Description */}
+                <p className="text-sm md:text-base text-muted-foreground mb-6 leading-relaxed font-light">
+                  Equip your production line with industry-grade machines designed
+                  for reliability, efficiency, and precision.
+                </p>
 
-          {/* Description */}
-          <p className="text-lg md:text-xl text-muted-foreground dark:text-zinc-400 mb-8 max-w-2xl mx-auto leading-relaxed font-medium">
-            Shiner brings you laboratory-grade precision instruments engineered
-            for accuracy, built to perform, and designed to last.
-          </p>
+                {/* CTA Buttons */}
+                <div className="flex flex-wrap gap-3">
+                  {/* Request a Quote Button - Outline */}
+                  <Button
+                    variant="outline"
+                    size="default"
+                    className="h-10 px-5 text-sm font-normal rounded-full"
+                  >
+                    Request a Quote
+                  </Button>
 
-          {/* CTA Button */}
-          <button
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full h-12 font-medium text-sm leading-5 text-white transition-all hover:scale-105"
-            style={{
-              background:
-                "linear-gradient(88.66deg, #2a5e98 27.51%, #18b75a 115.04%)",
-              boxShadow: "inset 0px 4px 28.9px 0px rgba(244, 244, 245, 0.2)",
-            }}
-          >
-            <span>Explore Products</span>
-            <ArrowRight className="w-5 h-5" />
-          </button>
+                  {/* View Products Button - Gradient like navbar */}
+                  <button
+                    className="h-10 px-5 text-sm font-semibold rounded-full bg-gradient-to-r from-brand-blue to-brand-green text-white shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)] inline-flex items-center justify-center gap-2 transition-all hover:shadow-lg"
+                  >
+                    View Products
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Featured Product Card - Right (Smaller) */}
+              <div className="w-full lg:w-[270px]">
+                {/* Featured Product Card */}
+                <div className="bg-background rounded-[16px] p-3 flex flex-col gap-4">
+                  {/* Header Row */}
+                  <div className="flex items-start justify-between gap-4">
+                    <p className="text-sm font-medium leading-5 text-primary flex-1">
+                      Featured Product
+                    </p>
+                    <div className="opacity-50 pt-[2px]">
+                      <ArrowRight className="w-4 h-4 rotate-180 scale-y-[-1] text-primary" />
+                    </div>
+                  </div>
+
+                  {/* Product Image Placeholder with Pagination Dots */}
+                  <div className="relative">
+                    {/* Gray placeholder - will be replaced with actual image */}
+                    <div className="w-full h-[160.85px] bg-muted-foreground/30 rounded-[16px]" />
+
+                    {/* Pagination Dots */}
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+                      <div className="w-3 h-3 rounded-full bg-white" />
+                      <div className="w-3 h-3 rounded-full bg-white/50" />
+                      <div className="w-3 h-3 rounded-full bg-white/50" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
