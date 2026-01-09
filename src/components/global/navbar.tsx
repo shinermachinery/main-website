@@ -9,6 +9,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { GradientButton } from "../ui/gradient-button";
+import { ModeToggle } from "@/components/global/mode-toggle";
 import { navLinks, aboutLinks, moreLinks } from "@/data/navigation";
 
 export function Navbar() {
@@ -17,7 +18,7 @@ export function Navbar() {
   const [morePopoverOpen, setMorePopoverOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-secondary shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-secondary dark:bg-zinc-900 shadow-sm border-b border-border dark:border-zinc-800">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -136,6 +137,8 @@ export function Navbar() {
               </PopoverContent>
             </Popover>
 
+            <ModeToggle />
+
             <GradientButton size="default" className="ml-2">
               <Link href="/contact">Get a Quote</Link>
             </GradientButton>
@@ -205,7 +208,8 @@ export function Navbar() {
               ))}
             </div>
 
-            <div className="px-4 pt-2">
+            <div className="px-4 pt-2 space-y-2">
+              <ModeToggle />
               <GradientButton size="default" className="w-full">
                 <Link href="/contact">Get a Quote</Link>
               </GradientButton>

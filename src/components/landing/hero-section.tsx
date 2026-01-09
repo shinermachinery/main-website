@@ -3,12 +3,12 @@ import { ArrowRight } from "lucide-react";
 export function HeroSection() {
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center bg-zinc-950 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center bg-secondary dark:bg-zinc-950 overflow-hidden"
       aria-label="Hero section"
     >
       {/* Decorative Background Pattern */}
       <div
-        className="absolute inset-0 opacity-10"
+        className="absolute inset-0 opacity-10 dark:opacity-10"
         style={{
           backgroundImage: `radial-gradient(circle at 50% 50%, rgba(42, 94, 152, 0.3) 0%, transparent 50%),
                            radial-gradient(circle at 80% 20%, rgba(24, 183, 90, 0.2) 0%, transparent 50%)`,
@@ -21,18 +21,18 @@ export function HeroSection() {
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Heading */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 leading-tight">
-            <span className="text-white">
+            <span className="text-foreground dark:text-white">
               Precision Engineering Machinery,
             </span>
             <br />
-            <span className="text-white">Delivered With</span>{" "}
+            <span className="text-foreground dark:text-white">Delivered With</span>{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#2a5e98] to-[#18b75a]">
               Confidence
             </span>
           </h1>
 
           {/* Description */}
-          <p className="text-lg md:text-xl text-zinc-400 mb-8 max-w-2xl mx-auto leading-relaxed font-medium">
+          <p className="text-lg md:text-xl text-muted-foreground dark:text-zinc-400 mb-8 max-w-2xl mx-auto leading-relaxed font-medium">
             Shiner brings you laboratory-grade precision instruments engineered
             for accuracy, built to perform, and designed to last.
           </p>
