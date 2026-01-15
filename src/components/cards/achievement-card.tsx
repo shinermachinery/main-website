@@ -14,7 +14,7 @@ export function AchievementCard({
   return (
     <div className="bg-muted rounded-2xl p-4 flex flex-col gap-4">
       {/* Award Image */}
-      <div className="relative w-full aspect-[282/168] rounded-2xl overflow-hidden">
+      <div className="relative w-full aspect-282/168 rounded-2xl overflow-hidden">
         <Image
           src={image}
           alt={awardName}

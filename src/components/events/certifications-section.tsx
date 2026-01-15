@@ -1,41 +1,8 @@
-import { client } from "@/sanity/lib/client";
+import { getCertifications } from "@/sanity/lib/actions";
 import { CertificationCard } from "@/components/cards/certification-card";
 
-interface Certification {
-  id: string;
-  title: string;
-  description: string;
-}
-
-async function getCertifications(): Promise<Certification[]> {
-  try {
-    const certifications = await client.fetch(
-      `*[_type == "certification"] | order(order asc, _createdAt desc) {
-        _id,
-        title,
-        description
-      }[0...3]`,
-    );
-
-    if (!certifications || certifications.length === 0) {
-      return [];
-    }
-
-    return certifications.map(
-      (cert: { _id: string; title: string; description: string }) => ({
-        id: cert._id,
-        title: cert.title,
-        description: cert.description,
-      }),
-    );
-  } catch (error) {
-    console.error("Error fetching certifications:", error);
-    return [];
-  }
-}
-
 export async function CertificationsSection() {
-  const certifications = await getCertifications();
+  const certifications = await getCertifications(3);
 
   if (certifications.length === 0) {
     return (

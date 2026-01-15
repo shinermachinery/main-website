@@ -1,42 +1,8 @@
-import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
+import { getEvents } from "@/sanity/lib/actions";
 import { EventCard } from "@/components/cards/event-card";
 
-interface Event {
-  id: string;
-  image: string;
-  title: string;
-}
-
-async function getEvents(): Promise<Event[]> {
-  try {
-    const events = await client.fetch(
-      `*[_type == "event"] | order(order asc, _createdAt desc) {
-        _id,
-        title,
-        image
-      }[0...8]`,
-    );
-
-    if (!events || events.length === 0) {
-      return [];
-    }
-
-    return events.map((event: { _id: string; image?: any; title: string }) => ({
-      id: event._id,
-      image: event.image
-        ? urlFor(event.image).url()
-        : "/placeholder-event.jpg",
-      title: event.title,
-    }));
-  } catch (error) {
-    console.error("Error fetching events:", error);
-    return [];
-  }
-}
-
 export async function EventsSection() {
-  const events = await getEvents();
+  const events = await getEvents(8);
 
   if (events.length === 0) {
     return (
@@ -73,7 +39,11 @@ export async function EventsSection() {
       {/* Events Grid - 2 columns */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {events.map((event) => (
-          <EventCard key={event.id} {...event} />
+          <EventCard
+            key={event.id}
+            image={event.image}
+            title={event.title}
+          />
         ))}
       </div>
     </section>

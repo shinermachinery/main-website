@@ -2,61 +2,13 @@ import { Phone } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
+import { getServices } from "@/sanity/lib/actions";
 
 export const metadata: Metadata = {
   title: "Our Services | Shiner",
   description:
     "Explore our comprehensive services including training, spare parts, after-sale service, equipment modernization, and consultancy services.",
 };
-
-interface Service {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  slug: string;
-}
-
-async function getServices(): Promise<Service[]> {
-  try {
-    const services = await client.fetch(
-      `*[_type == "service"] | order(order asc, _createdAt desc) {
-        _id,
-        title,
-        description,
-        image,
-        "slug": slug.current
-      }`,
-    );
-
-    if (!services || services.length === 0) {
-      return [];
-    }
-
-    return services.map(
-      (service: {
-        _id: string;
-        title: string;
-        description: string;
-        image?: any;
-        slug: string;
-      }) => ({
-        id: service._id,
-        title: service.title,
-        description: service.description,
-        image: service.image
-          ? urlFor(service.image).url()
-          : "/placeholder-service.jpg",
-        slug: service.slug,
-      }),
-    );
-  } catch (error) {
-    console.error("Error fetching services:", error);
-    return [];
-  }
-}
 
 export default async function ServicesPage() {
   const services = await getServices();

@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
+import { getWhyChooseUs } from "@/sanity/lib/actions";
 
 export const metadata: Metadata = {
   title: "Why Choose Us | SHINER",
@@ -11,66 +10,8 @@ export const metadata: Metadata = {
     "Discover why leading companies choose SHINER for their food processing equipment needs. Quality, reliability, and exceptional service.",
 };
 
-interface Reason {
-  title: string;
-  description: string;
-  icon?: string;
-  order?: number;
-}
-
-interface WhyChooseUsData {
-  title: string;
-  subtitle?: string;
-  heroImage?: string;
-  reasons: Reason[];
-}
-
-async function getWhyChooseUsData(): Promise<WhyChooseUsData | null> {
-  try {
-    const data = await client.fetch(
-      `*[_type == "whyChooseUs"][0] {
-        title,
-        subtitle,
-        heroImage,
-        reasons[] {
-          title,
-          description,
-          icon,
-          order
-        }
-      }`,
-    );
-
-    if (!data) {
-      return null;
-    }
-
-    return {
-      title: data.title || "Why Choose Us",
-      subtitle: data.subtitle,
-      heroImage: data.heroImage ? urlFor(data.heroImage).url() : undefined,
-      reasons:
-        data.reasons && data.reasons.length > 0
-          ? data.reasons
-              .map(
-                (reason: Reason & { icon?: { asset: { _ref: string } } }) => ({
-                  title: reason.title,
-                  description: reason.description,
-                  icon: reason.icon ? urlFor(reason.icon).url() : undefined,
-                  order: reason.order || 999,
-                }),
-              )
-              .sort((a: Reason, b: Reason) => (a.order || 999) - (b.order || 999))
-          : [],
-    };
-  } catch (error) {
-    console.error("Error fetching Why Choose Us data:", error);
-    return null;
-  }
-}
-
 async function WhyChooseUsContent() {
-  const data = await getWhyChooseUsData();
+  const data = await getWhyChooseUs();
 
   if (!data) {
     notFound();

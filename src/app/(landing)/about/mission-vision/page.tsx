@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
+import { getMissionVision } from "@/sanity/lib/actions";
 
 export const metadata: Metadata = {
   title: "Our Mission & Vision | SHINER",
@@ -11,58 +10,8 @@ export const metadata: Metadata = {
     "Learn about SHINER's mission to deliver excellence and our vision for the future of food processing technology.",
 };
 
-interface MissionVisionData {
-  pageTitle: string;
-  pageSubtitle?: string;
-  missionTitle: string;
-  missionStatement: string;
-  missionImage: string;
-  visionTitle: string;
-  visionStatement: string;
-  visionImage: string;
-}
-
-async function getMissionVisionData(): Promise<MissionVisionData | null> {
-  try {
-    const data = await client.fetch(
-      `*[_type == "missionVision"][0] {
-        pageTitle,
-        pageSubtitle,
-        missionTitle,
-        missionStatement,
-        missionImage,
-        visionTitle,
-        visionStatement,
-        visionImage
-      }`,
-    );
-
-    if (!data) {
-      return null;
-    }
-
-    return {
-      pageTitle: data.pageTitle || "Our Mission & Vision",
-      pageSubtitle: data.pageSubtitle,
-      missionTitle: data.missionTitle || "Our Mission",
-      missionStatement: data.missionStatement || "",
-      missionImage: data.missionImage
-        ? urlFor(data.missionImage).url()
-        : "/placeholder-mission.jpg",
-      visionTitle: data.visionTitle || "Our Vision",
-      visionStatement: data.visionStatement || "",
-      visionImage: data.visionImage
-        ? urlFor(data.visionImage).url()
-        : "/placeholder-vision.jpg",
-    };
-  } catch (error) {
-    console.error("Error fetching Mission & Vision data:", error);
-    return null;
-  }
-}
-
 async function MissionVisionContent() {
-  const data = await getMissionVisionData();
+  const data = await getMissionVision();
 
   if (!data) {
     notFound();

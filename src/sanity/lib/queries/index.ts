@@ -108,6 +108,76 @@ export {
 } from "./collections";
 
 // ============================================================================
+// Marketing Queries (Achievements, Certifications, Events)
+// ============================================================================
+
+export {
+  // Achievements
+  ACHIEVEMENT_PROJECTION,
+  getAllAchievementsQuery,
+  getAchievementCountQuery,
+  // Certifications
+  CERTIFICATION_PROJECTION,
+  getAllCertificationsQuery,
+  getCertificationCountQuery,
+  // Events
+  EVENT_PROJECTION,
+  type EventListParams,
+  getAllEventsQuery,
+  getUpcomingEventsQuery,
+  getEventCountQuery,
+} from "./marketing";
+
+// ============================================================================
+// Projects Queries (Installations, Clients, Projects, Services)
+// ============================================================================
+
+export {
+  // Installations
+  INSTALLATION_PROJECTION,
+  getAllInstallationsQuery,
+  getInstallationCountQuery,
+  // Clients
+  CLIENT_PROJECTION,
+  getAllClientsQuery,
+  getClientCountQuery,
+  // Projects
+  PROJECT_SUMMARY_PROJECTION,
+  PROJECT_FULL_PROJECTION,
+  type ProjectListParams,
+  getAllProjectsQuery,
+  getProjectBySlugQuery,
+  getProjectCountQuery,
+  // Services
+  SERVICE_SUMMARY_PROJECTION,
+  SERVICE_FULL_PROJECTION,
+  getAllServicesQuery,
+  getServiceBySlugQuery,
+  getServiceCountQuery,
+} from "./projects";
+
+// ============================================================================
+// Company Queries (Director, Mission/Vision, Why Choose Us, Team)
+// ============================================================================
+
+export {
+  // Director
+  DIRECTOR_PROJECTION,
+  getDirectorQuery,
+  // Mission Vision
+  MISSION_VISION_PROJECTION,
+  getMissionVisionQuery,
+  // Why Choose Us
+  WHY_CHOOSE_US_PROJECTION,
+  getWhyChooseUsQuery,
+  // Team Members
+  TEAM_MEMBER_FULL_PROJECTION,
+  type TeamMemberListParams,
+  getCompanyTeamMembersQuery,
+  getCompanyTeamCountQuery,
+} from "./company";
+
+// ============================================================================
 // Query Result Type
 // ============================================================================
 

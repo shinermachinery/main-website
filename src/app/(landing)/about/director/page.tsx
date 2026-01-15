@@ -5,8 +5,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { PortableText } from "@/components/blog/portable-text";
-import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
+import { getDirector } from "@/sanity/lib/actions";
 
 export const metadata: Metadata = {
   title: "About Our Director | SHINER",
@@ -14,60 +13,8 @@ export const metadata: Metadata = {
     "Meet the leadership behind SHINER. Learn about our director's vision, expertise, and commitment to excellence.",
 };
 
-interface DirectorData {
-  pageTitle: string;
-  pageSubtitle?: string;
-  name: string;
-  title: string;
-  image: string;
-  bio: any;
-  achievements?: string[];
-  email?: string;
-  phone?: string;
-  linkedin?: string;
-}
-
-async function getDirectorData(): Promise<DirectorData | null> {
-  try {
-    const data = await client.fetch(
-      `*[_type == "director"][0] {
-        pageTitle,
-        pageSubtitle,
-        name,
-        title,
-        image,
-        bio,
-        achievements,
-        email,
-        phone,
-        linkedin
-      }`,
-    );
-
-    if (!data) {
-      return null;
-    }
-
-    return {
-      pageTitle: data.pageTitle || "Our Director",
-      pageSubtitle: data.pageSubtitle,
-      name: data.name,
-      title: data.title,
-      image: data.image ? urlFor(data.image).url() : "/placeholder-director.jpg",
-      bio: data.bio,
-      achievements: data.achievements,
-      email: data.email,
-      phone: data.phone,
-      linkedin: data.linkedin,
-    };
-  } catch (error) {
-    console.error("Error fetching Director data:", error);
-    return null;
-  }
-}
-
 async function DirectorContent() {
-  const data = await getDirectorData();
+  const data = await getDirector();
 
   if (!data) {
     notFound();

@@ -1,56 +1,8 @@
-import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
+import { getInstallations } from "@/sanity/lib/actions";
 import { InstallationCard } from "@/components/cards/installation-card";
 
-interface Installation {
-  id: string;
-  image: string;
-  type: string;
-  title: string;
-  location: string;
-}
-
-async function getInstallations(): Promise<Installation[]> {
-  try {
-    const installations = await client.fetch(
-      `*[_type == "installation"] | order(order asc, _createdAt desc) {
-        _id,
-        title,
-        type,
-        location,
-        image
-      }[0...6]`,
-    );
-
-    if (!installations || installations.length === 0) {
-      return [];
-    }
-
-    return installations.map(
-      (installation: {
-        _id: string;
-        image?: any;
-        type: string;
-        title: string;
-        location?: string;
-      }) => ({
-        id: installation._id,
-        image: installation.image
-          ? urlFor(installation.image).url()
-          : "/placeholder-installation.jpg",
-        type: installation.type,
-        title: installation.title,
-        location: installation.location || "",
-      }),
-    );
-  } catch (error) {
-    console.error("Error fetching installations:", error);
-    return [];
-  }
-}
-
 export async function InstallationsSection() {
-  const installations = await getInstallations();
+  const installations = await getInstallations(6);
 
   if (installations.length === 0) {
     return (

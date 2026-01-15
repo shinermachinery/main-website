@@ -1,72 +1,9 @@
-"use client";
-
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect, useState } from "react";
-import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
+import { getAchievements } from "@/sanity/lib/actions";
 import { AchievementCard } from "@/components/cards/achievement-card";
 
-interface Achievement {
-  id: string;
-  image: string;
-  awardGiver: string;
-  awardName: string;
-}
-
-async function getAchievements(): Promise<Achievement[]> {
-  try {
-    const achievements = await client.fetch(
-      `*[_type == "achievement"] | order(order asc, _createdAt desc) {
-        _id,
-        awardName,
-        awardGiver,
-        image
-      }[0...3]`,
-    );
-
-    if (!achievements || achievements.length === 0) {
-      return [];
-    }
-
-    return achievements.map((achievement: any) => ({
-      id: achievement._id,
-      image: achievement.image
-        ? urlFor(achievement.image).url()
-        : "/placeholder-achievement.jpg",
-      awardGiver: achievement.awardGiver,
-      awardName: achievement.awardName,
-    }));
-  } catch (error) {
-    console.error("Error fetching achievements:", error);
-    return [];
-  }
-}
-
-export function AchievementsSection() {
-  const [achievements, setAchievements] = useState<Achievement[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    getAchievements().then((data) => {
-      setAchievements(data);
-      setIsLoading(false);
-    });
-  }, []);
-
-  if (isLoading) {
-    return (
-      <section className="flex flex-col gap-10 w-full">
-        <h2 className="text-[1.875rem] font-medium leading-10 text-foreground tracking-[-0.0469rem]">
-          Our Achievements
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {[1, 2, 3].map((i) => (
-            <div key={i} className="h-48 bg-muted animate-pulse rounded-lg" />
-          ))}
-        </div>
-      </section>
-    );
-  }
+export async function AchievementsSection() {
+  const achievements = await getAchievements(3);
 
   if (achievements.length === 0) {
     return (
@@ -119,7 +56,12 @@ export function AchievementsSection() {
       {/* Achievements Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {achievements.map((achievement) => (
-          <AchievementCard key={achievement.id} {...achievement} />
+          <AchievementCard
+            key={achievement.id}
+            image={achievement.image}
+            awardGiver={achievement.awardGiver}
+            awardName={achievement.awardName}
+          />
         ))}
       </div>
     </section>
