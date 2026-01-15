@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import { missionVisionData } from "@/data/fallback/about-pages";
 
 export const metadata: Metadata = {
   title: "Our Mission & Vision | SHINER",
@@ -11,10 +11,18 @@ export const metadata: Metadata = {
     "Learn about SHINER's mission to deliver excellence and our vision for the future of food processing technology.",
 };
 
-// Dummy data as fallback
-const dummyData = missionVisionData;
+interface MissionVisionData {
+  pageTitle: string;
+  pageSubtitle?: string;
+  missionTitle: string;
+  missionStatement: string;
+  missionImage: string;
+  visionTitle: string;
+  visionStatement: string;
+  visionImage: string;
+}
 
-async function getMissionVisionData() {
+async function getMissionVisionData(): Promise<MissionVisionData | null> {
   try {
     const data = await client.fetch(
       `*[_type == "missionVision"][0] {
@@ -30,31 +38,35 @@ async function getMissionVisionData() {
     );
 
     if (!data) {
-      return dummyData;
+      return null;
     }
 
     return {
-      pageTitle: data.pageTitle || dummyData.pageTitle,
-      pageSubtitle: data.pageSubtitle || dummyData.pageSubtitle,
-      missionTitle: data.missionTitle || dummyData.missionTitle,
-      missionStatement: data.missionStatement || dummyData.missionStatement,
+      pageTitle: data.pageTitle || "Our Mission & Vision",
+      pageSubtitle: data.pageSubtitle,
+      missionTitle: data.missionTitle || "Our Mission",
+      missionStatement: data.missionStatement || "",
       missionImage: data.missionImage
         ? urlFor(data.missionImage).url()
-        : dummyData.missionImage,
-      visionTitle: data.visionTitle || dummyData.visionTitle,
-      visionStatement: data.visionStatement || dummyData.visionStatement,
+        : "/placeholder-mission.jpg",
+      visionTitle: data.visionTitle || "Our Vision",
+      visionStatement: data.visionStatement || "",
       visionImage: data.visionImage
         ? urlFor(data.visionImage).url()
-        : dummyData.visionImage,
+        : "/placeholder-vision.jpg",
     };
   } catch (error) {
     console.error("Error fetching Mission & Vision data:", error);
-    return dummyData;
+    return null;
   }
 }
 
 async function MissionVisionContent() {
   const data = await getMissionVisionData();
+
+  if (!data) {
+    notFound();
+  }
 
   return (
     <div className="flex flex-col gap-20">

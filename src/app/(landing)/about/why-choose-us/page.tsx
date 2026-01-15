@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import { whyChooseUsData } from "@/data/fallback/about-pages";
 
 export const metadata: Metadata = {
   title: "Why Choose Us | SHINER",
@@ -18,10 +18,14 @@ interface Reason {
   order?: number;
 }
 
-// Dummy data as fallback
-const dummyData = whyChooseUsData;
+interface WhyChooseUsData {
+  title: string;
+  subtitle?: string;
+  heroImage?: string;
+  reasons: Reason[];
+}
 
-async function getWhyChooseUsData() {
+async function getWhyChooseUsData(): Promise<WhyChooseUsData | null> {
   try {
     const data = await client.fetch(
       `*[_type == "whyChooseUs"][0] {
@@ -38,15 +42,13 @@ async function getWhyChooseUsData() {
     );
 
     if (!data) {
-      return dummyData;
+      return null;
     }
 
     return {
-      title: data.title || dummyData.title,
-      subtitle: data.subtitle || dummyData.subtitle,
-      heroImage: data.heroImage
-        ? urlFor(data.heroImage).url()
-        : dummyData.heroImage,
+      title: data.title || "Why Choose Us",
+      subtitle: data.subtitle,
+      heroImage: data.heroImage ? urlFor(data.heroImage).url() : undefined,
       reasons:
         data.reasons && data.reasons.length > 0
           ? data.reasons
@@ -58,19 +60,21 @@ async function getWhyChooseUsData() {
                   order: reason.order || 999,
                 }),
               )
-              .sort(
-                (a: Reason, b: Reason) => (a.order || 999) - (b.order || 999),
-              )
-          : dummyData.reasons,
+              .sort((a: Reason, b: Reason) => (a.order || 999) - (b.order || 999))
+          : [],
     };
   } catch (error) {
     console.error("Error fetching Why Choose Us data:", error);
-    return dummyData;
+    return null;
   }
 }
 
 async function WhyChooseUsContent() {
   const data = await getWhyChooseUsData();
+
+  if (!data) {
+    notFound();
+  }
 
   return (
     <div className="flex flex-col gap-20">
@@ -110,40 +114,46 @@ async function WhyChooseUsContent() {
       </section>
 
       {/* Reasons Grid */}
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {data.reasons.map((reason: Reason, index: number) => (
-          <div
-            key={index}
-            className="flex flex-col gap-4 p-6 rounded-2xl bg-muted"
-          >
-            {reason.icon && (
-              <div className="relative w-16 h-16 rounded-xl overflow-hidden">
-                <Image
-                  src={reason.icon}
-                  alt={reason.title}
-                  fill
-                  className="object-cover"
-                  sizes="64px"
-                />
+      {data.reasons.length > 0 ? (
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {data.reasons.map((reason, index) => (
+            <div
+              key={index}
+              className="flex flex-col gap-4 p-6 rounded-2xl bg-muted"
+            >
+              {reason.icon && (
+                <div className="relative w-16 h-16 rounded-xl overflow-hidden">
+                  <Image
+                    src={reason.icon}
+                    alt={reason.title}
+                    fill
+                    className="object-cover"
+                    sizes="64px"
+                  />
+                </div>
+              )}
+              <div className="flex flex-col gap-2">
+                <h3
+                  className="font-medium text-[1.25rem] leading-[1.75rem] tracking-[-0.0313rem] text-foreground"
+                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                >
+                  {reason.title}
+                </h3>
+                <p
+                  className="font-normal text-sm leading-5 text-muted-foreground"
+                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+                >
+                  {reason.description}
+                </p>
               </div>
-            )}
-            <div className="flex flex-col gap-2">
-              <h3
-                className="font-medium text-[1.25rem] leading-[1.75rem] tracking-[-0.0313rem] text-foreground"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-              >
-                {reason.title}
-              </h3>
-              <p
-                className="font-normal text-sm leading-5 text-muted-foreground"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-              >
-                {reason.description}
-              </p>
             </div>
-          </div>
-        ))}
-      </section>
+          ))}
+        </section>
+      ) : (
+        <p className="text-lg text-muted-foreground text-center py-8">
+          No reasons to display at this time.
+        </p>
+      )}
     </div>
   );
 }

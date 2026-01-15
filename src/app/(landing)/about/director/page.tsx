@@ -2,11 +2,11 @@ import { Linkedin, Mail, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { PortableText } from "@/components/blog/portable-text";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import { directorData } from "@/data/fallback/about-pages";
 
 export const metadata: Metadata = {
   title: "About Our Director | SHINER",
@@ -14,10 +14,20 @@ export const metadata: Metadata = {
     "Meet the leadership behind SHINER. Learn about our director's vision, expertise, and commitment to excellence.",
 };
 
-// Dummy data as fallback
-const dummyData = directorData;
+interface DirectorData {
+  pageTitle: string;
+  pageSubtitle?: string;
+  name: string;
+  title: string;
+  image: string;
+  bio: any;
+  achievements?: string[];
+  email?: string;
+  phone?: string;
+  linkedin?: string;
+}
 
-async function getDirectorData() {
+async function getDirectorData(): Promise<DirectorData | null> {
   try {
     const data = await client.fetch(
       `*[_type == "director"][0] {
@@ -35,32 +45,33 @@ async function getDirectorData() {
     );
 
     if (!data) {
-      return dummyData;
+      return null;
     }
 
     return {
-      pageTitle: data.pageTitle || dummyData.pageTitle,
-      pageSubtitle: data.pageSubtitle || dummyData.pageSubtitle,
-      name: data.name || dummyData.name,
-      title: data.title || dummyData.title,
-      image: data.image ? urlFor(data.image).url() : dummyData.image,
-      bio: data.bio || dummyData.bio,
-      achievements:
-        data.achievements && data.achievements.length > 0
-          ? data.achievements
-          : dummyData.achievements,
+      pageTitle: data.pageTitle || "Our Director",
+      pageSubtitle: data.pageSubtitle,
+      name: data.name,
+      title: data.title,
+      image: data.image ? urlFor(data.image).url() : "/placeholder-director.jpg",
+      bio: data.bio,
+      achievements: data.achievements,
       email: data.email,
       phone: data.phone,
       linkedin: data.linkedin,
     };
   } catch (error) {
     console.error("Error fetching Director data:", error);
-    return dummyData;
+    return null;
   }
 }
 
 async function DirectorContent() {
   const data = await getDirectorData();
+
+  if (!data) {
+    notFound();
+  }
 
   return (
     <div className="flex flex-col gap-20">
@@ -166,20 +177,22 @@ async function DirectorContent() {
         {/* Right: Biography & Achievements */}
         <div className="flex-1 flex flex-col gap-10">
           {/* Biography */}
-          <div className="flex flex-col gap-4">
-            <h3
-              className="font-medium text-[1.5rem] leading-8 tracking-[-0.0375rem] text-foreground"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-            >
-              Biography
-            </h3>
-            <div
-              className="prose prose-lg max-w-none"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-            >
-              <PortableText value={data.bio} />
+          {data.bio && (
+            <div className="flex flex-col gap-4">
+              <h3
+                className="font-medium text-[1.5rem] leading-8 tracking-[-0.0375rem] text-foreground"
+                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+              >
+                Biography
+              </h3>
+              <div
+                className="prose prose-lg max-w-none"
+                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+              >
+                <PortableText value={data.bio} />
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Key Achievements */}
           {data.achievements && data.achievements.length > 0 && (

@@ -1,17 +1,16 @@
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { InstallationCard } from "@/components/cards/installation-card";
-import { dummyInstallations } from "@/data/fallback/installations";
 
 interface Installation {
-  id: string | number;
+  id: string;
   image: string;
   type: string;
   title: string;
   location: string;
 }
 
-async function getInstallations() {
+async function getInstallations(): Promise<Installation[]> {
   try {
     const installations = await client.fetch(
       `*[_type == "installation"] | order(order asc, _createdAt desc) {
@@ -24,7 +23,7 @@ async function getInstallations() {
     );
 
     if (!installations || installations.length === 0) {
-      return dummyInstallations;
+      return [];
     }
 
     return installations.map(
@@ -38,7 +37,7 @@ async function getInstallations() {
         id: installation._id,
         image: installation.image
           ? urlFor(installation.image).url()
-          : dummyInstallations[0].image,
+          : "/placeholder-installation.jpg",
         type: installation.type,
         title: installation.title,
         location: installation.location || "",
@@ -46,12 +45,32 @@ async function getInstallations() {
     );
   } catch (error) {
     console.error("Error fetching installations:", error);
-    return dummyInstallations;
+    return [];
   }
 }
 
 export async function InstallationsSection() {
   const installations = await getInstallations();
+
+  if (installations.length === 0) {
+    return (
+      <section className="flex flex-col gap-6 w-full">
+        <div className="flex flex-col gap-4 font-medium">
+          <h1 className="text-4xl font-medium text-foreground">
+            Some of Our Installations
+          </h1>
+          <p className="text-lg text-muted-foreground tracking-[-0.0313rem]">
+            Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst
+            ullamcorper purus
+          </p>
+        </div>
+        <p className="text-lg text-muted-foreground text-center py-8">
+          No installations to display at this time.
+        </p>
+      </section>
+    );
+  }
+
   return (
     <section className="flex flex-col gap-6 w-full">
       {/* Header */}
@@ -65,16 +84,9 @@ export async function InstallationsSection() {
         </p>
       </div>
 
-      {/* Grid - First Row */}
+      {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {installations.slice(0, 3).map((installation: Installation) => (
-          <InstallationCard key={installation.id} {...installation} />
-        ))}
-      </div>
-
-      {/* Grid - Second Row */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {installations.slice(3, 6).map((installation: Installation) => (
+        {installations.map((installation) => (
           <InstallationCard key={installation.id} {...installation} />
         ))}
       </div>

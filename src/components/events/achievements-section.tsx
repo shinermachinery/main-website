@@ -5,9 +5,15 @@ import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { AchievementCard } from "@/components/cards/achievement-card";
-import { dummyAchievements } from "@/data/fallback/achievements";
 
-async function getAchievements() {
+interface Achievement {
+  id: string;
+  image: string;
+  awardGiver: string;
+  awardName: string;
+}
+
+async function getAchievements(): Promise<Achievement[]> {
   try {
     const achievements = await client.fetch(
       `*[_type == "achievement"] | order(order asc, _createdAt desc) {
@@ -19,29 +25,62 @@ async function getAchievements() {
     );
 
     if (!achievements || achievements.length === 0) {
-      return dummyAchievements;
+      return [];
     }
 
     return achievements.map((achievement: any) => ({
       id: achievement._id,
       image: achievement.image
         ? urlFor(achievement.image).url()
-        : dummyAchievements[0].image,
+        : "/placeholder-achievement.jpg",
       awardGiver: achievement.awardGiver,
       awardName: achievement.awardName,
     }));
   } catch (error) {
     console.error("Error fetching achievements:", error);
-    return dummyAchievements;
+    return [];
   }
 }
 
 export function AchievementsSection() {
-  const [achievements, setAchievements] = useState(dummyAchievements);
+  const [achievements, setAchievements] = useState<Achievement[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getAchievements().then(setAchievements);
+    getAchievements().then((data) => {
+      setAchievements(data);
+      setIsLoading(false);
+    });
   }, []);
+
+  if (isLoading) {
+    return (
+      <section className="flex flex-col gap-10 w-full">
+        <h2 className="text-[1.875rem] font-medium leading-10 text-foreground tracking-[-0.0469rem]">
+          Our Achievements
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="h-48 bg-muted animate-pulse rounded-lg" />
+          ))}
+        </div>
+      </section>
+    );
+  }
+
+  if (achievements.length === 0) {
+    return (
+      <section className="flex flex-col gap-10 w-full">
+        <h2 className="text-[1.875rem] font-medium leading-10 text-foreground tracking-[-0.0469rem]">
+          Our Achievements
+        </h2>
+        <p className="text-lg text-muted-foreground text-center py-8">
+          No achievements to display at this time.
+        </p>
+      </section>
+    );
+  }
+
   return (
     <section className="flex flex-col gap-10 w-full">
       {/* Header with Navigation */}

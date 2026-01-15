@@ -1,14 +1,13 @@
 import { client } from "@/sanity/lib/client";
 import { CertificationCard } from "@/components/cards/certification-card";
-import { dummyCertifications } from "@/data/fallback/certifications";
 
 interface Certification {
-  id: string | number;
+  id: string;
   title: string;
   description: string;
 }
 
-async function getCertifications() {
+async function getCertifications(): Promise<Certification[]> {
   try {
     const certifications = await client.fetch(
       `*[_type == "certification"] | order(order asc, _createdAt desc) {
@@ -19,7 +18,7 @@ async function getCertifications() {
     );
 
     if (!certifications || certifications.length === 0) {
-      return dummyCertifications;
+      return [];
     }
 
     return certifications.map(
@@ -31,12 +30,30 @@ async function getCertifications() {
     );
   } catch (error) {
     console.error("Error fetching certifications:", error);
-    return dummyCertifications;
+    return [];
   }
 }
 
 export async function CertificationsSection() {
   const certifications = await getCertifications();
+
+  if (certifications.length === 0) {
+    return (
+      <section className="flex gap-10 items-start w-full">
+        <div className="w-[588px] shrink-0 flex items-center">
+          <h2 className="text-[1.875rem] font-medium leading-10 text-foreground tracking-[-0.0469rem] w-[384px]">
+            Trusted by Founders, Marketers, and Individuals
+          </h2>
+        </div>
+        <div className="flex-1">
+          <p className="text-lg text-muted-foreground">
+            No certifications to display at this time.
+          </p>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="flex gap-10 items-start w-full">
       {/* Left: Heading */}
@@ -48,7 +65,7 @@ export async function CertificationsSection() {
 
       {/* Right: Certifications List */}
       <div className="flex flex-col gap-10 flex-1">
-        {certifications.map((cert: Certification) => (
+        {certifications.map((cert) => (
           <CertificationCard
             key={cert.id}
             title={cert.title}

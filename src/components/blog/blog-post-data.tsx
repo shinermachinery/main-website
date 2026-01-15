@@ -1,10 +1,5 @@
 import { notFound } from "next/navigation";
 import { BlogPostDetail } from "@/components/blog/blog-post-detail";
-import {
-  FALLBACK_BLOG_IMAGES,
-  FALLBACK_BLOG_POST_CONTENT,
-  FALLBACK_BLOG_POSTS,
-} from "@/components/blog/fallback-data";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 
@@ -42,30 +37,8 @@ export async function BlogPostData({ slug }: BlogPostDataProps) {
 
     const post: BlogPost | null = await client.fetch(query, { slug });
 
-    // If no post from Sanity, try fallback data
     if (!post) {
-      const fallbackPost = FALLBACK_BLOG_POSTS.find((p) => p.slug === slug);
-
-      if (!fallbackPost) {
-        notFound();
-      }
-
-      // Find index for consistent image selection
-      const postIndex = FALLBACK_BLOG_POSTS.findIndex((p) => p.slug === slug);
-      const imageUrl =
-        FALLBACK_BLOG_IMAGES[postIndex % FALLBACK_BLOG_IMAGES.length];
-
-      return (
-        <BlogPostDetail
-          post={{
-            title: fallbackPost.title,
-            category: fallbackPost.category,
-            publishedAt: fallbackPost.publishedAt,
-            imageUrl,
-            content: FALLBACK_BLOG_POST_CONTENT,
-          }}
-        />
-      );
+      notFound();
     }
 
     // Build image URL from Sanity
@@ -87,28 +60,6 @@ export async function BlogPostData({ slug }: BlogPostDataProps) {
     );
   } catch (error) {
     console.error("Error fetching blog post:", error);
-
-    // Try fallback data on error
-    const fallbackPost = FALLBACK_BLOG_POSTS.find((p) => p.slug === slug);
-
-    if (!fallbackPost) {
-      notFound();
-    }
-
-    const postIndex = FALLBACK_BLOG_POSTS.findIndex((p) => p.slug === slug);
-    const imageUrl =
-      FALLBACK_BLOG_IMAGES[postIndex % FALLBACK_BLOG_IMAGES.length];
-
-    return (
-      <BlogPostDetail
-        post={{
-          title: fallbackPost.title,
-          category: fallbackPost.category,
-          publishedAt: fallbackPost.publishedAt,
-          imageUrl,
-          content: FALLBACK_BLOG_POST_CONTENT,
-        }}
-      />
-    );
+    notFound();
   }
 }

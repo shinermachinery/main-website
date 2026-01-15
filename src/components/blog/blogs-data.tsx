@@ -1,5 +1,4 @@
 import { BlogsGrid } from "@/components/blog/blogs-grid";
-import { FALLBACK_BLOG_POSTS } from "@/components/blog/fallback-data";
 import { client } from "@/sanity/lib/client";
 
 interface BlogsDataProps {
@@ -51,36 +50,10 @@ export async function BlogsData({ searchQuery, category }: BlogsDataProps) {
 
     const posts: BlogPost[] = await client.fetch(query);
 
-    // Use fallback data if no posts from Sanity
-    const displayPosts =
-      posts && posts.length > 0 ? posts : FALLBACK_BLOG_POSTS;
-
-    // Apply client-side filtering to fallback data if needed
-    let filteredPosts = displayPosts;
-
-    if (posts.length === 0) {
-      // If using fallback data, apply filters manually
-      if (searchQuery) {
-        const lowerQuery = searchQuery.toLowerCase();
-        filteredPosts = filteredPosts.filter(
-          (post) =>
-            post.title.toLowerCase().includes(lowerQuery) ||
-            post.description.toLowerCase().includes(lowerQuery),
-        );
-      }
-
-      if (category) {
-        filteredPosts = filteredPosts.filter(
-          (post) => post.category.toLowerCase() === category.toLowerCase(),
-        );
-      }
-    }
-
-    return <BlogsGrid posts={filteredPosts} />;
+    return <BlogsGrid posts={posts ?? []} />;
   } catch (error) {
     console.error("Error fetching blog posts:", error);
 
-    // Return fallback data on error
-    return <BlogsGrid posts={FALLBACK_BLOG_POSTS} />;
+    return <BlogsGrid posts={[]} />;
   }
 }

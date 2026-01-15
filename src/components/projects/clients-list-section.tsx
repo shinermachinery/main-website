@@ -1,10 +1,12 @@
 import { client } from "@/sanity/lib/client";
 import { ClientCard } from "@/components/cards/client-card";
-import { dummyClients } from "@/data/fallback/clients";
 
-const dummyClientsData = dummyClients;
+interface ClientData {
+  companyName: string;
+  projects: string[];
+}
 
-async function getClients() {
+async function getClients(): Promise<ClientData[][] | null> {
   try {
     const clients = await client.fetch(
       `*[_type == "client" && !highlight] | order(order asc, _createdAt desc) {
@@ -15,27 +17,47 @@ async function getClients() {
     );
 
     if (!clients || clients.length === 0) {
-      return dummyClientsData;
+      return null;
     }
 
     // Distribute clients across 3 columns
-    const columns: any[][] = [[], [], []];
-    clients.forEach((client: any, index: number) => {
+    const columns: ClientData[][] = [[], [], []];
+    clients.forEach((clientItem: any, index: number) => {
       columns[index % 3].push({
-        companyName: client.companyName,
-        projects: client.projects || [],
+        companyName: clientItem.companyName,
+        projects: clientItem.projects || [],
       });
     });
 
     return columns;
   } catch (error) {
     console.error("Error fetching clients:", error);
-    return dummyClientsData;
+    return null;
   }
 }
 
 export async function ClientsListSection() {
   const clientsData = await getClients();
+
+  if (!clientsData) {
+    return (
+      <section className="flex flex-col gap-6 w-full">
+        <div className="flex flex-col gap-4 font-medium">
+          <h2 className="text-4xl font-medium text-primary">
+            Plant Engineering Clients List
+          </h2>
+          <p className="text-lg text-muted-foreground">
+            Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst
+            ullamcorper purus
+          </p>
+        </div>
+        <p className="text-lg text-muted-foreground text-center py-8">
+          No clients to display at this time.
+        </p>
+      </section>
+    );
+  }
+
   return (
     <section className="flex flex-col gap-6 w-full">
       {/* Header */}
@@ -53,11 +75,11 @@ export async function ClientsListSection() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {clientsData.map((column, columnIndex) => (
           <div key={columnIndex} className="flex flex-col gap-6">
-            {column.map((client, clientIndex) => (
+            {column.map((clientItem, clientIndex) => (
               <ClientCard
                 key={clientIndex}
-                companyName={client.companyName}
-                projects={client.projects}
+                companyName={clientItem.companyName}
+                projects={clientItem.projects}
               />
             ))}
             {/* Add highlight card in last column */}
