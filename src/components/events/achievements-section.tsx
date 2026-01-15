@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import { AchievementCard } from "@/components/global/cards";
+import { AchievementCard } from "@/components/cards/achievement-card";
 import { dummyAchievements } from "@/data/fallback/achievements";
 
 async function getAchievements() {

@@ -1,6 +1,6 @@
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import { EventCard } from "@/components/global/cards";
+import { EventCard } from "@/components/cards/event-card";
 import { dummyEvents } from "@/data/fallback/events";
 
 interface Event {

@@ -2,7 +2,7 @@
 
 Master index of all features in this project. Each feature has detailed documentation in its respective folder.
 
-**Last Updated**: 2026-01-09
+**Last Updated**: 2026-01-15
 
 ## Active Features
 
@@ -268,7 +268,7 @@ Features currently implemented and in use.
 **Description**: Complete About Us section with three dedicated pages, navbar dropdown, and rich content management
 **Key Tech**: Next.js 16, Sanity Singleton Documents, Portable Text, Server Components
 **Created**: 2025-12-30
-**Last Updated**: 2026-01-09
+**Last Updated**: 2026-01-12
 
 **Quick Links:**
 - [Full Documentation](./features/about-us-pages/README.md)
@@ -454,7 +454,7 @@ Features scheduled for future implementation:
 | Sanity Integration | ✅ | `sanity.config.ts`<br>`src/sanity/**/*` | [View](./features/sanity-integration/README.md) |
 | UI Components (shadcn/ui) | 🚧 | `src/components/ui/**/*`<br>`src/lib/utils.ts` | [View](./features/ui-components/README.md) |
 | MCP Integration | ✅ | `.mcp.json`<br>`.claude/settings.local.json` | [View](../MCP-SETUP.md) |
-| Landing Pages | ✅ | `src/app/(landing)/**/*`<br>5 pages: Home, About, Contact, Blog, Services | [View](./features/landing-page/README.md) |
+| Landing Pages | ✅ | `src/app/(landing)/**/*`<br>6 pages: Home, About, Contact, Blog, Blog Detail, Services | [View](./features/landing-page/README.md) |
 | Projects & Products | ✅ | `src/app/(landing)/projects/**/*`<br>`src/components/projects/*` | [View](./features/projects-products/README.md) |
 | About Us Pages | ✅ | `src/app/(landing)/about/*`<br>3 pages: Why Choose, Mission/Vision, Director | [View](./features/about-us-pages/README.md) |
 
@@ -465,11 +465,14 @@ Features scheduled for future implementation:
 - 🚧 In Development: 1
 - 📋 Planned: 3
 
-**Last Feature Completed**: About Us Pages (2025-12-30)
+**Last Feature Completed**: Hero Section Redesign (2026-01-10)
 **Recently Updated**:
-- **Design System Refactoring (2026-01-09)** - Codebase-wide conversion of px to rem units (36 files), hardcoded colors to semantic tokens, full accessibility and maintainability improvements
-- Projects & Products System - Product catalog grid, dynamic detail pages with image galleries, specifications, related products, full Sanity integration
-- About Us Pages - 3 new pages (Why Choose Us, Mission & Vision, Director), navbar dropdown, Portable Text support, singleton Sanity documents
+- **Sanity Data Flow Pattern (2026-01-15)** - Documented 3-layer architecture (Queries → Actions → Components) in patterns.md
+- **Hero Section Redesign (2026-01-10)** - Complete redesign to match Figma reference with gray background, typography card, featured product card, navbar-style gradient buttons
+- **ModeToggle Refactoring (2026-01-09)** - Simplified toggle component, hydration handling, Navbar integration
+- **Design System Refactoring (2026-01-09)** - Codebase-wide conversion of px to rem units (36 files), hardcoded colors to semantic tokens
+- Projects & Products System - Product catalog grid, dynamic detail pages with image galleries, specifications, related products
+- About Us Pages - 3 new pages (Why Choose Us, Mission & Vision, Director), navbar dropdown, Portable Text support
 **Next Planned**: Events Page, Contact Form Enhancement, Service Detail Pages
 
 ## Related Documentation
@@ -484,4 +487,4 @@ Features scheduled for future implementation:
 
 **Maintenance Schedule**: Review and update this index when features change
 **Owner**: Team
-**Last Review**: 2026-01-09
+**Last Review**: 2026-01-15

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-import { PortableText } from "@/components/global/blog/portable-text";
+import { PortableText } from "@/components/blog/portable-text";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { directorData } from "@/data/fallback/about-pages";

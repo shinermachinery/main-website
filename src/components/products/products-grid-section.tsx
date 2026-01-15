@@ -1,6 +1,6 @@
 "use client";
 import type { Category, Product } from "@/lib/sanity-types";
-import { ProductCard } from "../landing/product-card";
+import { ProductCard } from "@/components/sections/products/product-card";
 import { imageBuilder } from "@/sanity/lib/image";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";

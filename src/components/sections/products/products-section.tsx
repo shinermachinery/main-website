@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { ArrowRight } from "lucide-react";
-import { ProductCard } from "@/components/landing/product-card";
+import { ProductCard } from "./product-card";
 import type { Product } from "@/lib/sanity-types";
 import { urlFor } from "@/sanity/lib/image";
 

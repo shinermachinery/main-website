@@ -1,6 +1,6 @@
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
-import { InstallationCard } from "@/components/global/cards";
+import { InstallationCard } from "@/components/cards/installation-card";
 import { dummyInstallations } from "@/data/fallback/installations";
 
 interface Installation {

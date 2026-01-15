@@ -9,7 +9,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { GradientButton } from "../ui/gradient-button";
-import { ModeToggle } from "@/components/global/mode-toggle";
+import { ModeToggle } from "@/components/layout/mode-toggle";
 import { navLinks, aboutLinks, moreLinks } from "@/data/navigation";
 
 export function Navbar() {

@@ -1,6 +1,6 @@
 # Development Patterns
 
-**Last Updated**: 2025-12-23
+**Last Updated**: 2026-01-15
 
 ## Overview
 
@@ -637,6 +637,347 @@ export default function StudioPage() {
 
 ---
 
+## Pattern: Sanity Data Flow (Query → Action → Component)
+
+This project uses a **3-layer architecture** for all Sanity CMS data fetching. This pattern ensures type safety, reusability, error handling, and clean separation of concerns.
+
+### Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                        SANITY DATA FLOW                              │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  Layer 1: QUERIES                                                    │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │  src/sanity/lib/queries/                                     │   │
+│  │  ├── index.ts          (Central export for all queries)      │   │
+│  │  ├── common.ts         (Reusable projections & utilities)    │   │
+│  │  ├── products.ts       (Product GROQ queries)                │   │
+│  │  ├── blog.ts           (Blog/Post GROQ queries)              │   │
+│  │  ├── team.ts           (Team member queries)                 │   │
+│  │  ├── testimonials.ts   (Testimonial queries)                 │   │
+│  │  ├── collections.ts    (Collection queries)                  │   │
+│  │  └── home.ts           (Homepage aggregate queries)          │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                              ↓                                       │
+│  Layer 2: ACTIONS (Server Actions)                                   │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │  src/actions/                                                │   │
+│  │  ├── products.ts       (getAllProducts, getProductBySlug)    │   │
+│  │  ├── home.ts           (getAllHomeData)                      │   │
+│  │  └── submit-contact.ts (Form submission action)              │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                              ↓                                       │
+│  Layer 3: COMPONENTS                                                 │
+│  ┌─────────────────────────────────────────────────────────────┐   │
+│  │  src/components/ & src/app/                                  │   │
+│  │  ├── Server Data Components (*-data.tsx)                     │   │
+│  │  ├── Client Components (interactive UI)                      │   │
+│  │  └── Page Components (route handlers)                        │   │
+│  └─────────────────────────────────────────────────────────────┘   │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+### Layer 1: Queries (`src/sanity/lib/queries/`)
+
+**Purpose**: Define reusable, type-safe GROQ queries with consistent patterns.
+
+**Key Features**:
+- Centralized query definitions
+- Reusable projections (IMAGE_PROJECTION, PRODUCT_FULL_PROJECTION, etc.)
+- Utility functions for building filters, ordering, pagination
+- Type-safe query parameters and results
+- All queries exported from `index.ts`
+
+**File: `src/sanity/lib/queries/common.ts`** - Reusable Projections
+```typescript
+// Reusable projection fragments
+export const IMAGE_PROJECTION = `{
+  asset->{
+    _id,
+    url,
+    metadata { dimensions, lqip }
+  },
+  alt
+}`;
+
+export const PRODUCT_FULL_PROJECTION = `{
+  _id,
+  title,
+  slug,
+  description,
+  price,
+  image ${IMAGE_PROJECTION},
+  features,
+  specifications,
+  featured,
+  order
+}`;
+
+// Utility functions
+export function buildFilterString(type: string, conditions: string[] = []): string {
+  const baseFilter = `_type == "${type}"`;
+  return conditions.length > 0
+    ? `${baseFilter} && ${conditions.join(" && ")}`
+    : baseFilter;
+}
+```
+
+**File: `src/sanity/lib/queries/products.ts`** - Product Queries
+```typescript
+import { PRODUCT_FULL_PROJECTION, buildFilterString } from "./common";
+
+export interface ProductListParams {
+  featured?: boolean;
+  collectionSlug?: string;
+  limit?: number;
+  offset?: number;
+}
+
+export interface QueryResult<TParams = Record<string, unknown>> {
+  query: string;
+  params: TParams;
+}
+
+export function getAllProductsQuery(
+  options: ProductListParams = {}
+): QueryResult<{ collectionSlug?: string }> {
+  const { featured, collectionSlug, limit, offset = 0 } = options;
+
+  const conditions: string[] = [];
+  if (featured !== undefined) {
+    conditions.push(`featured == ${featured}`);
+  }
+  if (collectionSlug) {
+    conditions.push("collection->slug.current == $collectionSlug");
+  }
+
+  const filterString = buildFilterString("product", conditions);
+
+  return {
+    query: `*[${filterString}] | order(order asc) [${offset}...${offset + (limit || 100)}] ${PRODUCT_FULL_PROJECTION}`,
+    params: collectionSlug ? { collectionSlug } : {},
+  };
+}
+
+export function getProductBySlugQuery(slug: string): QueryResult<{ slug: string }> {
+  return {
+    query: `*[_type == "product" && slug.current == $slug][0] ${PRODUCT_FULL_PROJECTION}`,
+    params: { slug },
+  };
+}
+```
+
+**File: `src/sanity/lib/queries/index.ts`** - Central Export
+```typescript
+// Common utilities and projections
+export {
+  IMAGE_PROJECTION,
+  PRODUCT_FULL_PROJECTION,
+  PRODUCT_SUMMARY_PROJECTION,
+  buildFilterString,
+  buildOrderString,
+  buildPaginationString,
+} from "./common";
+
+// Product queries
+export {
+  getAllProductsQuery,
+  getProductBySlugQuery,
+  getFeaturedProductsQuery,
+  searchProductsQuery,
+  type ProductListParams,
+} from "./products";
+
+// Blog queries
+export {
+  getAllPostsQuery,
+  getPostBySlugQuery,
+  type PostListParams,
+} from "./blog";
+
+// ... other exports
+```
+
+### Layer 2: Actions (`src/actions/`)
+
+**Purpose**: Server actions that use queries, handle errors, and provide fallback data.
+
+**Key Features**:
+- `"use server"` directive for server-side execution
+- Import queries from `@/sanity/lib/queries`
+- Use `sanityFetch` from `@/sanity/lib/live` for data fetching
+- Error handling with try/catch
+- Demo data fallbacks when Sanity returns empty or errors
+- Type-safe return values
+
+**File: `src/actions/products.ts`**
+```typescript
+"use server";
+
+import type { Product } from "@/lib/sanity-types";
+import { sanityFetch } from "@/sanity/lib/live";
+import {
+  getAllProductsQuery,
+  getProductBySlugQuery,
+  type ProductListParams,
+} from "@/sanity/lib/queries";
+import { getDemoProducts, getDemoProductBySlug } from "@/lib/demo-data/products";
+
+export const getAllProducts = async (
+  options: ProductListParams = {}
+): Promise<Product[]> => {
+  try {
+    // 1. Get query and params from query function
+    const { query, params } = getAllProductsQuery(options);
+
+    // 2. Fetch from Sanity
+    const result = await sanityFetch({ query, params });
+    const products = result.data as Product[];
+
+    // 3. Fallback to demo data if empty
+    if (!products || products.length === 0) {
+      console.log("Using demo products as fallback");
+      return getDemoProducts(options.limit);
+    }
+
+    return products;
+  } catch (error) {
+    // 4. Error fallback
+    console.error("Error fetching products:", error);
+    return getDemoProducts(options.limit);
+  }
+};
+
+export const getProductBySlug = async (slug: string): Promise<Product | null> => {
+  try {
+    const { query, params } = getProductBySlugQuery(slug);
+    const result = await sanityFetch({ query, params });
+    const product = result.data as Product;
+
+    if (!product) {
+      return getDemoProductBySlug(slug);
+    }
+
+    return product;
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    return getDemoProductBySlug(slug);
+  }
+};
+```
+
+### Layer 3: Components
+
+**Purpose**: Use actions to fetch and display data in the UI.
+
+**Pattern A: Server Data Component** (`*-data.tsx`)
+```typescript
+// src/components/landing/products-data.tsx
+import { getAllProducts } from "@/actions/products";
+import { ProductsGrid } from "./products-grid";
+
+export async function ProductsData() {
+  // Call action directly - it handles queries, errors, fallbacks
+  const products = await getAllProducts({ featured: true });
+  return <ProductsGrid products={products} />;
+}
+```
+
+**Pattern B: Page Component**
+```typescript
+// src/app/(landing)/products/page.tsx
+import { Suspense } from "react";
+import { getAllProducts, getAllCategories } from "@/actions/products";
+import { ProductsGridSection } from "@/components/products/products-grid-section";
+import { ProductsGridSkeleton } from "@/components/products/products-grid-skeleton";
+
+export default async function ProductsPage() {
+  // Call actions in page
+  const [products, categories] = await Promise.all([
+    getAllProducts(),
+    getAllCategories(),
+  ]);
+
+  return (
+    <main>
+      <Suspense fallback={<ProductsGridSkeleton />}>
+        <ProductsGridSection products={products} categories={categories} />
+      </Suspense>
+    </main>
+  );
+}
+```
+
+**Pattern C: Dynamic Route Page**
+```typescript
+// src/app/(landing)/products/[slug]/page.tsx
+import { notFound } from "next/navigation";
+import { getProductBySlug, getAllProducts } from "@/actions/products";
+
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export default async function ProductDetailPage({ params }: PageProps) {
+  const { slug } = await params;
+  const product = await getProductBySlug(slug);
+
+  if (!product) {
+    notFound();
+  }
+
+  return <ProductDetail product={product} />;
+}
+
+// Generate static params for SSG
+export async function generateStaticParams() {
+  const products = await getAllProducts();
+  return products.map((product) => ({
+    slug: product.slug.current,
+  }));
+}
+```
+
+### Benefits of This Pattern
+
+| Benefit | Description |
+|---------|-------------|
+| **Separation of Concerns** | Queries define WHAT to fetch, Actions define HOW to fetch, Components define WHERE to display |
+| **Reusability** | Same query/action used across multiple components |
+| **Type Safety** | TypeScript types flow from queries → actions → components |
+| **Error Handling** | Centralized in actions, components don't need try/catch |
+| **Fallback Data** | Demo data returned automatically when Sanity is empty |
+| **Testability** | Each layer can be tested independently |
+| **Maintainability** | Change query in one place, all usages updated |
+
+### Decision: Why 3 Layers Instead of 2?
+
+**Date**: 2026-01-15
+**Context**: Could fetch directly from queries in components
+**Decision**: Add actions layer between queries and components
+**Rationale**:
+1. **Error handling isolation** - Actions handle all errors, components stay clean
+2. **Fallback data logic** - Demo data logic lives in actions, not scattered in components
+3. **Server action benefits** - Can be called from client components too
+4. **Caching control** - Actions can add caching layer if needed
+5. **Logging/monitoring** - Centralized place for fetch logging
+**Alternatives**: Direct query usage in components (more boilerplate per component)
+**Consequences**: Extra file layer, but much cleaner component code
+
+### File Naming Conventions
+
+| Layer | Location | Naming Pattern | Example |
+|-------|----------|---------------|---------|
+| Queries | `src/sanity/lib/queries/` | `[domain].ts` | `products.ts`, `blog.ts` |
+| Actions | `src/actions/` | `[domain].ts` | `products.ts`, `home.ts` |
+| Server Data | `src/components/[feature]/` | `*-data.tsx` | `products-data.tsx` |
+| Client UI | `src/components/[feature]/` | `*.tsx` | `products-grid.tsx` |
+
+---
+
 ## Best Practices Summary
 
 ### DO ✅
@@ -836,6 +1177,6 @@ export default async function Page({ params }) {
 
 ---
 
-**Last Reviewed**: 2025-12-23
+**Last Reviewed**: 2026-01-15
 **Review Schedule**: Update when Next.js or React patterns change
 **Owner**: Team

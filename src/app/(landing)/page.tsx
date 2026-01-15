@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { AboutSection } from "@/components/landing/about-section";
-import { BrandStoryData } from "@/components/landing/brand-story-data";
-import { BrandStorySkeleton } from "@/components/landing/brand-story-skeleton";
-import { ContactForm } from "@/components/landing/contact-form";
-import { HeroSection } from "@/components/landing/hero-section";
-import { HowItWorksSection } from "@/components/landing/how-it-works-section";
-import { ProductsData } from "@/components/landing/products-data";
-import { ProductsSkeleton } from "@/components/landing/products-skeleton";
-import { StatsSection } from "@/components/landing/stats-section";
-import { TestimonialsData } from "@/components/landing/testimonials-data";
-import { TestimonialsSkeleton } from "@/components/landing/testimonials-skeleton";
+import { AboutSection } from "@/components/sections/about/about-section";
+import { BrandStoryData } from "@/components/sections/brand-story/brand-story-data";
+import { BrandStorySkeleton } from "@/components/sections/brand-story/brand-story-skeleton";
+import { ContactForm } from "@/components/sections/contact/contact-form";
+import { HeroSection } from "@/components/sections/hero/hero-section";
+import { HowItWorksSection } from "@/components/sections/how-it-works/how-it-works-section";
+import { ProductsData } from "@/components/sections/products/products-data";
+import { ProductsSkeleton } from "@/components/sections/products/products-skeleton";
+import { StatsSection } from "@/components/sections/stats/stats-section";
+import { TestimonialsData } from "@/components/testimonials/testimonials-data";
+import { TestimonialsSkeleton } from "@/components/testimonials/testimonials-skeleton";
 import { getAllHomeData } from "@/actions/home";
 
 export const metadata: Metadata = {

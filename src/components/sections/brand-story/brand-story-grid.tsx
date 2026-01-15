@@ -1,8 +1,8 @@
 "use client";
 
-import { BrandStoryCard } from "@/components/global/cards";
+import { BrandStoryCard } from "@/components/cards/brand-story-card";
 import { urlFor } from "@/sanity/lib/image";
-import { PortableText } from "@/components/global/blog/portable-text";
+import { PortableText } from "@/components/blog/portable-text";
 
 interface TeamMember {
   _id: string;

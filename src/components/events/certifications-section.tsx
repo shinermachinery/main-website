@@ -1,5 +1,5 @@
 import { client } from "@/sanity/lib/client";
-import { CertificationCard } from "@/components/global/cards";
+import { CertificationCard } from "@/components/cards/certification-card";
 import { dummyCertifications } from "@/data/fallback/certifications";
 
 interface Certification {

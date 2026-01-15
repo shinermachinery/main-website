@@ -1,5 +1,5 @@
 import { client } from "@/sanity/lib/client";
-import { ClientCard } from "@/components/global/cards";
+import { ClientCard } from "@/components/cards/client-card";
 import { dummyClients } from "@/data/fallback/clients";
 
 const dummyClientsData = dummyClients;
