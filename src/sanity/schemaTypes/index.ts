@@ -1,46 +1,89 @@
 import type { SchemaTypeDefinition } from "sanity";
-import { achievementType } from "./achievementType";
-import { authorType } from "./authorType";
-import { blockContentType } from "./blockContentType";
-import { categoryType } from "./categoryType";
-import { certificationType } from "./certificationType";
-import { clientType } from "./clientType";
-import { contactSubmissionType } from "./contactSubmissionType";
-import { directorType } from "./directorType";
-import { eventType } from "./eventType";
-import { homeType } from "./homeType";
-import { installationType } from "./installationType";
-import { missionVisionType } from "./missionVisionType";
-import { postType } from "./postType";
-import { productCollectionType } from "./productCollectionType";
-import { productType } from "./productType";
-import { projectType } from "./projectType";
-import { serviceType } from "./serviceType";
-import { teamMemberType } from "./teamMemberType";
-import { testimonialType } from "./testimonialType";
-import { whyChooseUsType } from "./whyChooseUsType";
+
+// Blog schemas
+import {
+  authorType,
+  blockContentType,
+  categoryType,
+  postType,
+} from "./blog";
+
+// Product schemas
+import { productCollectionType, productType } from "./products";
+
+// Company schemas
+import {
+  directorType,
+  missionVisionType,
+  teamMemberType,
+  whyChooseUsType,
+} from "./company";
+
+// Project schemas
+import {
+  clientType,
+  installationType,
+  projectType,
+  serviceType,
+} from "./projects";
+
+// Marketing schemas
+import {
+  achievementType,
+  certificationType,
+  eventType,
+  testimonialType,
+} from "./marketing";
+
+// Homepage schemas
+import {
+  homeType,
+  homepageAboutType,
+  homepageFeaturesType,
+  homepageHeroType,
+} from "./homepage";
+
+// Common schemas
+import { companyStatsType, contactSubmissionType } from "./common";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
+    // Homepage
     homeType,
+    homepageHeroType,
+    homepageAboutType,
+    homepageFeaturesType,
+
+    // Blog
     blockContentType,
     categoryType,
     postType,
     authorType,
+
+    // Products
     productType,
     productCollectionType,
+
+    // Projects
     projectType,
     serviceType,
+    clientType,
+    installationType,
+
+    // Company
     teamMemberType,
+    directorType,
+    whyChooseUsType,
+    missionVisionType,
+
+    // Marketing
     testimonialType,
-    contactSubmissionType,
     eventType,
     certificationType,
     achievementType,
-    installationType,
-    clientType,
-    whyChooseUsType,
-    missionVisionType,
-    directorType,
+
+    // Common
+    companyStatsType,
+    contactSubmissionType,
   ],
 };

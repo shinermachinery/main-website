@@ -13,8 +13,8 @@ export { ClientCard } from "./client-card";
 export { InstallationCard } from "./installation-card";
 export { BrandStoryCard } from "./brand-story-card";
 
-// Re-export cards from their domain folders (not moved)
-export { ProductCard } from "../products/product-card";
-export { PostCard } from "../blog/post-card";
+// Re-export cards from their domain folders
+export { ProductCard } from "../sections/products/product-card";
+export { BlogCard } from "../blog/blog-card";
 export { TestimonialCard } from "../testimonials/testimonial-card";
 export { TeamMemberCard } from "../team/team-member-card";
