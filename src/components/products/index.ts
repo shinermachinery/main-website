@@ -1,10 +1,11 @@
-export type { ProductCardProps } from "./product-card";
-export { ProductCard } from "./product-card";
-export type { ProductCardDataProps } from "./product-card-data";
-export { ProductCardData } from "./product-card-data";
-export type { ProductGridProps } from "./product-grid";
-export { ProductGrid } from "./product-grid";
-export type { ProductGridDataProps } from "./product-grid-data";
-export { ProductGridData } from "./product-grid-data";
-export type { ProductGridSkeletonProps } from "./product-grid-skeleton";
-export { ProductGridSkeleton } from "./product-grid-skeleton";
+// Products page components
+export { ProductsGridSection } from "./products-grid-section";
+export { ProductsGridSectionSkeleton } from "./products-grid-section-skeleton";
+
+// Product detail components
+export { ProductDetailSkeleton } from "./product-detail-skeleton";
+export { ProductImageGallery } from "./product-image-gallery";
+export { ProductInfo } from "./product-info";
+export { ProductSpecificationsSection } from "./product-specifications-section";
+export { ProductBrochureDownload } from "./product-brochure-download";
+export { RelatedProducts } from "./related-products";
