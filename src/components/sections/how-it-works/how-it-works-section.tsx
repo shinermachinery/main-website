@@ -15,30 +15,25 @@ export function HowItWorksSection({
   title,
   certificates = [],
 }: HowItWorksSectionProps) {
-  // Fallback certifications if none provided
-  const displayCertificates =
-    certificates.length > 0
-      ? certificates
-      : [
-          {
-            _key: "1",
-            name: "ISO 9001:2015 Certified",
-            subDescription:
-              "Quality management systems certification ensuring consistent delivery of products that meet customer and regulatory requirements.",
-          },
-          {
-            _key: "2",
-            name: "CE Marking Compliance",
-            subDescription:
-              "European conformity marking indicating compliance with health, safety, and environmental protection standards for products sold within the European Economic Area.",
-          },
-          {
-            _key: "3",
-            name: "Industry Trusted Partner",
-            subDescription:
-              "Recognized by leading manufacturers worldwide for precision engineering excellence and reliable performance in critical applications.",
-          },
-        ];
+  if (certificates.length === 0) {
+    return (
+      <section className="py-24 md:py-32 bg-secondary">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <h2
+              className="font-medium text-[1.875rem] leading-[2.5rem] tracking-[-0.0469rem] text-foreground"
+              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+            >
+              {title || "Trusted by Founders, Marketers, and Individuals"}
+            </h2>
+            <p className="text-lg text-muted-foreground text-center py-8">
+              No certificates to display at this time.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-24 md:py-32 bg-secondary">
@@ -57,7 +52,7 @@ export function HowItWorksSection({
 
             {/* Right Column - Certifications */}
             <div className="flex flex-col gap-10 flex-1">
-              {displayCertificates.map((cert) => (
+              {certificates.map((cert) => (
                 <div key={cert._key} className="flex gap-6 items-center w-full">
                   {/* Icon - Laurel Wreath */}
                   <div className="flex items-center shrink-0">

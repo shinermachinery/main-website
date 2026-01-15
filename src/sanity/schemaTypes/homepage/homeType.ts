@@ -7,7 +7,76 @@ export const homeType = defineType({
   type: "document",
   icon: HomeIcon,
   fields: [
+    // ============================================================
+    // Hero Section
+    // ============================================================
+    defineField({
+      name: "heroHeadline",
+      title: "Hero - Main Headline",
+      type: "string",
+      initialValue: "Precision Engineered Machinery. Delivered With Confidence.",
+      description: "The main headline displayed in the hero section",
+    }),
+    defineField({
+      name: "heroDescription",
+      title: "Hero - Description",
+      type: "text",
+      rows: 3,
+      initialValue:
+        "Equip your production line with industry-grade machines designed for reliability, efficiency, and precision.",
+      description: "Supporting text below the main headline",
+    }),
+    defineField({
+      name: "heroPrimaryCta",
+      title: "Hero - Primary Button",
+      type: "object",
+      fields: [
+        defineField({
+          name: "text",
+          title: "Button Text",
+          type: "string",
+          initialValue: "Request a Quote",
+        }),
+        defineField({
+          name: "link",
+          title: "Button Link",
+          type: "string",
+          initialValue: "/contact",
+        }),
+      ],
+    }),
+    defineField({
+      name: "heroSecondaryCta",
+      title: "Hero - Secondary Button",
+      type: "object",
+      fields: [
+        defineField({
+          name: "text",
+          title: "Button Text",
+          type: "string",
+          initialValue: "View Products",
+        }),
+        defineField({
+          name: "link",
+          title: "Button Link",
+          type: "string",
+          initialValue: "/products",
+        }),
+      ],
+    }),
+    defineField({
+      name: "heroBackgroundImage",
+      title: "Hero - Background Image",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+      description: "Background image for the hero section",
+    }),
+
+    // ============================================================
     // Section 1: A Word About Us and Our Mission
+    // ============================================================
     defineField({
       name: "wordAboutUsTitle",
       title: "A Word About Us - Title",

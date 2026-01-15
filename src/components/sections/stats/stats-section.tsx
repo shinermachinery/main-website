@@ -1,5 +1,8 @@
-import { TrendingUp } from "lucide-react";
-import { defaultFacts, type Fact } from "@/data/stats";
+interface Fact {
+  _key: string;
+  number: number;
+  text: string;
+}
 
 interface StatsSectionProps {
   title?: string;
@@ -7,8 +10,24 @@ interface StatsSectionProps {
 }
 
 export function StatsSection({ title, facts = [] }: StatsSectionProps) {
-  // Fallback stats if no facts provided
-  const displayFacts = facts.length > 0 ? facts : defaultFacts;
+  if (facts.length === 0) {
+    return (
+      <section className="py-40">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto flex flex-col gap-8">
+            <div className="text-center">
+              <h2 className="text-[20px] leading-[28px] font-medium text-muted-foreground tracking-[-0.5px]">
+                {title || "A few more facts about us"}
+              </h2>
+            </div>
+            <p className="text-lg text-muted-foreground text-center py-8">
+              No stats to display at this time.
+            </p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-40">
@@ -23,7 +42,7 @@ export function StatsSection({ title, facts = [] }: StatsSectionProps) {
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {displayFacts.slice(0, 4).map((fact) => (
+            {facts.slice(0, 4).map((fact) => (
               <div key={fact._key} className="text-center flex flex-col gap-1">
                 <div className="text-[30px] leading-[40px] font-medium text-primary tracking-[-0.75px]">
                   {fact.number}+

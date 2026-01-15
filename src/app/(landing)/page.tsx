@@ -66,9 +66,18 @@ export const metadata: Metadata = {
 export default async function HomePage() {
   const homeData = await getAllHomeData();
 
+  // Default values for hero section (convert null to undefined to use component defaults)
+  const heroProps = {
+    headline: homeData.home?.heroHeadline || undefined,
+    description: homeData.home?.heroDescription || undefined,
+    primaryCta: homeData.home?.heroPrimaryCta || undefined,
+    secondaryCta: homeData.home?.heroSecondaryCta || undefined,
+    backgroundImage: homeData.home?.heroBackgroundImage || undefined,
+  };
+
   return (
     <div className="bg-secondary">
-      <HeroSection />
+      <HeroSection {...heroProps} />
       <AboutSection
         title={homeData.home?.wordAboutUsTitle}
         description={homeData.home?.wordAboutUsDescription}

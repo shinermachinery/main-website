@@ -103,6 +103,7 @@ export const structure: StructureResolver = (S) =>
                       S.documentTypeListItem("service").title("Services"),
                       S.documentTypeListItem("installation").title("Installations"),
                       S.documentTypeListItem("client").title("Clients"),
+                      S.documentTypeListItem("flowchart").title("Flowcharts"),
                     ]),
                 ),
               S.divider(),

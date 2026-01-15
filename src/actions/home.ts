@@ -7,28 +7,45 @@ export interface HomePageData {
   home: {
     _id: string;
     _type: "home";
+    // Hero Section
+    heroHeadline?: string;
+    heroDescription?: string;
+    heroPrimaryCta?: {
+      text: string;
+      link: string;
+    };
+    heroSecondaryCta?: {
+      text: string;
+      link: string;
+    };
+    heroBackgroundImage?: string;
+    // About Section
     wordAboutUsTitle?: string;
     wordAboutUsDescription?: any[];
     gridSectionTitle?: string;
     gridSectionDescription?: any[];
+    // Stats Section
     fewMoreFactsTitle?: string;
     facts?: Array<{
       _key: string;
       number: number;
       text: string;
     }>;
+    // Steps Section
     stepTitle?: string;
     steps?: Array<{
       _key: string;
       number: number;
       text: string;
     }>;
+    // Certificates Section
     trustedByFounderTitle?: string;
     certificates?: Array<{
       _key: string;
       name: string;
       subDescription: string;
     }>;
+    // Brand Story Section
     brandStoryTitle?: string;
     brandStoryDescription?: any[];
     brandStoryVideos?: Array<{

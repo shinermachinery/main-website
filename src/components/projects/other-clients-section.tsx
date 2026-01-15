@@ -1,26 +1,25 @@
 import Image from "next/image";
-import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
-
-async function getOtherClients() {
-  try {
-    const clients = await client.fetch(
-      `*[_type == "client"] | order(order asc, _createdAt desc) {
-        _id,
-        companyName,
-        logo
-      }[0...27]`,
-    );
-
-    return clients || [];
-  } catch (error) {
-    console.error("Error fetching other clients:", error);
-    return [];
-  }
-}
+import { getOtherClients } from "@/sanity/lib/actions";
 
 export async function OtherClientsSection() {
-  const clients = await getOtherClients();
+  const clients = await getOtherClients(27);
+
+  if (clients.length === 0) {
+    return (
+      <section className="flex flex-col gap-10 w-full">
+        <div className="flex flex-col gap-4 font-medium">
+          <h2 className="text-4xl font-medium text-foreground">Other Clients</h2>
+          <p className="text-lg text-muted-foreground">
+            Trusted partners and clients we work with
+          </p>
+        </div>
+        <p className="text-lg text-muted-foreground text-center py-8">
+          No clients to display at this time.
+        </p>
+      </section>
+    );
+  }
+
   const totalLogos = Math.max(clients.length, 27);
   const logosPerRow = 9;
 
@@ -30,8 +29,7 @@ export async function OtherClientsSection() {
       <div className="flex flex-col gap-4 font-medium">
         <h2 className="text-4xl font-medium text-foreground">Other Clients</h2>
         <p className="text-lg text-muted-foreground">
-          Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst
-          ullamcorper purus
+          Trusted partners and clients we work with
         </p>
       </div>
 
@@ -47,18 +45,18 @@ export async function OtherClientsSection() {
                 const logoNumber = rowIndex * logosPerRow + logoIndex;
                 if (logoNumber >= totalLogos) return null;
 
-                const client = clients[logoNumber];
+                const clientItem = clients[logoNumber];
 
                 return (
                   <div
                     key={logoIndex}
                     className="w-[7.5rem] h-[7.5rem] rounded-2xl bg-primary/10 relative overflow-hidden flex items-center justify-center"
-                    title={client?.companyName}
+                    title={clientItem?.companyName}
                   >
-                    {client?.logo ? (
+                    {clientItem?.logo ? (
                       <Image
-                        src={urlFor(client.logo).url()}
-                        alt={client.companyName || "Client logo"}
+                        src={clientItem.logo}
+                        alt={clientItem.companyName || "Client logo"}
                         fill
                         className="object-contain p-4"
                         sizes="120px"

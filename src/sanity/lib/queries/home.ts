@@ -19,28 +19,45 @@ export function getHomePageQuery(): QueryResult {
     query: `*[_type == "home"][0] {
       _id,
       _type,
+      // Hero Section
+      heroHeadline,
+      heroDescription,
+      heroPrimaryCta {
+        text,
+        link
+      },
+      heroSecondaryCta {
+        text,
+        link
+      },
+      "heroBackgroundImage": heroBackgroundImage.asset->url,
+      // About Section
       wordAboutUsTitle,
       wordAboutUsDescription,
       gridSectionTitle,
       gridSectionDescription,
+      // Stats Section
       fewMoreFactsTitle,
       facts[] {
         _key,
         number,
         text
       },
+      // Steps Section
       stepTitle,
       steps[] {
         _key,
         number,
         text
       },
+      // Certificates Section
       trustedByFounderTitle,
       certificates[] {
         _key,
         name,
         subDescription
       },
+      // Brand Story Section
       brandStoryTitle,
       brandStoryDescription,
       brandStoryVideos[] {
@@ -110,28 +127,45 @@ export function getCompleteHomePageQuery(): QueryResult {
       "home": *[_type == "home"][0] {
         _id,
         _type,
+        // Hero Section
+        heroHeadline,
+        heroDescription,
+        heroPrimaryCta {
+          text,
+          link
+        },
+        heroSecondaryCta {
+          text,
+          link
+        },
+        "heroBackgroundImage": heroBackgroundImage.asset->url,
+        // About Section
         wordAboutUsTitle,
         wordAboutUsDescription,
         gridSectionTitle,
         gridSectionDescription,
+        // Stats Section
         fewMoreFactsTitle,
         facts[] {
           _key,
           number,
           text
         },
+        // Steps Section
         stepTitle,
         steps[] {
           _key,
           number,
           text
         },
+        // Certificates Section
         trustedByFounderTitle,
         certificates[] {
           _key,
           name,
           subDescription
         },
+        // Brand Story Section
         brandStoryTitle,
         brandStoryDescription,
         brandStoryVideos[] {

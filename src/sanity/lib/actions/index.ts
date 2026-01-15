@@ -79,17 +79,23 @@ export {
   // Clients
   getClients,
   getClientsInColumns,
+  getOtherClients,
   // Projects
   getProjects,
   getProjectBySlug,
   // Services
   getServices,
   getServiceBySlug,
+  // Flowcharts
+  getFlowchart,
+  getFlowcharts,
   // Types
   type Installation,
   type Client,
+  type OtherClient,
   type Project,
   type Service,
+  type Flowchart,
 } from "./projects";
 
 // ============================================================================

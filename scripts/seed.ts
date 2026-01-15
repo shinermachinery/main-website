@@ -37,6 +37,126 @@ const client = createClient({
 // ============================================================================
 
 const seedData = {
+  // Homepage Content
+  home: {
+    _type: "home",
+    _id: "home-seed",
+    // Hero Section
+    heroHeadline: "Precision Engineered Machinery. Delivered With Confidence.",
+    heroDescription:
+      "Equip your production line with industry-grade machines designed for reliability, efficiency, and precision.",
+    heroPrimaryCta: {
+      text: "Request a Quote",
+      link: "/contact",
+    },
+    heroSecondaryCta: {
+      text: "View Products",
+      link: "/products",
+    },
+    // About Section
+    wordAboutUsTitle: "A Word About Us",
+    wordAboutUsDescription: [
+      {
+        _type: "block",
+        _key: "about1",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            _key: "span1",
+            text: "SHINER is a leading provider of precision-engineered food processing equipment. With over 25 years of experience, we deliver innovative solutions that enhance productivity and quality for our clients.",
+          },
+        ],
+      },
+    ],
+    gridSectionTitle: "Explore Our Solutions",
+    gridSectionDescription: [
+      {
+        _type: "block",
+        _key: "grid1",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            _key: "span1",
+            text: "Discover our comprehensive range of color sorters, grading machines, and processing equipment designed for various industries.",
+          },
+        ],
+      },
+    ],
+    // Stats Section
+    fewMoreFactsTitle: "A few more facts about us",
+    facts: [
+      { _key: "fact1", number: 25, text: "Years Experience" },
+      { _key: "fact2", number: 500, text: "Clients Served" },
+      { _key: "fact3", number: 50, text: "Countries Reached" },
+      { _key: "fact4", number: 24, text: "Hours Support" },
+    ],
+    // Steps Section
+    stepTitle: "How We Work",
+    steps: [
+      { _key: "step1", number: 1, text: "Consultation & Assessment" },
+      { _key: "step2", number: 2, text: "Custom Solution Design" },
+      { _key: "step3", number: 3, text: "Installation & Training" },
+      { _key: "step4", number: 4, text: "Ongoing Support" },
+    ],
+    // Certificates Section (How It Works)
+    trustedByFounderTitle: "Trusted by Industry Leaders",
+    certificates: [
+      {
+        _key: "cert1",
+        name: "ISO 9001:2015 Certified",
+        subDescription:
+          "Quality management systems certification ensuring consistent delivery of products that meet customer and regulatory requirements.",
+      },
+      {
+        _key: "cert2",
+        name: "CE Marking Compliance",
+        subDescription:
+          "European conformity marking indicating compliance with health, safety, and environmental protection standards.",
+      },
+      {
+        _key: "cert3",
+        name: "Industry Trusted Partner",
+        subDescription:
+          "Recognized by leading manufacturers worldwide for precision engineering excellence and reliable performance.",
+      },
+    ],
+    // Brand Story Section
+    brandStoryTitle: "Our Brand Story",
+    brandStoryDescription: [
+      {
+        _type: "block",
+        _key: "story1",
+        style: "normal",
+        children: [
+          {
+            _type: "span",
+            _key: "span1",
+            text: "Founded with a vision to revolutionize food processing technology, SHINER has grown from a small startup to an industry leader. Our journey is defined by innovation, quality, and unwavering commitment to our clients.",
+          },
+        ],
+      },
+    ],
+    brandStoryVideos: [
+      {
+        _key: "video1",
+        title: "Company Overview",
+        subText: "Learn about our mission and values",
+      },
+      {
+        _key: "video2",
+        title: "Manufacturing Excellence",
+        subText: "See our state-of-the-art facilities",
+      },
+      {
+        _key: "video3",
+        title: "Client Success Stories",
+        subText: "Hear from our satisfied customers",
+      },
+    ],
+  },
+
   // Director
   director: {
     _type: "director",
@@ -375,6 +495,18 @@ const seedData = {
     },
   ],
 
+  // Flowcharts
+  flowcharts: [
+    {
+      _type: "flowchart",
+      _id: "flowchart-rice",
+      title: "Flow Chart of Rice Re-Processing Plant",
+      description:
+        "Comprehensive process flow diagram showing the complete rice re-processing cycle from raw paddy intake to finished polished rice output.",
+      order: 1,
+    },
+  ],
+
   // Team Members
   teamMembers: [
     {
@@ -490,6 +622,10 @@ async function seed() {
   console.log("🌱 Starting seed process...\n");
 
   try {
+    // Seed homepage content first
+    console.log("🏠 Seeding Homepage...");
+    await createDocument(seedData.home, "Homepage");
+
     // Seed single documents
     await createDocument(seedData.director, "Director");
     await createDocument(seedData.missionVision, "Mission & Vision");
@@ -530,6 +666,12 @@ async function seed() {
     console.log("\n🏭 Seeding Installations...");
     for (const installation of seedData.installations) {
       await createDocument(installation, `Installation: ${installation.title}`);
+    }
+
+    // Seed flowcharts
+    console.log("\n📊 Seeding Flowcharts...");
+    for (const flowchart of seedData.flowcharts) {
+      await createDocument(flowchart, `Flowchart: ${flowchart.title}`);
     }
 
     // Seed team members

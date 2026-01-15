@@ -1,7 +1,28 @@
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export function HeroSection() {
+interface HeroSectionProps {
+  headline?: string;
+  description?: string;
+  primaryCta?: {
+    text: string;
+    link: string;
+  };
+  secondaryCta?: {
+    text: string;
+    link: string;
+  };
+  backgroundImage?: string;
+}
+
+export function HeroSection({
+  headline = "Precision Engineered Machinery. Delivered With Confidence.",
+  description = "Equip your production line with industry-grade machines designed for reliability, efficiency, and precision.",
+  primaryCta = { text: "Request a Quote", link: "/contact" },
+  secondaryCta = { text: "View Products", link: "/products" },
+  backgroundImage,
+}: HeroSectionProps) {
   return (
     <section
       className="relative overflow-hidden"
@@ -11,40 +32,52 @@ export function HeroSection() {
       <div className="container mx-auto">
         <div className="max-w-7xl mx-auto">
           {/* Gray Background Area */}
-          <div className="bg-zinc-400 min-h-screen flex items-end">
+          <div
+            className="bg-zinc-400 min-h-screen flex items-end"
+            style={
+              backgroundImage
+                ? {
+                    backgroundImage: `url(${backgroundImage})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }
+                : undefined
+            }
+          >
             {/* Flex container for Typography Card and Featured Product Card */}
             <div className="w-full flex flex-col lg:flex-row gap-6 items-end justify-between pb-0">
               {/* Typography Card - Left (Less than 50%) */}
               <div className="bg-background rounded-t-[3rem] w-full lg:max-w-[45%] px-6 lg:px-8 py-12 lg:py-16">
                 {/* Main Heading */}
                 <h1 className="text-3xl md:text-4xl lg:text-[2.5rem] font-normal tracking-tight mb-4 leading-[1.15] text-primary">
-                  Precision Engineered Machinery. Delivered With Confidence.
+                  {headline}
                 </h1>
 
                 {/* Description */}
                 <p className="text-sm md:text-base text-muted-foreground mb-6 leading-relaxed font-light">
-                  Equip your production line with industry-grade machines designed
-                  for reliability, efficiency, and precision.
+                  {description}
                 </p>
 
                 {/* CTA Buttons */}
                 <div className="flex flex-wrap gap-3">
-                  {/* Request a Quote Button - Outline */}
+                  {/* Primary CTA Button - Outline */}
                   <Button
                     variant="outline"
                     size="default"
                     className="h-10 px-5 text-sm font-normal rounded-full"
+                    asChild
                   >
-                    Request a Quote
+                    <Link href={primaryCta.link}>{primaryCta.text}</Link>
                   </Button>
 
-                  {/* View Products Button - Gradient like navbar */}
-                  <button
+                  {/* Secondary CTA Button - Gradient */}
+                  <Link
+                    href={secondaryCta.link}
                     className="h-10 px-5 text-sm font-semibold rounded-full bg-gradient-to-r from-brand-blue to-brand-green text-white shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)] inline-flex items-center justify-center gap-2 transition-all hover:shadow-lg"
                   >
-                    View Products
+                    {secondaryCta.text}
                     <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                  </Link>
                 </div>
               </div>
 

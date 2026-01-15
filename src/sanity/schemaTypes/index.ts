@@ -22,6 +22,7 @@ import {
 // Project schemas
 import {
   clientType,
+  flowchartType,
   installationType,
   projectType,
   serviceType,
@@ -69,6 +70,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     serviceType,
     clientType,
     installationType,
+    flowchartType,
 
     // Company
     teamMemberType,
