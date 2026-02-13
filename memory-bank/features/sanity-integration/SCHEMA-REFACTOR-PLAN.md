@@ -1,8 +1,8 @@
 # Sanity Schema Refactoring Plan
 
 **Created**: 2026-02-08
-**Status**: In Progress - Awaiting Figma Design Review
-**Next Step**: Fetch Figma design for Project page, then implement fixes
+**Status**: ✅ Completed
+**Completed**: 2026-02-14
 
 ---
 
@@ -163,7 +163,7 @@ User wants to:
 
 ---
 
-## Quick Reference: Current Sanity Structure
+## Current Sanity Structure (Post-Refactor)
 
 ```
 src/sanity/schemaTypes/
@@ -178,35 +178,50 @@ src/sanity/schemaTypes/
 │   ├── productCollectionType.ts
 │   └── index.ts
 ├── company/
-│   ├── directorType.ts
-│   ├── missionVisionType.ts
-│   ├── teamMemberType.ts
-│   ├── whyChooseUsType.ts
+│   ├── aboutPageType.ts (NEW - merged missionVision + whyChooseUs)
+│   ├── teamMemberType.ts (UPDATED - added isDirector flag)
 │   └── index.ts
 ├── projects/
 │   ├── projectType.ts
 │   ├── serviceType.ts
-│   ├── installationType.ts
-│   ├── clientType.ts
+│   ├── installationType.ts (SIMPLIFIED)
+│   ├── clientType.ts (SIMPLIFIED)
 │   ├── flowchartType.ts
 │   └── index.ts
 ├── marketing/
 │   ├── achievementType.ts
 │   ├── certificationType.ts
-│   ├── eventType.ts
-│   ├── testimonialType.ts
+│   ├── eventType.ts (SIMPLIFIED)
+│   ├── testimonialType.ts (UPDATED - added company field)
 │   └── index.ts
 ├── homepage/
 │   ├── homeType.ts
-│   ├── homepageAbout.ts (UNUSED)
-│   ├── homepageFeatures.ts (UNUSED)
-│   ├── homepageHero.ts (UNUSED)
 │   └── index.ts
 ├── common/
-│   ├── companyStats.ts
+│   ├── siteSettingsType.ts (NEW)
+│   ├── navigationType.ts (NEW)
+│   ├── footerType.ts (NEW)
 │   ├── contactSubmissionType.ts
 │   └── index.ts
 └── index.ts (main export)
+
+src/sanity/lib/queries/
+├── index.ts (barrel export)
+├── pages/
+│   ├── about.ts
+│   ├── blog.ts
+│   ├── events.ts
+│   ├── home.ts
+│   ├── products.ts
+│   ├── projects.ts
+│   ├── services.ts
+│   ├── settings.ts
+│   ├── testimonials.ts
+│   └── index.ts
+└── shared/
+    ├── projections.ts
+    ├── utils.ts
+    └── index.ts
 ```
 
 ---
@@ -219,5 +234,5 @@ Studio accessible at: `/studio`
 
 ---
 
-**Last Updated**: 2026-02-08
+**Last Updated**: 2026-02-14
 **Author**: Claude (session handoff document)

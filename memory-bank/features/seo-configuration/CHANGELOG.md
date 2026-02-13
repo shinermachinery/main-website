@@ -2,6 +2,18 @@
 
 All notable changes to the SEO configuration feature.
 
+## [1.1.0] - 2026-02-14 - Error & Not Found Pages
+
+### Added
+- **Error Page** (`src/app/error.tsx`) - Global error boundary with retry functionality
+- **Not Found Page** (`src/app/not-found.tsx`) - Custom 404 page
+
+### Notes
+- These pages improve user experience when navigation fails or pages don't exist
+- Both follow the light-mode-only design system
+
+---
+
 ## [1.0.0] - 2026-01-29 - Initial Implementation
 
 ### Added

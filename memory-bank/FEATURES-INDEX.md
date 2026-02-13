@@ -2,7 +2,7 @@
 
 Master index of all features in this project. Each feature has detailed documentation in its respective folder.
 
-**Last Updated**: 2026-02-08
+**Last Updated**: 2026-02-14
 
 ## Active Features
 
@@ -33,12 +33,12 @@ Features currently implemented and in use.
 
 ### 2. Sanity CMS Integration
 
-**Status**: ✅ Completed (Schema refactoring complete)
+**Status**: ✅ Completed (Schema refactoring + query reorganization complete)
 **Location**: `memory-bank/features/sanity-integration/`
 **Description**: Headless CMS with embedded Studio for content management
 **Key Tech**: Sanity v4, next-sanity, GROQ
 **Created**: 2025-12-23
-**Last Updated**: 2026-02-08
+**Last Updated**: 2026-02-14
 
 **Quick Links:**
 - [Full Documentation](./features/sanity-integration/README.md)
@@ -47,7 +47,9 @@ Features currently implemented and in use.
 **Key Files:**
 - `sanity.config.ts` - Sanity configuration
 - `src/sanity/lib/client.ts` - API client
-- `src/sanity/schemaTypes/*.ts` - Content schemas (19 total)
+- `src/sanity/schemaTypes/**/*.ts` - Content schemas (19 total, 7 domains)
+- `src/sanity/lib/queries/pages/*.ts` - Page-specific GROQ queries
+- `src/sanity/lib/queries/shared/*.ts` - Shared projections and utilities
 - `src/sanity/structure.ts` - Studio structure
 - `src/app/studio/[[...tool]]/page.tsx` - Studio route
 
@@ -344,6 +346,8 @@ Features currently implemented and in use.
 - `src/app/sitemap.ts` - Dynamic sitemap generation
 - `src/app/manifest.ts` - PWA manifest
 - `src/app/layout.tsx` - Root metadata with icons
+- `src/app/error.tsx` - Global error boundary
+- `src/app/not-found.tsx` - Custom 404 page
 - `public/favicons/*` - All favicon assets
 
 **Features:**
@@ -426,21 +430,6 @@ Features scheduled for future implementation:
 
 ---
 
-### 📋 SEO Optimization
-
-**Priority**: Medium
-**Description**: Meta tags, sitemaps, structured data
-**Estimated Start**: TBD
-**Dependencies**: Blog Frontend
-
-**Planned Features:**
-- Dynamic meta tags
-- Open Graph tags
-- JSON-LD structured data
-- Sitemap generation
-
----
-
 ### 📋 Image Optimization
 
 **Priority**: Medium
@@ -498,28 +487,28 @@ Features scheduled for future implementation:
 | Feature | Status | Files | Docs |
 |---------|--------|-------|------|
 | Theme System | ✅ | `src/lib/theme-provider.tsx`<br>`src/components/global/mode-toggle.tsx` | [View](./features/theme-system/README.md) |
-| Sanity Integration | ✅ | `sanity.config.ts`<br>`src/sanity/**/*` (19 schemas) | [View](./features/sanity-integration/README.md) |
+| Sanity Integration | ✅ | `sanity.config.ts`<br>`src/sanity/**/*` (19 schemas, queries in pages/shared/) | [View](./features/sanity-integration/README.md) |
 | UI Components (shadcn/ui) | 🚧 | `src/components/ui/**/*`<br>`src/lib/utils.ts` | [View](./features/ui-components/README.md) |
 | MCP Integration | ✅ | `.mcp.json`<br>`.claude/settings.local.json` | [View](../MCP-SETUP.md) |
 | Landing Pages | ✅ | `src/app/(landing)/**/*`<br>6 pages: Home, About, Contact, Blog, Blog Detail, Services | [View](./features/landing-page/README.md) |
 | Projects & Products | ✅ | `src/app/(landing)/projects/**/*`<br>`src/components/projects/*` | [View](./features/projects-products/README.md) |
 | About Us Pages | ✅ | `src/app/(landing)/about/*`<br>3 pages: Why Choose, Mission/Vision, Director | [View](./features/about-us-pages/README.md) |
-| SEO Configuration | ✅ | `src/app/robots.ts`<br>`src/app/sitemap.ts`<br>`src/lib/site-config.ts` | [View](./features/seo-configuration/README.md) |
+| SEO Configuration | ✅ | `src/app/robots.ts`<br>`src/app/sitemap.ts`<br>`src/lib/site-config.ts`<br>`src/app/error.tsx`<br>`src/app/not-found.tsx` | [View](./features/seo-configuration/README.md) |
 
 ## Feature Statistics
 
 **Total Features**: 8
 - ✅ Completed: 8
 - 🚧 In Development: 0
-- 📋 Planned: 3
+- 📋 Planned: 2
 
-**Last Feature Completed**: Sanity Schema Refactoring (2026-02-08)
+**Last Feature Completed**: Query Reorganization & Infrastructure (2026-02-14)
 **Recently Updated**:
-- **Sanity Schema Refactoring (2026-02-08)** - COMPLETED: Consolidated 27 schemas to 19. Added siteSettings, navigation, footer, aboutPage singletons. Simplified installation, client, event schemas. Added isDirector flag to teamMember. See CHANGELOG.md for full details.
+- **Query Reorganization (2026-02-14)** - Reorganized GROQ queries into pages/ and shared/ modules. Added error boundary and 404 pages. Updated all components and actions (123 files, 4472+/2412-).
+- **Sanity Schema Refactoring (2026-02-08)** - Consolidated 27 schemas to 19. Added siteSettings, navigation, footer, aboutPage singletons. Simplified installation, client, event schemas.
 - **SEO Configuration (2026-01-29)** - Sitemap, robots.txt, favicons, Open Graph metadata, PWA manifest
 - **Sanity Data Flow Pattern (2026-01-15)** - Documented 3-layer architecture (Queries → Actions → Components) in patterns.md
-- **Hero Section Redesign (2026-01-10)** - Complete redesign to match Figma reference with gray background, typography card, featured product card, navbar-style gradient buttons
-- **ModeToggle Refactoring (2026-01-09)** - Simplified toggle component, hydration handling, Navbar integration
+- **Hero Section Redesign (2026-01-10)** - Complete redesign to match Figma reference
 - **Design System Refactoring (2026-01-09)** - Codebase-wide conversion of px to rem units (36 files), hardcoded colors to semantic tokens
 **Next Planned**: Events Page, Contact Form Enhancement, Service Detail Pages
 
@@ -535,4 +524,4 @@ Features scheduled for future implementation:
 
 **Maintenance Schedule**: Review and update this index when features change
 **Owner**: Team
-**Last Review**: 2026-02-08
+**Last Review**: 2026-02-14

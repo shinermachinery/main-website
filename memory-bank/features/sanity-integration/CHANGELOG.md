@@ -2,6 +2,34 @@
 
 All notable changes to the Sanity integration will be documented in this file.
 
+## [2.1.0] - 2026-02-14 - Query Reorganization & Infrastructure
+
+### Summary
+Reorganized GROQ queries into page-based and shared modules. Added error handling pages and updated all components and actions to use the new query structure.
+
+### Query Architecture
+- **Reorganized** flat query files into `pages/` and `shared/` subdirectories
+- **Deleted** old flat query files: `blog.ts`, `collections.ts`, `common.ts`, `company.ts`, `home.ts`, `marketing.ts`, `products.ts`, `projects.ts`, `team.ts`, `testimonials.ts`
+- **Created** `src/sanity/lib/queries/pages/` - Page-specific queries (about, blog, events, home, products, projects, services, settings, testimonials)
+- **Created** `src/sanity/lib/queries/shared/` - Shared projections and utilities (projections.ts, utils.ts)
+- **Updated** barrel export in `src/sanity/lib/queries/index.ts`
+
+### Infrastructure
+- **Added** `src/app/error.tsx` - Global error boundary page
+- **Added** `src/app/not-found.tsx` - Custom 404 page
+
+### Component & Action Updates
+- Updated all server actions to use new query paths
+- Updated all components to work with refactored data structures
+- Updated navigation data and layout components
+
+### Files Changed
+- 123 files (4,472 additions, 2,412 deletions)
+- 10 query files deleted, 13 query files created
+- All page components and server actions updated
+
+---
+
 ## [2.0.0] - 2026-02-08 - Major Schema Refactoring
 
 ### Status

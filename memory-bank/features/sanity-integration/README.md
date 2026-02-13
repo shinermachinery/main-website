@@ -1,8 +1,8 @@
 # Sanity CMS Integration
 
-> **Status**: Completed
+> **Status**: ✅ Completed
 > **Created**: 2025-12-23
-> **Last Modified**: 2025-12-25
+> **Last Modified**: 2026-02-14
 > **Owner/Lead**: Team
 
 ## Overview
@@ -545,7 +545,19 @@ See [CHANGELOG.md](./CHANGELOG.md) for detailed history.
 
 ### Recent Changes
 
-- **2025-12-23**: Initial Sanity integration
+- **2026-02-14**: Query reorganization & infrastructure
+  - Reorganized queries into `pages/` and `shared/` modules
+  - Added error boundary and 404 pages
+  - Updated all components and actions
+- **2026-02-08**: Major schema refactoring (v2.0.0)
+  - Consolidated 27 schemas to 19
+  - Added siteSettings, navigation, footer, aboutPage singletons
+  - Merged director into teamMember (isDirector flag)
+  - Simplified installation, client, event schemas
+- **2025-12-25**: Enhanced product schemas (v1.1.0)
+  - Added product collections
+  - Enhanced product type with specifications
+- **2025-12-23**: Initial Sanity integration (v1.0.0)
   - Configured Studio at `/studio`
   - Created content schemas (post, author, category, block content)
   - Set up Sanity client
@@ -553,5 +565,5 @@ See [CHANGELOG.md](./CHANGELOG.md) for detailed history.
 
 ---
 
-**Last Reviewed**: 2025-12-23
+**Last Reviewed**: 2026-02-14
 **Review Schedule**: As needed
