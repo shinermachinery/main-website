@@ -3,8 +3,8 @@
  * Server actions for fetching products and collections
  */
 
-import { sanityFetch } from "@/sanity/lib/live";
 import { urlFor } from "@/sanity/lib/image";
+import { sanityFetch } from "@/sanity/lib/live";
 
 // ============================================================================
 // Types
@@ -64,7 +64,9 @@ export async function getProducts(options?: {
       conditions.push(`featured == ${options.featured}`);
     }
     if (options?.collectionSlug) {
-      conditions.push(`collection->slug.current == "${options.collectionSlug}"`);
+      conditions.push(
+        `collection->slug.current == "${options.collectionSlug}"`,
+      );
     }
 
     const filterString = conditions.join(" && ");
@@ -114,7 +116,9 @@ export async function getProducts(options?: {
  * Get featured products
  * @param limit - Maximum number of products (default: 3)
  */
-export async function getFeaturedProducts(limit: number = 3): Promise<Product[]> {
+export async function getFeaturedProducts(
+  limit: number = 3,
+): Promise<Product[]> {
   return getProducts({ featured: true, limit });
 }
 
@@ -261,7 +265,9 @@ export async function getCollections(): Promise<Collection[]> {
  * Get collection by slug
  * @param slug - Collection slug
  */
-export async function getCollectionBySlug(slug: string): Promise<Collection | null> {
+export async function getCollectionBySlug(
+  slug: string,
+): Promise<Collection | null> {
   try {
     const { data: collection } = await sanityFetch({
       query: `*[_type == "productCollection" && slug.current == $slug][0] {

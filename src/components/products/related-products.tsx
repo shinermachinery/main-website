@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { urlFor } from "@/sanity/lib/image";
-import type { Product } from "@/lib/sanity-types";
+import Image from "next/image";
+import Link from "next/link";
 import { getDemoImageUrl } from "@/lib/demo-data/products";
+import type { Product } from "@/lib/sanity-types";
+import { urlFor } from "@/sanity/lib/image";
 
 interface RelatedProductsProps {
   products: Product[];

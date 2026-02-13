@@ -1,5 +1,5 @@
 import { CalendarIcon } from "@sanity/icons";
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
 export const eventType = defineType({
   name: "event",
@@ -14,41 +14,26 @@ export const eventType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "slug",
-      title: "Slug",
-      type: "slug",
-      options: {
-        source: "title",
-      },
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: "image",
-      title: "Event Image",
-      type: "image",
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        defineField({
-          name: "alt",
-          type: "string",
-          title: "Alternative text",
+      name: "images",
+      title: "Event Images",
+      type: "array",
+      description: "Event images (first image is used as thumbnail)",
+      of: [
+        defineArrayMember({
+          type: "image",
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            defineField({
+              name: "alt",
+              type: "string",
+              title: "Alternative text",
+            }),
+          ],
         }),
       ],
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: "description",
-      title: "Description",
-      type: "text",
-      rows: 3,
-    }),
-    defineField({
-      name: "eventDate",
-      title: "Event Date",
-      type: "datetime",
-      description: "When did this event take place",
+      validation: (Rule) => Rule.required().min(1),
     }),
     defineField({
       name: "location",
@@ -56,18 +41,11 @@ export const eventType = defineType({
       type: "string",
       description: "Event location (e.g., Patna, Karnal)",
     }),
-    defineField({
-      name: "order",
-      title: "Display Order",
-      type: "number",
-      description: "Order in which this event appears (lower numbers first)",
-      validation: (Rule) => Rule.integer().min(0),
-    }),
   ],
   preview: {
     select: {
       title: "title",
-      media: "image",
+      media: "images.0",
       location: "location",
     },
     prepare(selection) {

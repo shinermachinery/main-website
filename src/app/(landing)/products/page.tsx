@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import { SanityLive } from "@/sanity/lib/live";
 import { getAllCategories, getAllProducts } from "@/actions/products";
-import { ProductsGridSectionSkeleton } from "@/components/products/products-grid-section-skeleton";
 import { ProductsGridSection } from "@/components/products/products-grid-section";
+import { ProductsGridSectionSkeleton } from "@/components/products/products-grid-section-skeleton";
+import { SanityLive } from "@/sanity/lib/live";
 
 export const metadata: Metadata = {
   title: "Our Projects | SHINER",

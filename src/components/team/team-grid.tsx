@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { imageBuilder, urlFor } from "@/sanity/lib/image";
+import { urlFor } from "@/sanity/lib/image";
 
 interface TeamMember {
   _id: string;

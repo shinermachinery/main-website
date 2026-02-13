@@ -1,16 +1,16 @@
 "use client";
-
 import { ChevronDown, Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { ModeToggle } from "@/components/layout/mode-toggle";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { aboutLinks, moreLinks, navLinks } from "@/data/navigation";
 import { GradientButton } from "../ui/gradient-button";
-import { ModeToggle } from "@/components/layout/mode-toggle";
-import { navLinks, aboutLinks, moreLinks } from "@/data/navigation";
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -18,16 +18,19 @@ export function Navbar() {
   const [morePopoverOpen, setMorePopoverOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-secondary dark:bg-zinc-900 shadow-sm border-b border-border dark:border-zinc-800">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-secondary shadow-sm border-b">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-1">
             <div className="flex items-center gap-1">
               {/* Logo Icon - Using linear colors */}
-              <div className="w-7 h-7 rounded-md bg-linear-to-br from-brand-blue to-brand-green flex items-center justify-center">
-                <div className="w-4 h-4 bg-secondary rounded-sm" />
-              </div>
+              <Image
+                src={"/shiner-logo.png"}
+                alt="Shiner Logo"
+                width={64}
+                height={64}
+              />
               {/* Logo Text */}
               <span className="text-xl font-bold text-brand-blue ">SHINER</span>
             </div>

@@ -1,5 +1,5 @@
-import { getInstallations } from "@/sanity/lib/actions";
 import { InstallationCard } from "@/components/cards/installation-card";
+import { getInstallations } from "@/sanity/lib/actions";
 
 export async function InstallationsSection() {
   const installations = await getInstallations(6);

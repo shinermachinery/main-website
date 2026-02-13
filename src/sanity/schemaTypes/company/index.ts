@@ -1,4 +1,2 @@
-export { directorType } from "./directorType";
-export { missionVisionType } from "./missionVisionType";
+export { aboutPageType } from "./aboutPageType";
 export { teamMemberType } from "./teamMemberType";
-export { whyChooseUsType } from "./whyChooseUsType";

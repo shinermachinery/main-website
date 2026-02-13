@@ -228,7 +228,7 @@ export interface SanityDocument {
 /**
  * Sanity reference type
  */
-export interface SanityReference<T = string> {
+export interface SanityReference<_T = string> {
   _type: "reference";
   _ref: string;
   _weak?: boolean;

@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import { getAllHomeData } from "@/actions/home";
 import { AboutSection } from "@/components/sections/about/about-section";
-import { BrandStoryData } from "@/components/sections/brand-story/brand-story-data";
-import { BrandStorySkeleton } from "@/components/sections/brand-story/brand-story-skeleton";
 import { ContactForm } from "@/components/sections/contact/contact-form";
 import { HeroSection } from "@/components/sections/hero/hero-section";
 import { HowItWorksSection } from "@/components/sections/how-it-works/how-it-works-section";
@@ -11,7 +10,6 @@ import { ProductsSkeleton } from "@/components/sections/products/products-skelet
 import { StatsSection } from "@/components/sections/stats/stats-section";
 import { TestimonialsData } from "@/components/testimonials/testimonials-data";
 import { TestimonialsSkeleton } from "@/components/testimonials/testimonials-skeleton";
-import { getAllHomeData } from "@/actions/home";
 
 export const metadata: Metadata = {
   title: "Shiner - Precision Engineering Delivered With Confidence",
@@ -99,7 +97,7 @@ export default async function HomePage() {
       <Suspense fallback={<TestimonialsSkeleton />}>
         <TestimonialsData testimonials={homeData.testimonials} />
       </Suspense>
-
+      {/* 
       <Suspense fallback={<BrandStorySkeleton />}>
         <BrandStoryData
           title={homeData.home?.brandStoryTitle}
@@ -107,7 +105,7 @@ export default async function HomePage() {
           videos={homeData.home?.brandStoryVideos || []}
           teamMembers={homeData.teamMembers}
         />
-      </Suspense>
+      </Suspense> */}
 
       <ContactForm />
     </div>

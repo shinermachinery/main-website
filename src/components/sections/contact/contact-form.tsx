@@ -3,6 +3,7 @@
 import { AlertCircle, ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 import { useState, useTransition } from "react";
 import { submitContactForm } from "@/actions/submit-contact";
+import { Button } from "@/components/ui/button";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -44,11 +45,7 @@ export function ContactForm() {
   };
 
   return (
-    <section
-      id="contact"
-      className="py-40"
-      aria-labelledby="contact-heading"
-    >
+    <section id="contact" className="py-40" aria-labelledby="contact-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Two Column Layout - Heading and Form Side by Side */}
@@ -61,23 +58,12 @@ export function ContactForm() {
               >
                 Get in touch for quotes, demos, or technical guidance.
               </h2>
-              <button
+              <Button
                 className="flex items-center gap-2 px-4 py-2 rounded-full h-10 font-medium text-sm leading-5 w-fit"
-                style={{
-                  background: "linear-gradient(90.88deg, rgba(42, 94, 152, 0.1) 15.88%, rgba(24, 183, 90, 0.1) 115.02%)",
-                  boxShadow: "inset 0px 4px 28.9px 0px rgba(244, 244, 245, 0.4)",
-                }}
+                variant="shiner"
               >
-                <span
-                  className="bg-clip-text"
-                  style={{
-                    WebkitTextFillColor: "transparent",
-                    backgroundImage: "linear-gradient(90.59deg, #2a5e98 15.88%, #18b75a 115.02%)",
-                  }}
-                >
-                  Contact Sales
-                </span>
-              </button>
+                Contact Sales
+              </Button>
             </div>
 
             {/* Right Column - Form */}
@@ -193,7 +179,8 @@ export function ContactForm() {
                   disabled={isPending}
                   className="flex gap-2 h-12 items-center justify-center px-6 rounded-full w-full relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                   style={{
-                    background: "linear-gradient(88.66deg, #2a5e98 27.51%, #18b75a 115.04%)",
+                    background:
+                      "linear-gradient(88.66deg, #2a5e98 27.51%, #18b75a 115.04%)",
                   }}
                 >
                   {isPending ? (

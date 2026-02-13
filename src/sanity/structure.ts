@@ -1,3 +1,19 @@
+import {
+  BlockContentIcon,
+  BookIcon,
+  CogIcon,
+  CommentIcon,
+  ComposeIcon,
+  DocumentIcon,
+  EarthGlobeIcon,
+  HomeIcon,
+  InfoOutlineIcon,
+  MenuIcon,
+  PackageIcon,
+  RocketIcon,
+  UsersIcon,
+  WrenchIcon,
+} from "@sanity/icons";
 import type { StructureResolver } from "sanity/structure";
 
 /**
@@ -13,42 +29,29 @@ export const structure: StructureResolver = (S) =>
       // ============================================================
       S.listItem()
         .title("Pages")
-        .icon(() => "📄")
+        .icon(DocumentIcon)
         .child(
           S.list()
             .title("Pages")
             .items([
-              // Homepage
+              // Homepage (Singleton)
               S.listItem()
                 .title("Homepage")
-                .icon(() => "🏠")
-                .child(
-                  S.list()
-                    .title("Homepage")
-                    .items([
-                      S.documentTypeListItem("home").title("Home Settings"),
-                      S.documentTypeListItem("homepageHero").title("Hero Section"),
-                      S.documentTypeListItem("homepageAbout").title("About Section"),
-                      S.documentTypeListItem("homepageFeatures").title("Features Section"),
-                    ]),
-                ),
+                .icon(HomeIcon)
+                .child(S.document().schemaType("home").documentId("home")),
               S.divider(),
-              // About Pages
+              // About Page (Singleton)
               S.listItem()
-                .title("About")
-                .icon(() => "ℹ️")
+                .title("About Page")
+                .icon(InfoOutlineIcon)
                 .child(
-                  S.list()
-                    .title("About Pages")
-                    .items([
-                      S.documentTypeListItem("director").title("Director"),
-                      S.documentTypeListItem("missionVision").title("Mission & Vision"),
-                      S.documentTypeListItem("whyChooseUs").title("Why Choose Us"),
-                    ]),
+                  S.document().schemaType("aboutPage").documentId("aboutPage"),
                 ),
               S.divider(),
               // Contact
-              S.documentTypeListItem("contactSubmission").title("Contact Submissions"),
+              S.documentTypeListItem("contactSubmission").title(
+                "Contact Submissions",
+              ),
             ]),
         ),
 
@@ -59,7 +62,7 @@ export const structure: StructureResolver = (S) =>
       // ============================================================
       S.listItem()
         .title("Collections")
-        .icon(() => "📚")
+        .icon(BookIcon)
         .child(
           S.list()
             .title("Collections")
@@ -67,7 +70,7 @@ export const structure: StructureResolver = (S) =>
               // Blog
               S.listItem()
                 .title("Blog")
-                .icon(() => "📝")
+                .icon(ComposeIcon)
                 .child(
                   S.list()
                     .title("Blog")
@@ -81,27 +84,31 @@ export const structure: StructureResolver = (S) =>
               // Products
               S.listItem()
                 .title("Products")
-                .icon(() => "📦")
+                .icon(PackageIcon)
                 .child(
                   S.list()
                     .title("Products")
                     .items([
                       S.documentTypeListItem("product").title("Products"),
-                      S.documentTypeListItem("productCollection").title("Collections"),
+                      S.documentTypeListItem("productCollection").title(
+                        "Collections",
+                      ),
                     ]),
                 ),
               S.divider(),
               // Projects & Services
               S.listItem()
                 .title("Projects & Services")
-                .icon(() => "🔧")
+                .icon(WrenchIcon)
                 .child(
                   S.list()
                     .title("Projects & Services")
                     .items([
                       S.documentTypeListItem("project").title("Projects"),
                       S.documentTypeListItem("service").title("Services"),
-                      S.documentTypeListItem("installation").title("Installations"),
+                      S.documentTypeListItem("installation").title(
+                        "Installations",
+                      ),
                       S.documentTypeListItem("client").title("Clients"),
                       S.documentTypeListItem("flowchart").title("Flowcharts"),
                     ]),
@@ -119,7 +126,7 @@ export const structure: StructureResolver = (S) =>
       // ============================================================
       S.listItem()
         .title("Marketing")
-        .icon(() => "📣")
+        .icon(RocketIcon)
         .child(
           S.list()
             .title("Marketing")
@@ -138,12 +145,34 @@ export const structure: StructureResolver = (S) =>
       // ============================================================
       S.listItem()
         .title("Settings")
-        .icon(() => "⚙️")
+        .icon(CogIcon)
         .child(
           S.list()
             .title("Settings")
             .items([
-              S.documentTypeListItem("companyStats").title("Company Stats"),
+              // Site Settings (Singleton)
+              S.listItem()
+                .title("Site Settings")
+                .icon(UsersIcon)
+                .child(
+                  S.document()
+                    .schemaType("siteSettings")
+                    .documentId("siteSettings"),
+                ),
+              // Navigation (Singleton)
+              S.listItem()
+                .title("Navigation")
+                .icon(MenuIcon)
+                .child(
+                  S.document()
+                    .schemaType("navigation")
+                    .documentId("navigation"),
+                ),
+              // Footer (Singleton)
+              S.listItem()
+                .title("Footer")
+                .icon(BlockContentIcon)
+                .child(S.document().schemaType("footer").documentId("footer")),
             ]),
         ),
     ]);

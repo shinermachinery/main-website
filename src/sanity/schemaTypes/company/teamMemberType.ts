@@ -1,5 +1,5 @@
 import { UsersIcon } from "@sanity/icons";
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
 export const teamMemberType = defineType({
   name: "teamMember",
@@ -43,6 +43,39 @@ export const teamMemberType = defineType({
       ],
     }),
     defineField({
+      name: "isDirector",
+      title: "Is Director",
+      type: "boolean",
+      description: "Mark this team member as Director for spotlight section",
+      initialValue: false,
+    }),
+    defineField({
+      name: "achievements",
+      title: "Achievements",
+      type: "array",
+      of: [defineArrayMember({ type: "string" })],
+      description: "List of achievements (shown for Director)",
+      hidden: ({ parent }) => !parent?.isDirector,
+    }),
+    defineField({
+      name: "contactEmail",
+      title: "Contact Email",
+      type: "string",
+      description: "Direct contact email (shown for Director)",
+      hidden: ({ parent }) => !parent?.isDirector,
+      validation: (Rule) =>
+        Rule.custom((value, context) => {
+          const parent = context.parent as { isDirector?: boolean };
+          if (parent?.isDirector && value) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+              return "Please enter a valid email address";
+            }
+          }
+          return true;
+        }),
+    }),
+    defineField({
       name: "order",
       title: "Display Order",
       type: "number",
@@ -54,8 +87,17 @@ export const teamMemberType = defineType({
   preview: {
     select: {
       title: "name",
-      subtitle: "role",
+      role: "role",
       media: "image",
+      isDirector: "isDirector",
+    },
+    prepare(selection) {
+      const { title, role, isDirector } = selection;
+      return {
+        ...selection,
+        title: `${title} ${isDirector ? "(Director)" : ""}`,
+        subtitle: role,
+      };
     },
   },
 });

@@ -13,23 +13,23 @@
 // ============================================================================
 
 export {
-  // Posts
-  getPosts,
-  getFeaturedPosts,
-  getRecentPosts,
-  getPostBySlug,
-  searchPosts,
-  // Authors
-  getAuthors,
-  getAuthorBySlug,
-  // Categories
-  getCategories,
-  getCategoryBySlug,
   // Types
   type Author,
   type Category,
+  getAuthorBySlug,
+  // Authors
+  getAuthors,
+  // Categories
+  getCategories,
+  getCategoryBySlug,
+  getFeaturedPosts,
+  getPostBySlug,
+  // Posts
+  getPosts,
+  getRecentPosts,
   type Post,
   type PostSummary,
+  searchPosts,
 } from "./blog";
 
 // ============================================================================
@@ -37,19 +37,19 @@ export {
 // ============================================================================
 
 export {
-  // Products
-  getProducts,
-  getFeaturedProducts,
-  getProductsByCollection,
-  getProductBySlug,
-  searchProducts,
+  type Collection,
+  getCollectionBySlug,
   // Collections
   getCollections,
-  getCollectionBySlug,
+  getFeaturedProducts,
+  getProductBySlug,
+  // Products
+  getProducts,
+  getProductsByCollection,
   // Types
   type Product,
   type ProductSummary,
-  type Collection,
+  searchProducts,
 } from "./products";
 
 // ============================================================================
@@ -57,16 +57,16 @@ export {
 // ============================================================================
 
 export {
+  // Types
+  type Achievement,
+  type Certification,
+  type Event,
   // Achievements
   getAchievements,
   // Certifications
   getCertifications,
   // Events
   getEvents,
-  // Types
-  type Achievement,
-  type Certification,
-  type Event,
 } from "./marketing";
 
 // ============================================================================
@@ -74,28 +74,28 @@ export {
 // ============================================================================
 
 export {
-  // Installations
-  getInstallations,
+  type Client,
+  type Flowchart,
   // Clients
   getClients,
   getClientsInColumns,
-  getOtherClients,
-  // Projects
-  getProjects,
-  getProjectBySlug,
-  // Services
-  getServices,
-  getServiceBySlug,
   // Flowcharts
   getFlowchart,
   getFlowcharts,
+  // Installations
+  getInstallations,
+  getOtherClients,
+  getProjectBySlug,
+  // Projects
+  getProjects,
+  getServiceBySlug,
+  // Services
+  getServices,
   // Types
   type Installation,
-  type Client,
   type OtherClient,
   type Project,
   type Service,
-  type Flowchart,
 } from "./projects";
 
 // ============================================================================
@@ -103,18 +103,18 @@ export {
 // ============================================================================
 
 export {
+  // Types
+  type Director,
   // Director
   getDirector,
   // Mission Vision
   getMissionVision,
-  // Why Choose Us
-  getWhyChooseUs,
   // Team Members
   getTeamMembers,
-  // Types
-  type Director,
+  // Why Choose Us
+  getWhyChooseUs,
   type MissionVision,
   type Reason,
-  type WhyChooseUs,
   type TeamMember,
+  type WhyChooseUs,
 } from "./company";

@@ -14,7 +14,8 @@ export const homeType = defineType({
       name: "heroHeadline",
       title: "Hero - Main Headline",
       type: "string",
-      initialValue: "Precision Engineered Machinery. Delivered With Confidence.",
+      initialValue:
+        "Precision Engineered Machinery. Delivered With Confidence.",
       description: "The main headline displayed in the hero section",
     }),
     defineField({

@@ -1,64 +1,35 @@
 /**
- * Marketing GROQ Queries
- * Queries for achievements, certifications, and events
+ * Events Page GROQ Queries
+ * Queries for events, certifications, and achievements
  */
 
 import {
-  BASE_DOCUMENT_FIELDS,
-  IMAGE_PROJECTION,
+  ACHIEVEMENT_PROJECTION,
+  CERTIFICATION_PROJECTION,
+  EVENT_PROJECTION,
+} from "../shared/projections";
+import type { QueryResult } from "../shared/utils";
+import {
   buildFilterString,
   buildOrderString,
   buildPaginationString,
-} from "./common";
-import type { QueryResult } from "./products";
+} from "../shared/utils";
 
 // ============================================================================
-// Projections
+// Types
 // ============================================================================
 
 /**
- * Achievement Projection
+ * Event List Parameters
  */
-export const ACHIEVEMENT_PROJECTION = `{
-  ${BASE_DOCUMENT_FIELDS},
-  title,
-  description,
-  year,
-  image {
-    ${IMAGE_PROJECTION}
-  },
-  order
-}`;
-
-/**
- * Certification Projection
- */
-export const CERTIFICATION_PROJECTION = `{
-  ${BASE_DOCUMENT_FIELDS},
-  title,
-  issuingBody,
-  year,
-  description,
-  image {
-    ${IMAGE_PROJECTION}
-  },
-  order
-}`;
-
-/**
- * Event Projection
- */
-export const EVENT_PROJECTION = `{
-  ${BASE_DOCUMENT_FIELDS},
-  title,
-  description,
-  date,
-  location,
-  image {
-    ${IMAGE_PROJECTION}
-  },
-  order
-}`;
+export interface EventListParams {
+  /** Filter for upcoming events only */
+  upcoming?: boolean;
+  /** Maximum number of results */
+  limit?: number;
+  /** Starting index for pagination */
+  offset?: number;
+}
 
 // ============================================================================
 // Achievement Queries
@@ -66,7 +37,10 @@ export const EVENT_PROJECTION = `{
 
 /**
  * Get All Achievements Query
+ * Fetches all achievements ordered by display order
+ *
  * @param limit - Optional limit for results
+ * @returns Query object
  */
 export function getAllAchievementsQuery(limit?: number): QueryResult {
   const filterString = buildFilterString("achievement");
@@ -81,6 +55,9 @@ export function getAllAchievementsQuery(limit?: number): QueryResult {
 
 /**
  * Get Achievement Count Query
+ * Returns total number of achievements
+ *
+ * @returns Query object
  */
 export function getAchievementCountQuery(): QueryResult {
   const filterString = buildFilterString("achievement");
@@ -97,7 +74,10 @@ export function getAchievementCountQuery(): QueryResult {
 
 /**
  * Get All Certifications Query
+ * Fetches all certifications ordered by display order
+ *
  * @param limit - Optional limit for results
+ * @returns Query object
  */
 export function getAllCertificationsQuery(limit?: number): QueryResult {
   const filterString = buildFilterString("certification");
@@ -112,6 +92,9 @@ export function getAllCertificationsQuery(limit?: number): QueryResult {
 
 /**
  * Get Certification Count Query
+ * Returns total number of certifications
+ *
+ * @returns Query object
  */
 export function getCertificationCountQuery(): QueryResult {
   const filterString = buildFilterString("certification");
@@ -127,20 +110,11 @@ export function getCertificationCountQuery(): QueryResult {
 // ============================================================================
 
 /**
- * Event List Parameters
- */
-export interface EventListParams {
-  /** Filter for upcoming events only */
-  upcoming?: boolean;
-  /** Maximum number of results */
-  limit?: number;
-  /** Starting index for pagination */
-  offset?: number;
-}
-
-/**
  * Get All Events Query
+ * Fetches all events with optional filtering
+ *
  * @param options - Filtering and pagination options
+ * @returns Query object
  */
 export function getAllEventsQuery(options: EventListParams = {}): QueryResult {
   const { upcoming, limit, offset = 0 } = options;
@@ -162,7 +136,10 @@ export function getAllEventsQuery(options: EventListParams = {}): QueryResult {
 
 /**
  * Get Upcoming Events Query
+ * Fetches events that haven't happened yet
+ *
  * @param limit - Maximum number of events
+ * @returns Query object
  */
 export function getUpcomingEventsQuery(limit: number = 5): QueryResult {
   return getAllEventsQuery({ upcoming: true, limit });
@@ -170,6 +147,9 @@ export function getUpcomingEventsQuery(limit: number = 5): QueryResult {
 
 /**
  * Get Event Count Query
+ * Returns total number of events
+ *
+ * @returns Query object
  */
 export function getEventCountQuery(): QueryResult {
   const filterString = buildFilterString("event");

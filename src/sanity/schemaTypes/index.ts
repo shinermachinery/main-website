@@ -1,24 +1,29 @@
 import type { SchemaTypeDefinition } from "sanity";
 
 // Blog schemas
+import { authorType, blockContentType, categoryType, postType } from "./blog";
+// Common schemas
 import {
-  authorType,
-  blockContentType,
-  categoryType,
-  postType,
-} from "./blog";
-
-// Product schemas
-import { productCollectionType, productType } from "./products";
+  contactSubmissionType,
+  footerType,
+  navigationType,
+  siteSettingsType,
+} from "./common";
 
 // Company schemas
-import {
-  directorType,
-  missionVisionType,
-  teamMemberType,
-  whyChooseUsType,
-} from "./company";
+import { aboutPageType, teamMemberType } from "./company";
+// Homepage schemas
+import { homeType } from "./homepage";
 
+// Marketing schemas
+import {
+  achievementType,
+  certificationType,
+  eventType,
+  testimonialType,
+} from "./marketing";
+// Product schemas
+import { productCollectionType, productType } from "./products";
 // Project schemas
 import {
   clientType,
@@ -28,32 +33,10 @@ import {
   serviceType,
 } from "./projects";
 
-// Marketing schemas
-import {
-  achievementType,
-  certificationType,
-  eventType,
-  testimonialType,
-} from "./marketing";
-
-// Homepage schemas
-import {
-  homeType,
-  homepageAboutType,
-  homepageFeaturesType,
-  homepageHeroType,
-} from "./homepage";
-
-// Common schemas
-import { companyStatsType, contactSubmissionType } from "./common";
-
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     // Homepage
     homeType,
-    homepageHeroType,
-    homepageAboutType,
-    homepageFeaturesType,
 
     // Blog
     blockContentType,
@@ -73,10 +56,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     flowchartType,
 
     // Company
+    aboutPageType,
     teamMemberType,
-    directorType,
-    whyChooseUsType,
-    missionVisionType,
 
     // Marketing
     testimonialType,
@@ -85,7 +66,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     achievementType,
 
     // Common
-    companyStatsType,
+    siteSettingsType,
+    navigationType,
+    footerType,
     contactSubmissionType,
   ],
 };

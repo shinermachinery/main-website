@@ -1,5 +1,9 @@
 "use server";
 
+import {
+  getDemoProductBySlug,
+  getDemoProducts,
+} from "@/lib/demo-data/products";
 import type { Category, Product } from "@/lib/sanity-types";
 import { sanityFetch } from "@/sanity/lib/live";
 import {
@@ -8,10 +12,6 @@ import {
   getProductBySlugQuery,
   type ProductListParams,
 } from "@/sanity/lib/queries";
-import {
-  getDemoProducts,
-  getDemoProductBySlug,
-} from "@/lib/demo-data/products";
 
 export const getAllProducts = async (
   options: ProductListParams = {},

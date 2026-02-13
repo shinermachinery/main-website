@@ -3,9 +3,9 @@ import {
   Calendar,
   Eye,
   Info,
+  type LucideIcon,
   Mail,
   User,
-  type LucideIcon,
 } from "lucide-react";
 
 export interface NavLink {

@@ -70,16 +70,41 @@ export const productType = defineType({
     defineField({
       name: "specifications",
       title: "Specifications",
-      type: "object",
-      fields: [
-        defineField({
-          name: "description",
-          title: "Specifications Description",
-          type: "text",
-          rows: 2,
-          description: "Overview of product specifications",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "object",
+          name: "spec",
+          fields: [
+            defineField({
+              name: "label",
+              title: "Label",
+              type: "string",
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: "value",
+              title: "Value",
+              type: "string",
+              validation: (Rule) => Rule.required(),
+            }),
+          ],
+          preview: {
+            select: {
+              label: "label",
+              value: "value",
+            },
+            prepare({ label, value }) {
+              return {
+                title: label,
+                subtitle: value,
+              };
+            },
+          },
         }),
       ],
+      description:
+        "Product specifications (e.g., Weight: 50kg, Capacity: 100 tons/hr)",
     }),
     defineField({
       name: "price",

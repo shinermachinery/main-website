@@ -14,12 +14,16 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
 const token = process.env.SANITY_API_TOKEN;
 
 if (!projectId || !dataset) {
-  console.error("Missing NEXT_PUBLIC_SANITY_PROJECT_ID or NEXT_PUBLIC_SANITY_DATASET");
+  console.error(
+    "Missing NEXT_PUBLIC_SANITY_PROJECT_ID or NEXT_PUBLIC_SANITY_DATASET",
+  );
   process.exit(1);
 }
 
 if (!token) {
-  console.error("Missing SANITY_API_TOKEN - create one at https://www.sanity.io/manage");
+  console.error(
+    "Missing SANITY_API_TOKEN - create one at https://www.sanity.io/manage",
+  );
   console.error("Add it to .env.local as SANITY_API_TOKEN=your-token");
   process.exit(1);
 }
@@ -340,7 +344,8 @@ const seedData = {
       _id: "achievement-excellence",
       awardName: "Excellence in Food Technology",
       awardGiver: "Food Processing Industry Association",
-      description: "Recognized for innovative contributions to food processing technology.",
+      description:
+        "Recognized for innovative contributions to food processing technology.",
       order: 1,
     },
     {
@@ -348,7 +353,8 @@ const seedData = {
       _id: "achievement-innovation",
       awardName: "Best Innovation Award",
       awardGiver: "National Technology Awards",
-      description: "Awarded for breakthrough optical sorting technology development.",
+      description:
+        "Awarded for breakthrough optical sorting technology development.",
       order: 2,
     },
     {
@@ -356,7 +362,8 @@ const seedData = {
       _id: "achievement-service",
       awardName: "Customer Service Excellence",
       awardGiver: "Industry Excellence Awards",
-      description: "Recognized for outstanding customer support and service delivery.",
+      description:
+        "Recognized for outstanding customer support and service delivery.",
       order: 3,
     },
   ],
@@ -445,7 +452,8 @@ const seedData = {
       title: "Rice Processing Plant",
       type: "Rice Mill",
       location: "Patna, Bihar",
-      description: "Complete rice processing and sorting installation with 10 TPH capacity.",
+      description:
+        "Complete rice processing and sorting installation with 10 TPH capacity.",
       order: 1,
     },
     {
@@ -454,7 +462,8 @@ const seedData = {
       title: "Pulse Sorting Facility",
       type: "Dal Mill",
       location: "Karnal, Haryana",
-      description: "High-capacity pulse sorting line with optical sorting technology.",
+      description:
+        "High-capacity pulse sorting line with optical sorting technology.",
       order: 2,
     },
     {
@@ -463,7 +472,8 @@ const seedData = {
       title: "Grain Processing Unit",
       type: "Multi-Grain",
       location: "Indore, MP",
-      description: "Versatile grain processing unit handling wheat, rice, and pulses.",
+      description:
+        "Versatile grain processing unit handling wheat, rice, and pulses.",
       order: 3,
     },
     {
@@ -472,7 +482,8 @@ const seedData = {
       title: "Export Quality Line",
       type: "Export Unit",
       location: "Mumbai, Maharashtra",
-      description: "Premium export-grade sorting facility meeting international standards.",
+      description:
+        "Premium export-grade sorting facility meeting international standards.",
       order: 4,
     },
     {
@@ -553,6 +564,291 @@ const seedData = {
     teamMembers: 30,
   },
 
+  // Site Settings (singleton)
+  siteSettings: {
+    _type: "siteSettings",
+    _id: "siteSettings",
+    companyName: "Shiner Machinery",
+    tagline:
+      "Precision engineering delivered with confidence. Built to perform, built to last.",
+    contactEmail: "info@shinermachinery.com",
+    contactPhone: "+91 98765 43210",
+    address: "Plot No. 12, Industrial Area Phase 2, Patna, Bihar 800014, India",
+    socialLinks: [
+      {
+        _key: "social-fb",
+        platform: "facebook",
+        url: "https://facebook.com/shinermachinery",
+      },
+      {
+        _key: "social-tw",
+        platform: "twitter",
+        url: "https://twitter.com/shinermachinery",
+      },
+      {
+        _key: "social-li",
+        platform: "linkedin",
+        url: "https://linkedin.com/company/shinermachinery",
+      },
+      {
+        _key: "social-ig",
+        platform: "instagram",
+        url: "https://instagram.com/shinermachinery",
+      },
+      {
+        _key: "social-yt",
+        platform: "youtube",
+        url: "https://youtube.com/@shinermachinery",
+      },
+    ],
+    seoDefaults: {
+      title:
+        "Shiner Machinery - Precision Engineered Food Processing Equipment",
+      description:
+        "Leading provider of precision-engineered food processing equipment including color sorters, grading machines, and processing solutions. 25+ years of excellence.",
+    },
+  },
+
+  // Navigation (singleton)
+  navigation: {
+    _type: "navigation",
+    _id: "navigation",
+    menuItems: [
+      {
+        _key: "nav-products",
+        label: "Products",
+        link: "/products",
+        hasDropdown: false,
+      },
+      {
+        _key: "nav-projects",
+        label: "Projects",
+        link: "/projects",
+        hasDropdown: false,
+      },
+      {
+        _key: "nav-services",
+        label: "Services",
+        link: "/services",
+        hasDropdown: false,
+      },
+      { _key: "nav-blog", label: "Blog", link: "/blog", hasDropdown: false },
+      {
+        _key: "nav-about",
+        label: "About Us",
+        hasDropdown: true,
+        dropdownItems: [
+          {
+            _key: "dd-about",
+            label: "About Us",
+            link: "/about",
+            description: "Learn about our company",
+          },
+          {
+            _key: "dd-why",
+            label: "Why Choose Us",
+            link: "/about/why-choose-us",
+            description: "Reasons to work with us",
+          },
+          {
+            _key: "dd-mission",
+            label: "Mission & Vision",
+            link: "/about/mission-vision",
+            description: "Our goals and direction",
+          },
+          {
+            _key: "dd-director",
+            label: "About Director",
+            link: "/about/director",
+            description: "Meet our leadership",
+          },
+        ],
+      },
+      {
+        _key: "nav-more",
+        label: "More",
+        hasDropdown: true,
+        dropdownItems: [
+          {
+            _key: "dd-events",
+            label: "Events",
+            link: "/events",
+            description: "Upcoming events and expos",
+          },
+          {
+            _key: "dd-contact",
+            label: "Contact",
+            link: "/contact",
+            description: "Get in touch with us",
+          },
+        ],
+      },
+    ],
+    ctaButton: {
+      label: "Get a Quote",
+      link: "/contact",
+    },
+  },
+
+  // Footer (singleton)
+  footer: {
+    _type: "footer",
+    _id: "footer",
+    sections: [
+      {
+        _key: "footer-quick",
+        title: "Quick Links",
+        links: [
+          { _key: "fl-about", label: "About Us", url: "/about" },
+          { _key: "fl-products", label: "Products", url: "/products" },
+          { _key: "fl-projects", label: "Projects", url: "/projects" },
+          { _key: "fl-services", label: "Services", url: "/services" },
+          { _key: "fl-contact", label: "Contact", url: "/contact" },
+        ],
+      },
+      {
+        _key: "footer-resources",
+        title: "Resources",
+        links: [
+          { _key: "fl-blog", label: "Blog", url: "/blog" },
+          { _key: "fl-events", label: "Events", url: "/events" },
+          {
+            _key: "fl-why",
+            label: "Why Choose Us",
+            url: "/about/why-choose-us",
+          },
+          {
+            _key: "fl-mission",
+            label: "Mission & Vision",
+            url: "/about/mission-vision",
+          },
+        ],
+      },
+    ],
+    contactInfo: {
+      email: "info@shinermachinery.com",
+      phone: "+91 98765 43210",
+      address:
+        "Plot No. 12, Industrial Area Phase 2, Patna, Bihar 800014, India",
+    },
+    socialLinks: [
+      {
+        _key: "fs-fb",
+        platform: "facebook",
+        url: "https://facebook.com/shinermachinery",
+      },
+      {
+        _key: "fs-tw",
+        platform: "twitter",
+        url: "https://twitter.com/shinermachinery",
+      },
+      {
+        _key: "fs-li",
+        platform: "linkedin",
+        url: "https://linkedin.com/company/shinermachinery",
+      },
+      {
+        _key: "fs-ig",
+        platform: "instagram",
+        url: "https://instagram.com/shinermachinery",
+      },
+    ],
+    copyrightText: "Shiner Machinery. All rights reserved.",
+  },
+
+  // About Page (singleton)
+  aboutPage: {
+    _type: "aboutPage",
+    _id: "aboutPage",
+    heroTitle: "Engineering Excellence for Modern Manufacturing",
+    heroDescription:
+      "Shiner Machinery designs and delivers precision-engineered machines that empower manufacturers to build faster, smarter, and more efficiently.",
+    whoWeAre: {
+      title: "Who We Are",
+      description: [
+        {
+          _type: "block",
+          _key: "wwa1",
+          style: "normal",
+          children: [
+            {
+              _type: "span",
+              _key: "wwa-span1",
+              text: "Shiner Machinery is a global provider of industrial fabrication machinery, specializing in high-performance solutions for window, door, and glass production lines. With a focus on reliability, automation, and long-term value, we support manufacturers at every stage — from consultation to installation and beyond.",
+            },
+          ],
+        },
+      ],
+    },
+    mission: {
+      title: "Our Mission",
+      description:
+        "To enable manufacturers worldwide with reliable, efficient, and future-ready machinery.",
+    },
+    vision: {
+      title: "Our Vision",
+      description:
+        "To be the most trusted name in precision engineering, setting global benchmarks for quality and innovation.",
+    },
+    features: [
+      {
+        _key: "feat-1",
+        icon: "settings",
+        title: "Precision Engineering",
+        description: "Every machine is built for accuracy and consistency.",
+      },
+      {
+        _key: "feat-2",
+        icon: "headset",
+        title: "Customer-First Support",
+        description: "Long-term partnerships over one-time sales.",
+      },
+      {
+        _key: "feat-3",
+        icon: "sparkles",
+        title: "Innovation-Driven",
+        description: "Continuous improvement in automation and design.",
+      },
+      {
+        _key: "feat-4",
+        icon: "globe",
+        title: "Global Standards",
+        description: "Built to perform across markets and climates.",
+      },
+    ],
+    bottomFeatures: [
+      {
+        _key: "bf-1",
+        icon: "building",
+        title: "Industry-tested components",
+        description: "Components validated across diverse industries.",
+      },
+      {
+        _key: "bf-2",
+        icon: "trending",
+        title: "Scalable production solutions",
+        description: "Grow from small batch to full production.",
+      },
+      {
+        _key: "bf-3",
+        icon: "phone",
+        title: "Dedicated after-sales support",
+        description: "Support that continues well after delivery.",
+      },
+      {
+        _key: "bf-4",
+        icon: "award",
+        title: "Proven results worldwide",
+        description: "Trusted by manufacturers across the globe.",
+      },
+    ],
+    seo: {
+      title: "About Us - Shiner Machinery",
+      description:
+        "Shiner Machinery designs and delivers precision-engineered machines that empower manufacturers to build faster, smarter, and more efficiently.",
+    },
+  },
+
   // Blog Categories
   categories: [
     {
@@ -622,8 +918,15 @@ async function seed() {
   console.log("🌱 Starting seed process...\n");
 
   try {
-    // Seed homepage content first
-    console.log("🏠 Seeding Homepage...");
+    // Seed global singletons first
+    console.log("⚙️ Seeding Global Settings...");
+    await createDocument(seedData.siteSettings, "Site Settings");
+    await createDocument(seedData.navigation, "Navigation");
+    await createDocument(seedData.footer, "Footer");
+    await createDocument(seedData.aboutPage, "About Page");
+
+    // Seed homepage content
+    console.log("\n🏠 Seeding Homepage...");
     await createDocument(seedData.home, "Homepage");
 
     // Seed single documents
@@ -647,7 +950,10 @@ async function seed() {
     // Seed achievements
     console.log("\n🏆 Seeding Achievements...");
     for (const achievement of seedData.achievements) {
-      await createDocument(achievement, `Achievement: ${achievement.awardName}`);
+      await createDocument(
+        achievement,
+        `Achievement: ${achievement.awardName}`,
+      );
     }
 
     // Seed events
@@ -693,7 +999,9 @@ async function seed() {
     }
 
     console.log("\n✨ Seed completed successfully!");
-    console.log("\nNote: Images need to be uploaded manually through Sanity Studio.");
+    console.log(
+      "\nNote: Images need to be uploaded manually through Sanity Studio.",
+    );
   } catch (error) {
     console.error("\n❌ Seed failed:", error);
     process.exit(1);

@@ -2,7 +2,7 @@
 
 Master index of all features in this project. Each feature has detailed documentation in its respective folder.
 
-**Last Updated**: 2026-01-15
+**Last Updated**: 2026-02-08
 
 ## Active Features
 
@@ -33,11 +33,12 @@ Features currently implemented and in use.
 
 ### 2. Sanity CMS Integration
 
-**Status**: ✅ Completed
+**Status**: ✅ Completed (Schema refactoring complete)
 **Location**: `memory-bank/features/sanity-integration/`
 **Description**: Headless CMS with embedded Studio for content management
 **Key Tech**: Sanity v4, next-sanity, GROQ
 **Created**: 2025-12-23
+**Last Updated**: 2026-02-08
 
 **Quick Links:**
 - [Full Documentation](./features/sanity-integration/README.md)
@@ -46,29 +47,37 @@ Features currently implemented and in use.
 **Key Files:**
 - `sanity.config.ts` - Sanity configuration
 - `src/sanity/lib/client.ts` - API client
-- `src/sanity/schemaTypes/*.ts` - Content schemas
+- `src/sanity/schemaTypes/*.ts` - Content schemas (19 total)
+- `src/sanity/structure.ts` - Studio structure
 - `src/app/studio/[[...tool]]/page.tsx` - Studio route
 
-**Content Schemas:**
+**Content Schemas (19 total):**
+
+*Singletons (Pages):*
+- Home - Homepage content (homeType)
+- About Page - Merged mission/vision/features (aboutPageType)
+- Site Settings - Company info, SEO defaults (siteSettingsType)
+- Navigation - CMS-managed menu (navigationType)
+- Footer - CMS-managed footer (footerType)
+
+*Collections:*
 - Post - Blog posts
 - Author - Author profiles
 - Category - Post categories
 - Block Content - Rich text
 - Product - Product catalog items
 - Product Collection - Product groupings
-- Project - Products/projects (with gallery)
+- Project - Projects with gallery
 - Service - Service offerings
-- Team Member - Team profiles
-- Testimonial - Customer testimonials
+- Team Member - Team profiles (with isDirector flag for director)
+- Testimonial - Customer testimonials (with rating, company)
 - Contact Submission - Contact form data
-- Event - Events and news
+- Event - Events (title, images, location)
 - Certification - Company certifications
 - Achievement - Company achievements
-- Installation - Installation projects
-- Client - Client information
-- Why Choose Us - Reasons to choose (singleton)
-- Mission & Vision - Mission/vision statements (singleton)
-- Director - Director profile (singleton)
+- Installation - Installation projects (simplified)
+- Client - Client logos (with featured flag)
+- Flowchart - Process flowcharts
 
 **Dependencies:**
 - sanity@4
@@ -317,6 +326,44 @@ Features currently implemented and in use.
 
 ---
 
+### 8. SEO Configuration
+
+**Status**: ✅ Completed
+**Location**: `memory-bank/features/seo-configuration/`
+**Description**: Comprehensive SEO setup with sitemap, robots.txt, favicons, and Open Graph metadata
+**Key Tech**: Next.js Metadata API, Sanity CMS
+**Created**: 2026-01-29
+
+**Quick Links:**
+- [Full Documentation](./features/seo-configuration/README.md)
+- [Changelog](./features/seo-configuration/CHANGELOG.md)
+
+**Key Files:**
+- `src/lib/site-config.ts` - Centralized site configuration
+- `src/app/robots.ts` - Robots.txt generation
+- `src/app/sitemap.ts` - Dynamic sitemap generation
+- `src/app/manifest.ts` - PWA manifest
+- `src/app/layout.tsx` - Root metadata with icons
+- `public/favicons/*` - All favicon assets
+
+**Features:**
+- Dynamic sitemap with Sanity CMS content
+- Robots.txt with crawling rules
+- Full favicon support (iOS, Android, desktop)
+- Open Graph and Twitter Card metadata
+- PWA manifest configuration
+- Centralized site configuration
+
+**Generated Routes:**
+- `/robots.txt`
+- `/sitemap.xml`
+- `/manifest.webmanifest`
+
+**Dependencies:**
+- Sanity CMS Integration (for dynamic URLs)
+
+---
+
 ## Feature Status Legend
 
 - ✅ **Completed** - Fully implemented and stable
@@ -451,28 +498,29 @@ Features scheduled for future implementation:
 | Feature | Status | Files | Docs |
 |---------|--------|-------|------|
 | Theme System | ✅ | `src/lib/theme-provider.tsx`<br>`src/components/global/mode-toggle.tsx` | [View](./features/theme-system/README.md) |
-| Sanity Integration | ✅ | `sanity.config.ts`<br>`src/sanity/**/*` | [View](./features/sanity-integration/README.md) |
+| Sanity Integration | ✅ | `sanity.config.ts`<br>`src/sanity/**/*` (19 schemas) | [View](./features/sanity-integration/README.md) |
 | UI Components (shadcn/ui) | 🚧 | `src/components/ui/**/*`<br>`src/lib/utils.ts` | [View](./features/ui-components/README.md) |
 | MCP Integration | ✅ | `.mcp.json`<br>`.claude/settings.local.json` | [View](../MCP-SETUP.md) |
 | Landing Pages | ✅ | `src/app/(landing)/**/*`<br>6 pages: Home, About, Contact, Blog, Blog Detail, Services | [View](./features/landing-page/README.md) |
 | Projects & Products | ✅ | `src/app/(landing)/projects/**/*`<br>`src/components/projects/*` | [View](./features/projects-products/README.md) |
 | About Us Pages | ✅ | `src/app/(landing)/about/*`<br>3 pages: Why Choose, Mission/Vision, Director | [View](./features/about-us-pages/README.md) |
+| SEO Configuration | ✅ | `src/app/robots.ts`<br>`src/app/sitemap.ts`<br>`src/lib/site-config.ts` | [View](./features/seo-configuration/README.md) |
 
 ## Feature Statistics
 
-**Total Features**: 7
-- ✅ Completed: 6
-- 🚧 In Development: 1
+**Total Features**: 8
+- ✅ Completed: 8
+- 🚧 In Development: 0
 - 📋 Planned: 3
 
-**Last Feature Completed**: Hero Section Redesign (2026-01-10)
+**Last Feature Completed**: Sanity Schema Refactoring (2026-02-08)
 **Recently Updated**:
+- **Sanity Schema Refactoring (2026-02-08)** - COMPLETED: Consolidated 27 schemas to 19. Added siteSettings, navigation, footer, aboutPage singletons. Simplified installation, client, event schemas. Added isDirector flag to teamMember. See CHANGELOG.md for full details.
+- **SEO Configuration (2026-01-29)** - Sitemap, robots.txt, favicons, Open Graph metadata, PWA manifest
 - **Sanity Data Flow Pattern (2026-01-15)** - Documented 3-layer architecture (Queries → Actions → Components) in patterns.md
 - **Hero Section Redesign (2026-01-10)** - Complete redesign to match Figma reference with gray background, typography card, featured product card, navbar-style gradient buttons
 - **ModeToggle Refactoring (2026-01-09)** - Simplified toggle component, hydration handling, Navbar integration
 - **Design System Refactoring (2026-01-09)** - Codebase-wide conversion of px to rem units (36 files), hardcoded colors to semantic tokens
-- Projects & Products System - Product catalog grid, dynamic detail pages with image galleries, specifications, related products
-- About Us Pages - 3 new pages (Why Choose Us, Mission & Vision, Director), navbar dropdown, Portable Text support
 **Next Planned**: Events Page, Contact Form Enhancement, Service Detail Pages
 
 ## Related Documentation
@@ -487,4 +535,4 @@ Features scheduled for future implementation:
 
 **Maintenance Schedule**: Review and update this index when features change
 **Owner**: Team
-**Last Review**: 2026-01-15
+**Last Review**: 2026-02-08

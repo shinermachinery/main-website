@@ -3,12 +3,12 @@
  * Queries for fetching homepage content from Sanity
  */
 
-import type { QueryResult } from "./products";
 import {
   PRODUCT_SUMMARY_PROJECTION,
   TEAM_MEMBER_PROJECTION,
   TESTIMONIAL_PROJECTION,
-} from "./common";
+} from "../shared/projections";
+import type { QueryResult } from "../shared/utils";
 
 /**
  * Get Home Page Content Query

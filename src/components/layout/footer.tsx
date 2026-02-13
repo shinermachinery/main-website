@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Heart, Linkedin, Mail, Twitter } from "lucide-react";
 import Link from "next/link";
 
 export function Footer() {
@@ -187,8 +187,9 @@ export function Footer() {
           >
             <p>© {currentYear} Shiner. All rights reserved.</p>
             <p className="text-center">
-              Built with <span className="text-red-500">❤</span> using Next.js
-              and Sanity CMS
+              Built with{" "}
+              <Heart className="inline h-4 w-4 fill-red-500 text-red-500" />{" "}
+              using Next.js and Sanity CMS
             </p>
           </div>
         </div>

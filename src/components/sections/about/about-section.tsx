@@ -1,5 +1,5 @@
-import { Settings, TrendingUp, Wrench, Globe } from "lucide-react";
 import { PortableText } from "@portabletext/react";
+import { Globe, Settings, TrendingUp, Wrench } from "lucide-react";
 
 interface AboutSectionProps {
   title?: string;
@@ -8,11 +8,7 @@ interface AboutSectionProps {
 
 export function AboutSection({ title, description }: AboutSectionProps) {
   return (
-    <section
-      id="about"
-      className="py-40"
-      aria-labelledby="about-heading"
-    >
+    <section id="about" className="py-40" aria-labelledby="about-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto space-y-40">
           {/* Mission Statement */}
@@ -35,7 +31,10 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                 </div>
               ) : (
                 <p className="text-[20px] leading-[28px] font-medium text-muted-foreground tracking-[-0.5px]">
-                  Lorem ipsum dolor sit amet consectetur. Turpis bibendum eget adipiscing scelerisque proin. Neque tincidunt et pellentesque proin. Quam non tortor sed mauris libero bibendum malesuada. Mi id et fermentum venenatis eu
+                  Lorem ipsum dolor sit amet consectetur. Turpis bibendum eget
+                  adipiscing scelerisque proin. Neque tincidunt et pellentesque
+                  proin. Quam non tortor sed mauris libero bibendum malesuada.
+                  Mi id et fermentum venenatis eu
                 </p>
               )}
             </div>

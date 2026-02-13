@@ -2,6 +2,64 @@
 
 All notable changes to the Sanity integration will be documented in this file.
 
+## [2.0.0] - 2026-02-08 - Major Schema Refactoring
+
+### Status
+✅ **Completed** - Full schema redesign implemented
+
+### Summary
+Complete redesign of Sanity schemas to match Figma designs, consolidating 27 schemas into 19 cleaner schemas with better structure.
+
+### Schema Changes
+
+#### Created (4 new schemas):
+- `siteSettingsType.ts` - Global site configuration (singleton)
+- `navigationType.ts` - CMS-managed navigation menu (singleton)
+- `footerType.ts` - CMS-managed footer content (singleton)
+- `aboutPageType.ts` - Merged about page content (singleton)
+
+#### Deleted (7 obsolete schemas):
+- `homepageAbout.ts` - Unused reusable object
+- `homepageFeatures.ts` - Unused reusable object
+- `homepageHero.ts` - Unused reusable object
+- `companyStats.ts` - Inlined into homepage
+- `missionVisionType.ts` - Merged into aboutPageType
+- `whyChooseUsType.ts` - Merged into aboutPageType
+- `directorType.ts` - Merged into teamMemberType (isDirector flag)
+
+#### Modified (6 schemas):
+- `teamMemberType.ts` - Added isDirector, achievements, contactEmail fields
+- `installationType.ts` - Simplified: title, images[], client reference, machineryType, location
+- `clientType.ts` - Simplified: companyName, logo, featured flag
+- `eventType.ts` - Simplified: title, images[], location
+- `productType.ts` - Updated specifications to array of {label, value}
+- `testimonialType.ts` - Added separate company field
+
+### Query Updates
+- Added projections: SITE_SETTINGS_PROJECTION, NAVIGATION_PROJECTION, FOOTER_PROJECTION, ABOUT_PAGE_PROJECTION
+- Removed projections: DIRECTOR_PROJECTION, MISSION_VISION_PROJECTION, WHY_CHOOSE_US_PROJECTION
+- Updated: TEAM_MEMBER_PROJECTION, INSTALLATION_PROJECTION, CLIENT_PROJECTION, EVENT_PROJECTION, TESTIMONIAL_PROJECTION
+- Created: `src/sanity/lib/queries/pages/settings.ts`
+- Updated: `src/sanity/lib/queries/pages/about.ts`
+
+### Server Actions
+- Created: `src/actions/settings.ts` - getSiteSettings, getNavigation, getFooter, getGlobalLayoutData
+- Created: `src/actions/about.ts` - getAboutPage, getDirector, getAllTeamMembers
+
+### Studio Structure Updates
+- Homepage now singleton document (not list)
+- About page now singleton document
+- Added Settings section with Site Settings, Navigation, Footer singletons
+
+### Files Modified (Summary)
+- Schema files: 10 (4 created, 6 modified)
+- Index files: 6 updated
+- Query files: 5 (1 created, 4 modified)
+- Action files: 2 created
+- Structure file: 1 modified
+
+---
+
 ## [1.1.0] - 2025-12-25
 
 ### Enhanced

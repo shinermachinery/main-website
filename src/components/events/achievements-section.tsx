@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { getAchievements } from "@/sanity/lib/actions";
 import { AchievementCard } from "@/components/cards/achievement-card";
+import { getAchievements } from "@/sanity/lib/actions";
 
 export async function AchievementsSection() {
   const achievements = await getAchievements(3);

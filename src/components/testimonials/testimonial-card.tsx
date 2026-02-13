@@ -6,7 +6,7 @@
 
 "use client";
 
-import { Star } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 import Image from "next/image";
 import type { Testimonial } from "@/lib/sanity-types";
 import { urlFor } from "@/sanity/lib/image";
@@ -59,9 +59,7 @@ export function TestimonialCard({
       <blockquote
         className={`text-foreground leading-relaxed ${isCompact ? "text-sm" : ""}`}
       >
-        {isQuote && (
-          <span className="text-6xl text-brand-green/20 leading-none">❝</span>
-        )}
+        {isQuote && <Quote className="h-10 w-10 text-brand-green/20" />}
         <p className={isQuote ? "mt-2" : ""}>"{testimonial.content}"</p>
       </blockquote>
 

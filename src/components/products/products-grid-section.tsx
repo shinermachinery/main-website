@@ -1,10 +1,10 @@
 "use client";
-import type { Category, Product } from "@/lib/sanity-types";
-import { ProductCard } from "@/components/sections/products/product-card";
-import { imageBuilder } from "@/sanity/lib/image";
-import { useRouter } from "next/navigation";
-import { Button } from "../ui/button";
 import { X } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { ProductCard } from "@/components/sections/products/product-card";
+import type { Category, Product } from "@/lib/sanity-types";
+import { imageBuilder } from "@/sanity/lib/image";
+import { Button } from "../ui/button";
 import {
   Select,
   SelectContent,

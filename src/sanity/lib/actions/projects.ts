@@ -3,8 +3,8 @@
  * Server actions for fetching installations, clients, projects, and services
  */
 
-import { sanityFetch } from "@/sanity/lib/live";
 import { urlFor } from "@/sanity/lib/image";
+import { sanityFetch } from "@/sanity/lib/live";
 
 // ============================================================================
 // Types
@@ -64,7 +64,9 @@ export interface Flowchart {
  * Get all installations
  * @param limit - Optional limit for results (default: 6)
  */
-export async function getInstallations(limit: number = 6): Promise<Installation[]> {
+export async function getInstallations(
+  limit: number = 6,
+): Promise<Installation[]> {
   try {
     const { data: installations } = await sanityFetch({
       query: `*[_type == "installation"] | order(order asc, _createdAt desc) {
@@ -476,7 +478,9 @@ export interface OtherClient {
  * Get other clients for logo grid display
  * @param limit - Number of clients to fetch (default: 27)
  */
-export async function getOtherClients(limit: number = 27): Promise<OtherClient[]> {
+export async function getOtherClients(
+  limit: number = 27,
+): Promise<OtherClient[]> {
   try {
     const { data: clients } = await sanityFetch({
       query: `*[_type == "client"] | order(order asc, _createdAt desc) {
@@ -491,11 +495,7 @@ export async function getOtherClients(limit: number = 27): Promise<OtherClient[]
     }
 
     return clients.map(
-      (clientItem: {
-        _id: string;
-        companyName: string;
-        logo?: any;
-      }) => ({
+      (clientItem: { _id: string; companyName: string; logo?: any }) => ({
         id: clientItem._id,
         companyName: clientItem.companyName,
         logo: clientItem.logo ? urlFor(clientItem.logo).url() : undefined,

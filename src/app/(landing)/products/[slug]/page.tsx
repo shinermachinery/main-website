@@ -1,16 +1,16 @@
+import { ArrowLeft } from "lucide-react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
+import { getProductBySlug } from "@/actions/products";
+import { ProductBrochureDownload } from "@/components/products/product-brochure-download";
 import { ProductDetailSkeleton } from "@/components/products/product-detail-skeleton";
-import { urlFor } from "@/sanity/lib/image";
-import { getProductBySlug, getAllProducts } from "@/actions/products";
-import { ProductSpecificationsSection } from "@/components/products/product-specifications-section";
 import { ProductImageGallery } from "@/components/products/product-image-gallery";
 import { ProductInfo } from "@/components/products/product-info";
-import { ProductBrochureDownload } from "@/components/products/product-brochure-download";
+import { ProductSpecificationsSection } from "@/components/products/product-specifications-section";
 import { RelatedProducts } from "@/components/products/related-products";
+import { urlFor } from "@/sanity/lib/image";
 
 interface PageProps {
   params: Promise<{ slug: string }>;

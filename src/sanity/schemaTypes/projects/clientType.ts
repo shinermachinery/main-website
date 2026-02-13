@@ -1,5 +1,5 @@
 import { UsersIcon } from "@sanity/icons";
-import { defineArrayMember, defineField, defineType } from "sanity";
+import { defineField, defineType } from "sanity";
 
 export const clientType = defineType({
   name: "client",
@@ -12,20 +12,6 @@ export const clientType = defineType({
       title: "Company Name",
       type: "string",
       validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: "projects",
-      title: "Projects",
-      type: "array",
-      of: [defineArrayMember({ type: "string" })],
-      description: "List of projects/locations for this client",
-    }),
-    defineField({
-      name: "highlight",
-      title: "Highlight",
-      type: "boolean",
-      description: "Display this client with gradient highlight",
-      initialValue: false,
     }),
     defineField({
       name: "logo",
@@ -43,30 +29,24 @@ export const clientType = defineType({
       ],
     }),
     defineField({
-      name: "description",
-      title: "Description",
-      type: "text",
-      rows: 3,
-    }),
-    defineField({
-      name: "order",
-      title: "Display Order",
-      type: "number",
-      description: "Order in which this client appears (lower numbers first)",
-      validation: (Rule) => Rule.integer().min(0),
+      name: "featured",
+      title: "Featured",
+      type: "boolean",
+      description: "Show in 'Our Clients' logo grid section",
+      initialValue: false,
     }),
   ],
   preview: {
     select: {
       title: "companyName",
-      highlight: "highlight",
+      featured: "featured",
       media: "logo",
     },
     prepare(selection) {
-      const { title, highlight } = selection;
+      const { title, featured } = selection;
       return {
         ...selection,
-        subtitle: highlight ? "⭐ Highlighted" : "Standard",
+        subtitle: featured ? "Featured Client" : "Standard",
       };
     },
   },

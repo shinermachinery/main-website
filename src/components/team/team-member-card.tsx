@@ -8,7 +8,7 @@
 
 import Image from "next/image";
 import type { TeamMember } from "@/lib/sanity-types";
-import { imageBuilder, urlFor } from "@/sanity/lib/image";
+import { urlFor } from "@/sanity/lib/image";
 
 export interface TeamMemberCardProps {
   member: TeamMember;

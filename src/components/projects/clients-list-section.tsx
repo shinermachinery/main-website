@@ -1,5 +1,5 @@
-import { getClientsInColumns } from "@/sanity/lib/actions";
 import { ClientCard } from "@/components/cards/client-card";
+import { getClientsInColumns } from "@/sanity/lib/actions";
 
 export async function ClientsListSection() {
   const clientsData = await getClientsInColumns(3);

@@ -1,109 +1,35 @@
 /**
- * Projects GROQ Queries
- * Queries for installations, clients, projects, and services
+ * Projects Page GROQ Queries
+ * Queries for installations, clients, and projects
  */
 
 import {
-  BASE_DOCUMENT_FIELDS,
-  IMAGE_PROJECTION,
-  SLUG_PROJECTION,
+  CLIENT_PROJECTION,
+  INSTALLATION_PROJECTION,
+  PROJECT_FULL_PROJECTION,
+} from "../shared/projections";
+import type { QueryResult } from "../shared/utils";
+import {
   buildFilterString,
   buildOrderString,
   buildPaginationString,
-} from "./common";
-import type { QueryResult } from "./products";
+} from "../shared/utils";
 
 // ============================================================================
-// Projections
+// Types
 // ============================================================================
 
 /**
- * Installation Projection
+ * Project List Parameters
  */
-export const INSTALLATION_PROJECTION = `{
-  ${BASE_DOCUMENT_FIELDS},
-  title,
-  type,
-  location,
-  description,
-  image {
-    ${IMAGE_PROJECTION}
-  },
-  order
-}`;
-
-/**
- * Client Projection
- */
-export const CLIENT_PROJECTION = `{
-  ${BASE_DOCUMENT_FIELDS},
-  name,
-  logo {
-    ${IMAGE_PROJECTION}
-  },
-  website,
-  order
-}`;
-
-/**
- * Project Summary Projection
- */
-export const PROJECT_SUMMARY_PROJECTION = `{
-  _id,
-  title,
-  slug ${SLUG_PROJECTION},
-  client,
-  location,
-  "primaryImage": images[0] {
-    ${IMAGE_PROJECTION}
-  }
-}`;
-
-/**
- * Project Full Projection
- */
-export const PROJECT_FULL_PROJECTION = `{
-  ${BASE_DOCUMENT_FIELDS},
-  title,
-  slug ${SLUG_PROJECTION},
-  client,
-  location,
-  description,
-  images[] {
-    ${IMAGE_PROJECTION}
-  },
-  completionDate,
-  category,
-  order
-}`;
-
-/**
- * Service Summary Projection
- */
-export const SERVICE_SUMMARY_PROJECTION = `{
-  _id,
-  title,
-  slug ${SLUG_PROJECTION},
-  description,
-  image {
-    ${IMAGE_PROJECTION}
-  }
-}`;
-
-/**
- * Service Full Projection
- */
-export const SERVICE_FULL_PROJECTION = `{
-  ${BASE_DOCUMENT_FIELDS},
-  title,
-  slug ${SLUG_PROJECTION},
-  description,
-  image {
-    ${IMAGE_PROJECTION}
-  },
-  content,
-  order
-}`;
+export interface ProjectListParams {
+  /** Filter by category */
+  category?: string;
+  /** Maximum number of results */
+  limit?: number;
+  /** Starting index for pagination */
+  offset?: number;
+}
 
 // ============================================================================
 // Installation Queries
@@ -111,7 +37,10 @@ export const SERVICE_FULL_PROJECTION = `{
 
 /**
  * Get All Installations Query
+ * Fetches all installations ordered by display order
+ *
  * @param limit - Optional limit for results
+ * @returns Query object
  */
 export function getAllInstallationsQuery(limit?: number): QueryResult {
   const filterString = buildFilterString("installation");
@@ -126,6 +55,9 @@ export function getAllInstallationsQuery(limit?: number): QueryResult {
 
 /**
  * Get Installation Count Query
+ * Returns total number of installations
+ *
+ * @returns Query object
  */
 export function getInstallationCountQuery(): QueryResult {
   const filterString = buildFilterString("installation");
@@ -142,7 +74,10 @@ export function getInstallationCountQuery(): QueryResult {
 
 /**
  * Get All Clients Query
+ * Fetches all clients ordered by display order
+ *
  * @param limit - Optional limit for results
+ * @returns Query object
  */
 export function getAllClientsQuery(limit?: number): QueryResult {
   const filterString = buildFilterString("client");
@@ -157,6 +92,9 @@ export function getAllClientsQuery(limit?: number): QueryResult {
 
 /**
  * Get Client Count Query
+ * Returns total number of clients
+ *
+ * @returns Query object
  */
 export function getClientCountQuery(): QueryResult {
   const filterString = buildFilterString("client");
@@ -172,20 +110,11 @@ export function getClientCountQuery(): QueryResult {
 // ============================================================================
 
 /**
- * Project List Parameters
- */
-export interface ProjectListParams {
-  /** Filter by category */
-  category?: string;
-  /** Maximum number of results */
-  limit?: number;
-  /** Starting index for pagination */
-  offset?: number;
-}
-
-/**
  * Get All Projects Query
+ * Fetches all projects with optional filtering
+ *
  * @param options - Filtering and pagination options
+ * @returns Query object
  */
 export function getAllProjectsQuery(
   options: ProjectListParams = {},
@@ -209,7 +138,10 @@ export function getAllProjectsQuery(
 
 /**
  * Get Project By Slug Query
+ * Fetches a single project by slug
+ *
  * @param slug - Project slug
+ * @returns Query object
  */
 export function getProjectBySlugQuery(
   slug: string,
@@ -222,53 +154,12 @@ export function getProjectBySlugQuery(
 
 /**
  * Get Project Count Query
+ * Returns total number of projects
+ *
+ * @returns Query object
  */
 export function getProjectCountQuery(): QueryResult {
   const filterString = buildFilterString("project");
-
-  return {
-    query: `count(*[${filterString}])`,
-    params: {},
-  };
-}
-
-// ============================================================================
-// Service Queries
-// ============================================================================
-
-/**
- * Get All Services Query
- * @param limit - Optional limit for results
- */
-export function getAllServicesQuery(limit?: number): QueryResult {
-  const filterString = buildFilterString("service");
-  const orderString = buildOrderString(["order asc", "_createdAt desc"]);
-  const paginationString = buildPaginationString(limit);
-
-  return {
-    query: `*[${filterString}] ${orderString} ${paginationString} ${SERVICE_FULL_PROJECTION}`,
-    params: {},
-  };
-}
-
-/**
- * Get Service By Slug Query
- * @param slug - Service slug
- */
-export function getServiceBySlugQuery(
-  slug: string,
-): QueryResult<{ slug: string }> {
-  return {
-    query: `*[_type == "service" && slug.current == $slug][0] ${SERVICE_FULL_PROJECTION}`,
-    params: { slug },
-  };
-}
-
-/**
- * Get Service Count Query
- */
-export function getServiceCountQuery(): QueryResult {
-  const filterString = buildFilterString("service");
 
   return {
     query: `count(*[${filterString}])`,

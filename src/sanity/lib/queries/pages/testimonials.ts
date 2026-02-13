@@ -1,15 +1,19 @@
 /**
- * Testimonial GROQ Queries
- * Optimized queries for fetching customer testimonials
+ * Testimonials Page GROQ Queries
+ * Queries for customer testimonials
  */
 
+import { TESTIMONIAL_PROJECTION } from "../shared/projections";
+import type { QueryResult } from "../shared/utils";
 import {
   buildFilterString,
   buildOrderString,
   buildPaginationString,
-  TESTIMONIAL_PROJECTION,
-} from "./common";
-import type { QueryResult } from "./products";
+} from "../shared/utils";
+
+// ============================================================================
+// Types
+// ============================================================================
 
 /**
  * Query Parameters for Testimonial Listing
@@ -22,6 +26,10 @@ export interface TestimonialListParams {
   /** Maximum number of results */
   limit?: number;
 }
+
+// ============================================================================
+// Testimonial Queries
+// ============================================================================
 
 /**
  * Get All Testimonials Query

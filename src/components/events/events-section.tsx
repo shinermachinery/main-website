@@ -1,5 +1,5 @@
-import { getEvents } from "@/sanity/lib/actions";
 import { EventCard } from "@/components/cards/event-card";
+import { getEvents } from "@/sanity/lib/actions";
 
 export async function EventsSection() {
   const events = await getEvents(8);
@@ -39,11 +39,7 @@ export async function EventsSection() {
       {/* Events Grid - 2 columns */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {events.map((event) => (
-          <EventCard
-            key={event.id}
-            image={event.image}
-            title={event.title}
-          />
+          <EventCard key={event.id} image={event.image} title={event.title} />
         ))}
       </div>
     </section>

@@ -85,10 +85,10 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   /* Brand Colors */
-  --brand-blue: oklch(0.45 0.12 250);
-  --brand-green: oklch(0.65 0.18 150);
-  --brand-blue-10: oklch(0.45 0.12 250 / 10%);
-  --brand-green-10: oklch(0.65 0.18 150 / 10%);
+  --brand-blue: #4e86c5;
+  --brand-green: #50c480;
+  --brand-blue-10: rgb(78 134 197 / 10%);
+  --brand-green-10: rgb(80 196 128 / 10%);
 }
 
 .dark {
@@ -125,10 +125,10 @@
   --sidebar-ring: oklch(0.556 0 0);
 
   /* Brand Colors - Slightly lighter for dark mode */
-  --brand-blue: oklch(0.55 0.12 250);
-  --brand-green: oklch(0.7 0.18 150);
-  --brand-blue-10: oklch(0.55 0.12 250 / 10%);
-  --brand-green-10: oklch(0.7 0.18 150 / 10%);
+  --brand-blue: #4e86c5;
+  --brand-green: #50c480;
+  --brand-blue-10: rgb(78 134 197 / 10%);
+  --brand-green-10: rgb(80 196 128 / 10%);
 }
 
 @layer base {

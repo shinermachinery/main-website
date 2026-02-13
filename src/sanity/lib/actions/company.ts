@@ -3,8 +3,8 @@
  * Server actions for fetching director, mission/vision, why choose us, and team
  */
 
-import { sanityFetch } from "@/sanity/lib/live";
 import { urlFor } from "@/sanity/lib/image";
+import { sanityFetch } from "@/sanity/lib/live";
 
 // ============================================================================
 // Types

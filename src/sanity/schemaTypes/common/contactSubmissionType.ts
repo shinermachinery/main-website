@@ -57,13 +57,17 @@ export const contactSubmissionType = defineType({
     },
     prepare(selection) {
       const { title, subtitle, status, submittedAt } = selection;
-      const statusEmoji =
-        status === "new" ? "🆕" : status === "read" ? "✅" : "📁";
+      const statusLabel =
+        status === "new"
+          ? "[NEW]"
+          : status === "read"
+            ? "[READ]"
+            : "[ARCHIVED]";
       const date = submittedAt
         ? new Date(submittedAt).toLocaleDateString()
         : "No date";
       return {
-        title: `${statusEmoji} ${title}`,
+        title: `${statusLabel} ${title}`,
         subtitle: `${subtitle} - ${date}`,
       };
     },

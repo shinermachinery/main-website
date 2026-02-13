@@ -21,6 +21,22 @@ export const certificationType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "image",
+      title: "Certificate Image",
+      type: "image",
+      description: "Upload the certification image or logo",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: "alt",
+          type: "string",
+          title: "Alternative text",
+        }),
+      ],
+    }),
+    defineField({
       name: "order",
       title: "Display Order",
       type: "number",
@@ -33,12 +49,14 @@ export const certificationType = defineType({
     select: {
       title: "title",
       description: "description",
+      media: "image",
     },
     prepare(selection) {
-      const { title, description } = selection;
+      const { title, description, media } = selection;
       return {
         title,
         subtitle: description,
+        media,
       };
     },
   },

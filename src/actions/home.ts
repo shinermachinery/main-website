@@ -1,7 +1,7 @@
 "use server";
 
 import { sanityFetch } from "@/sanity/lib/live";
-import { getCompleteHomePageQuery } from "@/sanity/lib/queries/home";
+import { getCompleteHomePageQuery } from "@/sanity/lib/queries";
 
 export interface HomePageData {
   home: {

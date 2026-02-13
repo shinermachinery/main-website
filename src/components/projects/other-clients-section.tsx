@@ -8,7 +8,9 @@ export async function OtherClientsSection() {
     return (
       <section className="flex flex-col gap-10 w-full">
         <div className="flex flex-col gap-4 font-medium">
-          <h2 className="text-4xl font-medium text-foreground">Other Clients</h2>
+          <h2 className="text-4xl font-medium text-foreground">
+            Other Clients
+          </h2>
           <p className="text-lg text-muted-foreground">
             Trusted partners and clients we work with
           </p>

@@ -5,58 +5,104 @@
  * for fetching data from Sanity CMS. All queries use consistent patterns,
  * reusable fragments, and are performance-optimized.
  *
+ * Structure:
+ * - shared/   - Reusable projections and utilities
+ * - pages/    - Page-specific queries organized by route
+ *
  * @module sanity/lib/queries
  */
 
 // ============================================================================
-// Common Fragments & Utilities
+// Shared - Projections & Utilities
 // ============================================================================
 
 export {
+  // About Page Projections
+  ABOUT_PAGE_PROJECTION,
+  // Marketing Projections
+  ACHIEVEMENT_PROJECTION,
   AUTHOR_FULL_PROJECTION,
+  // Author Projections
   AUTHOR_SUMMARY_PROJECTION,
   BASE_DOCUMENT_FIELDS,
-  // Utilities
   buildFilterString,
   buildOrderString,
   buildPaginationString,
+  // Category Projections
   CATEGORY_SUMMARY_PROJECTION,
+  CERTIFICATION_PROJECTION,
+  CLIENT_PROJECTION,
+  COLLECTION_FULL_PROJECTION,
+  // Collection Projections
   COLLECTION_SUMMARY_PROJECTION,
-  // Projections
+  EVENT_PROJECTION,
+  FOOTER_PROJECTION,
+  // Base Projections
   IMAGE_PROJECTION,
+  // Project Projections
+  INSTALLATION_PROJECTION,
+  NAVIGATION_PROJECTION,
   POST_FULL_PROJECTION,
+  // Post Projections
   POST_SUMMARY_PROJECTION,
   PRODUCT_FULL_PROJECTION,
+  // Product Projections
   PRODUCT_SUMMARY_PROJECTION,
+  PROJECT_FULL_PROJECTION,
+  PROJECT_SUMMARY_PROJECTION,
+  // Utilities
+  type QueryResult,
+  SERVICE_FULL_PROJECTION,
+  // Service Projections
+  SERVICE_SUMMARY_PROJECTION,
+  // Site Settings & Global Projections
+  SITE_SETTINGS_PROJECTION,
   SLUG_PROJECTION,
+  TEAM_MEMBER_FULL_PROJECTION,
+  // Team Member Projections
   TEAM_MEMBER_PROJECTION,
+  // Testimonial Projections
   TESTIMONIAL_PROJECTION,
-} from "./common";
+} from "./shared";
 
 // ============================================================================
-// Product Queries
+// Home Page Queries
 // ============================================================================
 
 export {
+  getCompleteHomePageQuery,
+  getHomeFeaturedProductsQuery,
+  getHomePageQuery,
+  getHomeTeamMembersQuery,
+  getHomeTestimonialsQuery,
+} from "./pages/home";
+
+// ============================================================================
+// Products Page Queries
+// ============================================================================
+
+export {
+  getAllCollectionsQuery,
   getAllProductsQuery,
+  getCollectionBySlugQuery,
+  getCollectionCountQuery,
+  getFeaturedCollectionsQuery,
   getFeaturedProductsQuery,
+  getPopularCollectionsQuery,
   getProductBySlugQuery,
   getProductCountQuery,
   getProductsByCollectionQuery,
   type ProductListParams,
   searchProductsQuery,
-} from "./products";
+} from "./pages/products";
 
 // ============================================================================
-// Blog Queries (Posts, Authors, Categories)
+// Blog Page Queries
 // ============================================================================
 
 export {
-  // Authors
   getAllAuthorsQuery,
-  // Categories
   getAllCategoriesQuery,
-  // Posts
   getAllPostsQuery,
   getAuthorBySlugQuery,
   getAuthorWithPostsQuery,
@@ -67,23 +113,78 @@ export {
   getPostBySlugQuery,
   getPostCountQuery,
   getRecentPostsQuery,
-  // Types
   type PostListParams,
   searchPostsQuery,
-} from "./blog";
+} from "./pages/blog";
 
 // ============================================================================
-// Team Queries
+// About Page Queries
 // ============================================================================
 
 export {
+  getAboutPageQuery,
   getAllTeamMembersQuery,
+  getCompanyTeamCountQuery,
+  getCompanyTeamMembersQuery,
+  getDirectorQuery,
   getTeamCountQuery,
   getTeamMemberByIdQuery,
-} from "./team";
+  type TeamMemberListParams,
+} from "./pages/about";
 
 // ============================================================================
-// Testimonial Queries
+// Settings Queries
+// ============================================================================
+
+export {
+  getFooterQuery,
+  getGlobalLayoutDataQuery,
+  getNavigationQuery,
+  getSiteSettingsQuery,
+} from "./pages/settings";
+
+// ============================================================================
+// Services Page Queries
+// ============================================================================
+
+export {
+  getAllServicesQuery,
+  getServiceBySlugQuery,
+  getServiceCountQuery,
+} from "./pages/services";
+
+// ============================================================================
+// Events Page Queries
+// ============================================================================
+
+export {
+  type EventListParams,
+  getAchievementCountQuery,
+  getAllAchievementsQuery,
+  getAllCertificationsQuery,
+  getAllEventsQuery,
+  getCertificationCountQuery,
+  getEventCountQuery,
+  getUpcomingEventsQuery,
+} from "./pages/events";
+
+// ============================================================================
+// Projects Page Queries
+// ============================================================================
+
+export {
+  getAllClientsQuery,
+  getAllInstallationsQuery,
+  getAllProjectsQuery,
+  getClientCountQuery,
+  getInstallationCountQuery,
+  getProjectBySlugQuery,
+  getProjectCountQuery,
+  type ProjectListParams,
+} from "./pages/projects";
+
+// ============================================================================
+// Testimonials Queries
 // ============================================================================
 
 export {
@@ -93,92 +194,4 @@ export {
   getTestimonialCountQuery,
   getTopRatedTestimonialsQuery,
   type TestimonialListParams,
-} from "./testimonials";
-
-// ============================================================================
-// Collection Queries
-// ============================================================================
-
-export {
-  getAllCollectionsQuery,
-  getCollectionBySlugQuery,
-  getCollectionCountQuery,
-  getFeaturedCollectionsQuery,
-  getPopularCollectionsQuery,
-} from "./collections";
-
-// ============================================================================
-// Marketing Queries (Achievements, Certifications, Events)
-// ============================================================================
-
-export {
-  // Achievements
-  ACHIEVEMENT_PROJECTION,
-  getAllAchievementsQuery,
-  getAchievementCountQuery,
-  // Certifications
-  CERTIFICATION_PROJECTION,
-  getAllCertificationsQuery,
-  getCertificationCountQuery,
-  // Events
-  EVENT_PROJECTION,
-  type EventListParams,
-  getAllEventsQuery,
-  getUpcomingEventsQuery,
-  getEventCountQuery,
-} from "./marketing";
-
-// ============================================================================
-// Projects Queries (Installations, Clients, Projects, Services)
-// ============================================================================
-
-export {
-  // Installations
-  INSTALLATION_PROJECTION,
-  getAllInstallationsQuery,
-  getInstallationCountQuery,
-  // Clients
-  CLIENT_PROJECTION,
-  getAllClientsQuery,
-  getClientCountQuery,
-  // Projects
-  PROJECT_SUMMARY_PROJECTION,
-  PROJECT_FULL_PROJECTION,
-  type ProjectListParams,
-  getAllProjectsQuery,
-  getProjectBySlugQuery,
-  getProjectCountQuery,
-  // Services
-  SERVICE_SUMMARY_PROJECTION,
-  SERVICE_FULL_PROJECTION,
-  getAllServicesQuery,
-  getServiceBySlugQuery,
-  getServiceCountQuery,
-} from "./projects";
-
-// ============================================================================
-// Company Queries (Director, Mission/Vision, Why Choose Us, Team)
-// ============================================================================
-
-export {
-  // Director
-  DIRECTOR_PROJECTION,
-  getDirectorQuery,
-  // Mission Vision
-  MISSION_VISION_PROJECTION,
-  getMissionVisionQuery,
-  // Why Choose Us
-  WHY_CHOOSE_US_PROJECTION,
-  getWhyChooseUsQuery,
-  // Team Members
-  TEAM_MEMBER_FULL_PROJECTION,
-  type TeamMemberListParams,
-  getCompanyTeamMembersQuery,
-  getCompanyTeamCountQuery,
-} from "./company";
-
-// ============================================================================
-// Query Result Type
-// ============================================================================
-
-export type { QueryResult } from "./products";
+} from "./pages/testimonials";

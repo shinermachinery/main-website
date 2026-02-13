@@ -1,19 +1,24 @@
 /**
- * Blog GROQ Queries
- * Optimized queries for posts, authors, and categories
+ * Blog Page GROQ Queries
+ * Queries for blog posts, authors, and categories
  */
 
 import {
   AUTHOR_FULL_PROJECTION,
-  AUTHOR_SUMMARY_PROJECTION,
-  buildFilterString,
-  buildOrderString,
-  buildPaginationString,
   CATEGORY_SUMMARY_PROJECTION,
   POST_FULL_PROJECTION,
   POST_SUMMARY_PROJECTION,
-} from "./common";
-import type { QueryResult } from "./products";
+} from "../shared/projections";
+import type { QueryResult } from "../shared/utils";
+import {
+  buildFilterString,
+  buildOrderString,
+  buildPaginationString,
+} from "../shared/utils";
+
+// ============================================================================
+// Types
+// ============================================================================
 
 /**
  * Query Parameters for Post Listing
@@ -32,7 +37,7 @@ export interface PostListParams {
 }
 
 // ============================================================================
-// POST QUERIES
+// Post Queries
 // ============================================================================
 
 /**
@@ -103,8 +108,8 @@ export function getPostBySlugQuery(
     query: `*[_type == "post" && slug.current == $slug && defined(publishedAt)][0] {
       ${POST_FULL_PROJECTION.replace("{", "").replace("}", "").trim()},
       "relatedPosts": *[
-        _type == "post" && 
-        slug.current != $slug && 
+        _type == "post" &&
+        slug.current != $slug &&
         defined(publishedAt) &&
         count((categories[]._ref)[@ in ^.^.categories[]._ref]) > 0
       ] | order(publishedAt desc) [0...3] ${POST_SUMMARY_PROJECTION}
@@ -194,7 +199,7 @@ export function getPostCountQuery(
 }
 
 // ============================================================================
-// AUTHOR QUERIES
+// Author Queries
 // ============================================================================
 
 /**
@@ -250,7 +255,7 @@ export function getAuthorWithPostsQuery(
   return {
     query: `*[_type == "author" && slug.current == $slug][0] {
       ${AUTHOR_FULL_PROJECTION.replace("{", "").replace("}", "").trim()},
-      "posts": *[_type == "post" && author._ref == ^._id && defined(publishedAt)] 
+      "posts": *[_type == "post" && author._ref == ^._id && defined(publishedAt)]
         | order(publishedAt desc) [0...${postLimit}] ${POST_SUMMARY_PROJECTION}
     }`,
     params: { slug },
@@ -258,7 +263,7 @@ export function getAuthorWithPostsQuery(
 }
 
 // ============================================================================
-// CATEGORY QUERIES
+// Category Queries
 // ============================================================================
 
 /**
@@ -314,7 +319,7 @@ export function getCategoryWithPostsQuery(
   return {
     query: `*[_type == "category" && slug.current == $slug][0] {
       ${CATEGORY_SUMMARY_PROJECTION.replace("{", "").replace("}", "").trim()},
-      "posts": *[_type == "post" && ^._id in categories[]._ref && defined(publishedAt)] 
+      "posts": *[_type == "post" && ^._id in categories[]._ref && defined(publishedAt)]
         | order(publishedAt desc) [0...${postLimit}] ${POST_SUMMARY_PROJECTION}
     }`,
     params: { slug },

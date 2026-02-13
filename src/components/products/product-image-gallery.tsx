@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import { urlFor } from "@/sanity/lib/image";
-import type { SanityImage } from "@/lib/sanity-types";
 import { ChevronLeft, ChevronRight, Expand } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 import { getDemoImageUrl } from "@/lib/demo-data/products";
+import type { SanityImage } from "@/lib/sanity-types";
+import { urlFor } from "@/sanity/lib/image";
 import { Button } from "../ui/button";
 
 interface ProductImageGalleryProps {

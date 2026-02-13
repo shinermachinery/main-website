@@ -3,8 +3,8 @@
  * Server actions for fetching posts, authors, and categories
  */
 
-import { sanityFetch } from "@/sanity/lib/live";
 import { urlFor } from "@/sanity/lib/image";
+import { sanityFetch } from "@/sanity/lib/live";
 
 // ============================================================================
 // Types
@@ -67,7 +67,9 @@ export async function getPosts(options?: {
     const conditions: string[] = ['_type == "post"'];
 
     if (options?.categorySlug) {
-      conditions.push(`"${options.categorySlug}" in categories[]->slug.current`);
+      conditions.push(
+        `"${options.categorySlug}" in categories[]->slug.current`,
+      );
     }
     if (options?.authorSlug) {
       conditions.push(`author->slug.current == "${options.authorSlug}"`);
@@ -105,7 +107,9 @@ export async function getPosts(options?: {
  * Get featured posts
  * @param limit - Maximum number of posts (default: 3)
  */
-export async function getFeaturedPosts(limit: number = 3): Promise<PostSummary[]> {
+export async function getFeaturedPosts(
+  limit: number = 3,
+): Promise<PostSummary[]> {
   try {
     const { data: posts } = await sanityFetch({
       query: `*[_type == "post" && featured == true] | order(publishedAt desc) {
@@ -137,7 +141,9 @@ export async function getFeaturedPosts(limit: number = 3): Promise<PostSummary[]
  * Get recent posts
  * @param limit - Maximum number of posts (default: 5)
  */
-export async function getRecentPosts(limit: number = 5): Promise<PostSummary[]> {
+export async function getRecentPosts(
+  limit: number = 5,
+): Promise<PostSummary[]> {
   return getPosts({ limit });
 }
 
@@ -316,7 +322,9 @@ export async function getCategories(): Promise<Category[]> {
  * Get category by slug
  * @param slug - Category slug
  */
-export async function getCategoryBySlug(slug: string): Promise<Category | null> {
+export async function getCategoryBySlug(
+  slug: string,
+): Promise<Category | null> {
   try {
     const { data: category } = await sanityFetch({
       query: `*[_type == "category" && slug.current == $slug][0] {

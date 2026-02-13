@@ -15,9 +15,15 @@ export const testimonialType = defineType({
     }),
     defineField({
       name: "role",
-      title: "Role/Company",
+      title: "Role",
       type: "string",
-      description: "Customer role or company name",
+      description: "Customer's job title or role",
+    }),
+    defineField({
+      name: "company",
+      title: "Company",
+      type: "string",
+      description: "Customer's company name",
     }),
     defineField({
       name: "content",
@@ -69,17 +75,20 @@ export const testimonialType = defineType({
     select: {
       title: "customerName",
       role: "role",
+      company: "company",
       media: "image",
       rating: "rating",
       featured: "featured",
     },
     prepare(selection) {
-      const { title, role, rating, featured } = selection;
+      const { title, role, company, rating, featured } = selection;
       const stars = "⭐".repeat(rating || 0);
+      const subtitle =
+        [role, company].filter(Boolean).join(" at ") || "No details";
       return {
         ...selection,
         title: `${title} ${featured ? "(Featured)" : ""}`,
-        subtitle: `${stars} - ${role || "No role specified"}`,
+        subtitle: `${stars} - ${subtitle}`,
       };
     },
   },

@@ -19,6 +19,12 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
+        // Solid gradient button (for CTAs like "Get a Quote", "Contact Sales")
+        shiner:
+          "bg-gradient-to-r from-brand-blue to-brand-green text-white rounded-xl shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)] hover:opacity-90",
+        // Subtle gradient background with gradient text (for nav items like "About", "Explore Products")
+        "shiner-ghost":
+          "bg-gradient-to-r from-brand-blue/10 to-brand-green/10 rounded-xl shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.4)] hover:from-brand-blue/15 hover:to-brand-green/15 [&>span]:bg-gradient-to-r [&>span]:from-brand-blue [&>span]:to-brand-green [&>span]:bg-clip-text [&>span]:text-transparent",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

@@ -1,4 +1,5 @@
 import WheatIcon from "@/icons/wheat-icon";
+
 interface CertificationCardProps {
   title: string;
   description: string;

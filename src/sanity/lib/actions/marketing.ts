@@ -3,8 +3,8 @@
  * Server actions for fetching achievements, certifications, and events
  */
 
-import { sanityFetch } from "@/sanity/lib/live";
 import { urlFor } from "@/sanity/lib/image";
+import { sanityFetch } from "@/sanity/lib/live";
 
 // ============================================================================
 // Types
@@ -42,7 +42,9 @@ export interface Event {
  * Get all achievements
  * @param limit - Optional limit for results (default: 3)
  */
-export async function getAchievements(limit: number = 3): Promise<Achievement[]> {
+export async function getAchievements(
+  limit: number = 3,
+): Promise<Achievement[]> {
   try {
     const { data: achievements } = await sanityFetch({
       query: `*[_type == "achievement"] | order(order asc, _createdAt desc) {
@@ -92,7 +94,9 @@ export async function getAchievements(limit: number = 3): Promise<Achievement[]>
  * Get all certifications
  * @param limit - Optional limit for results (default: 3)
  */
-export async function getCertifications(limit: number = 3): Promise<Certification[]> {
+export async function getCertifications(
+  limit: number = 3,
+): Promise<Certification[]> {
   try {
     const { data: certifications } = await sanityFetch({
       query: `*[_type == "certification"] | order(order asc, _createdAt desc) {
@@ -107,11 +111,7 @@ export async function getCertifications(limit: number = 3): Promise<Certificatio
     }
 
     return certifications.map(
-      (certification: {
-        _id: string;
-        title: string;
-        description: string;
-      }) => ({
+      (certification: { _id: string; title: string; description: string }) => ({
         id: certification._id,
         title: certification.title,
         description: certification.description,

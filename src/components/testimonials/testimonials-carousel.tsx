@@ -94,10 +94,7 @@ export function TestimonialsCarousel({
       : FALLBACK_TESTIMONIALS;
 
   return (
-    <section
-      className="py-40"
-      aria-labelledby="testimonials-heading"
-    >
+    <section className="py-40" aria-labelledby="testimonials-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto flex flex-col gap-10">
           {/* Header - Two Column Layout */}
@@ -108,9 +105,7 @@ export function TestimonialsCarousel({
             >
               Testimonials
             </h2>
-            <p
-              className="flex-1 font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-muted-foreground"
-            >
+            <p className="flex-1 font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-muted-foreground">
               Lorem ipsum dolor sit amet consectetur. Turpis bibendum eget
               adipiscing scelerisque proin. Neque tincidunt et pellentesque
               proin

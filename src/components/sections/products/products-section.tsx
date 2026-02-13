@@ -1,9 +1,9 @@
 "use client";
-import { useRouter } from "next/navigation";
 import { ArrowRight } from "lucide-react";
-import { ProductCard } from "./product-card";
+import { useRouter } from "next/navigation";
 import type { Product } from "@/lib/sanity-types";
 import { urlFor } from "@/sanity/lib/image";
+import { ProductCard } from "./product-card";
 
 interface ProductsGridProps {
   products: Product[];
@@ -29,11 +29,7 @@ export function ProductsGrid({ products }: ProductsGridProps) {
   }
 
   return (
-    <section
-      id="products"
-      className="py-40"
-      aria-labelledby="products-heading"
-    >
+    <section id="products" className="py-40" aria-labelledby="products-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto flex flex-col gap-10">
           {/* Header with Title and Button */}
@@ -50,7 +46,8 @@ export function ProductsGrid({ products }: ProductsGridProps) {
               onClick={() => router.push("/products")}
               className="flex items-center gap-2 px-4 py-2 rounded-full h-10 font-medium text-sm leading-5"
               style={{
-                background: "linear-gradient(91.23deg, rgba(42, 94, 152, 0.1) 15.88%, rgba(24, 183, 90, 0.1) 115.02%)",
+                background:
+                  "linear-gradient(91.23deg, rgba(42, 94, 152, 0.1) 15.88%, rgba(24, 183, 90, 0.1) 115.02%)",
                 boxShadow: "inset 0px 4px 28.9px 0px rgba(244, 244, 245, 0.4)",
               }}
             >
@@ -58,7 +55,8 @@ export function ProductsGrid({ products }: ProductsGridProps) {
                 className="bg-clip-text"
                 style={{
                   WebkitTextFillColor: "transparent",
-                  backgroundImage: "linear-gradient(90.59deg, #2a5e98 15.88%, #18b75a 115.02%)",
+                  backgroundImage:
+                    "linear-gradient(90.59deg, #2a5e98 15.88%, #18b75a 115.02%)",
                 }}
               >
                 Explore Products

@@ -1,5 +1,5 @@
+import { Star } from "lucide-react";
 import type { Product } from "@/lib/sanity-types";
-import { CheckCircle2, Info, Star } from "lucide-react";
 
 interface ProductSpecificationsSectionProps {
   product: Product;

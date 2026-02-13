@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 interface HeroSectionProps {
@@ -24,10 +24,7 @@ export function HeroSection({
   backgroundImage,
 }: HeroSectionProps) {
   return (
-    <section
-      className="relative overflow-hidden"
-      aria-label="Hero section"
-    >
+    <section className="relative overflow-hidden" aria-label="Hero section">
       {/* Container wrapper for consistent width */}
       <div className="container mx-auto">
         <div className="max-w-7xl mx-auto">

@@ -2,8 +2,8 @@ import { Search, X } from "lucide-react";
 import { Suspense } from "react";
 import { BlogsData } from "@/components/blog/blogs-data";
 import { BlogsSkeleton } from "@/components/blog/blogs-skeleton";
-import { Button } from "@/components/ui/button";
 import { CategoryFilter } from "@/components/blog/category-filter";
+import { Button } from "@/components/ui/button";
 
 interface BlogPageProps {
   searchParams: Promise<{
@@ -53,7 +53,6 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
               </div>
 
               {/* Category Filter Dropdown */}
-              {/* todo: */}
               <CategoryFilter />
             </div>
 

@@ -1,5 +1,5 @@
-import { getCertifications } from "@/sanity/lib/actions";
 import { CertificationCard } from "@/components/cards/certification-card";
+import { getCertifications } from "@/sanity/lib/actions";
 
 export async function CertificationsSection() {
   const certifications = await getCertifications(3);
