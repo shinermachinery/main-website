@@ -29,13 +29,11 @@ export function ProductsGridSection({
       <div className="flex flex-col gap-y-4">
         <h1
           className="font-medium text-4xl leading-10 tracking-[-0.0563rem] text-foreground"
-          style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
         >
           Our Products
         </h1>
         <p
           className="font-medium text-lg leading-6 tracking-[-0.0313rem] text-muted-foreground"
-          style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
         >
           Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst
           ullamcorper purus
@@ -50,7 +48,6 @@ export function ProductsGridSection({
             type="text"
             placeholder="Search products..."
             className="w-full h-12 px-6 rounded-full bg-background text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-blue"
-            style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           />
         </div>
 
@@ -60,7 +57,6 @@ export function ProductsGridSection({
           <div className="flex items-center gap-2 px-4 h-10 rounded-full bg-background">
             <span
               className="text-sm font-medium text-foreground"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Machinery
             </span>
@@ -83,7 +79,6 @@ export function ProductsGridSection({
               <SelectValue
                 placeholder="Categories"
                 className="text-sm font-medium text-foreground"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
               />
             </SelectTrigger>
             <SelectContent>
@@ -92,7 +87,6 @@ export function ProductsGridSection({
                   key={category._id}
                   value={category.slug.current}
                   className="text-sm"
-                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   {category.title}
                 </SelectItem>

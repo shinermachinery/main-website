@@ -23,14 +23,12 @@ async function MissionVisionContent() {
       <section className="flex flex-col gap-4">
         <h1
           className="font-medium text-[2.25rem] leading-[3rem] tracking-[-0.0563rem] text-foreground"
-          style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
         >
           {data.pageTitle}
         </h1>
         {data.pageSubtitle && (
           <p
             className="font-medium text-[1.25rem] leading-[1.75rem] tracking-[-0.0313rem] text-muted-foreground"
-            style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           >
             {data.pageSubtitle}
           </p>
@@ -46,7 +44,7 @@ async function MissionVisionContent() {
             alt={data.missionTitle}
             fill
             className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 50vw"
+            sizes="(max-width: 64rem) 100vw, 50vw"
             priority
           />
         </div>
@@ -55,13 +53,11 @@ async function MissionVisionContent() {
         <div className="flex-1 flex flex-col gap-4">
           <h2
             className="font-medium text-[1.875rem] leading-[2.5rem] tracking-[-0.0469rem] text-foreground"
-            style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           >
             {data.missionTitle}
           </h2>
           <p
             className="font-normal text-base leading-6 text-muted-foreground"
-            style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           >
             {data.missionStatement}
           </p>
@@ -77,7 +73,7 @@ async function MissionVisionContent() {
             alt={data.visionTitle}
             fill
             className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 50vw"
+            sizes="(max-width: 64rem) 100vw, 50vw"
           />
         </div>
 
@@ -85,13 +81,11 @@ async function MissionVisionContent() {
         <div className="flex-1 flex flex-col gap-4">
           <h2
             className="font-medium text-[1.875rem] leading-[2.5rem] tracking-[-0.0469rem] text-foreground"
-            style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           >
             {data.visionTitle}
           </h2>
           <p
             className="font-normal text-base leading-6 text-muted-foreground"
-            style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           >
             {data.visionStatement}
           </p>

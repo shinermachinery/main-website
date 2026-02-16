@@ -2,6 +2,7 @@
 
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 interface ProductCardProps {
@@ -9,6 +10,7 @@ interface ProductCardProps {
   description?: string;
   imageUrl: string;
   imageAlt: string;
+  href?: string;
   onViewDetails?: () => void;
 }
 
@@ -17,9 +19,10 @@ export function ProductCard({
   description,
   imageUrl,
   imageAlt,
+  href,
   onViewDetails,
 }: ProductCardProps) {
-  return (
+  const cardContent = (
     <div className="bg-background flex flex-col gap-4 items-center justify-center px-4 py-3 rounded-2xl">
       {/* Product Image */}
       <div
@@ -31,17 +34,17 @@ export function ProductCard({
           alt={imageAlt}
           fill
           className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          sizes="(max-width: 48rem) 100vw, (max-width: 64rem) 50vw, 33vw"
         />
       </div>
 
       {/* Product Info */}
       <div className="flex flex-col gap-2 items-start w-full">
-        <p className="text-sm font-medium leading-5 text-[#18181b] w-full">
+        <p className="text-sm font-medium leading-5 text-foreground w-full">
           {title}
         </p>
         {description && (
-          <p className="text-sm font-medium leading-5 text-[#71717a] w-full line-clamp-2">
+          <p className="text-sm font-medium leading-5 text-muted-foreground w-full line-clamp-2">
             {description}
           </p>
         )}
@@ -49,21 +52,27 @@ export function ProductCard({
 
       {/* CTA Button */}
       <Button
-        onClick={onViewDetails}
+        onClick={href ? undefined : onViewDetails}
         className="flex gap-2 h-10 items-center justify-center px-4 py-2 rounded-full w-full relative overflow-hidden cursor-pointer"
         style={{
           background:
             "linear-gradient(88.66deg, var(--brand-blue) 27.51%, var(--brand-green) 115.04%)",
         }}
       >
-        <span className="text-sm font-medium leading-5 text-[#fafafa] relative z-10">
+        <span className="text-sm font-medium leading-5 text-background relative z-10">
           View Details
         </span>
-        <ArrowRight className="h-4 w-4 text-[#fafafa] relative z-10" />
+        <ArrowRight className="h-4 w-4 text-background relative z-10" />
 
         {/* Inner shadow overlay */}
-        <div className="absolute inset-0 pointer-events-none shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)]" />
+        <div className="absolute inset-0 pointer-events-none shadow-[inset_0rem_0.25rem_1.806rem_0rem_rgba(244,244,245,0.2)]" />
       </Button>
     </div>
   );
+
+  if (href) {
+    return <Link href={href}>{cardContent}</Link>;
+  }
+
+  return cardContent;
 }

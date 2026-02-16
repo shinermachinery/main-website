@@ -28,8 +28,9 @@ export function Navbar() {
               <Image
                 src={"/shiner-logo.png"}
                 alt="Shiner Logo"
-                width={64}
-                height={64}
+                width={48}
+                height={48}
+                className="size-8"
               />
               {/* Logo Text */}
               <span className="text-xl font-bold text-brand-blue ">SHINER</span>

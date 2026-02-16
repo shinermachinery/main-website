@@ -34,7 +34,7 @@ export function BlogCard({
           alt={imageAlt || title}
           fill
           className="object-cover transition-transform duration-300"
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          sizes="(max-width: 48rem) 100vw, (max-width: 64rem) 50vw, 33vw"
         />
       </div>
 
@@ -50,7 +50,6 @@ export function BlogCard({
           <span
             className="bg-clip-text font-medium text-sm leading-4"
             style={{
-              fontFamily: "var(--font-plus-jakarta-sans)",
               WebkitTextFillColor: "transparent",
               backgroundImage:
                 "linear-gradient(91.47deg, rgba(42, 94, 152, 1) 15.88%, rgba(24, 183, 90, 1) 115.02%)",
@@ -65,13 +64,13 @@ export function BlogCard({
       <div className="flex flex-col gap-2 w-full">
         <h3
           className="font-medium text-lg leading-6 tracking-[-0.0313rem] text-foreground group-hover:text-brand-blue transition-colors"
-          style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+
         >
           {title}
         </h3>
         <p
           className="font-normal text-sm leading-5 text-muted-foreground line-clamp-3 overflow-hidden"
-          style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
+
         >
           {description}
         </p>
@@ -80,7 +79,6 @@ export function BlogCard({
       {/* Meta Info - opacity on parent */}
       <div
         className="flex gap-1 items-center opacity-20 w-full"
-        style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
       >
         <span className="font-medium text-sm leading-4 text-foreground">
           {readTime}

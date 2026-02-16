@@ -12,13 +12,11 @@ export function Footer() {
           <div className="space-y-4">
             <h3
               className="text-xl font-bold bg-clip-text text-transparent bg-linear-to-r from-brand-blue to-brand-green"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Shiner
             </h3>
             <p
               className="text-sm text-[#71717a]"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Precision engineering delivered with confidence. Built to perform,
               built to last.
@@ -29,7 +27,6 @@ export function Footer() {
           <div className="space-y-4">
             <h4
               className="font-semibold text-primary"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Quick Links
             </h4>
@@ -38,7 +35,6 @@ export function Footer() {
                 <Link
                   href="#about"
                   className="text-muted-foreground hover:text-brand-blue transition-colors"
-                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   About Us
                 </Link>
@@ -47,7 +43,6 @@ export function Footer() {
                 <Link
                   href="#features"
                   className="text-muted-foreground hover:text-brand-blue transition-colors"
-                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   Features
                 </Link>
@@ -56,7 +51,6 @@ export function Footer() {
                 <Link
                   href="#products"
                   className="text-muted-foreground hover:text-brand-blue transition-colors"
-                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   Products
                 </Link>
@@ -65,7 +59,6 @@ export function Footer() {
                 <Link
                   href="#contact"
                   className="text-muted-foreground hover:text-brand-blue transition-colors"
-                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   Contact
                 </Link>
@@ -77,7 +70,6 @@ export function Footer() {
           <div className="space-y-4">
             <h4
               className="font-semibold text-primary"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Resources
             </h4>
@@ -86,7 +78,6 @@ export function Footer() {
                 <Link
                   href="/studio"
                   className="text-muted-foreground hover:text-brand-blue transition-colors"
-                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   Content Studio
                 </Link>
@@ -95,7 +86,6 @@ export function Footer() {
                 <Link
                   href="#"
                   className="text-muted-foreground hover:text-brand-blue transition-colors"
-                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   Documentation
                 </Link>
@@ -104,7 +94,6 @@ export function Footer() {
                 <Link
                   href="#"
                   className="text-muted-foreground hover:text-brand-blue transition-colors"
-                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   Support
                 </Link>
@@ -113,7 +102,6 @@ export function Footer() {
                 <Link
                   href="#"
                   className="text-muted-foreground hover:text-brand-blue transition-colors"
-                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   Privacy Policy
                 </Link>
@@ -125,7 +113,6 @@ export function Footer() {
           <div className="space-y-4">
             <h4
               className="font-semibold text-primary"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Connect With Us
             </h4>
@@ -167,7 +154,6 @@ export function Footer() {
             </div>
             <p
               className="text-sm text-muted-foreground"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               <a
                 href="mailto:contact@example.com"
@@ -183,7 +169,6 @@ export function Footer() {
         <div className="pt-8 border-t border-border">
           <div
             className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground"
-            style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           >
             <p>© {currentYear} Shiner. All rights reserved.</p>
             <p className="text-center">

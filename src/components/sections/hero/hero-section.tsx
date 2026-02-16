@@ -70,7 +70,7 @@ export function HeroSection({
                   {/* Secondary CTA Button - Gradient */}
                   <Link
                     href={secondaryCta.link}
-                    className="h-10 px-5 text-sm font-semibold rounded-full bg-gradient-to-r from-brand-blue to-brand-green text-white shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)] inline-flex items-center justify-center gap-2 transition-all hover:shadow-lg"
+                    className="h-10 px-5 text-sm font-semibold rounded-full bg-gradient-to-r from-brand-blue to-brand-green text-white shadow-[inset_0rem_0.25rem_1.806rem_0rem_rgba(244,244,245,0.2)] inline-flex items-center justify-center gap-2 transition-all hover:shadow-lg"
                   >
                     {secondaryCta.text}
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -79,15 +79,15 @@ export function HeroSection({
               </div>
 
               {/* Featured Product Card - Right (Smaller) */}
-              <div className="w-full lg:w-[270px]">
+              <div className="w-full lg:w-[16.875rem]">
                 {/* Featured Product Card */}
-                <div className="bg-background rounded-[16px] p-3 flex flex-col gap-4">
+                <div className="bg-background rounded-[1rem] p-3 flex flex-col gap-4">
                   {/* Header Row */}
                   <div className="flex items-start justify-between gap-4">
                     <p className="text-sm font-medium leading-5 text-primary flex-1">
                       Featured Product
                     </p>
-                    <div className="opacity-50 pt-[2px]">
+                    <div className="opacity-50 pt-[0.125rem]">
                       <ArrowRight className="w-4 h-4 rotate-180 scale-y-[-1] text-primary" />
                     </div>
                   </div>
@@ -95,7 +95,7 @@ export function HeroSection({
                   {/* Product Image Placeholder with Pagination Dots */}
                   <div className="relative">
                     {/* Gray placeholder - will be replaced with actual image */}
-                    <div className="w-full h-[160.85px] bg-muted-foreground/30 rounded-[16px]" />
+                    <div className="w-full h-[10.053rem] bg-muted-foreground/30 rounded-[1rem]" />
 
                     {/* Pagination Dots */}
                     <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">

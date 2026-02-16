@@ -16,7 +16,7 @@ export function BrandStoryCard({
   imageAlt,
 }: BrandStoryCardProps) {
   return (
-    <div className="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] h-[30.11rem] relative rounded-[1.5rem] overflow-hidden">
+    <div className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] h-[30.11rem] relative rounded-[1.5rem] overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 rounded-[1.5rem]">
         <Image
@@ -24,7 +24,7 @@ export function BrandStoryCard({
           alt={imageAlt}
           fill
           className="object-cover rounded-[1.5rem]"
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          sizes="(max-width: 48rem) 100vw, (max-width: 64rem) 50vw, 25vw"
         />
       </div>
 
@@ -33,8 +33,8 @@ export function BrandStoryCard({
         className="absolute inset-0 w-full h-full"
         style={{
           backgroundColor: "rgba(24, 24, 27, 0.1)",
-          backdropFilter: "blur(44.8px)",
-          WebkitBackdropFilter: "blur(44.8px)",
+          backdropFilter: "blur(2.8rem)",
+          WebkitBackdropFilter: "blur(2.8rem)",
         }}
       />
 
@@ -42,13 +42,11 @@ export function BrandStoryCard({
       <div className="absolute left-6 top-[24.81rem] flex flex-col gap-1">
         <p
           className="font-medium text-[1.25rem] leading-7 tracking-[-0.0313rem] text-white"
-          style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
         >
           {name}
         </p>
         <p
           className="font-normal text-sm leading-5 text-white"
-          style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
         >
           {role}
         </p>

@@ -38,16 +38,16 @@ export function ContactPageClient() {
   return (
     <div className="bg-background">
       {/* Contact Form Section - Matching Figma Design */}
-      <section className="mx-auto max-w-[1156px] px-6 py-16 md:py-24">
+      <section className="mx-auto max-w-[72.25rem] px-6 py-16 md:py-24">
         <div className="flex flex-col gap-10 lg:flex-row lg:gap-10">
           {/* Left Column - Heading & CTA */}
-          <div className="flex w-full flex-col gap-6 lg:w-[588px]">
-            <h1 className="whitespace-pre-wrap font-['Plus_Jakarta_Sans'] text-[30px] font-medium leading-[40px] tracking-[-0.75px] text-primary">
+          <div className="flex w-full flex-col gap-6 lg:w-[36.75rem]">
+            <h1 className="whitespace-pre-wrap font-['Plus_Jakarta_Sans'] text-[1.875rem] font-medium leading-[2.5rem] tracking-[-0.047rem] text-primary">
               Get in touch for quotes, demos, or technical guidance.
             </h1>
             <button
               type="button"
-              className="inline-flex h-10 w-fit items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-blue-10 to-brand-green-10 px-4 py-2 shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.4)]"
+              className="inline-flex h-10 w-fit items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-blue-10 to-brand-green-10 px-4 py-2 shadow-[inset_0rem_0.25rem_1.806rem_0rem_rgba(244,244,245,0.4)]"
             >
               <span
                 className="bg-gradient-to-r from-brand-blue to-brand-green bg-clip-text text-sm font-medium leading-5 text-transparent"
@@ -150,7 +150,7 @@ export function ContactPageClient() {
               <button
                 type="submit"
                 disabled={isPending}
-                className="flex h-[52px] w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-green px-4 py-2 shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)] transition-opacity hover:opacity-90 disabled:opacity-50"
+                className="flex h-[3.25rem] w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-blue to-brand-green px-4 py-2 shadow-[inset_0rem_0.25rem_1.806rem_0rem_rgba(244,244,245,0.2)] transition-opacity hover:opacity-90 disabled:opacity-50"
                 style={{
                   backgroundImage:
                     "linear-gradient(88.66deg, var(--brand-blue) 27.509%, var(--brand-green) 115.04%)",
@@ -179,14 +179,14 @@ export function ContactPageClient() {
       </section>
 
       {/* Office Locations */}
-      <section className="mx-auto max-w-[1156px] px-6 pb-16">
-        <h2 className="mb-10 font-['Plus_Jakarta_Sans'] text-[30px] font-medium leading-[40px] tracking-[-0.75px] text-primary">
+      <section className="mx-auto max-w-[72.25rem] px-6 pb-16">
+        <h2 className="mb-10 font-['Plus_Jakarta_Sans'] text-[1.875rem] font-medium leading-[2.5rem] tracking-[-0.047rem] text-primary">
           Our Locations
         </h2>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* Corporate Office */}
           <div className="flex h-full flex-col gap-4">
-            <div className="flex min-h-[120px] flex-col gap-2">
+            <div className="flex min-h-[7.5rem] flex-col gap-2">
               <h3 className="font-['Plus_Jakarta_Sans'] text-xl font-medium leading-7 tracking-[-0.0313rem] text-foreground">
                 Corporate Office
               </h3>
@@ -211,7 +211,7 @@ export function ContactPageClient() {
 
           {/* Manufacturing Office */}
           <div className="flex h-full flex-col gap-4">
-            <div className="flex min-h-[120px] flex-col gap-2">
+            <div className="flex min-h-[7.5rem] flex-col gap-2">
               <h3 className="font-['Plus_Jakarta_Sans'] text-xl font-medium leading-7 tracking-[-0.0313rem] text-foreground">
                 Manufacturing Office
               </h3>
@@ -236,7 +236,7 @@ export function ContactPageClient() {
 
           {/* Branch Office */}
           <div className="flex h-full flex-col gap-4">
-            <div className="flex min-h-[120px] flex-col gap-2">
+            <div className="flex min-h-[7.5rem] flex-col gap-2">
               <h3 className="font-['Plus_Jakarta_Sans'] text-xl font-medium leading-7 tracking-[-0.0313rem] text-foreground">
                 Branch Office
               </h3>

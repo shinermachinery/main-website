@@ -4,10 +4,11 @@ import {
   getDemoProductBySlug,
   getDemoProducts,
 } from "@/lib/demo-data/products";
-import type { Category, Product } from "@/lib/sanity-types";
+import type { Category, Product, ProductCollection } from "@/lib/sanity-types";
 import { sanityFetch } from "@/sanity/lib/live";
 import {
   getAllCategoriesQuery,
+  getAllCollectionsQuery,
   getAllProductsQuery,
   getProductBySlugQuery,
   type ProductListParams,
@@ -42,6 +43,19 @@ export const getAllCategories = async (): Promise<Category[]> => {
     return result.data as Category[];
   } catch (error) {
     console.error(error);
+    return [];
+  }
+};
+
+export const getAllProductCollections = async (): Promise<
+  ProductCollection[]
+> => {
+  try {
+    const { query, params } = getAllCollectionsQuery();
+    const result = await sanityFetch({ query, params });
+    return (result.data as ProductCollection[]) ?? [];
+  } catch (error) {
+    console.error("Error fetching product collections:", error);
     return [];
   }
 };

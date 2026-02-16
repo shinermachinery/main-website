@@ -40,7 +40,6 @@ export function CategoryFilter() {
         <SelectValue
           placeholder="All Categories"
           className="text-primary"
-          style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
         />
       </SelectTrigger>
       <SelectContent>
@@ -49,7 +48,6 @@ export function CategoryFilter() {
             key={category.value}
             value={category.value}
             className="text-primary"
-            style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           >
             {category.label}
           </SelectItem>

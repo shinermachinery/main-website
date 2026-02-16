@@ -16,7 +16,7 @@ export function EventCard({ image, title }: EventCardProps) {
         alt={title}
         fill
         className="object-cover"
-        sizes="(max-width: 768px) 100vw, 50vw"
+        sizes="(max-width: 48rem) 100vw, 50vw"
       />
 
       {/* Title Overlay */}

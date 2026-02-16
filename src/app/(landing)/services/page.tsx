@@ -2,6 +2,7 @@ import { Phone } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { EmptyState } from "@/components/ui/empty-state";
 import { getServices } from "@/sanity/lib/actions";
 
 export const metadata: Metadata = {
@@ -16,18 +17,16 @@ export default async function ServicesPage() {
   return (
     <div className="min-h-screen bg-secondary">
       <div className="container mx-auto px-4 py-16 md:py-24">
-        <div className="max-w-[1156px] mx-auto">
+        <div className="max-w-[72.25rem] mx-auto">
           {/* Page Header */}
           <div className="flex flex-col gap-4 mb-10">
             <h1
               className="font-medium text-4xl text-foreground"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Our Services
             </h1>
             <p
               className="font-medium text-lg text-muted-foreground"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               Lorem ipsum dolor sit amet consectetur. Luctus arcu congue
               dictumst ullamcorper purus
@@ -36,9 +35,10 @@ export default async function ServicesPage() {
 
           {/* Services List */}
           {services.length === 0 ? (
-            <p className="text-lg text-muted-foreground text-center py-8">
-              No services to display at this time.
-            </p>
+            <EmptyState
+              size="sm"
+              message="No services to display at this time."
+            />
           ) : (
             <div className="flex flex-col gap-10">
               {services.map((service) => (
@@ -54,7 +54,7 @@ export default async function ServicesPage() {
                         alt={service.title}
                         fill
                         className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 330px"
+                        sizes="(max-width: 48rem) 100vw, 20.625rem"
                       />
                     </div>
                   </div>
@@ -63,13 +63,11 @@ export default async function ServicesPage() {
                   <div className="flex-1 flex flex-col gap-4">
                     <h2
                       className="font-medium text-lg text-foreground"
-                      style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                     >
                       {service.title}
                     </h2>
                     <p
                       className="font-normal text-sm text-muted-foreground"
-                      style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                     >
                       {service.description}
                     </p>
@@ -80,13 +78,12 @@ export default async function ServicesPage() {
                         backgroundImage:
                           "linear-gradient(89.24deg, rgba(42, 94, 152, 1) 27.51%, rgba(24, 183, 90, 1) 115.04%)",
                         boxShadow:
-                          "inset 0px 4px 28.9px 0px rgba(244, 244, 245, 0.2)",
+                          "inset 0rem 0.25rem 1.806rem 0rem rgba(244, 244, 245, 0.2)",
                       }}
                     >
                       <Phone className="h-5 w-5 text-white" />
                       <span
                         className="font-medium text-sm leading-5 text-white"
-                        style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                       >
                         View Details
                       </span>

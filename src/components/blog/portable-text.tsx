@@ -37,7 +37,7 @@ const portableTextComponents = {
               alt={value.alt || "Blog post image"}
               fill
               className="object-cover"
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+              sizes="(max-width: 48rem) 100vw, (max-width: 75rem) 80vw, 75rem"
             />
           </div>
           {value.alt && (

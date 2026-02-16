@@ -9,7 +9,7 @@ export function InstallationsSectionSkeleton() {
       {/* Header Skeleton */}
       <div className="flex flex-col gap-4">
         <div className="h-12 bg-muted rounded-md w-96 animate-pulse" />
-        <div className="h-7 bg-muted rounded-md w-[500px] animate-pulse" />
+        <div className="h-7 bg-muted rounded-md w-[31.25rem] animate-pulse" />
       </div>
 
       {/* Grid - First Row */}

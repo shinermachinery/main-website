@@ -54,7 +54,7 @@ export function ContactForm() {
             <div className="flex-1 flex flex-col gap-6">
               <h2
                 id="contact-heading"
-                className="font-medium text-[30px] leading-[40px] tracking-[-0.75px] text-primary"
+                className="font-medium text-[1.875rem] leading-[2.5rem] tracking-[-0.047rem] text-primary"
               >
                 Get in touch for quotes, demos, or technical guidance.
               </h2>
@@ -67,7 +67,7 @@ export function ContactForm() {
             </div>
 
             {/* Right Column - Form */}
-            <div className="flex-1 bg-background border border-border rounded-[24px] p-5">
+            <div className="flex-1 bg-background border border-border rounded-[1.5rem] p-5">
               <form onSubmit={handleSubmit} className="flex flex-col gap-7">
                 {/* Full Name Field */}
                 <div className="flex flex-col gap-2">
@@ -198,7 +198,7 @@ export function ContactForm() {
                       <ArrowRight className="h-4 w-4 text-white relative z-10" />
                     </>
                   )}
-                  <div className="absolute inset-0 pointer-events-none shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)]" />
+                  <div className="absolute inset-0 pointer-events-none shadow-[inset_0rem_0.25rem_1.806rem_0rem_rgba(244,244,245,0.2)]" />
                 </button>
               </form>
             </div>

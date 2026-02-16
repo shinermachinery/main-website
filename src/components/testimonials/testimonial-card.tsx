@@ -74,7 +74,7 @@ export function TestimonialCard({
               alt={testimonial.image?.alt || testimonial.customerName}
               fill
               className="object-cover"
-              sizes="48px"
+              sizes="3rem"
             />
           </div>
         )}

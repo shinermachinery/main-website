@@ -17,7 +17,7 @@ export function AboutSection({ title, description }: AboutSectionProps) {
             <div className="flex-1">
               <h2
                 id="about-heading"
-                className="text-[30px] leading-[40px] font-medium text-foreground tracking-[-0.75px] max-w-sm"
+                className="text-[1.875rem] leading-[2.5rem] font-medium text-foreground tracking-[-0.047rem] max-w-sm"
               >
                 {title || "A Word About Us and Our Mission"}
               </h2>
@@ -26,11 +26,11 @@ export function AboutSection({ title, description }: AboutSectionProps) {
             {/* Description Column */}
             <div className="flex-1">
               {description && description.length > 0 ? (
-                <div className="text-[20px] leading-[28px] font-medium text-muted-foreground tracking-[-0.5px]">
+                <div className="text-[1.25rem] leading-[1.75rem] font-medium text-muted-foreground tracking-[-0.031rem]">
                   <PortableText value={description} />
                 </div>
               ) : (
-                <p className="text-[20px] leading-[28px] font-medium text-muted-foreground tracking-[-0.5px]">
+                <p className="text-[1.25rem] leading-[1.75rem] font-medium text-muted-foreground tracking-[-0.031rem]">
                   Lorem ipsum dolor sit amet consectetur. Turpis bibendum eget
                   adipiscing scelerisque proin. Neque tincidunt et pellentesque
                   proin. Quam non tortor sed mauris libero bibendum malesuada.
@@ -44,7 +44,7 @@ export function AboutSection({ title, description }: AboutSectionProps) {
           <div className="flex flex-col lg:flex-row gap-6 items-start">
             {/* Tagline Column */}
             <div className="flex-1">
-              <h3 className="text-[30px] leading-[40px] font-medium text-primary tracking-[-0.75px] max-w-sm">
+              <h3 className="text-[1.875rem] leading-[2.5rem] font-medium text-primary tracking-[-0.047rem] max-w-sm">
                 Built to Perform
                 <br />
                 Built to Last
@@ -57,7 +57,7 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                 {/* Row 1 */}
                 <div className="flex gap-6">
                   {/* Feature 1 */}
-                  <div className="flex-1 bg-background rounded-[16px] p-4 flex flex-col gap-4">
+                  <div className="flex-1 bg-background rounded-[1rem] p-4 flex flex-col gap-4">
                     <div className="w-6 h-6 text-primary">
                       <Wrench className="w-6 h-6" />
                     </div>
@@ -72,7 +72,7 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                   </div>
 
                   {/* Feature 2 */}
-                  <div className="flex-1 bg-background rounded-[16px] p-4 flex flex-col gap-4">
+                  <div className="flex-1 bg-background rounded-[1rem] p-4 flex flex-col gap-4">
                     <div className="w-6 h-6 text-primary">
                       <Settings className="w-6 h-6" />
                     </div>
@@ -90,7 +90,7 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                 {/* Row 2 */}
                 <div className="flex gap-6">
                   {/* Feature 3 */}
-                  <div className="flex-1 bg-background rounded-[16px] p-4 flex flex-col gap-4">
+                  <div className="flex-1 bg-background rounded-[1rem] p-4 flex flex-col gap-4">
                     <div className="w-6 h-6 text-primary">
                       <TrendingUp className="w-6 h-6" />
                     </div>
@@ -105,7 +105,7 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                   </div>
 
                   {/* Feature 4 */}
-                  <div className="flex-1 bg-background rounded-[16px] p-4 flex flex-col gap-4">
+                  <div className="flex-1 bg-background rounded-[1rem] p-4 flex flex-col gap-4">
                     <div className="w-6 h-6 text-primary">
                       <Globe className="w-6 h-6" />
                     </div>

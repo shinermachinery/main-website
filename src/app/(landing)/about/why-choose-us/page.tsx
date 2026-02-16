@@ -25,14 +25,12 @@ async function WhyChooseUsContent() {
         <div className="flex flex-col gap-4">
           <h1
             className="font-medium text-[2.25rem] leading-[3rem] tracking-[-0.0563rem] text-foreground"
-            style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           >
             {data.title}
           </h1>
           {data.subtitle && (
             <p
               className="font-medium text-[1.25rem] leading-[1.75rem] tracking-[-0.0313rem] text-muted-foreground"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               {data.subtitle}
             </p>
@@ -47,7 +45,7 @@ async function WhyChooseUsContent() {
               alt={data.title}
               fill
               className="object-cover"
-              sizes="(max-width: 1200px) 100vw, 1200px"
+              sizes="(max-width: 75rem) 100vw, 75rem"
               priority
             />
           </div>
@@ -69,20 +67,18 @@ async function WhyChooseUsContent() {
                     alt={reason.title}
                     fill
                     className="object-cover"
-                    sizes="64px"
+                    sizes="4rem"
                   />
                 </div>
               )}
               <div className="flex flex-col gap-2">
                 <h3
                   className="font-medium text-[1.25rem] leading-[1.75rem] tracking-[-0.0313rem] text-foreground"
-                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   {reason.title}
                 </h3>
                 <p
                   className="font-normal text-sm leading-5 text-muted-foreground"
-                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   {reason.description}
                 </p>

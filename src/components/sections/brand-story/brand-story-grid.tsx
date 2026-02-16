@@ -74,7 +74,6 @@ export function BrandStoryGrid({
               <h2
                 id="brand-story-heading"
                 className="flex-1 font-medium text-[1.875rem] leading-[2.5rem] tracking-[-0.0469rem] text-foreground"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
               >
                 {title || "Our Brand Story"}
               </h2>
@@ -83,7 +82,7 @@ export function BrandStoryGrid({
               {description && description.length > 0 ? (
                 <PortableText value={description} />
               ) : (
-                <p style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}>
+                <p>
                   With decades of experience in industrial fabrication systems,
                   Shiner Machinery combines precision engineering with
                   world-class support. We empower fabricators globally to build

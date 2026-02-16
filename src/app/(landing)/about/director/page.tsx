@@ -26,14 +26,12 @@ async function DirectorContent() {
       <section className="flex flex-col gap-4">
         <h1
           className="font-medium text-[2.25rem] leading-[3rem] tracking-[-0.0563rem] text-foreground"
-          style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
         >
           {data.pageTitle}
         </h1>
         {data.pageSubtitle && (
           <p
             className="font-medium text-[1.25rem] leading-[1.75rem] tracking-[-0.0313rem] text-muted-foreground"
-            style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
           >
             {data.pageSubtitle}
           </p>
@@ -51,7 +49,7 @@ async function DirectorContent() {
               alt={data.name}
               fill
               className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 400px"
+              sizes="(max-width: 64rem) 100vw, 25rem"
               priority
             />
           </div>
@@ -60,13 +58,11 @@ async function DirectorContent() {
           <div className="flex flex-col gap-2">
             <h2
               className="font-medium text-[1.875rem] leading-[2.5rem] tracking-[-0.0469rem] text-foreground"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               {data.name}
             </h2>
             <p
               className="font-medium text-base leading-6 text-muted-foreground"
-              style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
             >
               {data.title}
             </p>
@@ -82,7 +78,6 @@ async function DirectorContent() {
                 <Mail className="size-5" />
                 <span
                   className="font-normal text-sm leading-5"
-                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   {data.email}
                 </span>
@@ -96,7 +91,6 @@ async function DirectorContent() {
                 <Phone className="size-5" />
                 <span
                   className="font-normal text-sm leading-5"
-                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   {data.phone}
                 </span>
@@ -112,7 +106,6 @@ async function DirectorContent() {
                 <Linkedin className="size-5" />
                 <span
                   className="font-normal text-sm leading-5"
-                  style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                 >
                   LinkedIn Profile
                 </span>
@@ -128,13 +121,11 @@ async function DirectorContent() {
             <div className="flex flex-col gap-4">
               <h3
                 className="font-medium text-[1.5rem] leading-8 tracking-[-0.0375rem] text-foreground"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
               >
                 Biography
               </h3>
               <div
                 className="prose prose-lg max-w-none"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
               >
                 <PortableText value={data.bio} />
               </div>
@@ -146,7 +137,6 @@ async function DirectorContent() {
             <div className="flex flex-col gap-4">
               <h3
                 className="font-medium text-[1.5rem] leading-8 tracking-[-0.0375rem] text-foreground"
-                style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
               >
                 Key Achievements
               </h3>
@@ -156,7 +146,6 @@ async function DirectorContent() {
                     <div className="w-[0.375rem] h-[0.375rem] rounded-full bg-brand-blue mt-[0.438rem] shrink-0" />
                     <p
                       className="font-normal text-base leading-6 text-muted-foreground"
-                      style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
                     >
                       {achievement}
                     </p>

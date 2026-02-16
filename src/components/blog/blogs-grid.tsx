@@ -1,6 +1,7 @@
 "use client";
 
 import { BlogCard } from "@/components/blog/blog-card";
+import { EmptyState } from "@/components/ui/empty-state";
 import { urlFor } from "@/sanity/lib/image";
 
 interface BlogPost {
@@ -26,14 +27,10 @@ interface BlogsGridProps {
 export function BlogsGrid({ posts }: BlogsGridProps) {
   if (posts.length === 0) {
     return (
-      <div className="text-center py-16">
-        <p
-          className="text-lg text-muted-foreground"
-          style={{ fontFamily: "var(--font-plus-jakarta-sans)" }}
-        >
-          No blog posts found. Try adjusting your search or filters.
-        </p>
-      </div>
+      <EmptyState
+        variant="filtered"
+        message="No blog posts found. Try adjusting your search or filters."
+      />
     );
   }
 

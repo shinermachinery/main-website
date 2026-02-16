@@ -38,8 +38,8 @@ export function TeamMemberCard({
       <div
         className={`relative overflow-hidden rounded-2xl bg-muted mx-auto ${
           isCompact
-            ? "aspect-square max-w-[200px]"
-            : "aspect-square max-w-[280px]"
+            ? "aspect-square max-w-[12.5rem]"
+            : "aspect-square max-w-[17.5rem]"
         }`}
       >
         <Image
@@ -49,8 +49,8 @@ export function TeamMemberCard({
           className="object-cover transition-transform group-hover:scale-105"
           sizes={
             isCompact
-              ? "(max-width: 768px) 100vw, 200px"
-              : "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 280px"
+              ? "(max-width: 48rem) 100vw, 12.5rem"
+              : "(max-width: 48rem) 100vw, (max-width: 64rem) 50vw, 17.5rem"
           }
         />
       </div>

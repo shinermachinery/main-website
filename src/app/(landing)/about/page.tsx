@@ -235,7 +235,7 @@ export default async function AboutPage() {
           </h2>
           <Link
             href="/products"
-            className="flex h-10 items-center gap-2 rounded-full bg-linear-to-r from-brand-blue/10 to-brand-green/10 px-4 py-2 shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.4)]"
+            className="flex h-10 items-center gap-2 rounded-full bg-linear-to-r from-brand-blue/10 to-brand-green/10 px-4 py-2 shadow-[inset_0rem_0.25rem_1.806rem_0rem_rgba(244,244,245,0.4)]"
           >
             <span className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-sm leading-5">
               Explore Products
@@ -254,7 +254,7 @@ export default async function AboutPage() {
                   alt={product.name}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  sizes="(max-width: 40rem) 100vw, (max-width: 64rem) 50vw, 25vw"
                 />
               </div>
               <div className="flex flex-col gap-2">
@@ -265,7 +265,7 @@ export default async function AboutPage() {
                   {product.description}
                 </p>
               </div>
-              <Button className="flex h-10 w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-brand-blue to-brand-green shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)]">
+              <Button className="flex h-10 w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-brand-blue to-brand-green shadow-[inset_0rem_0.25rem_1.806rem_0rem_rgba(244,244,245,0.2)]">
                 <span className="text-sm font-medium leading-5 text-white">
                   View Details
                 </span>

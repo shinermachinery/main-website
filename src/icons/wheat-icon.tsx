@@ -17,7 +17,7 @@ export default function WheatIcon() {
         >
           <div
             style={{
-              backdropFilter: "blur(100.55px)",
+              backdropFilter: "blur(6.284rem)",
               clipPath: "url(#bgblur_1_17557_527_clip_path)",
               height: "100%",
               width: "100%",
@@ -33,7 +33,7 @@ export default function WheatIcon() {
         <foreignObject x="-189.754" y="-168.7" width="411.656" height="411.234">
           <div
             style={{
-              backdropFilter: "blur(100.55px)",
+              backdropFilter: "blur(6.284rem)",
               clipPath: "url(#bgblur_2_17557_527_clip_path)",
               height: "100%",
               width: "100%",
@@ -54,7 +54,7 @@ export default function WheatIcon() {
         >
           <div
             style={{
-              backdropFilter: "blur(100.55px)",
+              backdropFilter: "blur(6.284rem)",
               clipPath: "url(#bgblur_3_17557_527_clip_path)",
               height: "100%",
               width: "100%",
@@ -75,7 +75,7 @@ export default function WheatIcon() {
         >
           <div
             style={{
-              backdropFilter: "blur(100.55px)",
+              backdropFilter: "blur(6.284rem)",
               clipPath: "url(#bgblur_4_17557_527_clip_path)",
               height: "100%",
               width: "100%",
@@ -96,7 +96,7 @@ export default function WheatIcon() {
         >
           <div
             style={{
-              backdropFilter: "blur(100.55px)",
+              backdropFilter: "blur(6.284rem)",
               clipPath: "url(#bgblur_5_17557_527_clip_path)",
               height: "100%",
               width: "100%",
@@ -117,7 +117,7 @@ export default function WheatIcon() {
         >
           <div
             style={{
-              backdropFilter: "blur(100.55px)",
+              backdropFilter: "blur(6.284rem)",
               clipPath: "url(#bgblur_6_17557_527_clip_path)",
               height: "100%",
               width: "100%",
@@ -138,7 +138,7 @@ export default function WheatIcon() {
         >
           <div
             style={{
-              backdropFilter: "blur(100.55px)",
+              backdropFilter: "blur(6.284rem)",
               clipPath: "url(#bgblur_7_17557_527_clip_path)",
               height: "100%",
               width: "100%",
@@ -159,7 +159,7 @@ export default function WheatIcon() {
         >
           <div
             style={{
-              backdropFilter: "blur(100.55px)",
+              backdropFilter: "blur(6.284rem)",
               clipPath: "url(#bgblur_8_17557_527_clip_path)",
               height: "100%",
               width: "100%",
@@ -177,7 +177,7 @@ export default function WheatIcon() {
         <foreignObject x="-185.2" y="-164.61" width="430.341" height="413.888">
           <div
             style={{
-              backdropFilter: "blur(100.55px)",
+              backdropFilter: "blur(6.284rem)",
               clipPath: "url(#bgblur_10_17557_527_clip_path)",
               height: "100%",
               width: "100%",
@@ -193,7 +193,7 @@ export default function WheatIcon() {
         <foreignObject x="-161.903" y="-168.7" width="411.656" height="411.234">
           <div
             style={{
-              backdropFilter: "blur(100.55px)",
+              backdropFilter: "blur(6.284rem)",
               clipPath: "url(#bgblur_11_17557_527_clip_path)",
               height: "100%",
               width: "100%",
@@ -214,7 +214,7 @@ export default function WheatIcon() {
         >
           <div
             style={{
-              backdropFilter: "blur(100.55px)",
+              backdropFilter: "blur(6.284rem)",
               clipPath: "url(#bgblur_12_17557_527_clip_path)",
               height: "100%",
               width: "100%",
@@ -235,7 +235,7 @@ export default function WheatIcon() {
         >
           <div
             style={{
-              backdropFilter: "blur(100.55px)",
+              backdropFilter: "blur(6.284rem)",
               clipPath: "url(#bgblur_13_17557_527_clip_path)",
               height: "100%",
               width: "100%",
@@ -256,7 +256,7 @@ export default function WheatIcon() {
         >
           <div
             style={{
-              backdropFilter: "blur(100.55px)",
+              backdropFilter: "blur(6.284rem)",
               clipPath: "url(#bgblur_14_17557_527_clip_path)",
               height: "100%",
               width: "100%",
@@ -277,7 +277,7 @@ export default function WheatIcon() {
         >
           <div
             style={{
-              backdropFilter: "blur(100.55px)",
+              backdropFilter: "blur(6.284rem)",
               clipPath: "url(#bgblur_15_17557_527_clip_path)",
               height: "100%",
               width: "100%",
@@ -298,7 +298,7 @@ export default function WheatIcon() {
         >
           <div
             style={{
-              backdropFilter: "blur(100.55px)",
+              backdropFilter: "blur(6.284rem)",
               clipPath: "url(#bgblur_16_17557_527_clip_path)",
               height: "100%",
               width: "100%",
@@ -319,7 +319,7 @@ export default function WheatIcon() {
         >
           <div
             style={{
-              backdropFilter: "blur(100.55px)",
+              backdropFilter: "blur(6.284rem)",
               clipPath: "url(#bgblur_17_17557_527_clip_path)",
               height: "100%",
               width: "100%",

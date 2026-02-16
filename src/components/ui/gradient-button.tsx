@@ -11,11 +11,11 @@ const gradientButtonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-gradient-to-r from-brand-blue to-brand-green text-white shadow-[inset_0px_4px_28.9px_0px_rgba(244,244,245,0.2)]",
+          "bg-gradient-to-r from-brand-blue to-brand-green text-white shadow-[inset_0rem_0.25rem_1.806rem_0rem_rgba(244,244,245,0.2)]",
         secondary:
-          "bg-gradient-to-r from-brand-blue-10 to-brand-green-10 text-foreground shadow-[inset_0px_4px_28.9px_0px_rgba(161,161,170,0.4)]",
+          "bg-gradient-to-r from-brand-blue-10 to-brand-green-10 text-foreground shadow-[inset_0rem_0.25rem_1.806rem_0rem_rgba(161,161,170,0.4)]",
         outline:
-          "border-2 border-transparent bg-gradient-to-r from-brand-blue to-brand-green bg-origin-border relative after:absolute after:inset-[2px] after:rounded-full after:bg-background",
+          "border-2 border-transparent bg-gradient-to-r from-brand-blue to-brand-green bg-origin-border relative after:absolute after:inset-[0.125rem] after:rounded-full after:bg-background",
       },
       size: {
         default: "h-12 px-6 py-3",

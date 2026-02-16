@@ -101,11 +101,11 @@ export function TestimonialsCarousel({
           <div className="flex flex-col md:flex-row gap-8 items-start">
             <h2
               id="testimonials-heading"
-              className="flex-1 font-medium text-[30px] leading-[40px] tracking-[-0.75px] text-primary"
+              className="flex-1 font-medium text-[1.875rem] leading-[2.5rem] tracking-[-0.047rem] text-primary"
             >
               Testimonials
             </h2>
-            <p className="flex-1 font-medium text-[20px] leading-[28px] tracking-[-0.5px] text-muted-foreground">
+            <p className="flex-1 font-medium text-[1.25rem] leading-[1.75rem] tracking-[-0.031rem] text-muted-foreground">
               Lorem ipsum dolor sit amet consectetur. Turpis bibendum eget
               adipiscing scelerisque proin. Neque tincidunt et pellentesque
               proin

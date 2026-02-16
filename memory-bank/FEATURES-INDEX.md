@@ -2,7 +2,7 @@
 
 Master index of all features in this project. Each feature has detailed documentation in its respective folder.
 
-**Last Updated**: 2026-02-14
+**Last Updated**: 2026-02-16
 
 ## Active Features
 
@@ -368,6 +368,42 @@ Features currently implemented and in use.
 
 ---
 
+### 9. Shared Search/Filter Components
+
+**Status**: ✅ Completed
+**Location**: `memory-bank/features/shared-components/`
+**Description**: Reusable search, filter, empty-state, and active filter components shared across the application. Includes global EmptyState component and px→rem codebase-wide conversion.
+**Key Tech**: Next.js URL params, shadcn Select, React Server Components, lucide-react
+**Created**: 2026-02-15
+**Last Updated**: 2026-02-16
+
+**Quick Links:**
+- [Full Documentation](./features/shared-components/README.md)
+- [Changelog](./features/shared-components/CHANGELOG.md)
+
+**Key Files:**
+- `src/components/ui/empty-state.tsx` - Global EmptyState component (3 variants, 3 sizes)
+- `src/components/shared/search-input.tsx` - URL-param search input
+- `src/components/shared/category-filter.tsx` - Dynamic category dropdown
+- `src/components/shared/active-filters.tsx` - Removable filter chips
+- `src/components/shared/search-filter-bar.tsx` - Composition wrapper
+- `src/components/products/products-data.tsx` - Server data component
+- `src/components/products/products-grid.tsx` - Client grid component
+
+**Features:**
+- Global `EmptyState` component with variant support (empty/filtered/error), used in 14 files
+- URL-param driven search/filter for both `/blog` and `/products`
+- Dynamic categories from Sanity CMS
+- Products filtering by product collections
+- ProductCard with SEO-friendly Link wrapper
+- Codebase-wide px→rem conversion (30+ files)
+
+**Dependencies:**
+- Sanity CMS Integration
+- UI Components (shadcn Select, Button)
+
+---
+
 ## Feature Status Legend
 
 - ✅ **Completed** - Fully implemented and stable
@@ -494,16 +530,19 @@ Features scheduled for future implementation:
 | Projects & Products | ✅ | `src/app/(landing)/projects/**/*`<br>`src/components/projects/*` | [View](./features/projects-products/README.md) |
 | About Us Pages | ✅ | `src/app/(landing)/about/*`<br>3 pages: Why Choose, Mission/Vision, Director | [View](./features/about-us-pages/README.md) |
 | SEO Configuration | ✅ | `src/app/robots.ts`<br>`src/app/sitemap.ts`<br>`src/lib/site-config.ts`<br>`src/app/error.tsx`<br>`src/app/not-found.tsx` | [View](./features/seo-configuration/README.md) |
+| Shared Components | ✅ | `src/components/shared/*`<br>`src/components/ui/empty-state.tsx`<br>`src/components/products/products-data.tsx`<br>`src/components/products/products-grid.tsx` | [View](./features/shared-components/README.md) |
 
 ## Feature Statistics
 
-**Total Features**: 8
-- ✅ Completed: 8
+**Total Features**: 9
+- ✅ Completed: 9
 - 🚧 In Development: 0
 - 📋 Planned: 2
 
-**Last Feature Completed**: Query Reorganization & Infrastructure (2026-02-14)
+**Last Feature Completed**: Global EmptyState Component (2026-02-16)
 **Recently Updated**:
+- **EmptyState Component (2026-02-16)** - Created global `EmptyState` component with 3 variants (empty/filtered/error), 3 sizes, and optional icon/action. Migrated 14 files from inline empty-state patterns, eliminating duplicated section wrappers.
+- **Shared Components + px→rem (2026-02-15)** - Extracted shared search/filter/active-filters components for blog and products pages. Made products search/filter functional via URL params. Converted all px to rem across 30+ files. ProductCard cleanup.
 - **Query Reorganization (2026-02-14)** - Reorganized GROQ queries into pages/ and shared/ modules. Added error boundary and 404 pages. Updated all components and actions (123 files, 4472+/2412-).
 - **Sanity Schema Refactoring (2026-02-08)** - Consolidated 27 schemas to 19. Added siteSettings, navigation, footer, aboutPage singletons. Simplified installation, client, event schemas.
 - **SEO Configuration (2026-01-29)** - Sitemap, robots.txt, favicons, Open Graph metadata, PWA manifest
@@ -524,4 +563,4 @@ Features scheduled for future implementation:
 
 **Maintenance Schedule**: Review and update this index when features change
 **Owner**: Team
-**Last Review**: 2026-02-14
+**Last Review**: 2026-02-16
