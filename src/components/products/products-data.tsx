@@ -22,7 +22,7 @@ export async function ProductsData({
 
     if (searchQuery) {
       conditions.push("[title, description, features] match $searchTerm");
-      params.searchTerm = searchQuery;
+      params.searchTerm = `${searchQuery}*`;
     }
 
     if (category) {

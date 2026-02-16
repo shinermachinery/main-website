@@ -24,20 +24,21 @@ interface BlogPost {
 
 export async function BlogsData({ searchQuery, category }: BlogsDataProps) {
   try {
-    // Build GROQ query with filters
-    let query = `*[_type == "post"`;
+    const conditions: string[] = ['_type == "post"'];
+    const params: Record<string, string> = {};
 
-    // Add search filter
     if (searchQuery) {
-      query += ` && (title match "${searchQuery}*" || description match "${searchQuery}*")`;
+      conditions.push("(title match $searchTerm || excerpt match $searchTerm)");
+      params.searchTerm = `${searchQuery}*`;
     }
 
-    // Add category filter
     if (category) {
-      query += ` && category == "${category}"`;
+      conditions.push("category->slug.current == $categorySlug");
+      params.categorySlug = category;
     }
 
-    query += `] | order(publishedAt desc) {
+    const filter = conditions.join(" && ");
+    const query = `*[${filter}] | order(publishedAt desc) {
       _id,
       title,
       "description": excerpt,
@@ -48,7 +49,7 @@ export async function BlogsData({ searchQuery, category }: BlogsDataProps) {
       "readTime": readTime
     }`;
 
-    const posts: BlogPost[] = await client.fetch(query);
+    const posts: BlogPost[] = await client.fetch(query, params);
 
     return <BlogsGrid posts={posts ?? []} />;
   } catch (error) {
