@@ -67,14 +67,12 @@ export {
 } from "./products";
 // Projects Page
 export {
-  getAllClientsQuery,
+  getAllClientListQuery,
   getAllInstallationsQuery,
-  getAllProjectsQuery,
-  getClientCountQuery,
+  getAllOtherClientsQuery,
+  getClientListCountQuery,
   getInstallationCountQuery,
-  getProjectBySlugQuery,
-  getProjectCountQuery,
-  type ProjectListParams,
+  getOtherClientCountQuery,
 } from "./projects";
 // Services Page
 export {

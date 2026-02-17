@@ -13,7 +13,7 @@ export function FeaturesSection() {
           <div>
             <h2
               id="features-heading"
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight"
+              className="text-2xl md:text-3xl lg:text-4xl font-bold text-primary"
             >
               Built to Perform
               <br />
@@ -37,7 +37,7 @@ export function FeaturesSection() {
                     <Icon className="w-6 h-6 text-primary" />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-base font-semibold text-primary">
+                    <h3 className="text-sm font-semibold text-primary">
                       {feature.title}
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">

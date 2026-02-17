@@ -40,16 +40,10 @@ export function BrandStoryCard({
 
       {/* Text Content at Bottom - Positioned at 397px from top */}
       <div className="absolute left-6 top-[24.81rem] flex flex-col gap-1">
-        <p
-          className="font-medium text-[1.25rem] leading-7 tracking-[-0.0313rem] text-white"
-        >
+        <p className="font-medium text-lg text-white">
           {name}
         </p>
-        <p
-          className="font-normal text-sm leading-5 text-white"
-        >
-          {role}
-        </p>
+        <p className="font-normal text-sm leading-5 text-white">{role}</p>
       </div>
     </div>
   );

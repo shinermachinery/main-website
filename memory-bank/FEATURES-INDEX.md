@@ -2,7 +2,7 @@
 
 Master index of all features in this project. Each feature has detailed documentation in its respective folder.
 
-**Last Updated**: 2026-02-16
+**Last Updated**: 2026-02-17
 
 ## Active Features
 
@@ -47,13 +47,13 @@ Features currently implemented and in use.
 **Key Files:**
 - `sanity.config.ts` - Sanity configuration
 - `src/sanity/lib/client.ts` - API client
-- `src/sanity/schemaTypes/**/*.ts` - Content schemas (19 total, 7 domains)
+- `src/sanity/schemaTypes/**/*.ts` - Content schemas (20 total, 7 domains)
 - `src/sanity/lib/queries/pages/*.ts` - Page-specific GROQ queries
 - `src/sanity/lib/queries/shared/*.ts` - Shared projections and utilities
 - `src/sanity/structure.ts` - Studio structure
 - `src/app/studio/[[...tool]]/page.tsx` - Studio route
 
-**Content Schemas (19 total):**
+**Content Schemas (20 total):**
 
 *Singletons (Pages):*
 - Home - Homepage content (homeType)
@@ -73,6 +73,7 @@ Features currently implemented and in use.
 - Service - Service offerings
 - Team Member - Team profiles (with isDirector flag for director)
 - Testimonial - Customer testimonials (with rating, company)
+- Contact Page - Contact page dynamic content (phones, emails, offices)
 - Contact Submission - Contact form data
 - Event - Events (title, images, location)
 - Certification - Company certifications
@@ -222,6 +223,8 @@ Features currently implemented and in use.
 - ✅ Phase 10: Blog Posts Page (Completed 2025-12-29)
 - ✅ Phase 11: Individual Blog Post Page (Completed 2025-12-29)
 - ✅ Phase 12: Services Page (Completed 2025-12-29)
+- ✅ Phase 13: Contact Page Figma Redesign + Sanity Integration (Completed 2026-02-17)
+- ✅ Phase 14: Services Page Cleanup (Completed 2026-02-17)
 
 ---
 
@@ -523,7 +526,7 @@ Features scheduled for future implementation:
 | Feature | Status | Files | Docs |
 |---------|--------|-------|------|
 | Theme System | ✅ | `src/lib/theme-provider.tsx`<br>`src/components/global/mode-toggle.tsx` | [View](./features/theme-system/README.md) |
-| Sanity Integration | ✅ | `sanity.config.ts`<br>`src/sanity/**/*` (19 schemas, queries in pages/shared/) | [View](./features/sanity-integration/README.md) |
+| Sanity Integration | ✅ | `sanity.config.ts`<br>`src/sanity/**/*` (20 schemas, queries in pages/shared/) | [View](./features/sanity-integration/README.md) |
 | UI Components (shadcn/ui) | 🚧 | `src/components/ui/**/*`<br>`src/lib/utils.ts` | [View](./features/ui-components/README.md) |
 | MCP Integration | ✅ | `.mcp.json`<br>`.claude/settings.local.json` | [View](../MCP-SETUP.md) |
 | Landing Pages | ✅ | `src/app/(landing)/**/*`<br>6 pages: Home, About, Contact, Blog, Blog Detail, Services | [View](./features/landing-page/README.md) |
@@ -539,8 +542,10 @@ Features scheduled for future implementation:
 - 🚧 In Development: 0
 - 📋 Planned: 2
 
-**Last Feature Completed**: Global EmptyState Component (2026-02-16)
+**Last Feature Completed**: Contact Page Redesign + Sanity (2026-02-17)
 **Recently Updated**:
+- **Contact Page (2026-02-17)** - Redesigned to match Figma (heading, Get In Touch card, gradient map borders). Moved phones/emails/offices to Sanity CMS with `contactPage` singleton schema. Static text in `site-config.ts`. Server action with IP-based rate limiting (3/min). Replaced arbitrary rem/px values with standard Tailwind classes. Replaced `max-w-[72.25rem]` with `max-w-7xl` codebase-wide.
+- **Services Page (2026-02-17)** - Replaced `max-w-[72.25rem]` with `max-w-7xl`.
 - **EmptyState Component (2026-02-16)** - Created global `EmptyState` component with 3 variants (empty/filtered/error), 3 sizes, and optional icon/action. Migrated 14 files from inline empty-state patterns, eliminating duplicated section wrappers.
 - **Shared Components + px→rem (2026-02-15)** - Extracted shared search/filter/active-filters components for blog and products pages. Made products search/filter functional via URL params. Converted all px to rem across 30+ files. ProductCard cleanup.
 - **Query Reorganization (2026-02-14)** - Reorganized GROQ queries into pages/ and shared/ modules. Added error boundary and 404 pages. Updated all components and actions (123 files, 4472+/2412-).
@@ -549,13 +554,14 @@ Features scheduled for future implementation:
 - **Sanity Data Flow Pattern (2026-01-15)** - Documented 3-layer architecture (Queries → Actions → Components) in patterns.md
 - **Hero Section Redesign (2026-01-10)** - Complete redesign to match Figma reference
 - **Design System Refactoring (2026-01-09)** - Codebase-wide conversion of px to rem units (36 files), hardcoded colors to semantic tokens
-**Next Planned**: Events Page, Contact Form Enhancement, Service Detail Pages
+**Next Planned**: Events Page, Service Detail Pages
 
 ## Related Documentation
 
 - [Architecture Overview](./architecture/system-overview.md)
 - [Tech Stack](./architecture/tech-stack.md)
 - [Development Patterns](./architecture/patterns.md)
+- [Development Guide](./architecture/development-guide.md)
 - [Memory Bank README](./README.md)
 - [Feature Template](./templates/feature-template.md)
 
@@ -563,4 +569,4 @@ Features scheduled for future implementation:
 
 **Maintenance Schedule**: Review and update this index when features change
 **Owner**: Team
-**Last Review**: 2026-02-16
+**Last Review**: 2026-02-17

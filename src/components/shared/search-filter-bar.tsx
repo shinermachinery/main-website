@@ -37,18 +37,22 @@ export function SearchFilterBar({
       key: "Search",
       label: `Search: ${currentSearch}`,
       paramName: searchParam,
+      paramValue: currentSearch,
     });
   }
 
   if (currentCategory) {
-    const categoryLabel =
-      categories.find((c) => c.value === currentCategory)?.label ||
-      currentCategory;
-    activeFilters.push({
-      key: "Category",
-      label: categoryLabel,
-      paramName: categoryParam,
-    });
+    const selectedSlugs = currentCategory.split(",");
+    for (const slug of selectedSlugs) {
+      const categoryLabel =
+        categories.find((c) => c.value === slug)?.label || slug;
+      activeFilters.push({
+        key: `Category-${slug}`,
+        label: categoryLabel,
+        paramName: categoryParam,
+        paramValue: slug,
+      });
+    }
   }
 
   return (

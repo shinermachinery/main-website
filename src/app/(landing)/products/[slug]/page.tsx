@@ -10,6 +10,7 @@ import { ProductImageGallery } from "@/components/products/product-image-gallery
 import { ProductInfo } from "@/components/products/product-info";
 import { ProductSpecificationsSection } from "@/components/products/product-specifications-section";
 import { RelatedProducts } from "@/components/products/related-products";
+import { siteConfig } from "@/lib/site-config";
 import { urlFor } from "@/sanity/lib/image";
 
 interface PageProps {
@@ -22,18 +23,26 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = await getProductBySlug(slug);
 
+  const title = product?.title ?? "Product";
+  const description = product?.description;
+  const image = product?.images?.[0]
+    ? urlFor(product.images[0]).url()
+    : undefined;
+
   return {
-    title: `${product?.title} | SHINER`,
-    description: product?.description,
+    title,
+    description,
+    alternates: { canonical: `${siteConfig.url}/products/${slug}` },
     openGraph: {
-      title: `${product?.title} | SHINER`,
-      description: product?.description,
-      images: product?.images?.[0] ? [urlFor(product.images[0]).url()] : [],
+      title,
+      description,
+      url: `${siteConfig.url}/products/${slug}`,
+      ...(image && { images: [image] }),
     },
     twitter: {
-      title: `${product?.title} | SHINER`,
-      description: product?.description,
-      images: product?.images?.[0] ? [urlFor(product.images[0]).url()] : [],
+      title,
+      description,
+      ...(image && { images: [image] }),
     },
   };
 }
@@ -109,7 +118,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <div className="border-t border-zinc-100 mt-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center space-y-4">
-            <h3 className="text-2xl font-light text-zinc-900">
+            <h3 className="text-xl font-light text-zinc-900">
               Need More Information?
             </h3>
             <p className="text-sm font-light text-zinc-600 max-w-2xl mx-auto">

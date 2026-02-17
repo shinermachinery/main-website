@@ -26,8 +26,18 @@ export async function ProductsData({
     }
 
     if (category) {
-      conditions.push("collection->slug.current == $categorySlug");
-      params.categorySlug = category;
+      const slugs = category.split(",");
+      if (slugs.length === 1) {
+        conditions.push("collection->slug.current == $categorySlug");
+        params.categorySlug = category;
+      } else {
+        conditions.push(
+          `collection->slug.current in [${slugs.map((_, i) => `$cat${i}`).join(", ")}]`,
+        );
+        for (let i = 0; i < slugs.length; i++) {
+          params[`cat${i}`] = slugs[i];
+        }
+      }
     }
 
     const filterString = buildFilterString("product", conditions);

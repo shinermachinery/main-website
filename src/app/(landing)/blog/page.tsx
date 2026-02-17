@@ -2,7 +2,11 @@ import { Suspense } from "react";
 import { BlogsData } from "@/components/blog/blogs-data";
 import { BlogsSkeleton } from "@/components/blog/blogs-skeleton";
 import { SearchFilterBar } from "@/components/shared/search-filter-bar";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { pageMetadata } from "@/lib/site-config";
 import { client } from "@/sanity/lib/client";
+
+export const metadata = pageMetadata.blog;
 
 interface BlogPageProps {
   searchParams: Promise<{
@@ -43,19 +47,12 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       <div className="container mx-auto px-4 py-16 md:py-24">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="mb-12">
-            <h1
-              className="font-semibold text-4xl text-foreground mb-4"
-            >
-              Our Blogs
-            </h1>
-            <p
-              className="font-normal text-lg text-muted-foreground max-w-2xl"
-            >
-              Insights, updates, and stories from the world of precision
-              engineering and industrial machinery.
-            </p>
-          </div>
+          <SectionHeading
+            as="h1"
+            title="Our Blogs"
+            description="Insights, updates, and stories from the world of precision engineering and industrial machinery."
+            className="mb-12"
+          />
 
           {/* Search and Filters */}
           <SearchFilterBar

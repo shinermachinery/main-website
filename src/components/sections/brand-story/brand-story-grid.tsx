@@ -73,12 +73,12 @@ export function BrandStoryGrid({
             <div className="flex-1 flex items-start">
               <h2
                 id="brand-story-heading"
-                className="flex-1 font-medium text-[1.875rem] leading-[2.5rem] tracking-[-0.0469rem] text-foreground"
+                className="flex-1 font-medium text-2xl text-foreground"
               >
                 {title || "Our Brand Story"}
               </h2>
             </div>
-            <div className="flex-1 font-medium text-[1.25rem] leading-7 tracking-[-0.0313rem] text-muted-foreground">
+            <div className="flex-1 font-medium text-lg text-muted-foreground">
               {description && description.length > 0 ? (
                 <PortableText value={description} />
               ) : (

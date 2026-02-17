@@ -1,26 +1,24 @@
 import {
   ArrowRight,
-  Award,
+  ArrowUpRight,
   Building2,
+  ChartLine,
   Globe,
   Headset,
-  Phone,
+  Medal,
+  PhoneCall,
   Settings,
   Sparkles,
-  TrendingUp,
 } from "lucide-react";
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getAboutPage } from "@/actions/about";
 import { Button } from "@/components/ui/button";
+import { pageMetadata } from "@/lib/site-config";
 import { urlFor } from "@/sanity/lib/image";
+import { getFeaturedProducts } from "@/sanity/lib/actions";
 
-export const metadata: Metadata = {
-  title: "About Us - Shiner Machinery",
-  description:
-    "Shiner Machinery designs and delivers precision-engineered machines that empower manufacturers to build faster, smarter, and more efficiently.",
-};
+export const metadata = pageMetadata.about;
 
 // Icon mapping for CMS icon names
 const iconMap: Record<string, React.ElementType> = {
@@ -29,9 +27,9 @@ const iconMap: Record<string, React.ElementType> = {
   sparkles: Sparkles,
   globe: Globe,
   building: Building2,
-  trending: TrendingUp,
-  phone: Phone,
-  award: Award,
+  trending: ChartLine,
+  phone: PhoneCall,
+  award: Medal,
 };
 
 // Fallback data when CMS is empty
@@ -65,43 +63,12 @@ const fallbackBottomFeatures = [
   { icon: "award", title: "Proven results worldwide" },
 ];
 
-const fallbackProducts = [
-  {
-    id: 1,
-    name: "Vernier Caliper Mitutoyo (Japan)",
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst ullamcorper purus",
-    image:
-      "https://images.unsplash.com/photo-1581092160607-ee67274f4b58?w=600&h=400&fit=crop",
-  },
-  {
-    id: 2,
-    name: "Shiner Lab Polisher",
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst ullamcorper purus",
-    image:
-      "https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=600&h=400&fit=crop",
-  },
-  {
-    id: 3,
-    name: "Shiner Weighing Scale 0.01g",
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst ullamcorper purus",
-    image:
-      "https://images.unsplash.com/photo-1581092583537-20d51b4b4f1b?w=600&h=400&fit=crop",
-  },
-  {
-    id: 4,
-    name: "KETT PQ-520",
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst ullamcorper purus",
-    image:
-      "https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=600&h=400&fit=crop",
-  },
-];
 
 export default async function AboutPage() {
-  const aboutData = await getAboutPage();
+  const [aboutData, featuredProducts] = await Promise.all([
+    getAboutPage(),
+    getFeaturedProducts(4),
+  ]);
 
   const heroTitle =
     aboutData?.heroTitle || "Engineering Excellence for Modern Manufacturing";
@@ -131,10 +98,10 @@ export default async function AboutPage() {
       <section className="container mx-auto px-6 py-16 md:py-24">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-6">
           <div className="flex flex-1 flex-col gap-6">
-            <h1 className="text-[2.5rem] font-medium leading-[3rem] tracking-[-0.0563rem] text-foreground md:text-[1.875rem]">
+            <h1 className="text-3xl font-medium text-foreground md:text-2xl">
               {heroTitle}
             </h1>
-            <p className="text-[1.25rem] font-medium leading-6 tracking-[-0.0313rem] text-muted-foreground md:text-lg">
+            <p className="text-lg font-medium text-muted-foreground md:text-base">
               {heroDescription}
             </p>
           </div>
@@ -157,11 +124,11 @@ export default async function AboutPage() {
         <div className="flex flex-col gap-6 md:flex-row">
           <div className="flex flex-1 flex-col gap-6">
             <div className="flex flex-1 flex-col gap-10 rounded-2xl bg-brand-green-10 p-6">
-              <p className="text-[1.25rem] font-medium leading-[1.75rem] tracking-[-0.0313rem] text-brand-green">
+              <p className="text-lg font-medium text-brand-green">
                 {whoWeAreTitle}
               </p>
               <div className="flex flex-col gap-3">
-                <p className="text-[1.25rem] font-medium leading-6 tracking-[-0.0313rem] text-foreground">
+                <p className="text-lg font-medium text-foreground">
                   Built on Precision. Driven by Performance.
                 </p>
                 <p className="text-sm leading-5 text-muted-foreground">
@@ -170,10 +137,10 @@ export default async function AboutPage() {
               </div>
             </div>
             <div className="flex flex-1 flex-col justify-between gap-10 rounded-2xl bg-brand-blue-10 p-6">
-              <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-[1.25rem] leading-6 tracking-[-0.0313rem]">
+              <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-lg">
                 {missionTitle}
               </p>
-              <p className="text-[1.5rem] font-medium leading-8 tracking-[-0.0375rem] text-foreground">
+              <p className="text-xl font-medium text-foreground">
                 {missionText}
               </p>
             </div>
@@ -181,25 +148,20 @@ export default async function AboutPage() {
 
           {/* Feature Cards */}
           <div className="flex flex-1 flex-col gap-6">
-            {features.map((feature, index) => {
+            {features.map((feature) => {
               const Icon = iconMap[feature.icon || ""] || Settings;
-              const useGradient = index > 0;
               return (
                 <div
                   key={feature.title}
-                  className="flex flex-col gap-3 rounded-2xl border border-border p-6"
+                  className="flex flex-col gap-3 rounded-2xl bg-background p-6"
                 >
                   <div className="flex items-center gap-2">
-                    <Icon
-                      className={`size-6 ${useGradient ? "text-brand-blue" : "text-foreground"}`}
-                    />
-                    <p
-                      className={`font-medium text-[1.25rem] leading-6 tracking-[-0.0313rem] ${useGradient ? "bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent" : "text-foreground"}`}
-                    >
+                    <Icon className="size-6 text-brand-blue" />
+                    <p className="font-medium text-lg bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent">
                       {feature.title}
                     </p>
                   </div>
-                  <p className="text-[1.25rem] font-medium leading-6 tracking-[-0.0313rem] text-foreground">
+                  <p className="text-lg font-medium text-foreground">
                     {feature.description}
                   </p>
                 </div>
@@ -218,7 +180,7 @@ export default async function AboutPage() {
                 className="flex flex-col justify-end gap-10 rounded-2xl bg-background p-6"
               >
                 <Icon className="size-6 text-foreground" />
-                <p className="text-[1.25rem] font-medium leading-[1.75rem] tracking-[-0.0313rem] text-foreground">
+                <p className="text-lg font-medium text-foreground">
                   {feature.title}
                 </p>
               </div>
@@ -228,30 +190,29 @@ export default async function AboutPage() {
       </section>
 
       {/* Featured Products Section */}
-      <section className="mx-auto max-w-[75rem] px-6 py-16">
+      {featuredProducts.length > 0 && (
+      <section className="container mx-auto px-6 py-16">
         <div className="mb-10 flex items-center justify-between">
-          <h2 className="text-[1.875rem] font-medium leading-10 tracking-[-0.0469rem] text-foreground">
+          <h2 className="text-2xl font-medium text-foreground">
             Featured Products
           </h2>
-          <Link
-            href="/products"
-            className="flex h-10 items-center gap-2 rounded-full bg-linear-to-r from-brand-blue/10 to-brand-green/10 px-4 py-2 shadow-[inset_0rem_0.25rem_1.806rem_0rem_rgba(244,244,245,0.4)]"
-          >
-            <span className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-sm leading-5">
-              Explore Products
-            </span>
-          </Link>
+          <Button variant="shiner" size="lg" asChild>
+            <Link href="/products">
+              <span>Explore Products</span>
+              <ArrowUpRight className="size-5" />
+            </Link>
+          </Button>
         </div>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {fallbackProducts.map((product) => (
+          {featuredProducts.map((product) => (
             <div
               key={product.id}
               className="flex flex-col gap-4 rounded-2xl bg-background p-4"
             >
               <div className="relative aspect-282/168 w-full overflow-hidden rounded-2xl bg-muted">
                 <Image
-                  src={product.image}
-                  alt={product.name}
+                  src={product.primaryImage}
+                  alt={product.title}
                   fill
                   className="object-cover"
                   sizes="(max-width: 40rem) 100vw, (max-width: 64rem) 50vw, 25vw"
@@ -259,22 +220,25 @@ export default async function AboutPage() {
               </div>
               <div className="flex flex-col gap-2">
                 <p className="text-sm font-medium leading-5 text-foreground">
-                  {product.name}
+                  {product.title}
                 </p>
-                <p className="line-clamp-2 text-sm leading-5 text-muted-foreground">
-                  {product.description}
-                </p>
+                {product.description && (
+                  <p className="line-clamp-2 text-sm leading-5 text-muted-foreground">
+                    {product.description}
+                  </p>
+                )}
               </div>
-              <Button className="flex h-10 w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-brand-blue to-brand-green shadow-[inset_0rem_0.25rem_1.806rem_0rem_rgba(244,244,245,0.2)]">
-                <span className="text-sm font-medium leading-5 text-white">
+              <Button variant="shiner" size="lg" className="w-full rounded-full" asChild>
+                <Link href={`/products/${product.slug}`}>
                   View Details
-                </span>
-                <ArrowRight className="size-4 text-white" />
+                  <ArrowRight className="size-4" />
+                </Link>
               </Button>
             </div>
           ))}
         </div>
       </section>
+      )}
     </div>
   );
 }

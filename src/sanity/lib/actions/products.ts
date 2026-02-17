@@ -310,8 +310,8 @@ function transformProduct(product: any): Product {
     primaryImage: product.images?.[0]
       ? urlFor(product.images[0]).url()
       : "/placeholder-product.jpg",
-    brochure: product.brochure?.asset
-      ? urlFor(product.brochure).url()
+    brochure: product.brochure?.asset?._ref
+      ? `https://cdn.sanity.io/files/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${product.brochure.asset._ref.replace("file-", "").replace("-pdf", ".pdf")}`
       : undefined,
     specifications: product.specifications,
     price: product.price,

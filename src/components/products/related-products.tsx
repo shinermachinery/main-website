@@ -45,7 +45,7 @@ export function RelatedProducts({
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Sparkles className="w-4 h-4 text-brand-blue" strokeWidth={1} />
-          <h2 className="text-2xl font-light text-foreground">
+          <h2 className="text-xl font-light text-foreground">
             Related Products
           </h2>
         </div>

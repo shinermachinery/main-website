@@ -2,7 +2,7 @@
 
 Documentation of how the memory bank system integrates with CLAUDE.md and the development workflow.
 
-**Last Updated**: 2025-12-23
+**Last Updated**: 2026-02-17
 
 ## Overview
 
@@ -20,15 +20,15 @@ The memory bank system is documented in `CLAUDE.md` under the "Memory Bank Syste
 - **Complete examples** of correct and incorrect workflows
 - **Quick reference tables** for common tasks
 
-**Location in CLAUDE.md**: Lines 130-358
+**Location in CLAUDE.md**: "Memory Bank System" section (compact format, references memory-bank/ for details)
 
 ### 2. File Structure
 
 ```
 Project Root
 │
-├── CLAUDE.md                           # Contains all memory bank rules
-│   └── Memory Bank System section      # Lines 130-358
+├── CLAUDE.md                           # Slim reference with essential rules
+│   └── Memory Bank System section      # Compact rules + links to memory-bank/
 │
 └── memory-bank/
     ├── README.md                        # System documentation
@@ -42,7 +42,9 @@ Project Root
     │
     ├── architecture/
     │   ├── tech-stack.md                # Technology documentation
-    │   └── system-overview.md           # Architecture documentation
+    │   ├── system-overview.md           # Architecture documentation
+    │   ├── patterns.md                  # Development patterns
+    │   └── development-guide.md         # Commands, config, MCP, shadcn/ui
     │
     └── features/
         ├── theme-system/                # Example feature
@@ -268,10 +270,11 @@ When a future Claude Code instance initializes:
 
 | What | Where |
 |------|-------|
-| Rules for Claude | [CLAUDE.md](../CLAUDE.md) - Memory Bank System section |
+| Rules for Claude | [CLAUDE.md](../CLAUDE.md) - Essential rules + memory bank references |
 | Feature list | [FEATURES-INDEX.md](./FEATURES-INDEX.md) |
 | Quick start | [QUICK-START.md](./QUICK-START.md) |
 | Visual workflow | [WORKFLOW.md](./WORKFLOW.md) |
+| Dev guide | [architecture/development-guide.md](./architecture/development-guide.md) |
 | Feature template | [templates/feature-template.md](./templates/feature-template.md) |
 | Architecture | [architecture/system-overview.md](./architecture/system-overview.md) |
 | Tech stack | [architecture/tech-stack.md](./architecture/tech-stack.md) |
@@ -279,5 +282,5 @@ When a future Claude Code instance initializes:
 ---
 
 **System Status**: ✅ Fully Integrated
-**Last Verified**: 2025-12-23
+**Last Verified**: 2026-02-17
 **Next Review**: As needed

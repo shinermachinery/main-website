@@ -22,13 +22,13 @@ export function ProductInfo({ product }: ProductInfoProps) {
         )}
 
         {/* Title */}
-        <h1 className="text-3xl lg:text-4xl font-light text-foreground tracking-tight">
+        <h1 className="text-2xl lg:text-3xl font-light text-foreground tracking-tight">
           {product.title}
         </h1>
 
         {/* Description */}
         {product.description && (
-          <p className="text-base font-light text-muted-foreground leading-relaxed">
+          <p className="text-sm font-light text-muted-foreground leading-relaxed">
             {product.description}
           </p>
         )}
@@ -58,7 +58,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
             <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
               Starting from
             </span>
-            <span className="text-2xl font-light text-foreground">
+            <span className="text-xl font-light text-foreground">
               ${product.price.toLocaleString()}
             </span>
           </div>

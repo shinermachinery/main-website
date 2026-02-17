@@ -16,4 +16,3 @@ export { CertificationCard } from "./certification-card";
 export { ClientCard } from "./client-card";
 // Cards from global/cards (moved here)
 export { EventCard } from "./event-card";
-export { InstallationCard } from "./installation-card";

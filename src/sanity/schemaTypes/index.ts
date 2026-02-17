@@ -4,6 +4,7 @@ import type { SchemaTypeDefinition } from "sanity";
 import { authorType, blockContentType, categoryType, postType } from "./blog";
 // Common schemas
 import {
+  contactPageType,
   contactSubmissionType,
   footerType,
   navigationType,
@@ -26,10 +27,10 @@ import {
 import { productCollectionType, productType } from "./products";
 // Project schemas
 import {
+  clientListType,
   clientType,
   flowchartType,
   installationType,
-  projectType,
   serviceType,
 } from "./projects";
 
@@ -49,9 +50,9 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     productCollectionType,
 
     // Projects
-    projectType,
     serviceType,
     clientType,
+    clientListType,
     installationType,
     flowchartType,
 
@@ -69,6 +70,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     siteSettingsType,
     navigationType,
     footerType,
+    contactPageType,
     contactSubmissionType,
   ],
 };

@@ -27,14 +27,10 @@ export function ProductsGridSection({
     <section className="flex flex-col gap-y-10 w-full">
       {/* Header */}
       <div className="flex flex-col gap-y-4">
-        <h1
-          className="font-medium text-4xl leading-10 tracking-[-0.0563rem] text-foreground"
-        >
+        <h1 className="font-medium text-4xl leading-10 tracking-[-0.0563rem] text-foreground">
           Our Products
         </h1>
-        <p
-          className="font-medium text-lg leading-6 tracking-[-0.0313rem] text-muted-foreground"
-        >
+        <p className="font-medium text-lg leading-6 tracking-[-0.0313rem] text-muted-foreground">
           Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst
           ullamcorper purus
         </p>
@@ -43,7 +39,7 @@ export function ProductsGridSection({
       {/* Search & Filter Bar */}
       <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
         {/* Search Input */}
-        <div className="relative w-full md:w-[35.375rem]">
+        <div className="relative w-full ">
           <input
             type="text"
             placeholder="Search products..."
@@ -55,9 +51,7 @@ export function ProductsGridSection({
         <div className="flex items-center gap-4">
           {/* Active Filter Chip */}
           <div className="flex items-center gap-2 px-4 h-10 rounded-full bg-background">
-            <span
-              className="text-sm font-medium text-foreground"
-            >
+            <span className="text-sm font-medium text-foreground">
               Machinery
             </span>
             <Button
@@ -75,7 +69,7 @@ export function ProductsGridSection({
 
           {/* Categories Dropdown */}
           <Select>
-            <SelectTrigger className="w-[11.25rem] h-10 rounded-full border-muted">
+            <SelectTrigger className="w-full h-10 rounded-full border-muted">
               <SelectValue
                 placeholder="Categories"
                 className="text-sm font-medium text-foreground"
@@ -97,7 +91,7 @@ export function ProductsGridSection({
       </div>
 
       {/* Products Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {products.map((product) => {
           console.log("PRODUCT", product);
           const imageUrl = product?.images?.[0]

@@ -435,66 +435,37 @@ export const EVENT_PROJECTION = `{
 // ============================================================================
 
 /**
- * Installation Projection
+ * Installation Projection (image carousel cards)
  */
 export const INSTALLATION_PROJECTION = `{
   ${BASE_DOCUMENT_FIELDS},
   title,
+  description,
   images[] {
     ${IMAGE_PROJECTION}
   },
-  client-> {
-    _id,
-    companyName,
-    logo {
-      ${IMAGE_PROJECTION}
-    }
-  },
-  machineryType,
-  location
+  order
 }`;
 
 /**
- * Client Projection
+ * Client List Projection
  */
-export const CLIENT_PROJECTION = `{
+export const CLIENT_LIST_PROJECTION = `{
+  ${BASE_DOCUMENT_FIELDS},
+  companyName,
+  projects,
+  order
+}`;
+
+/**
+ * Other Client Projection (logo marquee)
+ */
+export const OTHER_CLIENT_PROJECTION = `{
   ${BASE_DOCUMENT_FIELDS},
   companyName,
   logo {
     ${IMAGE_PROJECTION}
   },
-  featured
-}`;
-
-/**
- * Project Summary Projection
- */
-export const PROJECT_SUMMARY_PROJECTION = `{
-  _id,
-  title,
-  slug ${SLUG_PROJECTION},
-  client,
-  location,
-  "primaryImage": images[0] {
-    ${IMAGE_PROJECTION}
-  }
-}`;
-
-/**
- * Project Full Projection
- */
-export const PROJECT_FULL_PROJECTION = `{
-  ${BASE_DOCUMENT_FIELDS},
-  title,
-  slug ${SLUG_PROJECTION},
-  client,
-  location,
-  description,
-  images[] {
-    ${IMAGE_PROJECTION}
-  },
-  completionDate,
-  category,
   order
 }`;
 

@@ -17,7 +17,7 @@ export function AboutSection({ title, description }: AboutSectionProps) {
             <div className="flex-1">
               <h2
                 id="about-heading"
-                className="text-[1.875rem] leading-[2.5rem] font-medium text-foreground tracking-[-0.047rem] max-w-sm"
+                className="text-2xl font-medium text-foreground max-w-sm"
               >
                 {title || "A Word About Us and Our Mission"}
               </h2>
@@ -26,11 +26,11 @@ export function AboutSection({ title, description }: AboutSectionProps) {
             {/* Description Column */}
             <div className="flex-1">
               {description && description.length > 0 ? (
-                <div className="text-[1.25rem] leading-[1.75rem] font-medium text-muted-foreground tracking-[-0.031rem]">
+                <div className="text-lg font-medium text-muted-foreground">
                   <PortableText value={description} />
                 </div>
               ) : (
-                <p className="text-[1.25rem] leading-[1.75rem] font-medium text-muted-foreground tracking-[-0.031rem]">
+                <p className="text-lg font-medium text-muted-foreground">
                   Lorem ipsum dolor sit amet consectetur. Turpis bibendum eget
                   adipiscing scelerisque proin. Neque tincidunt et pellentesque
                   proin. Quam non tortor sed mauris libero bibendum malesuada.
@@ -44,7 +44,7 @@ export function AboutSection({ title, description }: AboutSectionProps) {
           <div className="flex flex-col lg:flex-row gap-6 items-start">
             {/* Tagline Column */}
             <div className="flex-1">
-              <h3 className="text-[1.875rem] leading-[2.5rem] font-medium text-primary tracking-[-0.047rem] max-w-sm">
+              <h3 className="text-2xl font-medium text-primary max-w-sm">
                 Built to Perform
                 <br />
                 Built to Last

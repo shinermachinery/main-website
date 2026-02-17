@@ -4,6 +4,7 @@ import { PortableText } from "@portabletext/react";
 import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { GradientBadge } from "@/components/ui/gradient-badge";
 
 interface BlogPostDetailProps {
   post: {
@@ -39,45 +40,22 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
           className="flex gap-2 items-center group transition-colors hover:opacity-70"
         >
           <ChevronLeft className="size-4 text-muted-foreground" />
-          <span
-            className="font-normal text-sm leading-5 text-muted-foreground"
-          >
+          <span className="font-normal text-sm leading-5 text-muted-foreground">
             Back
           </span>
         </Link>
 
         {/* Category Badge */}
         {post.category && (
-          <div
-            className="inline-flex items-start px-2.5 py-1 rounded-full self-start"
-            style={{
-              backgroundImage:
-                "linear-gradient(91.22deg, rgba(42, 94, 152, 0.1) 15.88%, rgba(24, 183, 90, 0.1) 115.02%)",
-            }}
-          >
-            <span
-              className="bg-clip-text font-medium text-sm leading-4"
-              style={{
-                WebkitTextFillColor: "transparent",
-                backgroundImage:
-                  "linear-gradient(90.65deg, rgba(42, 94, 152, 1) 15.88%, rgba(24, 183, 90, 1) 115.02%)",
-              }}
-            >
-              {post.category}
-            </span>
-          </div>
+          <GradientBadge className="self-start">{post.category}</GradientBadge>
         )}
 
         {/* Date and Title */}
         <div className="flex flex-col gap-4">
-          <p
-            className="font-normal text-sm leading-5 text-muted-foreground"
-          >
+          <p className="font-normal text-sm leading-5 text-muted-foreground">
             {formattedDate}
           </p>
-          <h1
-            className="font-medium text-4xl leading-12 tracking-[-0.0563rem] text-foreground"
-          >
+          <h1 className="font-medium text-3xl text-foreground">
             {post.title}
           </h1>
         </div>
@@ -104,16 +82,12 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
               components={{
                 block: {
                   h2: ({ children }) => (
-                    <h2
-                      className="font-medium text-3xl leading-8 tracking-[-0.0469rem] text-foreground"
-                    >
+                    <h2 className="font-medium text-2xl text-foreground">
                       {children}
                     </h2>
                   ),
                   normal: ({ children }) => (
-                    <p
-                      className="font-medium text-lg leading-6 tracking-[-0.0313rem] text-muted-foreground"
-                    >
+                    <p className="font-medium text-base text-muted-foreground">
                       {children}
                     </p>
                   ),

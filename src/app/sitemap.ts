@@ -115,22 +115,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     }));
 
-    // Fetch all projects
-    const projects = await client.fetch<
-      Array<{ slug: { current: string }; _updatedAt: string }>
-    >(`*[_type == "project" && defined(slug.current)] {
-      "slug": slug.current,
-      _updatedAt
-    }`);
-
-    const projectPages: MetadataRoute.Sitemap = projects.map((project) => ({
-      url: `${baseUrl}/projects/${project.slug}`,
-      lastModified: new Date(project._updatedAt),
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    }));
-
-    dynamicPages = [...productPages, ...blogPages, ...projectPages];
+    dynamicPages = [...productPages, ...blogPages];
   } catch (error) {
     console.error("Error fetching sitemap data from Sanity:", error);
     // Continue with static pages only if Sanity fails

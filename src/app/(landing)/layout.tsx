@@ -1,5 +1,6 @@
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
+import { SanityLive } from "@/sanity/lib/live";
 
 export default function LandingLayout({
   children,
@@ -11,6 +12,7 @@ export default function LandingLayout({
       <Navbar />
       <main className="pt-5">{children}</main>
       <Footer />
+      <SanityLive />
     </>
   );
 }

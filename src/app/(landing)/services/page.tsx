@@ -1,15 +1,12 @@
 import { Phone } from "lucide-react";
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { EmptyState } from "@/components/ui/empty-state";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { pageMetadata } from "@/lib/site-config";
 import { getServices } from "@/sanity/lib/actions";
 
-export const metadata: Metadata = {
-  title: "Our Services | Shiner",
-  description:
-    "Explore our comprehensive services including training, spare parts, after-sale service, equipment modernization, and consultancy services.",
-};
+export const metadata = pageMetadata.services;
 
 export default async function ServicesPage() {
   const services = await getServices();
@@ -17,21 +14,14 @@ export default async function ServicesPage() {
   return (
     <div className="min-h-screen bg-secondary">
       <div className="container mx-auto px-4 py-16 md:py-24">
-        <div className="max-w-[72.25rem] mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Page Header */}
-          <div className="flex flex-col gap-4 mb-10">
-            <h1
-              className="font-medium text-4xl text-foreground"
-            >
-              Our Services
-            </h1>
-            <p
-              className="font-medium text-lg text-muted-foreground"
-            >
-              Lorem ipsum dolor sit amet consectetur. Luctus arcu congue
-              dictumst ullamcorper purus
-            </p>
-          </div>
+          <SectionHeading
+            as="h1"
+            title="Our Services"
+            description="From installation and training to spare parts and ongoing support, we ensure your machinery performs at its best throughout its lifecycle."
+            className="mb-10"
+          />
 
           {/* Services List */}
           {services.length === 0 ? (
@@ -61,18 +51,14 @@ export default async function ServicesPage() {
 
                   {/* Content */}
                   <div className="flex-1 flex flex-col gap-4">
-                    <h2
-                      className="font-medium text-lg text-foreground"
-                    >
+                    <h2 className="font-medium text-base text-foreground">
                       {service.title}
                     </h2>
-                    <p
-                      className="font-normal text-sm text-muted-foreground"
-                    >
+                    <p className="font-normal text-sm text-muted-foreground">
                       {service.description}
                     </p>
                     <Link
-                      href={`/services/${service.slug}`}
+                      href="/contact"
                       className="inline-flex items-center justify-center gap-2 h-10 px-4 py-2 rounded-full self-start"
                       style={{
                         backgroundImage:
@@ -82,9 +68,7 @@ export default async function ServicesPage() {
                       }}
                     >
                       <Phone className="h-5 w-5 text-white" />
-                      <span
-                        className="font-medium text-sm leading-5 text-white"
-                      >
+                      <span className="font-medium text-sm leading-5 text-white">
                         View Details
                       </span>
                     </Link>

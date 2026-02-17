@@ -1,13 +1,9 @@
-import type { Metadata } from "next";
 import { AchievementsSection } from "@/components/events/achievements-section";
 import { CertificationsSection } from "@/components/events/certifications-section";
 import { EventsSection } from "@/components/events/events-section";
+import { pageMetadata } from "@/lib/site-config";
 
-export const metadata: Metadata = {
-  title: "Events | Shiner",
-  description:
-    "Explore our events, certifications, and achievements. See what we've accomplished and the recognition we've received.",
-};
+export const metadata = pageMetadata.events;
 
 export default function EventsPage() {
   return (

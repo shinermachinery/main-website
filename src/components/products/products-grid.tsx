@@ -23,7 +23,7 @@ export function ProductsGrid({ products }: ProductsGridProps) {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {products.map((product) => {
         const imageUrl = product?.images?.[0]
           ? imageBuilder.image(product.images[0]).width(600).height(400).url()

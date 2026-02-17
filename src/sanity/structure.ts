@@ -1,8 +1,6 @@
 import {
   BlockContentIcon,
-  BookIcon,
   CogIcon,
-  CommentIcon,
   ComposeIcon,
   DocumentIcon,
   EarthGlobeIcon,
@@ -11,21 +9,20 @@ import {
   MenuIcon,
   PackageIcon,
   RocketIcon,
-  UsersIcon,
   WrenchIcon,
 } from "@sanity/icons";
 import type { StructureResolver } from "sanity/structure";
 
 /**
  * Sanity Studio Structure
- * Organized by content type: Pages, Collections, Media, Settings
+ * Organized into: Pages, Globals, Settings
  */
 export const structure: StructureResolver = (S) =>
   S.list()
     .title("Content")
     .items([
       // ============================================================
-      // PAGES - Single page content
+      // PAGES - All page-specific content
       // ============================================================
       S.listItem()
         .title("Pages")
@@ -39,7 +36,6 @@ export const structure: StructureResolver = (S) =>
                 .title("Homepage")
                 .icon(HomeIcon)
                 .child(S.document().schemaType("home").documentId("home")),
-              S.divider(),
               // About Page (Singleton)
               S.listItem()
                 .title("About Page")
@@ -48,25 +44,6 @@ export const structure: StructureResolver = (S) =>
                   S.document().schemaType("aboutPage").documentId("aboutPage"),
                 ),
               S.divider(),
-              // Contact
-              S.documentTypeListItem("contactSubmission").title(
-                "Contact Submissions",
-              ),
-            ]),
-        ),
-
-      S.divider(),
-
-      // ============================================================
-      // COLLECTIONS - Lists of content
-      // ============================================================
-      S.listItem()
-        .title("Collections")
-        .icon(BookIcon)
-        .child(
-          S.list()
-            .title("Collections")
-            .items([
               // Blog
               S.listItem()
                 .title("Blog")
@@ -80,7 +57,6 @@ export const structure: StructureResolver = (S) =>
                       S.documentTypeListItem("author").title("Authors"),
                     ]),
                 ),
-              S.divider(),
               // Products
               S.listItem()
                 .title("Products")
@@ -95,70 +71,72 @@ export const structure: StructureResolver = (S) =>
                       ),
                     ]),
                 ),
-              S.divider(),
-              // Projects & Services
+              // Projects
               S.listItem()
-                .title("Projects & Services")
+                .title("Projects")
                 .icon(WrenchIcon)
                 .child(
                   S.list()
-                    .title("Projects & Services")
+                    .title("Projects")
                     .items([
-                      S.documentTypeListItem("project").title("Projects"),
-                      S.documentTypeListItem("service").title("Services"),
                       S.documentTypeListItem("installation").title(
                         "Installations",
                       ),
-                      S.documentTypeListItem("client").title("Clients"),
+                      S.documentTypeListItem("clientList").title("Client List"),
+                      S.documentTypeListItem("otherClient").title(
+                        "Other Clients",
+                      ),
                       S.documentTypeListItem("flowchart").title("Flowcharts"),
                     ]),
                 ),
+              // Services
+              S.documentTypeListItem("service").title("Services"),
               S.divider(),
-              // Team
-              S.documentTypeListItem("teamMember").title("Team Members"),
-            ]),
-        ),
-
-      S.divider(),
-
-      // ============================================================
-      // MARKETING - Promotional content
-      // ============================================================
-      S.listItem()
-        .title("Marketing")
-        .icon(RocketIcon)
-        .child(
-          S.list()
-            .title("Marketing")
-            .items([
-              S.documentTypeListItem("testimonial").title("Testimonials"),
-              S.documentTypeListItem("event").title("Events"),
-              S.documentTypeListItem("achievement").title("Achievements"),
-              S.documentTypeListItem("certification").title("Certifications"),
-            ]),
-        ),
-
-      S.divider(),
-
-      // ============================================================
-      // SETTINGS - Site-wide settings
-      // ============================================================
-      S.listItem()
-        .title("Settings")
-        .icon(CogIcon)
-        .child(
-          S.list()
-            .title("Settings")
-            .items([
-              // Site Settings (Singleton)
+              // Events
               S.listItem()
-                .title("Site Settings")
-                .icon(UsersIcon)
+                .title("Events")
+                .icon(RocketIcon)
+                .child(
+                  S.list()
+                    .title("Events")
+                    .items([
+                      S.documentTypeListItem("event").title("Events"),
+                      S.documentTypeListItem("achievement").title(
+                        "Achievements",
+                      ),
+                      S.documentTypeListItem("certification").title(
+                        "Certifications",
+                      ),
+                    ]),
+                ),
+              // Contact Page (Singleton)
+              S.listItem()
+                .title("Contact Page")
+                .icon(DocumentIcon)
                 .child(
                   S.document()
-                    .schemaType("siteSettings")
-                    .documentId("siteSettings"),
+                    .schemaType("contactPage")
+                    .documentId("contactPage"),
                 ),
+              // Contact Submissions
+              S.documentTypeListItem("contactSubmission").title(
+                "Contact Submissions",
+              ),
+            ]),
+        ),
+
+      S.divider(),
+
+      // ============================================================
+      // GLOBALS - Components shared across multiple pages
+      // ============================================================
+      S.listItem()
+        .title("Globals")
+        .icon(EarthGlobeIcon)
+        .child(
+          S.list()
+            .title("Globals")
+            .items([
               // Navigation (Singleton)
               S.listItem()
                 .title("Navigation")
@@ -173,6 +151,22 @@ export const structure: StructureResolver = (S) =>
                 .title("Footer")
                 .icon(BlockContentIcon)
                 .child(S.document().schemaType("footer").documentId("footer")),
+              S.divider(),
+              // Shared content used on multiple pages
+              S.documentTypeListItem("testimonial").title("Testimonials"),
+              S.documentTypeListItem("teamMember").title("Team Members"),
             ]),
+        ),
+
+      S.divider(),
+
+      // ============================================================
+      // SETTINGS - Site-wide configuration
+      // ============================================================
+      S.listItem()
+        .title("Settings")
+        .icon(CogIcon)
+        .child(
+          S.document().schemaType("siteSettings").documentId("siteSettings"),
         ),
     ]);

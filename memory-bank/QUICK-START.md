@@ -97,6 +97,7 @@ touch memory-bank/features/newsletter/CHANGELOG.md
 Theme System          → memory-bank/features/theme-system/
 Sanity CMS           → memory-bank/features/sanity-integration/
 UI Components        → memory-bank/features/ui-components/
+Development Guide    → memory-bank/architecture/development-guide.md
 Development Patterns  → memory-bank/architecture/patterns.md
 Architecture         → memory-bank/architecture/system-overview.md
 Tech Stack           → memory-bank/architecture/tech-stack.md
@@ -224,6 +225,7 @@ Looking for...
 |----------|---------|
 | [FEATURES-INDEX.md](./FEATURES-INDEX.md) | Master feature list - START HERE |
 | [README.md](./README.md) | Full documentation on memory bank |
+| [development-guide.md](./architecture/development-guide.md) | Commands, config, MCP, shadcn/ui |
 | [system-overview.md](./architecture/system-overview.md) | Architecture and structure |
 | [tech-stack.md](./architecture/tech-stack.md) | Technologies used |
 | [feature-template.md](./templates/feature-template.md) | Template for new features |

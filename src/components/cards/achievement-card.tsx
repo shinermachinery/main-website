@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { ImageLightbox } from "@/components/ui/image-lightbox";
 
 interface AchievementCardProps {
   image: string;
@@ -12,26 +15,28 @@ export function AchievementCard({
   awardName,
 }: AchievementCardProps) {
   return (
-    <div className="bg-muted rounded-2xl p-4 flex flex-col gap-4">
+    <div className="bg-background rounded-2xl p-4 flex flex-col gap-4">
       {/* Award Image */}
-      <div className="relative w-full aspect-282/168 rounded-2xl overflow-hidden">
+      <ImageLightbox
+        src={image}
+        alt={awardName}
+        className="relative w-full aspect-square rounded-2xl overflow-hidden"
+      >
         <Image
           src={image}
           alt={awardName}
           fill
-          className="object-cover"
-          sizes="(max-width: 48rem) 100vw, (max-width: 75rem) 50vw, 33vw"
+          className="object-contain"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-      </div>
+      </ImageLightbox>
 
       {/* Award Info */}
       <div className="flex flex-col gap-2">
-        <p className="text-sm font-normal leading-5 text-muted-foreground line-clamp-1">
+        <p className="text-sm text-muted-foreground line-clamp-1">
           {awardGiver}
         </p>
-        <p className="text-xl font-medium leading-7 text-foreground tracking-[-0.0313rem]">
-          {awardName}
-        </p>
+        <p className="text-lg font-medium text-foreground">{awardName}</p>
       </div>
     </div>
   );

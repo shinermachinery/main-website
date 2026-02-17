@@ -1,12 +1,11 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-config";
+import { getContactPage } from "@/sanity/lib/actions";
 import { ContactPageClient } from "./contact-client";
 
-export const metadata: Metadata = {
-  title: "Contact Us - Shiner Machinery",
-  description:
-    "Get in touch with our team for quotes, demos, or technical support. Contact Shiner Machinery for precision-engineered manufacturing solutions.",
-};
+export const metadata = pageMetadata.contact;
 
-export default function ContactPage() {
-  return <ContactPageClient />;
+export default async function ContactPage() {
+  const contactData = await getContactPage();
+
+  return <ContactPageClient data={contactData} />;
 }

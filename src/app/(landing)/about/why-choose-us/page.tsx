@@ -1,14 +1,10 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { pageMetadata } from "@/lib/site-config";
 import { getWhyChooseUs } from "@/sanity/lib/actions";
 
-export const metadata: Metadata = {
-  title: "Why Choose Us | SHINER",
-  description:
-    "Discover why leading companies choose SHINER for their food processing equipment needs. Quality, reliability, and exceptional service.",
-};
+export const metadata = pageMetadata.aboutWhyChooseUs;
 
 async function WhyChooseUsContent() {
   const data = await getWhyChooseUs();
@@ -23,15 +19,11 @@ async function WhyChooseUsContent() {
       <section className="flex flex-col gap-6">
         {/* Header */}
         <div className="flex flex-col gap-4">
-          <h1
-            className="font-medium text-[2.25rem] leading-[3rem] tracking-[-0.0563rem] text-foreground"
-          >
+          <h1 className="font-medium text-3xl text-foreground">
             {data.title}
           </h1>
           {data.subtitle && (
-            <p
-              className="font-medium text-[1.25rem] leading-[1.75rem] tracking-[-0.0313rem] text-muted-foreground"
-            >
+            <p className="font-medium text-lg text-muted-foreground">
               {data.subtitle}
             </p>
           )}
@@ -72,14 +64,10 @@ async function WhyChooseUsContent() {
                 </div>
               )}
               <div className="flex flex-col gap-2">
-                <h3
-                  className="font-medium text-[1.25rem] leading-[1.75rem] tracking-[-0.0313rem] text-foreground"
-                >
+                <h3 className="font-medium text-lg text-foreground">
                   {reason.title}
                 </h3>
-                <p
-                  className="font-normal text-sm leading-5 text-muted-foreground"
-                >
+                <p className="font-normal text-sm leading-5 text-muted-foreground">
                   {reason.description}
                 </p>
               </div>
@@ -87,7 +75,7 @@ async function WhyChooseUsContent() {
           ))}
         </section>
       ) : (
-        <p className="text-lg text-muted-foreground text-center py-8">
+        <p className="text-base text-muted-foreground text-center py-8">
           No reasons to display at this time.
         </p>
       )}

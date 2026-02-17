@@ -70,31 +70,28 @@ export {
 } from "./marketing";
 
 // ============================================================================
-// Projects Actions (Installations, Clients, Projects, Services)
+// Projects Actions (Installations, Client List, Other Clients, Services)
 // ============================================================================
 
 export {
-  type Client,
+  type ClientListItem,
   type Flowchart,
-  // Clients
-  getClients,
-  getClientsInColumns,
+  // Client List
+  getClientList,
+  getClientListInColumns,
   // Flowcharts
   getFlowchart,
   getFlowcharts,
   // Installations
   getInstallations,
+  // Other Clients
   getOtherClients,
-  getProjectBySlug,
-  // Projects
-  getProjects,
   getServiceBySlug,
   // Services
   getServices,
   // Types
   type Installation,
   type OtherClient,
-  type Project,
   type Service,
 } from "./projects";
 
@@ -118,3 +115,15 @@ export {
   type TeamMember,
   type WhyChooseUs,
 } from "./company";
+
+// ============================================================================
+// Contact Page Actions
+// ============================================================================
+
+export {
+  type ContactEmail,
+  type ContactPageData,
+  type ContactPhone,
+  getContactPage,
+  type Office,
+} from "./contact";

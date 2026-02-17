@@ -1,14 +1,13 @@
 "use client";
 
+import { ChevronDown } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 interface CategoryOption {
   label: string;
@@ -30,48 +29,59 @@ export function CategoryFilter({
 }: CategoryFilterProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const currentValue = searchParams.get(paramName) || "all";
+  const currentParam = searchParams.get(paramName) || "";
+  const selectedValues = currentParam ? currentParam.split(",") : [];
 
-  const handleValueChange = useCallback(
-    (value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
+  const toggleCategory = (value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    let updated: string[];
 
-      if (value && value !== "all") {
-        params.set(paramName, value);
-      } else {
-        params.delete(paramName);
-      }
+    if (selectedValues.includes(value)) {
+      updated = selectedValues.filter((v) => v !== value);
+    } else {
+      updated = [...selectedValues, value];
+    }
 
-      const queryString = params.toString();
-      router.push(queryString ? `${basePath}?${queryString}` : basePath);
-    },
-    [router, searchParams, paramName, basePath],
-  );
+    if (updated.length > 0) {
+      params.set(paramName, updated.join(","));
+    } else {
+      params.delete(paramName);
+    }
 
-  const allCategories: CategoryOption[] = [
-    { value: "all", label: placeholder },
-    ...categories,
-  ];
+    const queryString = params.toString();
+    router.push(queryString ? `${basePath}?${queryString}` : basePath);
+  };
+
+  const label =
+    selectedValues.length === 0
+      ? placeholder
+      : selectedValues.length === 1
+        ? categories.find((c) => c.value === selectedValues[0])?.label ||
+          selectedValues[0]
+        : `${selectedValues.length} selected`;
 
   return (
-    <Select value={currentValue} onValueChange={handleValueChange}>
-      <SelectTrigger className="h-12 px-4 rounded-xl bg-background border-none">
-        <SelectValue
-          placeholder={placeholder}
-          className="text-primary"
-        />
-      </SelectTrigger>
-      <SelectContent>
-        {allCategories.map((category) => (
-          <SelectItem
-            key={category.value}
-            value={category.value}
-            className="text-primary"
-          >
-            {category.label}
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </Select>
+    <Popover>
+      <PopoverTrigger className="h-12 px-4 rounded-xl bg-background flex items-center gap-2 text-sm text-foreground whitespace-nowrap">
+        {label}
+        <ChevronDown className="size-4 opacity-50" />
+      </PopoverTrigger>
+      <PopoverContent align="end" className="w-56 p-2">
+        <div className="flex flex-col gap-1">
+          {categories.map((category) => (
+            <label
+              key={category.value}
+              className="flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-background cursor-pointer"
+            >
+              <Checkbox
+                checked={selectedValues.includes(category.value)}
+                onCheckedChange={() => toggleCategory(category.value)}
+              />
+              <span className="text-sm">{category.label}</span>
+            </label>
+          ))}
+        </div>
+      </PopoverContent>
+    </Popover>
   );
 }

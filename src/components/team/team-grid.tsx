@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { EmptyState } from "@/components/ui/empty-state";
 import { urlFor } from "@/sanity/lib/image";
 
 interface TeamMember {
@@ -22,29 +21,23 @@ interface TeamGridProps {
 }
 
 export function TeamGrid({ teamMembers }: TeamGridProps) {
+  if (!teamMembers || teamMembers.length === 0) return null;
+
   return (
     <section className="py-24 md:py-32 bg-background">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           <div className="mb-12 text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Meet Our Team
             </h2>
-            {teamMembers && teamMembers.length > 0 && (
-              <p className="text-lg text-muted-foreground">
-                The experts behind precision engineering excellence
-              </p>
-            )}
+            <p className="text-base text-muted-foreground">
+              The experts behind precision engineering excellence
+            </p>
           </div>
 
-          {!teamMembers || teamMembers.length === 0 ? (
-            <EmptyState
-              size="sm"
-              message="Team information coming soon!"
-            />
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {teamMembers.map((member) => {
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {teamMembers.map((member) => {
                 const imageUrl = member.image
                   ? urlFor(member.image).width(400).height(400).url()
                   : "/placeholder-avatar.jpg";
@@ -62,7 +55,7 @@ export function TeamGrid({ teamMembers }: TeamGridProps) {
                     </div>
 
                     <div className="space-y-2">
-                      <h3 className="text-xl font-semibold">{member.name}</h3>
+                      <h3 className="text-lg font-semibold">{member.name}</h3>
                       <p className="text-sm font-medium bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-brand-green">
                         {member.role}
                       </p>
@@ -75,8 +68,7 @@ export function TeamGrid({ teamMembers }: TeamGridProps) {
                   </div>
                 );
               })}
-            </div>
-          )}
+          </div>
         </div>
       </div>
     </section>

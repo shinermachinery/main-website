@@ -21,7 +21,8 @@ memory-bank/
 ├── architecture/               # High-level architecture docs
 │   ├── tech-stack.md
 │   ├── system-overview.md
-│   └── patterns.md             # Development patterns & best practices
+│   ├── patterns.md             # Development patterns & best practices
+│   └── development-guide.md    # Commands, config, MCP, shadcn/ui setup
 └── features/                   # Individual feature documentation
     ├── theme-system/
     ├── sanity-integration/
@@ -114,7 +115,7 @@ This ensures:
 - Ability to pause and resume
 - Context preservation between sessions
 
-See [CLAUDE.md](../CLAUDE.md) for complete rules and [WORKFLOW.md](./WORKFLOW.md) for visual workflow.
+See [CLAUDE.md](../CLAUDE.md) for essential rules summary and [WORKFLOW.md](./WORKFLOW.md) for visual workflow. Full development setup is in [development-guide.md](./architecture/development-guide.md).
 
 ## Quick Reference
 
@@ -126,5 +127,6 @@ See [CLAUDE.md](../CLAUDE.md) for complete rules and [WORKFLOW.md](./WORKFLOW.md
 | templates/ | Standardized documentation format |
 | architecture/ | System-level documentation |
 | architecture/patterns.md | Development patterns & best practices |
+| architecture/development-guide.md | Commands, config, MCP, shadcn/ui |
 | features/[name]/ | Specific feature details |
-| ../CLAUDE.md | Memory bank rules (7 critical rules) |
+| ../CLAUDE.md | Essential rules summary (references memory-bank/) |

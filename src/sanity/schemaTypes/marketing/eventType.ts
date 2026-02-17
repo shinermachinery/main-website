@@ -41,6 +41,13 @@ export const eventType = defineType({
       type: "string",
       description: "Event location (e.g., Patna, Karnal)",
     }),
+    defineField({
+      name: "order",
+      title: "Display Order",
+      type: "number",
+      description: "Lower numbers appear first",
+      initialValue: 0,
+    }),
   ],
   preview: {
     select: {

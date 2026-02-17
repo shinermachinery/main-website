@@ -1,10 +1,7 @@
 import { AlertCircle, Inbox, Search, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const variantDefaults: Record<
-  string,
-  { icon: LucideIcon; title: string }
-> = {
+const variantDefaults: Record<string, { icon: LucideIcon; title: string }> = {
   empty: { icon: Inbox, title: "Nothing here yet" },
   filtered: { icon: Search, title: "No results found" },
   error: { icon: AlertCircle, title: "Something went wrong" },

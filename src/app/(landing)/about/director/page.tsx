@@ -1,17 +1,13 @@
 import { Linkedin, Mail, Phone } from "lucide-react";
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { PortableText } from "@/components/blog/portable-text";
+import { pageMetadata } from "@/lib/site-config";
 import { getDirector } from "@/sanity/lib/actions";
 
-export const metadata: Metadata = {
-  title: "About Our Director | SHINER",
-  description:
-    "Meet the leadership behind SHINER. Learn about our director's vision, expertise, and commitment to excellence.",
-};
+export const metadata = pageMetadata.aboutDirector;
 
 async function DirectorContent() {
   const data = await getDirector();
@@ -24,15 +20,11 @@ async function DirectorContent() {
     <div className="flex flex-col gap-20">
       {/* Page Header */}
       <section className="flex flex-col gap-4">
-        <h1
-          className="font-medium text-[2.25rem] leading-[3rem] tracking-[-0.0563rem] text-foreground"
-        >
+        <h1 className="font-medium text-3xl text-foreground">
           {data.pageTitle}
         </h1>
         {data.pageSubtitle && (
-          <p
-            className="font-medium text-[1.25rem] leading-[1.75rem] tracking-[-0.0313rem] text-muted-foreground"
-          >
+          <p className="font-medium text-lg text-muted-foreground">
             {data.pageSubtitle}
           </p>
         )}
@@ -56,14 +48,10 @@ async function DirectorContent() {
 
           {/* Name & Title */}
           <div className="flex flex-col gap-2">
-            <h2
-              className="font-medium text-[1.875rem] leading-[2.5rem] tracking-[-0.0469rem] text-foreground"
-            >
+            <h2 className="font-medium text-2xl text-foreground">
               {data.name}
             </h2>
-            <p
-              className="font-medium text-base leading-6 text-muted-foreground"
-            >
+            <p className="font-medium text-sm text-muted-foreground">
               {data.title}
             </p>
           </div>
@@ -76,9 +64,7 @@ async function DirectorContent() {
                 className="flex items-center gap-3 text-muted-foreground hover:text-brand-blue transition-colors"
               >
                 <Mail className="size-5" />
-                <span
-                  className="font-normal text-sm leading-5"
-                >
+                <span className="font-normal text-sm leading-5">
                   {data.email}
                 </span>
               </Link>
@@ -89,9 +75,7 @@ async function DirectorContent() {
                 className="flex items-center gap-3 text-muted-foreground hover:text-brand-blue transition-colors"
               >
                 <Phone className="size-5" />
-                <span
-                  className="font-normal text-sm leading-5"
-                >
+                <span className="font-normal text-sm leading-5">
                   {data.phone}
                 </span>
               </Link>
@@ -104,9 +88,7 @@ async function DirectorContent() {
                 className="flex items-center gap-3 text-muted-foreground hover:text-brand-blue transition-colors"
               >
                 <Linkedin className="size-5" />
-                <span
-                  className="font-normal text-sm leading-5"
-                >
+                <span className="font-normal text-sm leading-5">
                   LinkedIn Profile
                 </span>
               </Link>
@@ -119,14 +101,10 @@ async function DirectorContent() {
           {/* Biography */}
           {data.bio && (
             <div className="flex flex-col gap-4">
-              <h3
-                className="font-medium text-[1.5rem] leading-8 tracking-[-0.0375rem] text-foreground"
-              >
+              <h3 className="font-medium text-xl text-foreground">
                 Biography
               </h3>
-              <div
-                className="prose prose-lg max-w-none"
-              >
+              <div className="prose prose-lg max-w-none">
                 <PortableText value={data.bio} />
               </div>
             </div>
@@ -135,18 +113,14 @@ async function DirectorContent() {
           {/* Key Achievements */}
           {data.achievements && data.achievements.length > 0 && (
             <div className="flex flex-col gap-4">
-              <h3
-                className="font-medium text-[1.5rem] leading-8 tracking-[-0.0375rem] text-foreground"
-              >
+              <h3 className="font-medium text-xl text-foreground">
                 Key Achievements
               </h3>
               <ul className="flex flex-col gap-3">
                 {data.achievements.map((achievement: string, index: number) => (
                   <li key={index} className="flex gap-3 items-start">
                     <div className="w-[0.375rem] h-[0.375rem] rounded-full bg-brand-blue mt-[0.438rem] shrink-0" />
-                    <p
-                      className="font-normal text-base leading-6 text-muted-foreground"
-                    >
+                    <p className="font-normal text-sm text-muted-foreground">
                       {achievement}
                     </p>
                   </li>

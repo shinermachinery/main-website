@@ -1,6 +1,6 @@
 /**
  * Projects Actions
- * Server actions for fetching installations, clients, projects, and services
+ * Server actions for fetching installations, client list, other clients, and services
  */
 
 import { urlFor } from "@/sanity/lib/image";
@@ -13,31 +13,20 @@ import { sanityFetch } from "@/sanity/lib/live";
 export interface Installation {
   id: string;
   title: string;
-  type: string;
-  location: string;
   description?: string;
-  image: string;
+  images: string[];
 }
 
-export interface Client {
+export interface ClientListItem {
   id: string;
   companyName: string;
   projects: string[];
-  highlight?: boolean;
-  logo?: string;
-  description?: string;
 }
 
-export interface Project {
+export interface OtherClient {
   id: string;
-  title: string;
-  slug: string;
-  client?: string;
-  location?: string;
-  description?: string;
-  images: string[];
-  completionDate?: string;
-  category?: string;
+  companyName: string;
+  logo?: string;
 }
 
 export interface Service {
@@ -61,21 +50,21 @@ export interface Flowchart {
 // ============================================================================
 
 /**
- * Get all installations
- * @param limit - Optional limit for results (default: 6)
+ * Get all installations (image carousel cards)
+ * @param options - Filtering options
  */
-export async function getInstallations(
-  limit: number = 6,
-): Promise<Installation[]> {
+export async function getInstallations(options?: {
+  limit?: number;
+}): Promise<Installation[]> {
   try {
+    const limit = options?.limit || 10;
+
     const { data: installations } = await sanityFetch({
       query: `*[_type == "installation"] | order(order asc, _createdAt desc) {
         _id,
         title,
-        type,
-        location,
         description,
-        image
+        images
       }[0...${limit}]`,
     });
 
@@ -87,19 +76,14 @@ export async function getInstallations(
       (installation: {
         _id: string;
         title: string;
-        type: string;
-        location?: string;
         description?: string;
-        image?: any;
+        images?: any[];
       }) => ({
         id: installation._id,
         title: installation.title,
-        type: installation.type,
-        location: installation.location || "",
         description: installation.description,
-        image: installation.image
-          ? urlFor(installation.image).url()
-          : "/placeholder-installation.jpg",
+        images:
+          installation.images?.map((img: any) => urlFor(img).url()) || [],
       }),
     );
   } catch (error) {
@@ -109,32 +93,22 @@ export async function getInstallations(
 }
 
 // ============================================================================
-// Client Actions
+// Client List Actions
 // ============================================================================
 
 /**
- * Get all clients
- * @param options - Filtering options
+ * Get all client list items
+ * @param limit - Optional limit for results
  */
-export async function getClients(options?: {
-  highlight?: boolean;
-  limit?: number;
-}): Promise<Client[]> {
+export async function getClientList(
+  limit: number = 50,
+): Promise<ClientListItem[]> {
   try {
-    const limit = options?.limit || 50;
-    const highlightFilter =
-      options?.highlight !== undefined
-        ? `&& highlight == ${options.highlight}`
-        : "";
-
     const { data: clients } = await sanityFetch({
-      query: `*[_type == "client" ${highlightFilter}] | order(order asc, _createdAt desc) {
+      query: `*[_type == "clientList"] | order(order asc, _createdAt desc) {
         _id,
         companyName,
-        projects,
-        highlight,
-        logo,
-        description
+        projects
       }[0...${limit}]`,
     });
 
@@ -147,155 +121,81 @@ export async function getClients(options?: {
         _id: string;
         companyName: string;
         projects?: string[];
-        highlight?: boolean;
-        logo?: any;
-        description?: string;
       }) => ({
         id: clientItem._id,
         companyName: clientItem.companyName,
         projects: clientItem.projects || [],
-        highlight: clientItem.highlight,
-        logo: clientItem.logo ? urlFor(clientItem.logo).url() : undefined,
-        description: clientItem.description,
       }),
     );
   } catch (error) {
-    console.error("Error fetching clients:", error);
+    console.error("Error fetching client list:", error);
     return [];
   }
 }
 
 /**
- * Get clients organized in columns for display
+ * Get client list organized in columns for display
  * @param columns - Number of columns (default: 3)
  */
-export async function getClientsInColumns(
+export async function getClientListInColumns(
   columns: number = 3,
-): Promise<Client[][] | null> {
+): Promise<ClientListItem[][] | null> {
   try {
-    const clients = await getClients({ highlight: false });
+    const clients = await getClientList();
 
     if (clients.length === 0) {
       return null;
     }
 
-    // Distribute clients across columns
-    const columnArrays: Client[][] = Array.from({ length: columns }, () => []);
+    const columnArrays: ClientListItem[][] = Array.from(
+      { length: columns },
+      () => [],
+    );
     clients.forEach((client, index) => {
       columnArrays[index % columns].push(client);
     });
 
     return columnArrays;
   } catch (error) {
-    console.error("Error fetching clients in columns:", error);
+    console.error("Error fetching client list in columns:", error);
     return null;
   }
 }
 
 // ============================================================================
-// Project Actions
+// Other Clients Actions (for logo marquee)
 // ============================================================================
 
 /**
- * Get all projects
- * @param options - Filtering options
+ * Get other clients for logo marquee display
+ * @param limit - Number of clients to fetch (default: 27)
  */
-export async function getProjects(options?: {
-  category?: string;
-  limit?: number;
-}): Promise<Project[]> {
+export async function getOtherClients(
+  limit: number = 27,
+): Promise<OtherClient[]> {
   try {
-    const limit = options?.limit || 10;
-    const categoryFilter = options?.category
-      ? `&& category == "${options.category}"`
-      : "";
-
-    const { data: projects } = await sanityFetch({
-      query: `*[_type == "project" ${categoryFilter}] | order(order asc, _createdAt desc) {
+    const { data: clients } = await sanityFetch({
+      query: `*[_type == "otherClient"] | order(order asc, _createdAt desc) {
         _id,
-        title,
-        "slug": slug.current,
-        client,
-        location,
-        description,
-        images,
-        completionDate,
-        category
+        companyName,
+        logo
       }[0...${limit}]`,
     });
 
-    if (!projects || projects.length === 0) {
+    if (!clients || clients.length === 0) {
       return [];
     }
 
-    return projects.map(
-      (project: {
-        _id: string;
-        title: string;
-        slug: string;
-        client?: string;
-        location?: string;
-        description?: string;
-        images?: any[];
-        completionDate?: string;
-        category?: string;
-      }) => ({
-        id: project._id,
-        title: project.title,
-        slug: project.slug || "",
-        client: project.client,
-        location: project.location,
-        description: project.description,
-        images: project.images?.map((img: any) => urlFor(img).url()) || [],
-        completionDate: project.completionDate,
-        category: project.category,
+    return clients.map(
+      (clientItem: { _id: string; companyName: string; logo?: any }) => ({
+        id: clientItem._id,
+        companyName: clientItem.companyName,
+        logo: clientItem.logo ? urlFor(clientItem.logo).url() : undefined,
       }),
     );
   } catch (error) {
-    console.error("Error fetching projects:", error);
+    console.error("Error fetching other clients:", error);
     return [];
-  }
-}
-
-/**
- * Get project by slug
- * @param slug - Project slug
- */
-export async function getProjectBySlug(slug: string): Promise<Project | null> {
-  try {
-    const { data: project } = await sanityFetch({
-      query: `*[_type == "project" && slug.current == $slug][0] {
-        _id,
-        title,
-        "slug": slug.current,
-        client,
-        location,
-        description,
-        images,
-        completionDate,
-        category
-      }`,
-      params: { slug },
-    });
-
-    if (!project) {
-      return null;
-    }
-
-    return {
-      id: project._id,
-      title: project.title,
-      slug: project.slug || "",
-      client: project.client,
-      location: project.location,
-      description: project.description,
-      images: project.images?.map((img: any) => urlFor(img).url()) || [],
-      completionDate: project.completionDate,
-      category: project.category,
-    };
-  } catch (error) {
-    console.error("Error fetching project:", error);
-    return null;
   }
 }
 
@@ -460,49 +360,6 @@ export async function getFlowcharts(): Promise<Flowchart[]> {
     );
   } catch (error) {
     console.error("Error fetching flowcharts:", error);
-    return [];
-  }
-}
-
-// ============================================================================
-// Other Clients Actions (for logo grid)
-// ============================================================================
-
-export interface OtherClient {
-  id: string;
-  companyName: string;
-  logo?: string;
-}
-
-/**
- * Get other clients for logo grid display
- * @param limit - Number of clients to fetch (default: 27)
- */
-export async function getOtherClients(
-  limit: number = 27,
-): Promise<OtherClient[]> {
-  try {
-    const { data: clients } = await sanityFetch({
-      query: `*[_type == "client"] | order(order asc, _createdAt desc) {
-        _id,
-        companyName,
-        logo
-      }[0...${limit}]`,
-    });
-
-    if (!clients || clients.length === 0) {
-      return [];
-    }
-
-    return clients.map(
-      (clientItem: { _id: string; companyName: string; logo?: any }) => ({
-        id: clientItem._id,
-        companyName: clientItem.companyName,
-        logo: clientItem.logo ? urlFor(clientItem.logo).url() : undefined,
-      }),
-    );
-  } catch (error) {
-    console.error("Error fetching other clients:", error);
     return [];
   }
 }

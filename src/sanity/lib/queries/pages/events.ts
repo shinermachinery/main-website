@@ -117,15 +117,10 @@ export function getCertificationCountQuery(): QueryResult {
  * @returns Query object
  */
 export function getAllEventsQuery(options: EventListParams = {}): QueryResult {
-  const { upcoming, limit, offset = 0 } = options;
+  const { limit, offset = 0 } = options;
 
-  const conditions: string[] = [];
-  if (upcoming) {
-    conditions.push("date >= now()");
-  }
-
-  const filterString = buildFilterString("event", conditions);
-  const orderString = buildOrderString(["date asc", "order asc"]);
+  const filterString = buildFilterString("event");
+  const orderString = buildOrderString(["order asc", "_createdAt desc"]);
   const paginationString = buildPaginationString(limit, offset);
 
   return {

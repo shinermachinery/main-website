@@ -1,35 +1,29 @@
-import { InstallationCard } from "@/components/cards/installation-card";
-import { EmptyState } from "@/components/ui/empty-state";
+import { ImageCarouselCard } from "@/components/cards/image-carousel-card";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { getInstallations } from "@/sanity/lib/actions";
 
 export async function InstallationsSection() {
-  const installations = await getInstallations(6);
+  const installations = await getInstallations({ limit: 8 });
+
+  if (installations.length === 0) return null;
 
   return (
-    <section className="flex flex-col gap-6 w-full">
-      {/* Header */}
-      <div className="flex flex-col gap-4 font-medium">
-        <h1 className="text-4xl font-medium text-foreground">
-          Some of Our Installations
-        </h1>
-        <p className="text-lg text-muted-foreground tracking-[-0.0313rem]">
-          Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst
-          ullamcorper purus
-        </p>
-      </div>
+    <section className="flex flex-col gap-10 w-full">
+      <SectionHeading
+        as="h1"
+        title="Our Installations"
+        description="A showcase of our precision engineering installations across industries worldwide."
+      />
 
-      {installations.length === 0 ? (
-        <EmptyState
-          size="sm"
-          message="No installations to display at this time."
-        />
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {installations.map((installation) => (
-            <InstallationCard key={installation.id} {...installation} />
-          ))}
-        </div>
-      )}
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {installations.map((installation) => (
+          <ImageCarouselCard
+            key={installation.id}
+            images={installation.images}
+            title={installation.title}
+          />
+        ))}
+      </div>
     </section>
   );
 }

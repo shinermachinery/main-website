@@ -10,14 +10,10 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3
-              className="text-xl font-bold bg-clip-text text-transparent bg-linear-to-r from-brand-blue to-brand-green"
-            >
+            <h3 className="text-xl font-bold bg-clip-text text-transparent bg-linear-to-r from-brand-blue to-brand-green">
               Shiner
             </h3>
-            <p
-              className="text-sm text-[#71717a]"
-            >
+            <p className="text-sm text-[#71717a]">
               Precision engineering delivered with confidence. Built to perform,
               built to last.
             </p>
@@ -25,11 +21,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4
-              className="font-semibold text-primary"
-            >
-              Quick Links
-            </h4>
+            <h4 className="font-semibold text-primary">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
@@ -68,11 +60,7 @@ export function Footer() {
 
           {/* Resources */}
           <div className="space-y-4">
-            <h4
-              className="font-semibold text-primary"
-            >
-              Resources
-            </h4>
+            <h4 className="font-semibold text-primary">Resources</h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
@@ -111,11 +99,7 @@ export function Footer() {
 
           {/* Contact & Social */}
           <div className="space-y-4">
-            <h4
-              className="font-semibold text-primary"
-            >
-              Connect With Us
-            </h4>
+            <h4 className="font-semibold text-primary">Connect With Us</h4>
             <div className="flex gap-3">
               <a
                 href="https://github.com"
@@ -152,9 +136,7 @@ export function Footer() {
                 <Mail className="h-5 w-5" />
               </a>
             </div>
-            <p
-              className="text-sm text-muted-foreground"
-            >
+            <p className="text-sm text-muted-foreground">
               <a
                 href="mailto:contact@example.com"
                 className="hover:text-[#18181b] transition-colors"
@@ -167,9 +149,7 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border">
-          <div
-            className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground"
-          >
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
             <p>© {currentYear} Shiner. All rights reserved.</p>
             <p className="text-center">
               Built with{" "}

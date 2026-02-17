@@ -6,7 +6,7 @@ const SKELETON_IDS = Array.from(
 
 export function BlogsSkeleton() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {SKELETON_IDS.map((id) => (
         <div key={id} className="bg-muted rounded-2xl p-4 animate-pulse">
           {/* Image Skeleton */}

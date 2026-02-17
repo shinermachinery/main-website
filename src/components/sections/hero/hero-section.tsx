@@ -46,7 +46,7 @@ export function HeroSection({
               {/* Typography Card - Left (Less than 50%) */}
               <div className="bg-background rounded-t-[3rem] w-full lg:max-w-[45%] px-6 lg:px-8 py-12 lg:py-16">
                 {/* Main Heading */}
-                <h1 className="text-3xl md:text-4xl lg:text-[2.5rem] font-normal tracking-tight mb-4 leading-[1.15] text-primary">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-normal tracking-tight mb-4 text-primary">
                   {headline}
                 </h1>
 

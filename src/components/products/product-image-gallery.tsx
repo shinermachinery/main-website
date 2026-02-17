@@ -189,7 +189,7 @@ export function ProductImageGallery({
             className="absolute top-4 right-4 w-10 h-10 rounded-full bg-secondary/10 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-secondary/20 transition-colors z-10"
             aria-label="Close fullscreen"
           >
-            <span className="text-white text-xl font-light">×</span>
+            <span className="text-white text-lg font-light">×</span>
           </Button>
 
           <div className="relative max-w-7xl max-h-[90vh] w-full mx-4 z-10">

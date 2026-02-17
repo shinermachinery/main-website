@@ -37,10 +37,7 @@ export function CategoryFilter() {
   return (
     <Select value={currentCategory} onValueChange={handleValueChange}>
       <SelectTrigger className="h-12 px-4 rounded-xl bg-background border-none">
-        <SelectValue
-          placeholder="All Categories"
-          className="text-primary"
-        />
+        <SelectValue placeholder="All Categories" className="text-primary" />
       </SelectTrigger>
       <SelectContent>
         {categories.map((category) => (

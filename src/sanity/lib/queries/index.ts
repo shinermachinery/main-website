@@ -31,7 +31,7 @@ export {
   // Category Projections
   CATEGORY_SUMMARY_PROJECTION,
   CERTIFICATION_PROJECTION,
-  CLIENT_PROJECTION,
+  CLIENT_LIST_PROJECTION,
   COLLECTION_FULL_PROJECTION,
   // Collection Projections
   COLLECTION_SUMMARY_PROJECTION,
@@ -41,6 +41,7 @@ export {
   IMAGE_PROJECTION,
   // Project Projections
   INSTALLATION_PROJECTION,
+  OTHER_CLIENT_PROJECTION,
   NAVIGATION_PROJECTION,
   POST_FULL_PROJECTION,
   // Post Projections
@@ -48,8 +49,6 @@ export {
   PRODUCT_FULL_PROJECTION,
   // Product Projections
   PRODUCT_SUMMARY_PROJECTION,
-  PROJECT_FULL_PROJECTION,
-  PROJECT_SUMMARY_PROJECTION,
   // Utilities
   type QueryResult,
   SERVICE_FULL_PROJECTION,
@@ -173,14 +172,12 @@ export {
 // ============================================================================
 
 export {
-  getAllClientsQuery,
+  getAllClientListQuery,
   getAllInstallationsQuery,
-  getAllProjectsQuery,
-  getClientCountQuery,
+  getAllOtherClientsQuery,
+  getClientListCountQuery,
   getInstallationCountQuery,
-  getProjectBySlugQuery,
-  getProjectCountQuery,
-  type ProjectListParams,
+  getOtherClientCountQuery,
 } from "./pages/projects";
 
 // ============================================================================

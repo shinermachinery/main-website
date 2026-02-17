@@ -51,20 +51,20 @@ const portableTextComponents = {
   },
   block: {
     h1: ({ children }: any) => (
-      <h1 className="text-4xl font-bold mb-4 mt-8 scroll-m-20">{children}</h1>
+      <h1 className="text-3xl font-bold mb-4 mt-8 scroll-m-20">{children}</h1>
     ),
     h2: ({ children }: any) => (
-      <h2 className="text-3xl font-semibold mb-3 mt-6 scroll-m-20">
+      <h2 className="text-2xl font-semibold mb-3 mt-6 scroll-m-20">
         {children}
       </h2>
     ),
     h3: ({ children }: any) => (
-      <h3 className="text-2xl font-semibold mb-2 mt-4 scroll-m-20">
+      <h3 className="text-xl font-semibold mb-2 mt-4 scroll-m-20">
         {children}
       </h3>
     ),
     h4: ({ children }: any) => (
-      <h4 className="text-xl font-semibold mb-2 mt-4">{children}</h4>
+      <h4 className="text-lg font-semibold mb-2 mt-4">{children}</h4>
     ),
     normal: ({ children }: any) => <p className="mb-4 leading-7">{children}</p>,
     blockquote: ({ children }: any) => (

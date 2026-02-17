@@ -392,66 +392,80 @@ const seedData = {
     },
   ],
 
-  // Clients
-  clients: [
+  // Client List (company names with project descriptions)
+  clientList: [
     {
-      _type: "client",
-      _id: "client-1",
+      _type: "clientList",
+      _id: "clientlist-1",
       companyName: "Sunrise Rice Mills",
       projects: ["Dal Mill Project", "Rice Processing Unit"],
-      highlight: false,
       order: 1,
     },
     {
-      _type: "client",
-      _id: "client-2",
+      _type: "clientList",
+      _id: "clientlist-2",
       companyName: "Golden Harvest Foods",
       projects: ["Pulse Sorting Line", "Quality Control Setup"],
-      highlight: false,
       order: 2,
     },
     {
-      _type: "client",
-      _id: "client-3",
+      _type: "clientList",
+      _id: "clientlist-3",
       companyName: "Premium Agro Industries",
       projects: ["Complete Plant Setup"],
-      highlight: false,
       order: 3,
     },
     {
-      _type: "client",
-      _id: "client-4",
+      _type: "clientList",
+      _id: "clientlist-4",
       companyName: "Eastern Grain Processors",
       projects: ["Wheat Sorting Line", "Color Sorter Installation"],
-      highlight: false,
       order: 4,
     },
     {
-      _type: "client",
-      _id: "client-5",
+      _type: "clientList",
+      _id: "clientlist-5",
       companyName: "Agri Best Exports",
       projects: ["Export Quality Line"],
-      highlight: false,
       order: 5,
     },
     {
-      _type: "client",
-      _id: "client-6",
+      _type: "clientList",
+      _id: "clientlist-6",
       companyName: "National Food Corp",
       projects: ["Multiple Plant Installations"],
-      highlight: false,
       order: 6,
     },
   ],
 
-  // Installations
+  // Other Clients (logo marquee)
+  otherClients: [
+    {
+      _type: "otherClient",
+      _id: "otherclient-1",
+      companyName: "Sunrise Rice Mills",
+      order: 1,
+    },
+    {
+      _type: "otherClient",
+      _id: "otherclient-2",
+      companyName: "Golden Harvest Foods",
+      order: 2,
+    },
+    {
+      _type: "otherClient",
+      _id: "otherclient-3",
+      companyName: "Premium Agro Industries",
+      order: 3,
+    },
+  ],
+
+  // Installations (image carousel cards)
   installations: [
     {
       _type: "installation",
       _id: "install-1",
       title: "Rice Processing Plant",
-      type: "Rice Mill",
-      location: "Patna, Bihar",
       description:
         "Complete rice processing and sorting installation with 10 TPH capacity.",
       order: 1,
@@ -460,8 +474,6 @@ const seedData = {
       _type: "installation",
       _id: "install-2",
       title: "Pulse Sorting Facility",
-      type: "Dal Mill",
-      location: "Karnal, Haryana",
       description:
         "High-capacity pulse sorting line with optical sorting technology.",
       order: 2,
@@ -470,8 +482,6 @@ const seedData = {
       _type: "installation",
       _id: "install-3",
       title: "Grain Processing Unit",
-      type: "Multi-Grain",
-      location: "Indore, MP",
       description:
         "Versatile grain processing unit handling wheat, rice, and pulses.",
       order: 3,
@@ -480,8 +490,6 @@ const seedData = {
       _type: "installation",
       _id: "install-4",
       title: "Export Quality Line",
-      type: "Export Unit",
-      location: "Mumbai, Maharashtra",
       description:
         "Premium export-grade sorting facility meeting international standards.",
       order: 4,
@@ -490,8 +498,6 @@ const seedData = {
       _type: "installation",
       _id: "install-5",
       title: "Seed Processing Plant",
-      type: "Seed Processing",
-      location: "Hyderabad, Telangana",
       description: "Specialized seed sorting and processing installation.",
       order: 5,
     },
@@ -499,8 +505,6 @@ const seedData = {
       _type: "installation",
       _id: "install-6",
       title: "Organic Processing Center",
-      type: "Organic Mill",
-      location: "Jaipur, Rajasthan",
       description: "Organic certified processing facility with color sorting.",
       order: 6,
     },
@@ -962,10 +966,19 @@ async function seed() {
       await createDocument(event, `Event: ${event.title}`);
     }
 
-    // Seed clients
-    console.log("\n👥 Seeding Clients...");
-    for (const clientItem of seedData.clients) {
-      await createDocument(clientItem, `Client: ${clientItem.companyName}`);
+    // Seed client list
+    console.log("\n👥 Seeding Client List...");
+    for (const clientItem of seedData.clientList) {
+      await createDocument(clientItem, `Client List: ${clientItem.companyName}`);
+    }
+
+    // Seed other clients
+    console.log("\n🏢 Seeding Other Clients...");
+    for (const clientItem of seedData.otherClients) {
+      await createDocument(
+        clientItem,
+        `Other Client: ${clientItem.companyName}`,
+      );
     }
 
     // Seed installations

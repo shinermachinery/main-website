@@ -1,14 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import { GradientBadge } from "@/components/ui/gradient-badge";
 
 interface BlogCardProps {
   title: string;
   description: string;
-  category: string;
+  category?: string;
   imageUrl: string;
   imageAlt?: string;
-  readTime: string;
-  publishedDate: string;
+  readTime?: string;
+  publishedDate?: string;
   slug: string;
 }
 
@@ -25,7 +26,7 @@ export function BlogCard({
   return (
     <Link
       href={`/blog/${slug}`}
-      className="group bg-background rounded-2xl p-5 flex flex-col gap-5 hover:shadow-lg transition-shadow"
+      className="group bg-background rounded-2xl p-4 flex flex-col gap-6 hover:shadow-lg transition-shadow"
     >
       {/* Image Container */}
       <div className="relative w-full aspect-282/168 rounded-2xl overflow-hidden">
@@ -39,55 +40,41 @@ export function BlogCard({
       </div>
 
       {/* Category Badge */}
-      <div className="flex items-center w-full">
-        <div
-          className="inline-flex items-start px-2.5 py-1 rounded-full"
-          style={{
-            backgroundImage:
-              "linear-gradient(91.22deg, rgba(42, 94, 152, 0.1) 15.88%, rgba(24, 183, 90, 0.1) 115.02%)",
-          }}
-        >
-          <span
-            className="bg-clip-text font-medium text-sm leading-4"
-            style={{
-              WebkitTextFillColor: "transparent",
-              backgroundImage:
-                "linear-gradient(91.47deg, rgba(42, 94, 152, 1) 15.88%, rgba(24, 183, 90, 1) 115.02%)",
-            }}
-          >
-            {category}
-          </span>
+      {category && (
+        <div className="flex items-center w-full">
+          <GradientBadge>{category}</GradientBadge>
         </div>
-      </div>
+      )}
 
       {/* Title and Description */}
       <div className="flex flex-col gap-2 w-full">
-        <h3
-          className="font-medium text-lg leading-6 tracking-[-0.0313rem] text-foreground group-hover:text-brand-blue transition-colors"
-
-        >
+        <h3 className="font-medium text-base text-foreground transition-colors">
           {title}
         </h3>
-        <p
-          className="font-normal text-sm leading-5 text-muted-foreground line-clamp-3 overflow-hidden"
-
-        >
+        <p className="font-normal text-sm leading-5 text-muted-foreground line-clamp-3 overflow-hidden">
           {description}
         </p>
+          {/* Meta Info */}
+      {(readTime || publishedDate) && (
+        <div className="flex gap-1 items-center opacity-40 w-full">
+          {readTime && (
+            <span className="font-medium text-sm leading-4 text-foreground">
+              {readTime}
+            </span>
+          )}
+          {readTime && publishedDate && (
+            <span className="font-medium text-sm leading-4 text-foreground">•</span>
+          )}
+          {publishedDate && (
+            <span className="font-medium text-sm leading-4 text-foreground">
+              {publishedDate}
+            </span>
+          )}
+        </div>
+      )}
       </div>
 
-      {/* Meta Info - opacity on parent */}
-      <div
-        className="flex gap-1 items-center opacity-20 w-full"
-      >
-        <span className="font-medium text-sm leading-4 text-foreground">
-          {readTime}
-        </span>
-        <span className="font-medium text-sm leading-4 text-foreground">•</span>
-        <span className="font-medium text-sm leading-4 text-foreground">
-          {publishedDate}
-        </span>
-      </div>
+    
     </Link>
   );
 }

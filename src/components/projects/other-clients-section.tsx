@@ -1,61 +1,93 @@
 import Image from "next/image";
-import { EmptyState } from "@/components/ui/empty-state";
+import { Marquee } from "@/components/ui/marquee";
+import { SectionHeading } from "@/components/ui/section-heading";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { getOtherClients } from "@/sanity/lib/actions";
 
+function ClientLogo({
+  logo,
+  companyName,
+}: { logo?: string | null; companyName: string }) {
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <div className="size-28 shrink-0 rounded-2xl bg-background relative overflow-hidden flex items-center justify-center">
+          {logo && (
+            <Image
+              src={logo}
+              alt={companyName || "Client logo"}
+              fill
+              className="object-contain p-4"
+              sizes="7rem"
+            />
+          )}
+        </div>
+      </TooltipTrigger>
+      {companyName && <TooltipContent>{companyName}</TooltipContent>}
+    </Tooltip>
+  );
+}
+
 export async function OtherClientsSection() {
-  const clients = await getOtherClients(27);
-  const totalLogos = Math.max(clients.length, 27);
-  const logosPerRow = 9;
+  const clients = await getOtherClients(50);
+
+  const third = Math.ceil(clients.length / 3);
+  const firstRow = clients.slice(0, third);
+  const secondRow = clients.slice(third, third * 2);
+  const thirdRow = clients.slice(third * 2);
 
   return (
     <section className="flex flex-col gap-10 w-full">
       {/* Header */}
-      <div className="flex flex-col gap-4 font-medium">
-        <h2 className="text-4xl font-medium text-foreground">Other Clients</h2>
-        <p className="text-lg text-muted-foreground">
-          Trusted partners and clients we work with
-        </p>
-      </div>
+      <SectionHeading
+        title="Other Clients"
+        description="Trusted partners and clients we work with"
+      />
 
       {clients.length === 0 ? (
-        <EmptyState
-          size="sm"
-          message="No clients to display at this time."
-        />
+        <p className="text-sm text-muted-foreground">No clients to display at this time.</p>
       ) : (
-        <div className="flex flex-col gap-10">
-          {Array.from({ length: Math.ceil(totalLogos / logosPerRow) }).map(
-            (_, rowIndex) => (
-              <div
-                key={rowIndex}
-                className="flex gap-10 items-center justify-center flex-wrap"
-              >
-                {Array.from({ length: logosPerRow }).map((_, logoIndex) => {
-                  const logoNumber = rowIndex * logosPerRow + logoIndex;
-                  if (logoNumber >= totalLogos) return null;
+        <div className="flex flex-col gap-6 overflow-hidden">
+          <Marquee pauseOnHover className="[--duration:60s] [--gap:1.5rem]">
+            {firstRow.map((client) => (
+              <ClientLogo
+                key={client.id}
+                logo={client.logo}
+                companyName={client.companyName}
+              />
+            ))}
+          </Marquee>
 
-                  const clientItem = clients[logoNumber];
+          {secondRow.length > 0 && (
+            <Marquee
+              pauseOnHover
+              reverse
+              className="[--duration:60s] [--gap:1.5rem]"
+            >
+              {secondRow.map((client) => (
+                <ClientLogo
+                  key={client.id}
+                  logo={client.logo}
+                  companyName={client.companyName}
+                />
+              ))}
+            </Marquee>
+          )}
 
-                  return (
-                    <div
-                      key={logoIndex}
-                      className="w-[7.5rem] h-[7.5rem] rounded-2xl bg-primary/10 relative overflow-hidden flex items-center justify-center"
-                      title={clientItem?.companyName}
-                    >
-                      {clientItem?.logo ? (
-                        <Image
-                          src={clientItem.logo}
-                          alt={clientItem.companyName || "Client logo"}
-                          fill
-                          className="object-contain p-4"
-                          sizes="7.5rem"
-                        />
-                      ) : null}
-                    </div>
-                  );
-                })}
-              </div>
-            ),
+          {thirdRow.length > 0 && (
+            <Marquee pauseOnHover className="[--duration:60s] [--gap:1.5rem]">
+              {thirdRow.map((client) => (
+                <ClientLogo
+                  key={client.id}
+                  logo={client.logo}
+                  companyName={client.companyName}
+                />
+          ))}
+            </Marquee>
           )}
         </div>
       )}

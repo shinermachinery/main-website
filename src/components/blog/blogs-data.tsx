@@ -33,8 +33,18 @@ export async function BlogsData({ searchQuery, category }: BlogsDataProps) {
     }
 
     if (category) {
-      conditions.push("category->slug.current == $categorySlug");
-      params.categorySlug = category;
+      const slugs = category.split(",");
+      if (slugs.length === 1) {
+        conditions.push("category->slug.current == $categorySlug");
+        params.categorySlug = category;
+      } else {
+        conditions.push(
+          `category->slug.current in [${slugs.map((_, i) => `$cat${i}`).join(", ")}]`,
+        );
+        for (let i = 0; i < slugs.length; i++) {
+          params[`cat${i}`] = slugs[i];
+        }
+      }
     }
 
     const filter = conditions.join(" && ");

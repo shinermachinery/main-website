@@ -23,7 +23,7 @@ export function ProductCard({
   onViewDetails,
 }: ProductCardProps) {
   const cardContent = (
-    <div className="bg-background flex flex-col gap-4 items-center justify-center px-4 py-3 rounded-2xl">
+    <div className="bg-background flex flex-col gap-4 items-center justify-center px-4 py-3 rounded-2xl hover:shadow-lg transition-shadow">
       {/* Product Image */}
       <div
         className="relative w-full rounded-2xl overflow-hidden"
@@ -59,10 +59,10 @@ export function ProductCard({
             "linear-gradient(88.66deg, var(--brand-blue) 27.51%, var(--brand-green) 115.04%)",
         }}
       >
-        <span className="text-sm font-medium leading-5 text-background relative z-10">
-          View Details
+        <span className="text-sm font-medium text-white relative z-10">
+          View Detail
         </span>
-        <ArrowRight className="h-4 w-4 text-background relative z-10" />
+        <ArrowRight className="h-4 w-4 text-white relative z-10" />
 
         {/* Inner shadow overlay */}
         <div className="absolute inset-0 pointer-events-none shadow-[inset_0rem_0.25rem_1.806rem_0rem_rgba(244,244,245,0.2)]" />

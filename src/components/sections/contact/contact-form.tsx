@@ -4,6 +4,9 @@ import { AlertCircle, ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 import { useState, useTransition } from "react";
 import { submitContactForm } from "@/actions/submit-contact";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -27,7 +30,6 @@ export function ContactForm() {
 
       if (result.success) {
         setResponseMessage({ type: "success", text: result.message });
-        // Reset form
         setFormData({ name: "", email: "", contactNumber: "", message: "" });
       } else {
         setResponseMessage({ type: "error", text: result.message });
@@ -48,36 +50,30 @@ export function ContactForm() {
     <section id="contact" className="py-40" aria-labelledby="contact-heading">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
-          {/* Two Column Layout - Heading and Form Side by Side */}
           <div className="flex flex-col md:flex-row gap-10 items-start">
             {/* Left Column - Heading with Button */}
             <div className="flex-1 flex flex-col gap-6">
               <h2
                 id="contact-heading"
-                className="font-medium text-[1.875rem] leading-[2.5rem] tracking-[-0.047rem] text-primary"
+                className="font-medium text-2xl text-primary"
               >
                 Get in touch for quotes, demos, or technical guidance.
               </h2>
               <Button
-                className="flex items-center gap-2 px-4 py-2 rounded-full h-10 font-medium text-sm leading-5 w-fit"
+                className="w-fit"
                 variant="shiner"
+                size="lg"
               >
                 Contact Sales
               </Button>
             </div>
 
             {/* Right Column - Form */}
-            <div className="flex-1 bg-background border border-border rounded-[1.5rem] p-5">
+            <div className="flex-1 bg-background border border-border rounded-2xl p-5">
               <form onSubmit={handleSubmit} className="flex flex-col gap-7">
-                {/* Full Name Field */}
                 <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="name"
-                    className="font-medium text-sm leading-5 text-primary"
-                  >
-                    Full Name
-                  </label>
-                  <input
+                  <Label htmlFor="name">Full Name</Label>
+                  <Input
                     id="name"
                     name="name"
                     type="text"
@@ -85,20 +81,14 @@ export function ContactForm() {
                     onChange={handleChange}
                     disabled={isPending}
                     required
-                    className="w-full h-12 px-4 rounded-xl bg-secondary border-none text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-blue disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                    className="h-12 px-4 rounded-xl bg-secondary border-none"
                     placeholder="Enter your full name"
                   />
                 </div>
 
-                {/* Email Field */}
                 <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="email"
-                    className="font-medium text-sm leading-5 text-primary"
-                  >
-                    Email
-                  </label>
-                  <input
+                  <Label htmlFor="email">Email</Label>
+                  <Input
                     id="email"
                     name="email"
                     type="email"
@@ -106,20 +96,14 @@ export function ContactForm() {
                     onChange={handleChange}
                     disabled={isPending}
                     required
-                    className="w-full h-12 px-4 rounded-xl bg-secondary border-none text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-blue disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                    className="h-12 px-4 rounded-xl bg-secondary border-none"
                     placeholder="Enter your email address"
                   />
                 </div>
 
-                {/* Contact Number Field */}
                 <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="contactNumber"
-                    className="font-medium text-sm leading-5 text-primary"
-                  >
-                    Contact Number
-                  </label>
-                  <input
+                  <Label htmlFor="contactNumber">Contact Number</Label>
+                  <Input
                     id="contactNumber"
                     name="contactNumber"
                     type="tel"
@@ -127,20 +111,14 @@ export function ContactForm() {
                     onChange={handleChange}
                     disabled={isPending}
                     required
-                    className="w-full h-12 px-4 rounded-xl bg-secondary border-none text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-blue disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                    className="h-12 px-4 rounded-xl bg-secondary border-none"
                     placeholder="Enter your contact number"
                   />
                 </div>
 
-                {/* Message Field */}
                 <div className="flex flex-col gap-2">
-                  <label
-                    htmlFor="message"
-                    className="font-medium text-sm leading-5 text-primary"
-                  >
-                    Message
-                  </label>
-                  <textarea
+                  <Label htmlFor="message">Message</Label>
+                  <Textarea
                     id="message"
                     name="message"
                     value={formData.message}
@@ -148,7 +126,7 @@ export function ContactForm() {
                     disabled={isPending}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 rounded-xl bg-secondary border-none text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-blue disabled:opacity-50 disabled:cursor-not-allowed transition-all resize-none"
+                    className="px-4 py-3 rounded-xl bg-secondary border-none resize-none"
                     placeholder="Enter your message"
                   />
                 </div>
@@ -163,9 +141,9 @@ export function ContactForm() {
                     }`}
                   >
                     {responseMessage.type === "success" ? (
-                      <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
+                      <CheckCircle2 className="size-5 shrink-0" />
                     ) : (
-                      <AlertCircle className="h-5 w-5 flex-shrink-0" />
+                      <AlertCircle className="size-5 shrink-0" />
                     )}
                     <p className="text-sm font-medium">
                       {responseMessage.text}
@@ -174,32 +152,24 @@ export function ContactForm() {
                 )}
 
                 {/* Submit Button */}
-                <button
+                <Button
                   type="submit"
                   disabled={isPending}
-                  className="flex gap-2 h-12 items-center justify-center px-6 rounded-full w-full relative overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed transition-all"
-                  style={{
-                    background:
-                      "linear-gradient(88.66deg, #2a5e98 27.51%, #18b75a 115.04%)",
-                  }}
+                  variant="shiner"
+                  className="h-12 w-full rounded-full"
                 >
                   {isPending ? (
                     <>
-                      <Loader2 className="h-5 w-5 text-white animate-spin relative z-10" />
-                      <span className="text-sm font-medium leading-5 text-white relative z-10">
-                        Sending...
-                      </span>
+                      <Loader2 className="size-5 animate-spin" />
+                      Sending...
                     </>
                   ) : (
                     <>
-                      <span className="text-sm font-medium leading-5 text-white relative z-10">
-                        Send Message
-                      </span>
-                      <ArrowRight className="h-4 w-4 text-white relative z-10" />
+                      Send Message
+                      <ArrowRight className="size-4" />
                     </>
                   )}
-                  <div className="absolute inset-0 pointer-events-none shadow-[inset_0rem_0.25rem_1.806rem_0rem_rgba(244,244,245,0.2)]" />
-                </button>
+                </Button>
               </form>
             </div>
           </div>

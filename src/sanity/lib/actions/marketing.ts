@@ -28,9 +28,7 @@ export interface Certification {
 export interface Event {
   id: string;
   title: string;
-  image: string;
-  description?: string;
-  eventDate?: string;
+  images: string[];
   location?: string;
 }
 
@@ -137,9 +135,10 @@ export async function getEvents(limit: number = 8): Promise<Event[]> {
       query: `*[_type == "event"] | order(order asc, _createdAt desc) {
         _id,
         title,
-        image,
-        description,
-        eventDate,
+        images[] {
+          asset,
+          alt
+        },
         location
       }[0...${limit}]`,
     });
@@ -152,18 +151,15 @@ export async function getEvents(limit: number = 8): Promise<Event[]> {
       (event: {
         _id: string;
         title: string;
-        image?: any;
-        description?: string;
-        eventDate?: string;
+        images?: any[];
         location?: string;
       }) => ({
         id: event._id,
         title: event.title,
-        image: event.image
-          ? urlFor(event.image).url()
-          : "/placeholder-event.jpg",
-        description: event.description,
-        eventDate: event.eventDate,
+        images:
+          event.images && event.images.length > 0
+            ? event.images.map((img: any) => urlFor(img).url())
+            : ["/placeholder-event.jpg"],
         location: event.location,
       }),
     );

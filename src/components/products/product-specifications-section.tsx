@@ -13,7 +13,7 @@ export function ProductSpecificationsSection({
       {/* Ultra-thin Header */}
       <div className="space-y-2">
         <div className="flex items-center gap-2">
-          <h2 className="text-2xl font-light text-primary">
+          <h2 className="text-xl font-light text-primary">
             Our Specifications
           </h2>
         </div>

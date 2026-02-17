@@ -1,12 +1,12 @@
 /**
  * Projects Page GROQ Queries
- * Queries for installations, clients, and projects
+ * Queries for installations, client list, and other clients
  */
 
 import {
-  CLIENT_PROJECTION,
+  CLIENT_LIST_PROJECTION,
   INSTALLATION_PROJECTION,
-  PROJECT_FULL_PROJECTION,
+  OTHER_CLIENT_PROJECTION,
 } from "../shared/projections";
 import type { QueryResult } from "../shared/utils";
 import {
@@ -14,22 +14,6 @@ import {
   buildOrderString,
   buildPaginationString,
 } from "../shared/utils";
-
-// ============================================================================
-// Types
-// ============================================================================
-
-/**
- * Project List Parameters
- */
-export interface ProjectListParams {
-  /** Filter by category */
-  category?: string;
-  /** Maximum number of results */
-  limit?: number;
-  /** Starting index for pagination */
-  offset?: number;
-}
 
 // ============================================================================
 // Installation Queries
@@ -69,35 +53,35 @@ export function getInstallationCountQuery(): QueryResult {
 }
 
 // ============================================================================
-// Client Queries
+// Client List Queries
 // ============================================================================
 
 /**
- * Get All Clients Query
- * Fetches all clients ordered by display order
+ * Get All Client List Query
+ * Fetches all client list items ordered by display order
  *
  * @param limit - Optional limit for results
  * @returns Query object
  */
-export function getAllClientsQuery(limit?: number): QueryResult {
-  const filterString = buildFilterString("client");
+export function getAllClientListQuery(limit?: number): QueryResult {
+  const filterString = buildFilterString("clientList");
   const orderString = buildOrderString(["order asc", "_createdAt desc"]);
   const paginationString = buildPaginationString(limit);
 
   return {
-    query: `*[${filterString}] ${orderString} ${paginationString} ${CLIENT_PROJECTION}`,
+    query: `*[${filterString}] ${orderString} ${paginationString} ${CLIENT_LIST_PROJECTION}`,
     params: {},
   };
 }
 
 /**
- * Get Client Count Query
- * Returns total number of clients
+ * Get Client List Count Query
+ * Returns total number of client list items
  *
  * @returns Query object
  */
-export function getClientCountQuery(): QueryResult {
-  const filterString = buildFilterString("client");
+export function getClientListCountQuery(): QueryResult {
+  const filterString = buildFilterString("clientList");
 
   return {
     query: `count(*[${filterString}])`,
@@ -106,60 +90,35 @@ export function getClientCountQuery(): QueryResult {
 }
 
 // ============================================================================
-// Project Queries
+// Other Client Queries
 // ============================================================================
 
 /**
- * Get All Projects Query
- * Fetches all projects with optional filtering
+ * Get All Other Clients Query
+ * Fetches all other clients ordered by display order
  *
- * @param options - Filtering and pagination options
+ * @param limit - Optional limit for results
  * @returns Query object
  */
-export function getAllProjectsQuery(
-  options: ProjectListParams = {},
-): QueryResult<{ category?: string }> {
-  const { category, limit, offset = 0 } = options;
-
-  const conditions: string[] = [];
-  if (category) {
-    conditions.push("category == $category");
-  }
-
-  const filterString = buildFilterString("project", conditions);
+export function getAllOtherClientsQuery(limit?: number): QueryResult {
+  const filterString = buildFilterString("otherClient");
   const orderString = buildOrderString(["order asc", "_createdAt desc"]);
-  const paginationString = buildPaginationString(limit, offset);
+  const paginationString = buildPaginationString(limit);
 
   return {
-    query: `*[${filterString}] ${orderString} ${paginationString} ${PROJECT_FULL_PROJECTION}`,
-    params: category ? { category } : {},
+    query: `*[${filterString}] ${orderString} ${paginationString} ${OTHER_CLIENT_PROJECTION}`,
+    params: {},
   };
 }
 
 /**
- * Get Project By Slug Query
- * Fetches a single project by slug
- *
- * @param slug - Project slug
- * @returns Query object
- */
-export function getProjectBySlugQuery(
-  slug: string,
-): QueryResult<{ slug: string }> {
-  return {
-    query: `*[_type == "project" && slug.current == $slug][0] ${PROJECT_FULL_PROJECTION}`,
-    params: { slug },
-  };
-}
-
-/**
- * Get Project Count Query
- * Returns total number of projects
+ * Get Other Client Count Query
+ * Returns total number of other clients
  *
  * @returns Query object
  */
-export function getProjectCountQuery(): QueryResult {
-  const filterString = buildFilterString("project");
+export function getOtherClientCountQuery(): QueryResult {
+  const filterString = buildFilterString("otherClient");
 
   return {
     query: `count(*[${filterString}])`,

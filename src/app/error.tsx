@@ -15,7 +15,7 @@ export default function ErrorPage({
         <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-[6rem] font-bold leading-none text-transparent">
           500
         </p>
-        <h1 className="mt-4 text-2xl font-semibold text-foreground">
+        <h1 className="mt-4 text-xl font-semibold text-foreground">
           Something Went Wrong
         </h1>
         <p className="mt-2 text-muted-foreground">
