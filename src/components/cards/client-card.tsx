@@ -14,7 +14,7 @@ export function ClientCard({
   if (isHighlight) {
     return (
       <div
-        className="flex flex-col items-start justify-center p-5 rounded-2xl"
+        className="flex flex-col items-start justify-center p-5 rounded-2xl h-full"
         style={{
           backgroundImage:
             "linear-gradient(90.66deg, rgba(42, 94, 152, 0.1) 15.881%, rgba(24, 183, 90, 0.1) 115.02%)",
@@ -35,7 +35,7 @@ export function ClientCard({
   }
 
   return (
-    <div className="flex flex-col gap-3 p-5 rounded-2xl bg-background">
+    <div className="flex flex-col gap-3 p-5 rounded-2xl bg-background h-full">
       {/* Company Name */}
       <p className="text-lg font-medium text-foreground">{companyName}</p>
 

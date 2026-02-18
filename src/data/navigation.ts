@@ -1,11 +1,11 @@
 import {
   Award,
   Calendar,
-  Eye,
   Info,
   type LucideIcon,
   Mail,
   User,
+  Users,
 } from "lucide-react";
 
 export interface NavLink {
@@ -54,9 +54,9 @@ export const aboutLinks: NavLinkWithIcon[] = [
     icon: Award,
   },
   {
-    name: "Mission & Vision",
-    href: "/about/mission-vision",
-    icon: Eye,
+    name: "Our Team",
+    href: "/about/team",
+    icon: Users,
   },
   {
     name: "About Director",
@@ -99,7 +99,7 @@ export const footerResourceLinks: NavLink[] = [
   { name: "Blog", href: "/blog" },
   { name: "Events", href: "/events" },
   { name: "Why Choose Us", href: "/about/why-choose-us" },
-  { name: "Mission & Vision", href: "/about/mission-vision" },
+  { name: "Our Team", href: "/about/team" },
 ];
 
 /**

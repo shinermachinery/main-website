@@ -32,15 +32,6 @@ export function SearchFilterBar({
 }: SearchFilterBarProps) {
   const activeFilters = [];
 
-  if (currentSearch) {
-    activeFilters.push({
-      key: "Search",
-      label: `Search: ${currentSearch}`,
-      paramName: searchParam,
-      paramValue: currentSearch,
-    });
-  }
-
   if (currentCategory) {
     const selectedSlugs = currentCategory.split(",");
     for (const slug of selectedSlugs) {

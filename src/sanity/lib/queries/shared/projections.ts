@@ -14,6 +14,7 @@
 export const IMAGE_PROJECTION = `
   asset,
   alt,
+  caption,
   hotspot
 `;
 
@@ -98,6 +99,7 @@ export const PRODUCT_SUMMARY_PROJECTION = `{
   _id,
   title,
   slug ${SLUG_PROJECTION},
+  displayType,
   "primaryImage": images[0] {
     ${IMAGE_PROJECTION}
   },
@@ -113,11 +115,13 @@ export const PRODUCT_FULL_PROJECTION = `{
   ${BASE_DOCUMENT_FIELDS},
   title,
   slug ${SLUG_PROJECTION},
+  displayType,
   description,
   descriptionBulletPoints,
   images[] {
     ${IMAGE_PROJECTION}
   },
+  body,
   brochure {
     asset
   },

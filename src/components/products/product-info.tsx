@@ -6,7 +6,6 @@ interface ProductInfoProps {
 }
 
 export function ProductInfo({ product }: ProductInfoProps) {
-  console.log(product);
   return (
     <div className="flex-1 flex flex-col gap-8">
       {/* Header */}

@@ -23,10 +23,12 @@ export const siteConfig = {
 
   // Social Media
   social: {
-    twitter: "@shiner",
-    facebook: "shiner",
-    instagram: "shiner",
-    linkedin: "company/shiner",
+    twitter: "https://twitter.com/shinermachinery?s=08",
+    facebook:
+      "https://www.facebook.com/profile.php?id=100091200496735&mibextid=ZbWKwL",
+    instagram:
+      "https://instagram.com/shinermachinery?igshid=NjIwNzIyMDk2Mg==",
+    linkedin: "https://www.linkedin.com/company/shinermachinery",
   },
 
   // SEO

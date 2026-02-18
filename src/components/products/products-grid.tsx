@@ -27,7 +27,7 @@ export function ProductsGrid({ products }: ProductsGridProps) {
       {products.map((product) => {
         const imageUrl = product?.images?.[0]
           ? imageBuilder.image(product.images[0]).width(600).height(400).url()
-          : "/placeholder-product.jpg";
+          : undefined;
 
         return (
           <ProductCard

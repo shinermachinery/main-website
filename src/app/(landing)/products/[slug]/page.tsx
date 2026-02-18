@@ -4,10 +4,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { getProductBySlug } from "@/actions/products";
+import { PortableText } from "@/components/blog/portable-text";
 import { ProductBrochureDownload } from "@/components/products/product-brochure-download";
 import { ProductDetailSkeleton } from "@/components/products/product-detail-skeleton";
 import { ProductImageGallery } from "@/components/products/product-image-gallery";
 import { ProductInfo } from "@/components/products/product-info";
+import { ProductSingleImage } from "@/components/products/product-single-image";
 import { ProductSpecificationsSection } from "@/components/products/product-specifications-section";
 import { RelatedProducts } from "@/components/products/related-products";
 import { siteConfig } from "@/lib/site-config";
@@ -51,11 +53,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const product = await getProductBySlug(slug);
 
-  console.log("Produt page product", product);
-
   if (!product) {
     return notFound();
   }
+
+  const displayType = product.displayType || "gallery";
 
   // Get related products (same collection or random)
   const relatedProducts =
@@ -64,8 +66,6 @@ export default async function ProductDetailPage({ params }: PageProps) {
       : [];
   return (
     <div className="min-h-screen bg-secondary">
-      {/* Ultra-thin Header */}
-
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-4">
         <Link
           href="/products"
@@ -78,23 +78,54 @@ export default async function ProductDetailPage({ params }: PageProps) {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:pb-12">
         <Suspense fallback={<ProductDetailSkeleton />}>
-          {/* Main Product Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
-            {/* Left: Image Gallery */}
-            <ProductImageGallery
-              images={product.images || []}
-              title={product.title}
-            />
-
-            {/* Right: Product Info & Download */}
-            <div className="flex flex-col gap-8">
+          {/* Main Product Section - layout varies by displayType */}
+          {displayType === "textOnly" ? (
+            <div className="max-w-4xl mx-auto mb-16">
               <ProductInfo product={product} />
-              <ProductBrochureDownload
-                brochure={product.brochure}
+              {product.body && product.body.length > 0 && (
+                <div className="mt-8">
+                  <PortableText value={product.body} />
+                </div>
+              )}
+              <div className="mt-8">
+                <ProductBrochureDownload
+                  brochure={product.brochure}
+                  title={product.title}
+                />
+              </div>
+            </div>
+          ) : displayType === "imageText" ? (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
+              <ProductSingleImage
+                image={product.images?.[0]}
                 title={product.title}
               />
+              <div className="flex flex-col gap-8">
+                <ProductInfo product={product} />
+                {product.body && product.body.length > 0 && (
+                  <PortableText value={product.body} />
+                )}
+                <ProductBrochureDownload
+                  brochure={product.brochure}
+                  title={product.title}
+                />
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
+              <ProductImageGallery
+                images={product.images || []}
+                title={product.title}
+              />
+              <div className="flex flex-col gap-8">
+                <ProductInfo product={product} />
+                <ProductBrochureDownload
+                  brochure={product.brochure}
+                  title={product.title}
+                />
+              </div>
+            </div>
+          )}
 
           {/* Specifications Section */}
           {product.specifications?.description &&

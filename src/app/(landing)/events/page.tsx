@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { AchievementsSection } from "@/components/events/achievements-section";
 import { CertificationsSection } from "@/components/events/certifications-section";
 import { EventsSection } from "@/components/events/events-section";
@@ -10,9 +11,15 @@ export default function EventsPage() {
     <div className="bg-secondary">
       <div className="container mx-auto px-6 py-24">
         <div className="flex flex-col gap-40">
-          <EventsSection />
-          <CertificationsSection />
-          <AchievementsSection />
+          <Suspense>
+            <EventsSection />
+          </Suspense>
+          <Suspense>
+            <CertificationsSection />
+          </Suspense>
+          <Suspense>
+            <AchievementsSection />
+          </Suspense>
         </div>
       </div>
     </div>

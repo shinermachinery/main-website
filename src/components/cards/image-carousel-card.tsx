@@ -1,7 +1,14 @@
 "use client";
 
+import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+import { useEffect, useState } from "react";
 
 interface ImageCarouselCardProps {
   images: string[];
@@ -14,60 +21,52 @@ export function ImageCarouselCard({
   title,
   showTitle = false,
 }: ImageCarouselCardProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [loaded, setLoaded] = useState(false);
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
   const hasMultiple = images.length > 1;
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  const nextImage = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
 
   useEffect(() => {
-    if (!hasMultiple) return;
-    const interval = setInterval(nextImage, 3000);
-    return () => clearInterval(interval);
-  }, [hasMultiple, nextImage]);
-
-  useEffect(() => {
-    const el = cardRef.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setLoaded(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+    if (!api) return;
+    setCurrent(api.selectedScrollSnap());
+    api.on("select", () => setCurrent(api.selectedScrollSnap()));
+  }, [api]);
 
   return (
-    <div
-      ref={cardRef}
-      className={`h-96 rounded-3xl overflow-hidden relative group transition-opacity duration-700 ${loaded ? "opacity-100" : "opacity-0"}`}
-    >
-      {/* Images */}
-      {images.map((image, i) => (
-        <Image
-          key={image}
-          src={image}
-          alt={`${title} - ${i + 1}`}
-          fill
-          className={`object-cover transition-opacity duration-700 ${
-            i === currentIndex ? "opacity-100" : "opacity-0"
-          }`}
-          sizes="(max-width: 768px) 100vw, 50vw"
-          priority={i === 0}
-        />
-      ))}
+    <div className="h-96 rounded-3xl overflow-hidden relative group">
+      <Carousel
+        setApi={setApi}
+        opts={{
+          loop: true,
+          align: "start",
+        }}
+        plugins={
+          hasMultiple
+            ? [Autoplay({ delay: 5000, stopOnInteraction: false })]
+            : []
+        }
+        className="h-full"
+      >
+        <CarouselContent className="h-full ml-0">
+          {images.map((image, i) => (
+            <CarouselItem key={image} className="h-full pl-0">
+              <div className="relative h-96">
+                <Image
+                  src={image}
+                  alt={`${title} - ${i + 1}`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority={i === 0}
+                />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
 
       {/* Title Overlay */}
       {showTitle && (
-        <div className="absolute inset-x-5 bottom-2">
+        <div className="absolute inset-x-5 bottom-2 z-10">
           <div className="bg-muted rounded-2xl p-3">
             <p className="text-lg font-medium text-foreground">{title}</p>
           </div>
@@ -76,16 +75,14 @@ export function ImageCarouselCard({
 
       {/* Dots indicator */}
       {hasMultiple && (
-        <div className="absolute top-3 right-3 flex gap-1.5">
+        <div className="absolute top-3 right-3 flex gap-1.5 z-10">
           {images.map((_, i) => (
             <button
               key={`dot-${title}-${i}`}
               type="button"
-              onClick={() => setCurrentIndex(i)}
+              onClick={() => api?.scrollTo(i)}
               className={`h-1.5 rounded-full transition-all ${
-                i === currentIndex
-                  ? "w-4 bg-white"
-                  : "w-1.5 bg-white/50"
+                i === current ? "w-4 bg-white" : "w-1.5 bg-white/50"
               }`}
               aria-label={`Go to image ${i + 1}`}
             />

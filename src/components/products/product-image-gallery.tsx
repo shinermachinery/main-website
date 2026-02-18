@@ -132,6 +132,13 @@ export function ProductImageGallery({
           )}
         </div>
 
+        {/* Caption */}
+        {currentImage.caption && (
+          <p className="text-sm font-light text-muted-foreground px-1">
+            {currentImage.caption}
+          </p>
+        )}
+
         {/* Ultra-thin Thumbnail Navigation */}
         {images.length > 1 && (
           <div className="flex gap-2 overflow-x-auto scrollbar-hide py-1">

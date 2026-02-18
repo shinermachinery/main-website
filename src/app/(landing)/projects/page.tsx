@@ -19,7 +19,9 @@ export default async function ProductsPage() {
             <InstallationsSection />
           </Suspense>
 
-          <FlowChartSection />
+          <Suspense>
+            <FlowChartSection />
+          </Suspense>
 
           <Suspense fallback={<ClientsListSectionSkeleton />}>
             <ClientsListSection />

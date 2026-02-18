@@ -13,6 +13,7 @@ export interface SanityImage {
     _type: "reference";
   };
   alt?: string;
+  caption?: string;
   hotspot?: {
     x: number;
     y: number;
@@ -147,9 +148,11 @@ export interface Product {
   _updatedAt: string;
   title: string;
   slug: SanitySlug;
+  displayType: "gallery" | "textOnly" | "imageText";
   description?: string;
   descriptionBulletPoints?: string[];
   images?: SanityImage[];
+  body?: PortableTextBlock[];
   brochure?: SanityFile;
   specifications?: ProductSpecifications;
   price?: number;

@@ -21,6 +21,7 @@ export async function InstallationsSection() {
             key={installation.id}
             images={installation.images}
             title={installation.title}
+            showTitle
           />
         ))}
       </div>

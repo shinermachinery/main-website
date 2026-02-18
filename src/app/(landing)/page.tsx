@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { getAllHomeData } from "@/actions/home";
 import { AboutSection } from "@/components/sections/about/about-section";
 import { ContactForm } from "@/components/sections/contact/contact-form";
+import { FaqSection } from "@/components/sections/faq/faq-section";
 import { HeroSection } from "@/components/sections/hero/hero-section";
 import { HowItWorksSection } from "@/components/sections/how-it-works/how-it-works-section";
 import { ProductsData } from "@/components/sections/products/products-data";
@@ -59,6 +60,7 @@ export default async function HomePage() {
         />
       </Suspense> */}
 
+      <FaqSection />
       <ContactForm />
     </div>
   );

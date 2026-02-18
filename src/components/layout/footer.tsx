@@ -1,5 +1,36 @@
-import { Github, Heart, Linkedin, Mail, Twitter } from "lucide-react";
+import {
+  Facebook,
+  Heart,
+  Instagram,
+  Linkedin,
+  Mail,
+  Twitter,
+} from "lucide-react";
 import Link from "next/link";
+import { siteConfig } from "@/lib/site-config";
+
+const socialLinks = [
+  {
+    href: siteConfig.social.twitter,
+    label: "Twitter",
+    icon: Twitter,
+  },
+  {
+    href: siteConfig.social.instagram,
+    label: "Instagram",
+    icon: Instagram,
+  },
+  {
+    href: siteConfig.social.linkedin,
+    label: "LinkedIn",
+    icon: Linkedin,
+  },
+  {
+    href: siteConfig.social.facebook,
+    label: "Facebook",
+    icon: Facebook,
+  },
+];
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,7 +44,7 @@ export function Footer() {
             <h3 className="text-xl font-bold bg-clip-text text-transparent bg-linear-to-r from-brand-blue to-brand-green">
               Shiner
             </h3>
-            <p className="text-sm text-[#71717a]">
+            <p className="text-sm text-muted-foreground">
               Precision engineering delivered with confidence. Built to perform,
               built to last.
             </p>
@@ -25,7 +56,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  href="#about"
+                  href="/about"
                   className="text-muted-foreground hover:text-brand-blue transition-colors"
                 >
                   About Us
@@ -33,15 +64,7 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="#features"
-                  className="text-muted-foreground hover:text-brand-blue transition-colors"
-                >
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#products"
+                  href="/products"
                   className="text-muted-foreground hover:text-brand-blue transition-colors"
                 >
                   Products
@@ -49,7 +72,15 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="#contact"
+                  href="/services"
+                  className="text-muted-foreground hover:text-brand-blue transition-colors"
+                >
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
                   className="text-muted-foreground hover:text-brand-blue transition-colors"
                 >
                   Contact
@@ -64,34 +95,26 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  href="/studio"
+                  href="/blog"
                   className="text-muted-foreground hover:text-brand-blue transition-colors"
                 >
-                  Content Studio
+                  Blog
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/projects"
                   className="text-muted-foreground hover:text-brand-blue transition-colors"
                 >
-                  Documentation
+                  Projects
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#"
+                  href="/events"
                   className="text-muted-foreground hover:text-brand-blue transition-colors"
                 >
-                  Support
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-muted-foreground hover:text-brand-blue transition-colors"
-                >
-                  Privacy Policy
+                  Events
                 </Link>
               </li>
             </ul>
@@ -101,47 +124,32 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="font-semibold text-primary">Connect With Us</h4>
             <div className="flex gap-3">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="size-10 rounded-full bg-secondary border border-border text-primary flex items-center justify-center hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-all"
+                  aria-label={link.label}
+                >
+                  <link.icon className="size-5" />
+                </a>
+              ))}
               <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-secondary border border-border text-primary flex items-center justify-center hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-all"
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-secondary border border-border text-primary flex items-center justify-center hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-all"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-10 w-10 rounded-full bg-secondary border border-border text-primary flex items-center justify-center hover:bg-brand-blue hover:text-white hover:border-brand-blue transition-all"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href="mailto:contact@example.com"
-                className="h-10 w-10 rounded-full bg-secondary border border-border text-primary flex items-center justify-center hover:bg-brand-green hover:text-white hover:border-brand-green transition-all"
+                href={`mailto:${siteConfig.email}`}
+                className="size-10 rounded-full bg-secondary border border-border text-primary flex items-center justify-center hover:bg-brand-green hover:text-white hover:border-brand-green transition-all"
                 aria-label="Email"
               >
-                <Mail className="h-5 w-5" />
+                <Mail className="size-5" />
               </a>
             </div>
             <p className="text-sm text-muted-foreground">
               <a
-                href="mailto:contact@example.com"
-                className="hover:text-[#18181b] transition-colors"
+                href={`mailto:${siteConfig.email}`}
+                className="hover:text-foreground transition-colors"
               >
-                contact@example.com
+                {siteConfig.email}
               </a>
             </p>
           </div>
@@ -150,10 +158,12 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-            <p>© {currentYear} Shiner. All rights reserved.</p>
+            <p>
+              © {currentYear} {siteConfig.name}. All rights reserved.
+            </p>
             <p className="text-center">
               Built with{" "}
-              <Heart className="inline h-4 w-4 fill-red-500 text-red-500" />{" "}
+              <Heart className="inline size-4 fill-red-500 text-red-500" />{" "}
               using Next.js and Sanity CMS
             </p>
           </div>

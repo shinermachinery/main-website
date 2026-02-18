@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -8,8 +8,8 @@ import { Button } from "@/components/ui/button";
 interface ProductCardProps {
   title: string;
   description?: string;
-  imageUrl: string;
-  imageAlt: string;
+  imageUrl?: string;
+  imageAlt?: string;
   href?: string;
   onViewDetails?: () => void;
 }
@@ -29,13 +29,25 @@ export function ProductCard({
         className="relative w-full rounded-2xl overflow-hidden"
         style={{ aspectRatio: "282/168" }}
       >
-        <Image
-          src={imageUrl}
-          alt={imageAlt}
-          fill
-          className="object-cover"
-          sizes="(max-width: 48rem) 100vw, (max-width: 64rem) 50vw, 33vw"
-        />
+        {imageUrl ? (
+          <Image
+            src={imageUrl}
+            alt={imageAlt || title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 48rem) 100vw, (max-width: 64rem) 50vw, 33vw"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-muted flex flex-col items-center justify-center gap-2">
+            <FileText
+              className="w-8 h-8 text-muted-foreground"
+              strokeWidth={1}
+            />
+            <span className="text-xs text-muted-foreground font-light">
+              Text Content
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Product Info */}

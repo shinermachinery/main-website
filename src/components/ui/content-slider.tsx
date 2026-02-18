@@ -154,7 +154,7 @@ export function ContentSlider<T>({
               }}
               className="!pl-0 flex"
             >
-              <div className="w-full">{renderItem(item, index)}</div>
+              <div className="w-full h-full">{renderItem(item, index)}</div>
             </CarouselItem>
           ))}
         </CarouselContent>

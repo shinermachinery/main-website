@@ -22,6 +22,7 @@ export const demoProducts: Product[] = [
     _updatedAt: new Date().toISOString(),
     title: "Advanced Processing Unit X200",
     slug: { current: "advanced-processing-unit-x200", _type: "slug" },
+    displayType: "gallery",
     description:
       "State-of-the-art processing unit designed for maximum efficiency and reliability in industrial applications.",
     descriptionBulletPoints: [
@@ -79,6 +80,7 @@ export const demoProducts: Product[] = [
     _updatedAt: new Date().toISOString(),
     title: "Precision Cutting System Pro",
     slug: { current: "precision-cutting-system-pro", _type: "slug" },
+    displayType: "gallery",
     description:
       "Ultra-precise cutting system with advanced laser technology for industrial manufacturing.",
     descriptionBulletPoints: [
@@ -115,6 +117,7 @@ export const demoProducts: Product[] = [
     _updatedAt: new Date().toISOString(),
     title: "Smart Control Hub Elite",
     slug: { current: "smart-control-hub-elite", _type: "slug" },
+    displayType: "gallery",
     description:
       "Centralized control system for managing multiple industrial processes with AI-driven optimization.",
     descriptionBulletPoints: [
@@ -151,6 +154,7 @@ export const demoProducts: Product[] = [
     _updatedAt: new Date().toISOString(),
     title: "Automated Assembly Line V5",
     slug: { current: "automated-assembly-line-v5", _type: "slug" },
+    displayType: "gallery",
     description:
       "Complete automated assembly solution with robotic integration and quality control systems.",
     descriptionBulletPoints: [

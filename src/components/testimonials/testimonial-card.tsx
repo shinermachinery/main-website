@@ -32,16 +32,16 @@ export function TestimonialCard({
 
   return (
     <article
-      className={`space-y-6 ${
+      className={`flex flex-col h-full ${
         isCard
           ? "rounded-2xl border bg-card p-8 shadow-lg hover:shadow-xl transition-shadow"
           : isQuote
             ? "border-l-4 border-brand-green pl-6 py-4"
-            : "space-y-3"
+            : ""
       }`}
     >
       {/* Rating */}
-      <div className="flex gap-1">
+      <div className="flex gap-1 mb-6">
         {Array.from({ length: 5 }).map((_, i) => (
           <Star
             key={i}
@@ -57,7 +57,7 @@ export function TestimonialCard({
 
       {/* Content */}
       <blockquote
-        className={`text-foreground leading-relaxed ${isCompact ? "text-sm" : ""}`}
+        className={`text-foreground leading-relaxed flex-1 mb-6 ${isCompact ? "text-sm" : ""}`}
       >
         {isQuote && <Quote className="h-10 w-10 text-brand-green/20" />}
         <p className={isQuote ? "mt-2" : ""}>"{testimonial.content}"</p>
@@ -65,7 +65,7 @@ export function TestimonialCard({
 
       {/* Customer Info */}
       <footer
-        className={`flex items-center gap-4 ${isCard ? "pt-4 border-t" : ""}`}
+        className={`flex items-center gap-4 mt-auto ${isCard ? "pt-4 border-t" : ""}`}
       >
         {showImage && (
           <div className="relative h-12 w-12 rounded-full overflow-hidden bg-muted flex-shrink-0">

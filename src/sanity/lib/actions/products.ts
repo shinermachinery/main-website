@@ -14,10 +14,12 @@ export interface Product {
   id: string;
   title: string;
   slug: string;
+  displayType: "gallery" | "textOnly" | "imageText";
   description?: string;
   descriptionBulletPoints?: string[];
   images: string[];
   primaryImage: string;
+  body?: any[];
   brochure?: string;
   specifications?: string;
   price?: number;
@@ -76,9 +78,11 @@ export async function getProducts(options?: {
         _id,
         title,
         "slug": slug.current,
+        displayType,
         description,
         descriptionBulletPoints,
         images,
+        body,
         brochure,
         specifications,
         price,
@@ -145,9 +149,11 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
         _id,
         title,
         "slug": slug.current,
+        displayType,
         description,
         descriptionBulletPoints,
         images,
+        body,
         brochure,
         specifications,
         price,
@@ -197,9 +203,11 @@ export async function searchProducts(
         _id,
         title,
         "slug": slug.current,
+        displayType,
         description,
         descriptionBulletPoints,
         images,
+        body,
         brochure,
         specifications,
         price,
@@ -304,12 +312,14 @@ function transformProduct(product: any): Product {
     id: product._id,
     title: product.title,
     slug: product.slug || "",
+    displayType: product.displayType || "gallery",
     description: product.description,
     descriptionBulletPoints: product.descriptionBulletPoints,
     images: product.images?.map((img: any) => urlFor(img).url()) || [],
     primaryImage: product.images?.[0]
       ? urlFor(product.images[0]).url()
       : "/placeholder-product.jpg",
+    body: product.body,
     brochure: product.brochure?.asset?._ref
       ? `https://cdn.sanity.io/files/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/${process.env.NEXT_PUBLIC_SANITY_DATASET}/${product.brochure.asset._ref.replace("file-", "").replace("-pdf", ".pdf")}`
       : undefined,

@@ -23,6 +23,20 @@ export const productType = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "displayType",
+      title: "Display Type",
+      type: "string",
+      options: {
+        list: [
+          { title: "Gallery", value: "gallery" },
+          { title: "Text Only", value: "textOnly" },
+          { title: "Image + Text", value: "imageText" },
+        ],
+      },
+      initialValue: "gallery",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "description",
       title: "Description",
       type: "text",
@@ -52,11 +66,31 @@ export const productType = defineType({
               type: "string",
               title: "Alternative text",
             }),
+            defineField({
+              name: "caption",
+              type: "string",
+              title: "Caption",
+              description: "Optional caption displayed below the image",
+            }),
           ],
         }),
       ],
       description: "Multiple images of the product (first image is primary)",
-      validation: (Rule) => Rule.min(1).error("At least one image is required"),
+      validation: (Rule) =>
+        Rule.custom((images, context) => {
+          const displayType = (context.document as any)?.displayType;
+          if (displayType !== "textOnly" && (!images || images.length === 0)) {
+            return "At least one image is required for this display type";
+          }
+          return true;
+        }),
+    }),
+    defineField({
+      name: "body",
+      title: "Body Content",
+      type: "blockContent",
+      description:
+        "Rich text content (used for Text Only and Image + Text display types)",
     }),
     defineField({
       name: "brochure",
