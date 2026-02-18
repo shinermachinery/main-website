@@ -18,8 +18,9 @@ export const siteConfig = {
   ogImage: "/shinner-logo.png",
 
   // Contact
-  email: "contact@shiner.com",
-  phone: "+1 (555) 123-4567",
+  email: "contact@shinermacahinery.com",
+  salesEmail: "sales@shinermacahinery.com",
+  phone: "+91-90443 20555",
 
   // Social Media
   social: {

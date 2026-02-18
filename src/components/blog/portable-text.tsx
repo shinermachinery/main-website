@@ -66,7 +66,7 @@ const portableTextComponents = {
     h4: ({ children }: any) => (
       <h4 className="text-lg font-semibold mb-2 mt-4">{children}</h4>
     ),
-    normal: ({ children }: any) => <p className="mb-4 leading-7">{children}</p>,
+    normal: ({ children }: any) => <p className="mb-4">{children}</p>,
     blockquote: ({ children }: any) => (
       <blockquote className="border-l-4 border-brand-green pl-6 py-2 my-6 italic text-muted-foreground">
         {children}
@@ -84,8 +84,8 @@ const portableTextComponents = {
     ),
   },
   listItem: {
-    bullet: ({ children }: any) => <li className="leading-7">{children}</li>,
-    number: ({ children }: any) => <li className="leading-7">{children}</li>,
+    bullet: ({ children }: any) => <li>{children}</li>,
+    number: ({ children }: any) => <li>{children}</li>,
   },
   marks: {
     strong: ({ children }: any) => (

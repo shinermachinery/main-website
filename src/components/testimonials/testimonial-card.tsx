@@ -57,7 +57,7 @@ export function TestimonialCard({
 
       {/* Content */}
       <blockquote
-        className={`text-foreground leading-relaxed flex-1 mb-6 ${isCompact ? "text-sm" : ""}`}
+        className={`text-foreground flex-1 mb-6 ${isCompact ? "text-sm" : ""}`}
       >
         {isQuote && <Quote className="h-10 w-10 text-brand-green/20" />}
         <p className={isQuote ? "mt-2" : ""}>"{testimonial.content}"</p>

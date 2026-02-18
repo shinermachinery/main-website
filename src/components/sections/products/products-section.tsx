@@ -50,6 +50,7 @@ export function ProductsGrid({ products }: ProductsGridProps) {
                   key={product._id}
                   title={product.title}
                   description={product.description}
+                  category={product.collection?.title}
                   imageUrl={imageUrl}
                   imageAlt={product.images?.[0]?.alt || product.title}
                   href={`/products/${product.slug.current}`}

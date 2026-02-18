@@ -1,5 +1,5 @@
+import { PortableText } from "@portabletext/react";
 import {
-  ArrowRight,
   ArrowUpRight,
   Building2,
   ChartLine,
@@ -13,6 +13,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { getAboutPage } from "@/actions/about";
+import { ProductCard } from "@/components/sections/products/product-card";
 import { Button } from "@/components/ui/button";
 import { pageMetadata } from "@/lib/site-config";
 import { urlFor } from "@/sanity/lib/image";
@@ -72,25 +73,21 @@ export default async function AboutPage() {
 
   const heroTitle =
     aboutData?.heroTitle || "Engineering Excellence for Modern Manufacturing";
-  const heroDescription =
-    aboutData?.heroDescription ||
-    "Shiner Machinery designs and delivers precision-engineered machines that empower manufacturers to build faster, smarter, and more efficiently.";
-  const whoWeAreTitle = aboutData?.whoWeAre?.title || "Who We Are";
-  const whoWeAreText =
-    "Shiner Machinery is a global provider of industrial fabrication machinery, specializing in high-performance solutions for window, door, and glass production lines. With a focus on reliability, automation, and long-term value, we support manufacturers at every stage — from consultation to installation and beyond.";
+  const heroDescription = aboutData?.heroDescription;
   const missionTitle = aboutData?.mission?.title || "Our Mission";
-  const missionText =
-    aboutData?.mission?.description ||
-    "To enable manufacturers worldwide with reliable, efficient, and future-ready machinery.";
+  const missionDescription = aboutData?.mission?.description;
   const features = aboutData?.features?.length
     ? aboutData.features
     : fallbackFeatures;
   const bottomFeatures = aboutData?.bottomFeatures?.length
     ? aboutData.bottomFeatures
     : fallbackBottomFeatures;
-  const whoWeAreImage = aboutData?.whoWeAre?.image?.asset
-    ? urlFor(aboutData.whoWeAre.image).width(600).height(400).url()
+  const visionTitle = aboutData?.vision?.title || "Our Vision";
+  const visionDescription = aboutData?.vision?.description;
+  const mainImage = aboutData?.mainImage?.asset
+    ? urlFor(aboutData.mainImage).width(600).height(400).url()
     : null;
+  const mainImageAlt = aboutData?.mainImage?.alt || "About Shiner";
 
   return (
     <div className="bg-secondary">
@@ -101,15 +98,17 @@ export default async function AboutPage() {
             <h1 className="text-3xl font-medium text-foreground md:text-2xl">
               {heroTitle}
             </h1>
-            <p className="text-lg font-medium text-muted-foreground md:text-base">
-              {heroDescription}
-            </p>
+            {heroDescription && (
+              <div className="prose prose-sm max-w-none text-muted-foreground">
+                <PortableText value={heroDescription} />
+              </div>
+            )}
           </div>
-          <div className="h-[15rem] w-full flex-1 overflow-hidden rounded-2xl bg-muted md:h-[20rem] md:w-[35.375rem]">
-            {whoWeAreImage && (
+          <div className="h-60 w-full flex-1 overflow-hidden rounded-2xl bg-muted md:h-80 md:w-xl">
+            {mainImage && (
               <Image
-                src={whoWeAreImage}
-                alt={aboutData?.whoWeAre?.image?.alt || "About Shiner"}
+                src={mainImage}
+                alt={mainImageAlt}
                 width={600}
                 height={400}
                 className="h-full w-full object-cover"
@@ -119,35 +118,34 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      {/* Who We Are & Mission Section */}
+      {/* Mission, Vision & Features Section */}
       <section className="container mx-auto px-6 py-16">
-        <div className="flex flex-col gap-6 md:flex-row">
-          <div className="flex flex-1 flex-col gap-6">
-            <div className="flex flex-1 flex-col gap-10 rounded-2xl bg-brand-green-10 p-6">
-              <p className="text-lg font-medium text-brand-green">
-                {whoWeAreTitle}
-              </p>
-              <div className="flex flex-col gap-3">
-                <p className="text-lg font-medium text-foreground">
-                  Built on Precision. Driven by Performance.
-                </p>
-                <p className="text-sm leading-5 text-muted-foreground">
-                  {whoWeAreText}
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-1 flex-col justify-between gap-10 rounded-2xl bg-brand-blue-10 p-6">
+        <div className="w-full grid grid-cols-1 gap-6">
+          <div className="w-full grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div className="flex flex-1 flex-col justify-start gap-4 rounded-2xl bg-brand-blue-10 p-6">
               <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-lg">
                 {missionTitle}
               </p>
-              <p className="text-xl font-medium text-foreground">
-                {missionText}
+              {missionDescription && (
+                <div className="prose prose-sm max-w-none text-foreground">
+                  <PortableText value={missionDescription} />
+                </div>
+              )}
+            </div>
+            <div className="flex flex-1 flex-col justify-between gap-4 rounded-2xl bg-brand-green-10 p-6">
+              <p className="text-lg font-medium text-brand-green">
+                {visionTitle}
               </p>
+              {visionDescription && (
+                <div className="prose prose-sm max-w-none text-foreground">
+                  <PortableText value={visionDescription} />
+                </div>
+              )}
             </div>
           </div>
 
           {/* Feature Cards */}
-          <div className="flex flex-1 flex-col gap-6">
+          <div className="w-full grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
             {features.map((feature) => {
               const Icon = iconMap[feature.icon || ""] || Settings;
               return (
@@ -171,7 +169,7 @@ export default async function AboutPage() {
         </div>
 
         {/* Bottom Feature Cards */}
-        <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
+        {/* <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
           {bottomFeatures.map((feature) => {
             const Icon = iconMap[feature.icon || ""] || Building2;
             return (
@@ -186,7 +184,7 @@ export default async function AboutPage() {
               </div>
             );
           })}
-        </div>
+        </div> */}
       </section>
 
       {/* Featured Products Section */}
@@ -196,7 +194,7 @@ export default async function AboutPage() {
           <h2 className="text-2xl font-medium text-foreground">
             Featured Products
           </h2>
-          <Button variant="shiner" size="lg" asChild>
+          <Button variant="shiner" size="lg" asChild className="rounded-full">
             <Link href="/products">
               <span>Explore Products</span>
               <ArrowUpRight className="size-5" />
@@ -205,36 +203,15 @@ export default async function AboutPage() {
         </div>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {featuredProducts.map((product) => (
-            <div
+            <ProductCard
               key={product.id}
-              className="flex flex-col gap-4 rounded-2xl bg-background p-4"
-            >
-              <div className="relative aspect-282/168 w-full overflow-hidden rounded-2xl bg-muted">
-                <Image
-                  src={product.primaryImage}
-                  alt={product.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 40rem) 100vw, (max-width: 64rem) 50vw, 25vw"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <p className="text-sm font-medium leading-5 text-foreground">
-                  {product.title}
-                </p>
-                {product.description && (
-                  <p className="line-clamp-2 text-sm leading-5 text-muted-foreground">
-                    {product.description}
-                  </p>
-                )}
-              </div>
-              <Button variant="shiner" size="lg" className="w-full rounded-full" asChild>
-                <Link href={`/products/${product.slug}`}>
-                  View Details
-                  <ArrowRight className="size-4" />
-                </Link>
-              </Button>
-            </div>
+              title={product.title}
+              description={product.description}
+              category={product.collection?.title}
+              imageUrl={product.primaryImage}
+              imageAlt={product.title}
+              href={`/products/${product.slug}`}
+            />
           ))}
         </div>
       </section>

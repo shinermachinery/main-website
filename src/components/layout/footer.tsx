@@ -4,10 +4,12 @@ import {
   Instagram,
   Linkedin,
   Mail,
+  Phone,
   Twitter,
 } from "lucide-react";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
+import Image from "next/image";
 
 const socialLinks = [
   {
@@ -41,9 +43,21 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold bg-clip-text text-transparent bg-linear-to-r from-brand-blue to-brand-green">
-              Shiner
-            </h3>
+          <Link href="/" className="flex items-center gap-1">
+            <div className="flex items-center gap-1">
+              {/* Logo Icon - Using linear colors */}
+              <Image
+                src={"/shiner-logo.png"}
+                alt="Shiner Logo"
+                width={48}
+                height={48}
+                className="size-8"
+              />
+              {/* Logo Text */}
+              <span className="text-xl font-bold text-brand-blue ">SHINER</span>
+            </div>
+          </Link>
+
             <p className="text-sm text-muted-foreground">
               Precision engineering delivered with confidence. Built to perform,
               built to last.
@@ -144,14 +158,35 @@ export function Footer() {
                 <Mail className="size-5" />
               </a>
             </div>
-            <p className="text-sm text-muted-foreground">
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="hover:text-foreground transition-colors"
-              >
-                {siteConfig.email}
-              </a>
-            </p>
+            <div className="space-y-2 text-sm text-muted-foreground">
+              <p className="flex items-center gap-2">
+                <Phone className="size-4 shrink-0" />
+                <a
+                  href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
+                  className="hover:text-foreground transition-colors"
+                >
+                  {siteConfig.phone}
+                </a>
+              </p>
+              <p className="flex items-center gap-2">
+                <Mail className="size-4 shrink-0" />
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  className="hover:text-foreground transition-colors"
+                >
+                  {siteConfig.email}
+                </a>
+              </p>
+              <p className="flex items-center gap-2">
+                <Mail className="size-4 shrink-0" />
+                <a
+                  href={`mailto:${siteConfig.salesEmail}`}
+                  className="hover:text-foreground transition-colors"
+                >
+                  {siteConfig.salesEmail}
+                </a>
+              </p>
+            </div>
           </div>
         </div>
 

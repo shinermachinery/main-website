@@ -57,30 +57,30 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                 {/* Row 1 */}
                 <div className="flex gap-6">
                   {/* Feature 1 */}
-                  <div className="flex-1 bg-background rounded-[1rem] p-4 flex flex-col gap-4">
+                  <div className="flex-1 bg-background rounded-2xl p-4 flex flex-col gap-4">
                     <div className="w-6 h-6 text-primary">
                       <Wrench className="w-6 h-6" />
                     </div>
                     <div className="flex flex-col gap-1">
-                      <h4 className="text-sm font-medium leading-5 text-primary">
+                      <h4 className="text-sm font-medium text-primary">
                         Highest Precision Components
                       </h4>
-                      <p className="text-sm font-medium leading-5 text-muted-foreground">
+                      <p className="text-sm font-medium text-muted-foreground">
                         engineered for accurate, consistent performance.
                       </p>
                     </div>
                   </div>
 
                   {/* Feature 2 */}
-                  <div className="flex-1 bg-background rounded-[1rem] p-4 flex flex-col gap-4">
+                  <div className="flex-1 bg-background rounded-2xl p-4 flex flex-col gap-4">
                     <div className="w-6 h-6 text-primary">
                       <Settings className="w-6 h-6" />
                     </div>
                     <div className="flex flex-col gap-1">
-                      <h4 className="text-sm font-medium leading-5 text-primary">
+                      <h4 className="text-sm font-medium text-primary">
                         24/7 Support & Service
                       </h4>
-                      <p className="text-sm font-medium leading-5 text-muted-foreground">
+                      <p className="text-sm font-medium text-muted-foreground">
                         engineered for accurate, consistent performance.
                       </p>
                     </div>
@@ -90,30 +90,30 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                 {/* Row 2 */}
                 <div className="flex gap-6">
                   {/* Feature 3 */}
-                  <div className="flex-1 bg-background rounded-[1rem] p-4 flex flex-col gap-4">
+                  <div className="flex-1 bg-background rounded-2xl p-4 flex flex-col gap-4">
                     <div className="w-6 h-6 text-primary">
                       <TrendingUp className="w-6 h-6" />
                     </div>
                     <div className="flex flex-col gap-1">
-                      <h4 className="text-sm font-medium leading-5 text-primary">
+                      <h4 className="text-sm font-medium text-primary">
                         Productivity Focused
                       </h4>
-                      <p className="text-sm font-medium leading-5 text-muted-foreground">
+                      <p className="text-sm font-medium text-muted-foreground">
                         engineered for accurate, consistent performance.
                       </p>
                     </div>
                   </div>
 
                   {/* Feature 4 */}
-                  <div className="flex-1 bg-background rounded-[1rem] p-4 flex flex-col gap-4">
+                  <div className="flex-1 bg-background rounded-2xl p-4 flex flex-col gap-4">
                     <div className="w-6 h-6 text-primary">
                       <Globe className="w-6 h-6" />
                     </div>
                     <div className="flex flex-col gap-1">
-                      <h4 className="text-sm font-medium leading-5 text-primary">
+                      <h4 className="text-sm font-medium text-primary">
                         Global Reach, Local Support
                       </h4>
-                      <p className="text-sm font-medium leading-5 text-muted-foreground">
+                      <p className="text-sm font-medium text-muted-foreground">
                         engineered for accurate, consistent performance.
                       </p>
                     </div>

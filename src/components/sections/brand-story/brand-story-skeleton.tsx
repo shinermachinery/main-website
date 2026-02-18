@@ -20,7 +20,7 @@ export function BrandStorySkeleton() {
               {Array.from({ length: 4 }).map((_, i) => (
                 <div
                   key={i}
-                  className="flex-1 min-w-[15rem] h-[30.11rem] bg-muted rounded-[1.5rem] animate-pulse"
+                  className="flex-1 min-w-60 h-96 bg-muted rounded-3xl animate-pulse"
                 />
               ))}
             </div>

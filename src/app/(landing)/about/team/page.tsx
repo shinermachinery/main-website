@@ -14,7 +14,7 @@ async function TeamContent() {
   if (members.length === 0) return null;
 
   return (
-    <div className="flex flex-col gap-20">
+    <div className="flex flex-col gap-10">
       <SectionHeading
         as="h1"
         title="Our Team"
@@ -72,7 +72,7 @@ async function TeamContent() {
 
 function TeamSkeleton() {
   return (
-    <div className="flex flex-col gap-20 animate-pulse">
+    <div className="flex flex-col gap-10 animate-pulse">
       <div className="flex flex-col items-center gap-4">
         <div className="h-10 bg-muted rounded-md w-48" />
         <div className="h-6 bg-muted rounded-md w-96" />

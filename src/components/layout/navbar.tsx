@@ -180,7 +180,7 @@ export function Navbar() {
 
             {/* About Us section - expanded for mobile */}
             <div className="pt-2 mt-2 border-t border-primary">
-              <div className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+              <div className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase">
                 About Us
               </div>
               {aboutLinks.map((link) => (
@@ -197,7 +197,7 @@ export function Navbar() {
 
             {/* More section - expanded for mobile */}
             <div className="pt-2 mt-2 border-t border-primary">
-              <div className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+              <div className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase">
                 More
               </div>
               {moreLinks.map((link) => (

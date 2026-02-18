@@ -40,7 +40,7 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
           className="flex gap-2 items-center group transition-colors hover:opacity-70"
         >
           <ChevronLeft className="size-4 text-muted-foreground" />
-          <span className="font-normal text-sm leading-5 text-muted-foreground">
+          <span className="font-normal text-sm text-muted-foreground">
             Back
           </span>
         </Link>
@@ -52,7 +52,7 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
 
         {/* Date and Title */}
         <div className="flex flex-col gap-4">
-          <p className="font-normal text-sm leading-5 text-muted-foreground">
+          <p className="font-normal text-sm text-muted-foreground">
             {formattedDate}
           </p>
           <h1 className="font-medium text-3xl text-foreground">

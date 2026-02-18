@@ -4,10 +4,12 @@ import { ArrowRight, FileText } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { GradientBadge } from "@/components/ui/gradient-badge";
 
 interface ProductCardProps {
   title: string;
   description?: string;
+  category?: string;
   imageUrl?: string;
   imageAlt?: string;
   href?: string;
@@ -17,6 +19,7 @@ interface ProductCardProps {
 export function ProductCard({
   title,
   description,
+  category,
   imageUrl,
   imageAlt,
   href,
@@ -50,13 +53,20 @@ export function ProductCard({
         )}
       </div>
 
+      {/* Category Badge */}
+      {category && (
+        <div className="flex items-center w-full">
+          <GradientBadge>{category}</GradientBadge>
+        </div>
+      )}
+
       {/* Product Info */}
       <div className="flex flex-col gap-2 items-start w-full">
-        <p className="text-sm font-medium leading-5 text-foreground w-full">
+        <p className="text-sm font-medium text-foreground w-full">
           {title}
         </p>
         {description && (
-          <p className="text-sm font-medium leading-5 text-muted-foreground w-full line-clamp-2">
+          <p className="text-sm font-medium text-muted-foreground w-full line-clamp-2">
             {description}
           </p>
         )}

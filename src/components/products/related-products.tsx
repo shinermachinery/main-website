@@ -92,7 +92,7 @@ export function RelatedProducts({
             <div className="p-4 space-y-2">
               {/* Collection Badge */}
               {product.collection && (
-                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[0.625rem] font-medium bg-brand-blue/5 text-brand-blue">
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-brand-blue/5 text-brand-blue">
                   {product.collection.title}
                 </span>
               )}

@@ -44,7 +44,7 @@ export function TeamGrid({ teamMembers }: TeamGridProps) {
 
                 return (
                   <div key={member._id} className="group text-center space-y-4">
-                    <div className="relative aspect-square overflow-hidden rounded-2xl bg-muted mx-auto max-w-[17.5rem]">
+                    <div className="relative aspect-square overflow-hidden rounded-2xl bg-muted mx-auto max-w-72">
                       <Image
                         src={imageUrl}
                         alt={member.image?.alt || member.name}

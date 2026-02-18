@@ -53,15 +53,16 @@ export const aboutLinks: NavLinkWithIcon[] = [
     href: "/about/why-choose-us",
     icon: Award,
   },
-  {
-    name: "Our Team",
-    href: "/about/team",
-    icon: Users,
-  },
+
   {
     name: "About Director",
     href: "/about/director",
     icon: User,
+  },
+  {
+    name: "Our Team",
+    href: "/about/team",
+    icon: Users,
   },
 ];
 

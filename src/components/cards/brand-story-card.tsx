@@ -16,14 +16,14 @@ export function BrandStoryCard({
   imageAlt,
 }: BrandStoryCardProps) {
   return (
-    <div className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)] h-[30.11rem] relative rounded-[1.5rem] overflow-hidden">
+    <div className="w-full sm:w-1/2 lg:w-1/4 h-96 relative rounded-3xl overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 rounded-[1.5rem]">
+      <div className="absolute inset-0 rounded-3xl">
         <Image
           src={imageUrl}
           alt={imageAlt}
           fill
-          className="object-cover rounded-[1.5rem]"
+          className="object-cover rounded-3xl"
           sizes="(max-width: 48rem) 100vw, (max-width: 64rem) 50vw, 25vw"
         />
       </div>
@@ -39,11 +39,11 @@ export function BrandStoryCard({
       />
 
       {/* Text Content at Bottom - Positioned at 397px from top */}
-      <div className="absolute left-6 top-[24.81rem] flex flex-col gap-1">
+      <div className="absolute left-6 bottom-6 flex flex-col gap-1">
         <p className="font-medium text-lg text-white">
           {name}
         </p>
-        <p className="font-normal text-sm leading-5 text-white">{role}</p>
+        <p className="font-normal text-sm text-white">{role}</p>
       </div>
     </div>
   );

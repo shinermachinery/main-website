@@ -21,13 +21,13 @@ export function ProductInfo({ product }: ProductInfoProps) {
         )}
 
         {/* Title */}
-        <h1 className="text-2xl lg:text-3xl font-light text-foreground tracking-tight">
+        <h1 className="text-2xl lg:text-3xl font-light text-foreground">
           {product.title}
         </h1>
 
         {/* Description */}
         {product.description && (
-          <p className="text-sm font-light text-muted-foreground leading-relaxed">
+          <p className="text-sm font-light text-muted-foreground">
             {product.description}
           </p>
         )}
@@ -41,7 +41,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
               {product.descriptionBulletPoints.map((point, index) => (
                 <li key={index} className="flex items-start gap-3 group">
                   <Star className="fill-brand-green" />
-                  <span className="text-sm font-light text-muted-foreground leading-relaxed">
+                  <span className="text-sm font-light text-muted-foreground">
                     {point}
                   </span>
                 </li>
@@ -54,7 +54,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
       {product.price && (
         <div className="pt-4 border-t border-border">
           <div className="flex items-baseline gap-2">
-            <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+            <span className="text-xs font-medium text-muted-foreground uppercase">
               Starting from
             </span>
             <span className="text-xl font-light text-foreground">

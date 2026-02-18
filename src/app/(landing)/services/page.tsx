@@ -37,7 +37,7 @@ export default async function ServicesPage() {
                   className="flex flex-col md:flex-row gap-6 items-start"
                 >
                   {/* Image */}
-                  <div className="bg-background rounded-2xl shrink-0 w-full md:w-[20.625rem]">
+                  <div className="bg-background rounded-2xl shrink-0 w-full md:w-sm">
                     <div className="relative w-full aspect-282/168 rounded-2xl overflow-hidden">
                       <Image
                         src={service.image}
@@ -68,7 +68,7 @@ export default async function ServicesPage() {
                       }}
                     >
                       <Phone className="h-5 w-5 text-white" />
-                      <span className="font-medium text-sm leading-5 text-white">
+                      <span className="font-medium text-sm text-white">
                         View Details
                       </span>
                     </Link>

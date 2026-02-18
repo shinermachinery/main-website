@@ -27,10 +27,10 @@ export function ProductsGridSection({
     <section className="flex flex-col gap-y-10 w-full">
       {/* Header */}
       <div className="flex flex-col gap-y-4">
-        <h1 className="font-medium text-4xl leading-10 tracking-[-0.0563rem] text-foreground">
+        <h1 className="font-medium text-4xl text-foreground">
           Our Products
         </h1>
-        <p className="font-medium text-lg leading-6 tracking-[-0.0313rem] text-muted-foreground">
+        <p className="font-medium text-lg text-muted-foreground">
           Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst
           ullamcorper purus
         </p>
@@ -107,6 +107,7 @@ export function ProductsGridSection({
               key={product._id}
               title={product.title}
               description={product.description}
+              category={product.collection?.title}
               imageUrl={imageUrl}
               imageAlt={product.images?.[0]?.alt || product.title}
               onViewDetails={() => {

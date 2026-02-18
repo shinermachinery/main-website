@@ -7,14 +7,14 @@ export function ProductsGridSectionSkeleton() {
     <section className="flex flex-col gap-10 w-full">
       {/* Header Skeleton */}
       <div className="flex flex-col gap-4">
-        <div className="h-12 bg-muted rounded-md w-[18.75rem] animate-pulse" />
-        <div className="h-7 bg-muted rounded-md w-[31.25rem] animate-pulse" />
+        <div className="h-12 bg-muted rounded-md w-72 animate-pulse" />
+        <div className="h-7 bg-muted rounded-md w-lg animate-pulse" />
       </div>
 
       {/* Search & Filter Bar Skeleton */}
       <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
         {/* Search Input Skeleton */}
-        <div className="w-full md:w-[35.375rem] h-12 rounded-full bg-muted animate-pulse" />
+        <div className="w-full md:w-xl h-12 rounded-full bg-muted animate-pulse" />
 
         {/* Filter & Categories Skeleton */}
         <div className="flex items-center gap-4">
@@ -36,9 +36,9 @@ export function ProductsGridSectionSkeleton() {
 
             {/* Content Skeleton */}
             <div className="flex flex-col gap-2">
-              <div className="h-[0.875rem] bg-muted rounded-md w-3/4 animate-pulse" />
-              <div className="h-[0.875rem] bg-muted rounded-md w-full animate-pulse" />
-              <div className="h-[0.875rem] bg-muted rounded-md w-5/6 animate-pulse" />
+              <div className="h-3.5 bg-muted rounded-md w-3/4 animate-pulse" />
+              <div className="h-3.5 bg-muted rounded-md w-full animate-pulse" />
+              <div className="h-3.5 bg-muted rounded-md w-5/6 animate-pulse" />
             </div>
 
             {/* Button Skeleton */}

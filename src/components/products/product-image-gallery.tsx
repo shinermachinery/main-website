@@ -125,7 +125,7 @@ export function ProductImageGallery({
           {/* Ultra-thin Image Counter */}
           {images.length > 1 && (
             <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-black/10 backdrop-blur-md">
-              <span className="text-[0.6875rem] font-light text-white">
+              <span className="text-xs font-light text-white">
                 {selectedIndex + 1} of {images.length}
               </span>
             </div>

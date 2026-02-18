@@ -15,7 +15,7 @@ const gradientButtonVariants = cva(
         secondary:
           "bg-gradient-to-r from-brand-blue-10 to-brand-green-10 text-foreground shadow-[inset_0rem_0.25rem_1.806rem_0rem_rgba(161,161,170,0.4)]",
         outline:
-          "border-2 border-transparent bg-gradient-to-r from-brand-blue to-brand-green bg-origin-border relative after:absolute after:inset-[0.125rem] after:rounded-full after:bg-background",
+          "border-2 border-transparent bg-gradient-to-r from-brand-blue to-brand-green bg-origin-border relative after:absolute after:inset-0.5 after:rounded-full after:bg-background",
       },
       size: {
         default: "h-12 px-6 py-3",

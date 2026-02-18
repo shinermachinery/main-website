@@ -17,8 +17,8 @@ export function ClientsListSectionSkeleton() {
     <section className="flex flex-col gap-6 w-full">
       {/* Header Skeleton */}
       <div className="flex flex-col gap-4">
-        <div className="h-12 bg-muted rounded-md w-[25rem] animate-pulse" />
-        <div className="h-7 bg-muted rounded-md w-[31.25rem] animate-pulse" />
+        <div className="h-12 bg-muted rounded-md w-96 animate-pulse" />
+        <div className="h-7 bg-muted rounded-md w-lg animate-pulse" />
       </div>
 
       {/* 3-Column Grid */}
@@ -28,7 +28,7 @@ export function ClientsListSectionSkeleton() {
             {column.items.map((id) => (
               <div
                 key={id}
-                className="flex flex-col gap-3 p-5 rounded-[1.25rem] bg-muted animate-pulse"
+                className="flex flex-col gap-3 p-5 rounded-2xl bg-muted animate-pulse"
               >
                 {/* Company Name Skeleton */}
                 <div className="h-7 bg-muted-foreground/20 rounded-md w-3/4" />
@@ -48,7 +48,7 @@ export function ClientsListSectionSkeleton() {
             ))}
             {/* Highlight Card in last column */}
             {column.hasHighlight && (
-              <div className="flex flex-col items-start justify-center p-5 rounded-[1.25rem] h-[9.75rem] bg-muted animate-pulse">
+              <div className="flex flex-col items-start justify-center p-5 rounded-2xl h-40 bg-muted animate-pulse">
                 <div className="h-7 bg-muted-foreground/20 rounded-md w-3/4" />
               </div>
             )}

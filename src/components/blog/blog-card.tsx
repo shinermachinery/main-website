@@ -51,22 +51,22 @@ export function BlogCard({
         <h3 className="font-medium text-base text-foreground transition-colors">
           {title}
         </h3>
-        <p className="font-normal text-sm leading-5 text-muted-foreground line-clamp-3 overflow-hidden">
+        <p className="font-normal text-sm text-muted-foreground line-clamp-3 overflow-hidden">
           {description}
         </p>
           {/* Meta Info */}
       {(readTime || publishedDate) && (
         <div className="flex gap-1 items-center opacity-40 w-full">
           {readTime && (
-            <span className="font-medium text-sm leading-4 text-foreground">
+            <span className="font-medium text-sm text-foreground">
               {readTime}
             </span>
           )}
           {readTime && publishedDate && (
-            <span className="font-medium text-sm leading-4 text-foreground">•</span>
+            <span className="font-medium text-sm text-foreground">•</span>
           )}
           {publishedDate && (
-            <span className="font-medium text-sm leading-4 text-foreground">
+            <span className="font-medium text-sm text-foreground">
               {publishedDate}
             </span>
           )}

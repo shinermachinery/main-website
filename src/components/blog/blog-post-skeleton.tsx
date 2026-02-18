@@ -1,6 +1,6 @@
 export function BlogPostSkeleton() {
   return (
-    <div className="container mx-auto px-4 md:px-8 lg:px-[14.75rem] py-20">
+    <div className="container mx-auto px-4 md:px-8 lg:px-60 py-20">
       <div className="flex flex-col gap-10 animate-pulse">
         {/* Back Button Skeleton */}
         <div className="flex gap-2 items-center">
@@ -21,7 +21,7 @@ export function BlogPostSkeleton() {
         </div>
 
         {/* Featured Image Skeleton */}
-        <div className="w-full h-[21.19rem] bg-muted rounded-2xl" />
+        <div className="w-full h-80 bg-muted rounded-2xl" />
 
         {/* Content Sections Skeleton */}
         <div className="flex flex-col gap-10">

@@ -18,71 +18,36 @@ export const aboutPageType = defineType({
     defineField({
       name: "heroDescription",
       title: "Hero Description",
-      type: "text",
-      rows: 3,
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "block",
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "H3", value: "h3" },
+            { title: "Quote", value: "blockquote" },
+          ],
+          lists: [{ title: "Bullet", value: "bullet" }],
+          marks: {
+            decorators: [
+              { title: "Strong", value: "strong" },
+              { title: "Emphasis", value: "em" },
+            ],
+          },
+        }),
+      ],
     }),
-
-    // Who We Are Section
     defineField({
-      name: "whoWeAre",
-      title: "Who We Are",
-      type: "object",
+      name: "mainImage",
+      title: "Main Image",
+      type: "image",
+      description: "Hero image displayed next to the title",
+      options: { hotspot: true },
       fields: [
         defineField({
-          name: "title",
-          title: "Section Title",
+          name: "alt",
           type: "string",
-          initialValue: "Who We Are",
-        }),
-        defineField({
-          name: "description",
-          title: "Description",
-          type: "array",
-          of: [
-            defineArrayMember({
-              type: "block",
-              styles: [
-                { title: "Normal", value: "normal" },
-                { title: "H2", value: "h2" },
-                { title: "H3", value: "h3" },
-                { title: "Quote", value: "blockquote" },
-              ],
-              lists: [{ title: "Bullet", value: "bullet" }],
-              marks: {
-                decorators: [
-                  { title: "Strong", value: "strong" },
-                  { title: "Emphasis", value: "em" },
-                ],
-                annotations: [
-                  {
-                    title: "URL",
-                    name: "link",
-                    type: "object",
-                    fields: [
-                      {
-                        title: "URL",
-                        name: "href",
-                        type: "url",
-                      },
-                    ],
-                  },
-                ],
-              },
-            }),
-          ],
-        }),
-        defineField({
-          name: "image",
-          title: "Image",
-          type: "image",
-          options: { hotspot: true },
-          fields: [
-            defineField({
-              name: "alt",
-              type: "string",
-              title: "Alternative text",
-            }),
-          ],
+          title: "Alternative text",
         }),
       ],
     }),
@@ -102,8 +67,24 @@ export const aboutPageType = defineType({
         defineField({
           name: "description",
           title: "Description",
-          type: "text",
-          rows: 5,
+          type: "array",
+          of: [
+            defineArrayMember({
+              type: "block",
+              styles: [
+                { title: "Normal", value: "normal" },
+                { title: "H3", value: "h3" },
+                { title: "Quote", value: "blockquote" },
+              ],
+              lists: [{ title: "Bullet", value: "bullet" }],
+              marks: {
+                decorators: [
+                  { title: "Strong", value: "strong" },
+                  { title: "Emphasis", value: "em" },
+                ],
+              },
+            }),
+          ],
         }),
       ],
     }),
@@ -123,8 +104,24 @@ export const aboutPageType = defineType({
         defineField({
           name: "description",
           title: "Description",
-          type: "text",
-          rows: 5,
+          type: "array",
+          of: [
+            defineArrayMember({
+              type: "block",
+              styles: [
+                { title: "Normal", value: "normal" },
+                { title: "H3", value: "h3" },
+                { title: "Quote", value: "blockquote" },
+              ],
+              lists: [{ title: "Bullet", value: "bullet" }],
+              marks: {
+                decorators: [
+                  { title: "Strong", value: "strong" },
+                  { title: "Emphasis", value: "em" },
+                ],
+              },
+            }),
+          ],
         }),
       ],
     }),

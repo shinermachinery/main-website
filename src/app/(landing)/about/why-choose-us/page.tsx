@@ -14,11 +14,11 @@ async function WhyChooseUsContent() {
   }
 
   return (
-    <div className="flex flex-col gap-20">
+    <div className="flex flex-col gap-10">
       {/* Hero Section */}
       <section className="flex flex-col gap-6">
         {/* Header */}
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 mt-5 sm:mt-0">
           <h1 className="font-medium text-3xl text-foreground">
             {data.title}
           </h1>
@@ -31,7 +31,7 @@ async function WhyChooseUsContent() {
 
         {/* Hero Image */}
         {data.heroImage && (
-          <div className="relative w-full aspect-[16/6] rounded-[1.5rem] overflow-hidden">
+          <div className="relative w-full aspect-[16/6] rounded-3xl overflow-hidden">
             <Image
               src={data.heroImage}
               alt={data.title}
@@ -67,7 +67,7 @@ async function WhyChooseUsContent() {
                 <h3 className="font-medium text-lg text-foreground">
                   {reason.title}
                 </h3>
-                <p className="font-normal text-sm leading-5 text-muted-foreground">
+                <p className="font-normal text-sm text-muted-foreground">
                   {reason.description}
                 </p>
               </div>
@@ -85,13 +85,13 @@ async function WhyChooseUsContent() {
 
 function WhyChooseUsSkeleton() {
   return (
-    <div className="flex flex-col gap-20 animate-pulse">
+    <div className="flex flex-col gap-10 animate-pulse">
       <section className="flex flex-col gap-6">
         <div className="flex flex-col gap-4">
           <div className="h-12 bg-muted rounded-md w-64" />
           <div className="h-7 bg-muted rounded-md w-96" />
         </div>
-        <div className="w-full aspect-[16/6] rounded-[1.5rem] bg-muted" />
+        <div className="w-full aspect-16/6 rounded-2xl bg-muted" />
       </section>
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {Array.from({ length: 6 }).map((_, i) => (

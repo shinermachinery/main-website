@@ -44,14 +44,14 @@ export function HeroSection({
             {/* Flex container for Typography Card and Featured Product Card */}
             <div className="w-full flex flex-col lg:flex-row gap-6 items-end justify-between pb-0">
               {/* Typography Card - Left (Less than 50%) */}
-              <div className="bg-background rounded-t-[3rem] w-full lg:max-w-[45%] px-6 lg:px-8 py-12 lg:py-16">
+              <div className="bg-background rounded-t-4xl w-full lg:max-w-[45%] px-6 lg:px-8 py-12 lg:py-16">
                 {/* Main Heading */}
-                <h1 className="text-2xl md:text-3xl lg:text-4xl font-normal tracking-tight mb-4 text-primary">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-normal mb-4 text-primary">
                   {headline}
                 </h1>
 
                 {/* Description */}
-                <p className="text-sm md:text-base text-muted-foreground mb-6 leading-relaxed font-light">
+                <p className="text-sm md:text-base text-muted-foreground mb-6 font-light">
                   {description}
                 </p>
 
@@ -79,15 +79,15 @@ export function HeroSection({
               </div>
 
               {/* Featured Product Card - Right (Smaller) */}
-              <div className="w-full lg:w-[16.875rem]">
+              <div className="w-full lg:w-64">
                 {/* Featured Product Card */}
-                <div className="bg-background rounded-[1rem] p-3 flex flex-col gap-4">
+                <div className="bg-background rounded-2xl p-3 flex flex-col gap-4">
                   {/* Header Row */}
                   <div className="flex items-start justify-between gap-4">
-                    <p className="text-sm font-medium leading-5 text-primary flex-1">
+                    <p className="text-sm font-medium text-primary flex-1">
                       Featured Product
                     </p>
-                    <div className="opacity-50 pt-[0.125rem]">
+                    <div className="opacity-50 pt-0.5">
                       <ArrowRight className="w-4 h-4 rotate-180 scale-y-[-1] text-primary" />
                     </div>
                   </div>
@@ -95,7 +95,7 @@ export function HeroSection({
                   {/* Product Image Placeholder with Pagination Dots */}
                   <div className="relative">
                     {/* Gray placeholder - will be replaced with actual image */}
-                    <div className="w-full h-[10.053rem] bg-muted-foreground/30 rounded-[1rem]" />
+                    <div className="w-full h-40 bg-muted-foreground/30 rounded-2xl" />
 
                     {/* Pagination Dots */}
                     <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">

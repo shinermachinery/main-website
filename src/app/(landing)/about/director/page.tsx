@@ -17,7 +17,7 @@ async function DirectorContent() {
   }
 
   return (
-    <div className="flex flex-col gap-20">
+    <div className="flex flex-col gap-10">
       {/* Page Header */}
       <section className="flex flex-col gap-4">
         <h1 className="font-medium text-3xl text-foreground">
@@ -31,11 +31,11 @@ async function DirectorContent() {
       </section>
 
       {/* Director Profile */}
-      <section className="flex flex-col lg:flex-row gap-[3.75rem]">
+      <section className="flex flex-col lg:flex-row gap-16">
         {/* Left: Photo & Contact */}
-        <div className="lg:w-[25rem] flex flex-col gap-8">
+        <div className="lg:w-96 flex flex-col gap-8">
           {/* Photo */}
-          <div className="relative w-full aspect-square rounded-[1.5rem] overflow-hidden">
+          <div className="relative w-full aspect-square rounded-3xl overflow-hidden">
             <Image
               src={data.image}
               alt={data.name}
@@ -64,7 +64,7 @@ async function DirectorContent() {
                 className="flex items-center gap-3 text-muted-foreground hover:text-brand-blue transition-colors"
               >
                 <Mail className="size-5" />
-                <span className="font-normal text-sm leading-5">
+                <span className="font-normal text-sm">
                   {data.email}
                 </span>
               </Link>
@@ -75,7 +75,7 @@ async function DirectorContent() {
                 className="flex items-center gap-3 text-muted-foreground hover:text-brand-blue transition-colors"
               >
                 <Phone className="size-5" />
-                <span className="font-normal text-sm leading-5">
+                <span className="font-normal text-sm">
                   {data.phone}
                 </span>
               </Link>
@@ -88,7 +88,7 @@ async function DirectorContent() {
                 className="flex items-center gap-3 text-muted-foreground hover:text-brand-blue transition-colors"
               >
                 <Linkedin className="size-5" />
-                <span className="font-normal text-sm leading-5">
+                <span className="font-normal text-sm">
                   LinkedIn Profile
                 </span>
               </Link>
@@ -118,8 +118,8 @@ async function DirectorContent() {
               </h3>
               <ul className="flex flex-col gap-3">
                 {data.achievements.map((achievement: string, index: number) => (
-                  <li key={index} className="flex gap-3 items-start">
-                    <div className="w-[0.375rem] h-[0.375rem] rounded-full bg-brand-blue mt-[0.438rem] shrink-0" />
+                  <li key={achievement} className="flex gap-3 items-start">
+                    <div className="w-1 h-1 rounded-full bg-brand-blue mt-2 shrink-0" />
                     <p className="font-normal text-sm text-muted-foreground">
                       {achievement}
                     </p>
@@ -136,14 +136,14 @@ async function DirectorContent() {
 
 function DirectorSkeleton() {
   return (
-    <div className="flex flex-col gap-20 animate-pulse">
+    <div className="flex flex-col gap-10 animate-pulse">
       <section className="flex flex-col gap-4">
         <div className="h-12 bg-muted rounded-md w-80" />
         <div className="h-7 bg-muted rounded-md w-96" />
       </section>
-      <section className="flex flex-col lg:flex-row gap-[3.75rem]">
-        <div className="lg:w-[25rem] flex flex-col gap-8">
-          <div className="aspect-square rounded-[1.5rem] bg-muted" />
+      <section className="flex flex-col lg:flex-row gap-16">
+        <div className="lg:w-96 flex flex-col gap-8">
+          <div className="aspect-square rounded-3xl bg-muted" />
           <div className="flex flex-col gap-2">
             <div className="h-10 bg-secondary rounded-md w-48" />
             <div className="h-6 bg-secondary rounded-md w-64" />

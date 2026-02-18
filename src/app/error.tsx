@@ -12,7 +12,7 @@ export default function ErrorPage({
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-secondary px-6">
       <div className="mx-auto max-w-md text-center">
-        <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-[6rem] font-bold leading-none text-transparent">
+        <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-8xl font-bold text-transparent">
           500
         </p>
         <h1 className="mt-4 text-xl font-semibold text-foreground">

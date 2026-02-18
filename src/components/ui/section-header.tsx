@@ -56,16 +56,16 @@ export function SectionHeader({
     >
       <h2
         className={cn(
-          "font-medium leading-tight text-foreground tracking-[-0.0563rem]",
+          "font-medium text-foreground",
           size === "large" && "text-5xl",
-          size === "default" && "text-4xl leading-[3rem]",
+          size === "default" && "text-4xl",
           size === "small" && "text-3xl",
         )}
       >
         {title}
       </h2>
       {description && (
-        <p className="text-xl leading-7 text-muted-foreground">{description}</p>
+        <p className="text-xl text-muted-foreground">{description}</p>
       )}
     </div>
   );

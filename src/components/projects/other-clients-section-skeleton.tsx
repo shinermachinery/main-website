@@ -10,7 +10,7 @@ export function OtherClientsSectionSkeleton() {
       {/* Header Skeleton */}
       <div className="flex flex-col gap-4">
         <div className="h-12 bg-muted rounded-md w-64 animate-pulse" />
-        <div className="h-7 bg-muted rounded-md w-[31.25rem] animate-pulse" />
+        <div className="h-7 bg-muted rounded-md w-lg animate-pulse" />
       </div>
 
       {/* Logo Grid */}
@@ -23,7 +23,7 @@ export function OtherClientsSectionSkeleton() {
             {row.logos.map((logoId) => (
               <div
                 key={logoId}
-                className="w-[7.5rem] h-[7.5rem] rounded-2xl bg-muted animate-pulse"
+                className="size-30 rounded-2xl bg-muted animate-pulse"
               />
             ))}
           </div>

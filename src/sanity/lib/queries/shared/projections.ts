@@ -355,21 +355,17 @@ export const FOOTER_PROJECTION = `{
 export const ABOUT_PAGE_PROJECTION = `{
   ${BASE_DOCUMENT_FIELDS},
   heroTitle,
-  heroDescription,
-  whoWeAre {
-    title,
-    description,
-    image {
-      ${IMAGE_PROJECTION}
-    }
+  heroDescription[],
+  mainImage {
+    ${IMAGE_PROJECTION}
   },
   mission {
     title,
-    description
+    description[]
   },
   vision {
     title,
-    description
+    description[]
   },
   features[] {
     _key,

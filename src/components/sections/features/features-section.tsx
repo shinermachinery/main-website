@@ -40,7 +40,7 @@ export function FeaturesSection() {
                     <h3 className="text-sm font-semibold text-primary">
                       {feature.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-sm text-muted-foreground">
                       {feature.description}
                     </p>
                   </div>

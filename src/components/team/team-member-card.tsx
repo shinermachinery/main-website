@@ -38,8 +38,8 @@ export function TeamMemberCard({
       <div
         className={`relative overflow-hidden rounded-2xl bg-muted mx-auto ${
           isCompact
-            ? "aspect-square max-w-[12.5rem]"
-            : "aspect-square max-w-[17.5rem]"
+            ? "aspect-square max-w-52"
+            : "aspect-square max-w-72"
         }`}
       >
         <Image

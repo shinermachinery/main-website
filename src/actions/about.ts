@@ -22,23 +22,19 @@ export interface AboutPage {
   _id: string;
   _type: "aboutPage";
   heroTitle?: string;
-  heroDescription?: string;
-  whoWeAre?: {
-    title?: string;
-    description?: any[];
-    image?: {
-      asset: { _ref: string };
-      alt?: string;
-      hotspot?: { x: number; y: number };
-    };
+  heroDescription?: any[];
+  mainImage?: {
+    asset: { _ref: string };
+    alt?: string;
+    hotspot?: { x: number; y: number };
   };
   mission?: {
     title?: string;
-    description?: string;
+    description?: any[];
   };
   vision?: {
     title?: string;
-    description?: string;
+    description?: any[];
   };
   features?: AboutPageFeature[];
   bottomFeatures?: AboutPageFeature[];

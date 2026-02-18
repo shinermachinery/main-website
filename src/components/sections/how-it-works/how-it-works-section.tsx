@@ -23,8 +23,8 @@ export function HowItWorksSection({
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-10 items-start">
             {/* Left Column - Heading */}
-            <div className="flex items-center lg:w-[36.75rem] shrink-0">
-              <h2 className="font-medium text-2xl text-foreground w-full lg:w-[24rem]">
+            <div className="flex items-center lg:w-xl shrink-0">
+              <h2 className="font-medium text-2xl text-foreground w-full lg:w-96">
                 {title || "Trusted by Founders, Marketers, and Individuals"}
               </h2>
             </div>
