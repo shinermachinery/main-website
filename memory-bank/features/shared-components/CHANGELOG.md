@@ -1,5 +1,17 @@
 # Shared Components - Changelog
 
+## [1.2.0] - 2026-02-19
+
+### Changed
+- `ProductCard` now accepts `category` prop and renders it as a `GradientBadge`
+- All 3 ProductCard usage sites updated to pass `category={product.collection?.title}`:
+  - `src/components/products/products-grid-section.tsx`
+  - `src/components/products/products-grid.tsx`
+  - `src/components/sections/products/products-section.tsx`
+- `ProductCard` also used in about page featured products section (`src/app/(landing)/about/page.tsx`)
+
+---
+
 ## [1.1.0] - 2026-02-16
 
 ### Added

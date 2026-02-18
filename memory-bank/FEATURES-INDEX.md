@@ -2,7 +2,7 @@
 
 Master index of all features in this project. Each feature has detailed documentation in its respective folder.
 
-**Last Updated**: 2026-02-17
+**Last Updated**: 2026-02-19
 
 ## Active Features
 
@@ -279,40 +279,48 @@ Features currently implemented and in use.
 
 **Status**: ✅ Completed
 **Location**: `memory-bank/features/about-us-pages/`
-**Description**: Complete About Us section with three dedicated pages, navbar dropdown, and rich content management
+**Description**: Complete About Us section with main about page (hero, mission, vision, features, featured products) and three sub-pages, navbar dropdown, and rich content management
 **Key Tech**: Next.js 16, Sanity Singleton Documents, Portable Text, Server Components
 **Created**: 2025-12-30
-**Last Updated**: 2026-01-12
+**Last Updated**: 2026-02-19
 
 **Quick Links:**
 - [Full Documentation](./features/about-us-pages/README.md)
 - [Changelog](./features/about-us-pages/CHANGELOG.md)
 
 **Key Files:**
+- `src/app/(landing)/about/page.tsx` - Main About page (hero, mission, vision, features, featured products)
 - `src/app/(landing)/about/why-choose-us/page.tsx` - Why Choose Us
 - `src/app/(landing)/about/mission-vision/page.tsx` - Mission & Vision
 - `src/app/(landing)/about/director/page.tsx` - Director profile
 - `src/components/global/navbar.tsx` - About Us dropdown
+- `src/sanity/schemaTypes/company/aboutPageType.ts` - About page schema (mainImage, rich text mission/vision)
 - `src/sanity/schemaTypes/whyChooseUsType.ts` - Why Choose schema
 - `src/sanity/schemaTypes/missionVisionType.ts` - Mission schema
 - `src/sanity/schemaTypes/directorType.ts` - Director schema
+- `src/actions/about.ts` - About page data fetching
 
 **Features:**
+- Main About page with hero image, mission/vision cards, feature cards, featured products
+- About page schema with mainImage, rich text (Portable Text) for heroDescription, mission, and vision
+- Featured products section using ProductCard component
 - Navbar dropdown with 4 About options
 - Why Choose Us page (3-column grid, hero image)
 - Mission & Vision page (alternating image/text layout)
 - Director profile (photo, bio, achievements, contact)
-- Portable Text for rich director biography
+- Portable Text for rich content (director bio, mission, vision, hero description)
 - Singleton Sanity documents for easy management
-- Comprehensive dummy data fallbacks
+- Comprehensive fallback data
 - Responsive layouts with custom skeletons
 
 **Pages:**
+- `/about` - Main about page (hero, mission, vision, features, featured products)
 - `/about/why-choose-us` - Reasons to choose company
 - `/about/mission-vision` - Mission and vision statements
 - `/about/director` - Director/leadership profile
 
 **Sanity Schemas:**
+- aboutPageType - Hero (mainImage, rich text heroDescription), mission/vision (rich text), features, bottomFeatures
 - whyChooseUsType - Hero image, reasons array with icons
 - missionVisionType - Mission/vision text and images
 - directorType - Full profile with Portable Text bio
@@ -323,6 +331,15 @@ Features currently implemented and in use.
 - lucide-react (icons)
 
 **Recent Updates:**
+- **v1.2.0 (2026-02-19)**: About page schema refactor + codebase Tailwind cleanup
+  - Removed `whoWeAre` section from about page schema, projection, types, and page
+  - Added `mainImage` field to about page schema
+  - Converted `heroDescription`, `mission.description`, `vision.description` to rich text (Portable Text)
+  - Featured products section now uses `ProductCard` component
+  - Replaced all arbitrary Tailwind rem values with standard classes (42 files)
+  - Removed all `leading-*` and `tracking-*` properties from non-shadcn files
+  - ProductCard: added `category` prop with GradientBadge
+  - Footer: updated with real phone/email contact info
 - **v1.1.0 (2026-01-09)**: Codebase-wide design system refactoring
   - Converted all px units to rem (36 files total)
   - Replaced hardcoded colors with semantic tokens
@@ -378,7 +395,7 @@ Features currently implemented and in use.
 **Description**: Reusable search, filter, empty-state, and active filter components shared across the application. Includes global EmptyState component and px→rem codebase-wide conversion.
 **Key Tech**: Next.js URL params, shadcn Select, React Server Components, lucide-react
 **Created**: 2026-02-15
-**Last Updated**: 2026-02-16
+**Last Updated**: 2026-02-19
 
 **Quick Links:**
 - [Full Documentation](./features/shared-components/README.md)
@@ -542,8 +559,9 @@ Features scheduled for future implementation:
 - 🚧 In Development: 0
 - 📋 Planned: 2
 
-**Last Feature Completed**: Contact Page Redesign + Sanity (2026-02-17)
+**Last Feature Completed**: About Page Schema Refactor + Tailwind Cleanup (2026-02-19)
 **Recently Updated**:
+- **About Page + Codebase Cleanup (2026-02-19)** - Refactored about page schema (removed whoWeAre, added mainImage, converted to rich text). Replaced ALL arbitrary Tailwind rem values with standard classes across 42 files. Removed all `leading-*`/`tracking-*` from non-shadcn files. ProductCard now shows category as GradientBadge. Footer updated with real contact info.
 - **Contact Page (2026-02-17)** - Redesigned to match Figma (heading, Get In Touch card, gradient map borders). Moved phones/emails/offices to Sanity CMS with `contactPage` singleton schema. Static text in `site-config.ts`. Server action with IP-based rate limiting (3/min). Replaced arbitrary rem/px values with standard Tailwind classes. Replaced `max-w-[72.25rem]` with `max-w-7xl` codebase-wide.
 - **Services Page (2026-02-17)** - Replaced `max-w-[72.25rem]` with `max-w-7xl`.
 - **EmptyState Component (2026-02-16)** - Created global `EmptyState` component with 3 variants (empty/filtered/error), 3 sizes, and optional icon/action. Migrated 14 files from inline empty-state patterns, eliminating duplicated section wrappers.
@@ -554,7 +572,7 @@ Features scheduled for future implementation:
 - **Sanity Data Flow Pattern (2026-01-15)** - Documented 3-layer architecture (Queries → Actions → Components) in patterns.md
 - **Hero Section Redesign (2026-01-10)** - Complete redesign to match Figma reference
 - **Design System Refactoring (2026-01-09)** - Codebase-wide conversion of px to rem units (36 files), hardcoded colors to semantic tokens
-**Next Planned**: Events Page, Service Detail Pages
+**Next Planned**: Team Members Page, Events Page, Service Detail Pages
 
 ## Related Documentation
 
@@ -569,4 +587,4 @@ Features scheduled for future implementation:
 
 **Maintenance Schedule**: Review and update this index when features change
 **Owner**: Team
-**Last Review**: 2026-02-17
+**Last Review**: 2026-02-19

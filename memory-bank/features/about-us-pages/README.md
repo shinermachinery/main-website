@@ -2,7 +2,7 @@
 
 **Status**: ✅ Completed
 **Created**: 2025-12-30
-**Last Modified**: 2026-01-09
+**Last Modified**: 2026-02-19
 **Owner**: Development Team
 
 ## Overview
@@ -46,18 +46,22 @@ Navbar Dropdown → Page Routes → Sanity Singleton Queries → Server Componen
 ```
 src/
 ├── app/(landing)/about/
-│   ├── page.tsx                    # Main About Us page (already existing)
+│   ├── page.tsx                    # Main About page (hero, mission, vision, features, featured products)
 │   ├── why-choose-us/
 │   │   └── page.tsx                # Why Choose Us page
 │   ├── mission-vision/
 │   │   └── page.tsx                # Mission & Vision page
 │   └── director/
 │       └── page.tsx                # About Director page
-├── components/global/
-│   ├── navbar.tsx                  # Updated with About Us dropdown
-│   └── blog/
-│       └── portable-text.tsx       # Used for director bio
+├── actions/
+│   └── about.ts                    # About page data fetching (getAboutPage, getDirector, getAllTeamMembers)
+├── components/
+│   ├── global/navbar.tsx           # About Us dropdown
+│   ├── blog/portable-text.tsx      # Used for director bio
+│   └── sections/products/
+│       └── product-card.tsx        # Used in featured products (with category GradientBadge)
 └── sanity/schemaTypes/
+    ├── company/aboutPageType.ts    # About page schema (mainImage, rich text mission/vision/heroDescription)
     ├── whyChooseUsType.ts          # Why Choose Us schema
     ├── missionVisionType.ts        # Mission & Vision schema
     └── directorType.ts             # Director schema
@@ -730,5 +734,5 @@ None currently identified.
 
 ---
 
-**Version**: 1.1.0
-**Last Reviewed**: 2026-01-09
+**Version**: 1.2.0
+**Last Reviewed**: 2026-02-19

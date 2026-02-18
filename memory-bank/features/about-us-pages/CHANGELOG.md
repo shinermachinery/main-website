@@ -188,6 +188,57 @@ description: "Meet the leadership behind SHINER..."
 
 ---
 
+## [1.2.0] - 2026-02-19
+
+### Changed
+
+#### About Page Schema Refactor
+- **Removed `whoWeAre` section** entirely from schema (`aboutPageType.ts`), projection, types (`AboutPage` interface), and page rendering
+- **Added `mainImage` field** to about page schema (image with hotspot and alt text) — displayed in hero section
+- **Converted `heroDescription` to rich text** (Portable Text / block content array) — rendered with `<PortableText>` instead of plain `<p>` tag
+- **Converted `mission.description` to rich text** (block content array with Normal, H3, Blockquote styles and bullet lists)
+- **Converted `vision.description` to rich text** (same configuration as mission)
+- Updated GROQ projection: `heroDescription[]`, `mission { title, description[] }`, `vision { title, description[] }`
+- Updated `AboutPage` TypeScript interface: `heroDescription` changed from `string` to `any[]`, mission/vision descriptions changed to `any[]`
+
+#### Featured Products Section
+- **Replaced inline product card markup** with `<ProductCard>` component in the featured products grid
+- Passes `product.collection?.title` as `category` prop to ProductCard
+
+#### Codebase-wide Tailwind Cleanup (42 files)
+- **Replaced ALL arbitrary rem values** with standard Tailwind classes across the entire codebase:
+  - `gap-[3.75rem]` → `gap-16`, `lg:w-[25rem]` → `lg:w-96`, `rounded-[1.5rem]` → `rounded-3xl`
+  - `text-[2.25rem]` → `text-4xl`, `text-[6rem]` → `text-8xl`
+  - `h-[1.2rem] w-[1.2rem]` → `size-5`, `h-[30.11rem]` → `h-96`
+  - `after:inset-[0.125rem]` → `after:inset-0.5`, etc.
+- **Removed ALL `leading-*` properties** from non-shadcn files (`leading-none`, `leading-5`, `leading-7`, `leading-relaxed`, `leading-[3rem]`)
+- **Removed ALL `tracking-*` properties** from non-shadcn files (`tracking-[-0.0563rem]`, etc.)
+- Left shadcn/ui component files untouched (button, select, dropdown-menu, accordion, dialog, label)
+
+#### ProductCard Enhancement
+- Added `category` prop to `ProductCard` component
+- Renders `<GradientBadge>` when category is provided
+- Updated all 3 usage sites to pass `category={product.collection?.title}`
+
+#### Footer Contact Info
+- Updated `site-config.ts` with real contact details:
+  - Phone: `+91-90443 20555`
+  - Email: `contact@shinermacahinery.com`
+  - Added `salesEmail`: `sales@shinermacahinery.com`
+- Footer displays phone number and both emails with icons
+
+### Files Modified (42 total)
+- `src/sanity/schemaTypes/company/aboutPageType.ts` — schema refactor
+- `src/sanity/lib/queries/shared/projections.ts` — projection update
+- `src/actions/about.ts` — type interface update
+- `src/app/(landing)/about/page.tsx` — page rendering update
+- `src/components/sections/products/product-card.tsx` — category/GradientBadge
+- `src/components/layout/footer.tsx` — contact info display
+- `src/lib/site-config.ts` — contact details
+- 35+ component files for arbitrary rem → standard Tailwind, leading/tracking removal
+
+---
+
 ## [1.1.0] - 2026-01-09
 
 ### Changed
