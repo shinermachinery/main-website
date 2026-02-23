@@ -4,6 +4,7 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { getDemoImageUrl } from "@/lib/demo-data/products";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
 import type { Product } from "@/lib/sanity-types";
 import { urlFor } from "@/sanity/lib/image";
 
@@ -78,6 +79,8 @@ export function RelatedProducts({
                   width={400}
                   height={300}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  placeholder="blur"
+                  blurDataURL={BLUR_DATA_URL}
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center">

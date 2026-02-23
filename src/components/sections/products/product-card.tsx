@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { GradientBadge } from "@/components/ui/gradient-badge";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
 
 interface ProductCardProps {
   title: string;
@@ -39,6 +40,8 @@ export function ProductCard({
             fill
             className="object-cover"
             sizes="(max-width: 48rem) 100vw, (max-width: 64rem) 50vw, 33vw"
+            placeholder="blur"
+            blurDataURL={BLUR_DATA_URL}
           />
         ) : (
           <div className="absolute inset-0 bg-muted flex flex-col items-center justify-center gap-2">

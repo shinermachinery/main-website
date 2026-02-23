@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
 import { urlFor } from "@/sanity/lib/image";
 
 interface TeamMember {
@@ -51,6 +52,8 @@ export function TeamGrid({ teamMembers }: TeamGridProps) {
                         fill
                         className="object-cover transition-transform group-hover:scale-105"
                         sizes="(max-width: 48rem) 100vw, (max-width: 64rem) 50vw, 17.5rem"
+                        placeholder="blur"
+                        blurDataURL={BLUR_DATA_URL}
                       />
                     </div>
 

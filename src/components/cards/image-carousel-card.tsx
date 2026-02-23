@@ -8,6 +8,7 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
 import { useEffect, useState } from "react";
 
 interface ImageCarouselCardProps {
@@ -57,6 +58,8 @@ export function ImageCarouselCard({
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority={i === 0}
+                  placeholder="blur"
+                  blurDataURL={BLUR_DATA_URL}
                 />
               </div>
             </CarouselItem>

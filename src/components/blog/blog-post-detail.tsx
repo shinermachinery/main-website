@@ -5,6 +5,7 @@ import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { GradientBadge } from "@/components/ui/gradient-badge";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
 
 interface BlogPostDetailProps {
   post: {
@@ -70,6 +71,8 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
               className="object-cover"
               sizes="(max-width: 48rem) 100vw, (max-width: 75rem) 80vw, 75rem"
               priority
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
             />
           </div>
         )}

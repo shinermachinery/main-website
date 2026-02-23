@@ -9,6 +9,7 @@ import {
   MenuIcon,
   PackageIcon,
   RocketIcon,
+  UserIcon,
   WrenchIcon,
 } from "@sanity/icons";
 import type { StructureResolver } from "sanity/structure";
@@ -42,6 +43,13 @@ export const structure: StructureResolver = (S) =>
                 .icon(InfoOutlineIcon)
                 .child(
                   S.document().schemaType("aboutPage").documentId("aboutPage"),
+                ),
+              // Director (Singleton)
+              S.listItem()
+                .title("Director")
+                .icon(UserIcon)
+                .child(
+                  S.document().schemaType("director").documentId("director"),
                 ),
               S.divider(),
               // Blog

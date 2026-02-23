@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { PortableText } from "@/components/blog/portable-text";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
 import { pageMetadata } from "@/lib/site-config";
 import { getDirector } from "@/sanity/lib/actions";
 
@@ -11,6 +12,7 @@ export const metadata = pageMetadata.aboutDirector;
 
 async function DirectorContent() {
   const data = await getDirector();
+  console.log("data", data);
 
   if (!data) {
     notFound();
@@ -43,6 +45,8 @@ async function DirectorContent() {
               className="object-cover"
               sizes="(max-width: 64rem) 100vw, 25rem"
               priority
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
             />
           </div>
 

@@ -106,9 +106,8 @@ export function TestimonialsCarousel({
               Testimonials
             </h2>
             <p className="flex-1 font-medium text-lg text-muted-foreground">
-              Lorem ipsum dolor sit amet consectetur. Turpis bibendum eget
-              adipiscing scelerisque proin. Neque tincidunt et pellentesque
-              proin
+              Hear from the manufacturers who trust Shiner Machinery to power
+              their production lines with precision and reliability.
             </p>
           </div>
 
@@ -125,12 +124,14 @@ export function TestimonialsCarousel({
             }}
             slidesToScroll={{
               mobile: 1,
-              tablet: 2,
-              desktop: 3,
+              tablet: 1,
+              desktop: 1,
             }}
             gap={24}
             showNavigation={displayTestimonials.length > 3}
             showDots={false}
+            autoplay
+            autoplayDelay={4000}
             className="relative"
           />
         </div>

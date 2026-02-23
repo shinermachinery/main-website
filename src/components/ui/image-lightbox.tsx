@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
 import { cn } from "@/lib/utils";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
@@ -52,6 +53,8 @@ export function ImageLightbox({
                 fill
                 className="object-contain"
                 priority
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
               />
             </div>
           ) : (
@@ -62,6 +65,8 @@ export function ImageLightbox({
               height={2160}
               className="object-contain w-full h-auto"
               priority
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
             />
           )}
         </DialogContent>

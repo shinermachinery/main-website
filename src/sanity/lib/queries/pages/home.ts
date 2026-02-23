@@ -98,7 +98,7 @@ export function getHomeTeamMembersQuery(limit: number = 4): QueryResult {
  */
 export function getHomeTestimonialsQuery(limit: number = 6): QueryResult {
   return {
-    query: `*[_type == "testimonial" && featured == true] | order(order asc, _createdAt desc) [0...${limit}] ${TESTIMONIAL_PROJECTION}`,
+    query: `*[_type == "testimonial"] | order(order asc, _createdAt desc) ${TESTIMONIAL_PROJECTION}`,
     params: {},
   };
 }
@@ -180,7 +180,7 @@ export function getCompleteHomePageQuery(): QueryResult {
       "teamMembers": *[_type == "teamMember"] | order(order asc, _createdAt desc) [0...4] {
         ${teamFields}
       },
-      "testimonials": *[_type == "testimonial" && featured == true] | order(order asc, _createdAt desc) [0...6] {
+      "testimonials": *[_type == "testimonial"] | order(order asc, _createdAt desc) {
         ${testimonialFields}
       }
     }`,

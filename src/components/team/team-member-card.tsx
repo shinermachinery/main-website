@@ -7,6 +7,7 @@
 "use client";
 
 import Image from "next/image";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
 import type { TeamMember } from "@/lib/sanity-types";
 import { urlFor } from "@/sanity/lib/image";
 
@@ -52,6 +53,8 @@ export function TeamMemberCard({
               ? "(max-width: 48rem) 100vw, 12.5rem"
               : "(max-width: 48rem) 100vw, (max-width: 64rem) 50vw, 17.5rem"
           }
+          placeholder="blur"
+          blurDataURL={BLUR_DATA_URL}
         />
       </div>
 

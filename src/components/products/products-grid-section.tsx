@@ -31,8 +31,8 @@ export function ProductsGridSection({
           Our Products
         </h1>
         <p className="font-medium text-lg text-muted-foreground">
-          Lorem ipsum dolor sit amet consectetur. Luctus arcu congue dictumst
-          ullamcorper purus
+          Explore our complete range of precision-engineered machinery and
+          equipment built for performance and durability.
         </p>
       </div>
 

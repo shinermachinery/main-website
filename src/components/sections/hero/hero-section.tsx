@@ -1,6 +1,17 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { HeroFeaturedProduct } from "./hero-featured-product";
+
+interface FeaturedProduct {
+  _id: string;
+  title: string;
+  slug: string | { current: string; _type?: string };
+  primaryImage?: {
+    url: string;
+    alt?: string;
+  };
+}
 
 interface HeroSectionProps {
   headline?: string;
@@ -14,6 +25,7 @@ interface HeroSectionProps {
     link: string;
   };
   backgroundImage?: string;
+  featuredProducts?: FeaturedProduct[];
 }
 
 export function HeroSection({
@@ -22,6 +34,7 @@ export function HeroSection({
   primaryCta = { text: "Request a Quote", link: "/contact" },
   secondaryCta = { text: "View Products", link: "/products" },
   backgroundImage,
+  featuredProducts = [],
 }: HeroSectionProps) {
   return (
     <section className="relative overflow-hidden" aria-label="Hero section">
@@ -78,34 +91,12 @@ export function HeroSection({
                 </div>
               </div>
 
-              {/* Featured Product Card - Right (Smaller) */}
-              <div className="w-full lg:w-64">
-                {/* Featured Product Card */}
-                <div className="bg-background rounded-2xl p-3 flex flex-col gap-4">
-                  {/* Header Row */}
-                  <div className="flex items-start justify-between gap-4">
-                    <p className="text-sm font-medium text-primary flex-1">
-                      Featured Product
-                    </p>
-                    <div className="opacity-50 pt-0.5">
-                      <ArrowRight className="w-4 h-4 rotate-180 scale-y-[-1] text-primary" />
-                    </div>
-                  </div>
-
-                  {/* Product Image Placeholder with Pagination Dots */}
-                  <div className="relative">
-                    {/* Gray placeholder - will be replaced with actual image */}
-                    <div className="w-full h-40 bg-muted-foreground/30 rounded-2xl" />
-
-                    {/* Pagination Dots */}
-                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
-                      <div className="w-3 h-3 rounded-full bg-white" />
-                      <div className="w-3 h-3 rounded-full bg-white/50" />
-                      <div className="w-3 h-3 rounded-full bg-white/50" />
-                    </div>
-                  </div>
+              {/* Featured Product Card - Right */}
+              {featuredProducts.length > 0 && (
+                <div className="w-full lg:w-64">
+                  <HeroFeaturedProduct products={featuredProducts} />
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

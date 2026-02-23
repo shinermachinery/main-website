@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ImageLightbox } from "@/components/ui/image-lightbox";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
 
 interface AchievementCardProps {
   image: string;
@@ -28,6 +29,8 @@ export function AchievementCard({
           fill
           className="object-contain"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          placeholder="blur"
+          blurDataURL={BLUR_DATA_URL}
         />
       </ImageLightbox>
 

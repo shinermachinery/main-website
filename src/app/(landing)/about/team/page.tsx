@@ -2,6 +2,7 @@ import { Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { pageMetadata } from "@/lib/site-config";
 import { getTeamMembers } from "@/sanity/lib/actions";
@@ -36,6 +37,8 @@ async function TeamContent() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  placeholder="blur"
+                  blurDataURL={BLUR_DATA_URL}
                 />
               </div>
             )}

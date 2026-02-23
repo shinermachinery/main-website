@@ -135,7 +135,7 @@ export function ContentSlider<T>({
         setApi={setApi}
         opts={{
           align: "start",
-          loop: false,
+          loop: autoplay,
           slidesToScroll: getSlidesToScroll(),
           skipSnaps: false,
           containScroll: "trimSnaps",

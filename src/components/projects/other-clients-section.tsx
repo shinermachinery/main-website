@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
 import { Marquee } from "@/components/ui/marquee";
 import { SectionHeading } from "@/components/ui/section-heading";
 import {
@@ -23,6 +24,8 @@ function ClientLogo({
               fill
               className="object-contain p-4"
               sizes="7rem"
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
             />
           )}
         </div>

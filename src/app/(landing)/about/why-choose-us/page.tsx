@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
 import { pageMetadata } from "@/lib/site-config";
 import { getWhyChooseUs } from "@/sanity/lib/actions";
 
@@ -39,6 +40,8 @@ async function WhyChooseUsContent() {
               className="object-cover"
               sizes="(max-width: 75rem) 100vw, 75rem"
               priority
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
             />
           </div>
         )}
@@ -60,6 +63,8 @@ async function WhyChooseUsContent() {
                     fill
                     className="object-cover"
                     sizes="4rem"
+                    placeholder="blur"
+                    blurDataURL={BLUR_DATA_URL}
                   />
                 </div>
               )}

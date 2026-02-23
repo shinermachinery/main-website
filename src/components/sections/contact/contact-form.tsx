@@ -60,7 +60,7 @@ export function ContactForm() {
                 Get in touch for quotes, demos, or technical guidance.
               </h2>
               <Button
-                className="w-fit"
+                className="w-fit rounded-full cursor-pointer"
                 variant="shiner"
                 size="lg"
               >
@@ -156,7 +156,7 @@ export function ContactForm() {
                   type="submit"
                   disabled={isPending}
                   variant="shiner"
-                  className="h-12 w-full rounded-full"
+                  className="h-12 w-full rounded-full cursor-pointer"
                 >
                   {isPending ? (
                     <>

@@ -22,10 +22,26 @@ export const teamMemberType = defineType({
     }),
     defineField({
       name: "bio",
-      title: "Bio",
-      type: "text",
-      rows: 4,
-      description: "Short biography",
+      title: "Biography",
+      type: "array",
+      description: "Biography of the team member",
+      of: [
+        defineArrayMember({
+          type: "block",
+          styles: [
+            { title: "Normal", value: "normal" },
+            { title: "H3", value: "h3" },
+            { title: "Quote", value: "blockquote" },
+          ],
+          lists: [{ title: "Bullet", value: "bullet" }],
+          marks: {
+            decorators: [
+              { title: "Strong", value: "strong" },
+              { title: "Emphasis", value: "em" },
+            ],
+          },
+        }),
+      ],
     }),
     defineField({
       name: "image",

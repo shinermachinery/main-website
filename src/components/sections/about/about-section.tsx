@@ -31,10 +31,11 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                 </div>
               ) : (
                 <p className="text-lg font-medium text-muted-foreground">
-                  Lorem ipsum dolor sit amet consectetur. Turpis bibendum eget
-                  adipiscing scelerisque proin. Neque tincidunt et pellentesque
-                  proin. Quam non tortor sed mauris libero bibendum malesuada.
-                  Mi id et fermentum venenatis eu
+                  At Shiner Machinery, we design and deliver
+                  precision-engineered machines that empower manufacturers to
+                  build faster, smarter, and more efficiently. Backed by decades
+                  of expertise, our commitment to quality and innovation drives
+                  everything we do.
                 </p>
               )}
             </div>
@@ -66,7 +67,8 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                         Highest Precision Components
                       </h4>
                       <p className="text-sm font-medium text-muted-foreground">
-                        engineered for accurate, consistent performance.
+                        Engineered to meet tight tolerances for accurate,
+                        consistent performance every cycle.
                       </p>
                     </div>
                   </div>
@@ -81,7 +83,8 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                         24/7 Support & Service
                       </h4>
                       <p className="text-sm font-medium text-muted-foreground">
-                        engineered for accurate, consistent performance.
+                        Round-the-clock technical assistance to keep your
+                        operations running without interruption.
                       </p>
                     </div>
                   </div>
@@ -99,7 +102,8 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                         Productivity Focused
                       </h4>
                       <p className="text-sm font-medium text-muted-foreground">
-                        engineered for accurate, consistent performance.
+                        Solutions designed to maximize output and minimize
+                        downtime across your production line.
                       </p>
                     </div>
                   </div>
@@ -114,7 +118,8 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                         Global Reach, Local Support
                       </h4>
                       <p className="text-sm font-medium text-muted-foreground">
-                        engineered for accurate, consistent performance.
+                        Serving clients worldwide with dedicated local service
+                        teams and rapid response times.
                       </p>
                     </div>
                   </div>

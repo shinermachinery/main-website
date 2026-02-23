@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, Expand } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getDemoImageUrl } from "@/lib/demo-data/products";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
 import type { SanityImage } from "@/lib/sanity-types";
 import { urlFor } from "@/sanity/lib/image";
 import { Button } from "../ui/button";
@@ -84,6 +85,8 @@ export function ProductImageGallery({
               height={900}
               className="w-full h-full object-cover"
               priority={selectedIndex === 0}
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
             />
           </div>
 
@@ -166,6 +169,8 @@ export function ProductImageGallery({
                     width={160}
                     height={120}
                     className="w-full h-full object-cover"
+                    placeholder="blur"
+                    blurDataURL={BLUR_DATA_URL}
                   />
                 </div>
                 {selectedIndex === index && (
@@ -206,6 +211,8 @@ export function ProductImageGallery({
               width={1920}
               height={1080}
               className="w-full h-full object-contain"
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
             />
           </div>
 

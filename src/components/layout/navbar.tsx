@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { ModeToggle } from "@/components/layout/mode-toggle";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
 import {
   Popover,
   PopoverContent,
@@ -31,6 +32,8 @@ export function Navbar() {
                 width={48}
                 height={48}
                 className="size-8"
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
               />
               {/* Logo Text */}
               <span className="text-xl font-bold text-brand-blue ">SHINER</span>

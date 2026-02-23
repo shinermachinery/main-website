@@ -8,6 +8,7 @@
 
 import { Quote, Star } from "lucide-react";
 import Image from "next/image";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
 import type { Testimonial } from "@/lib/sanity-types";
 import { urlFor } from "@/sanity/lib/image";
 
@@ -75,6 +76,8 @@ export function TestimonialCard({
               fill
               className="object-cover"
               sizes="3rem"
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
             />
           </div>
         )}

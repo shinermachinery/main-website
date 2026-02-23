@@ -28,7 +28,7 @@ export default async function HomePage() {
 
   return (
     <div className="bg-secondary">
-      <HeroSection {...heroProps} />
+      <HeroSection {...heroProps} featuredProducts={homeData.featuredProducts} />
       <AboutSection
         title={homeData.home?.wordAboutUsTitle}
         description={homeData.home?.wordAboutUsDescription}

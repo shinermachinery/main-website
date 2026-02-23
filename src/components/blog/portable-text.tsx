@@ -9,6 +9,7 @@
 import { PortableText as PortableTextReact } from "@portabletext/react";
 import Image from "next/image";
 import Link from "next/link";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
 import type { PortableTextBlock } from "@/lib/sanity-types";
 import { urlFor } from "@/sanity/lib/image";
 
@@ -38,6 +39,8 @@ const portableTextComponents = {
               fill
               className="object-cover"
               sizes="(max-width: 48rem) 100vw, (max-width: 75rem) 80vw, 75rem"
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
             />
           </div>
           {value.alt && (

@@ -16,6 +16,7 @@ import { getAboutPage } from "@/actions/about";
 import { ProductCard } from "@/components/sections/products/product-card";
 import { Button } from "@/components/ui/button";
 import { pageMetadata } from "@/lib/site-config";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
 import { urlFor } from "@/sanity/lib/image";
 import { getFeaturedProducts } from "@/sanity/lib/actions";
 
@@ -112,6 +113,8 @@ export default async function AboutPage() {
                 width={600}
                 height={400}
                 className="h-full w-full object-cover"
+                placeholder="blur"
+                blurDataURL={BLUR_DATA_URL}
               />
             )}
           </div>
