@@ -40,7 +40,7 @@ export function HeroFeaturedProduct({ products }: HeroFeaturedProductProps) {
   return (
     <Link
       href={`/products/${typeof activeProduct.slug === "string" ? activeProduct.slug : activeProduct.slug?.current}`}
-      className="bg-background rounded-2xl p-3 flex flex-col gap-4 block transition-shadow hover:shadow-lg"
+      className="bg-background rounded-2xl p-3 flex flex-col gap-4 transition-shadow hover:shadow-lg"
     >
       {/* Header Row */}
       <div className="flex items-start justify-between gap-4">

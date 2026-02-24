@@ -8,6 +8,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-plus-jakarta-sans);
   --font-mono: var(--font-geist-mono);
+  --font-hyundai: var(--font-hyundai);
   --color-brand-blue: var(--brand-blue);
   --color-brand-green: var(--brand-green);
   --color-brand-blue-10: var(--brand-blue-10);

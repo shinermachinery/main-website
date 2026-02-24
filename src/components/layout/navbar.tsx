@@ -1,10 +1,11 @@
 "use client";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, Package, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { ModeToggle } from "@/components/layout/mode-toggle";
 import { BLUR_DATA_URL } from "@/lib/image-blur";
+import type { ProductCollection } from "@/lib/sanity-types";
 import {
   Popover,
   PopoverContent,
@@ -13,9 +14,14 @@ import {
 import { aboutLinks, moreLinks, navLinks } from "@/data/navigation";
 import { GradientButton } from "../ui/gradient-button";
 
-export function Navbar() {
+interface NavbarProps {
+  collections?: ProductCollection[];
+}
+
+export function Navbar({ collections = [] }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [aboutPopoverOpen, setAboutPopoverOpen] = useState(false);
+  const [productsPopoverOpen, setProductsPopoverOpen] = useState(false);
   const [morePopoverOpen, setMorePopoverOpen] = useState(false);
 
   return (
@@ -25,7 +31,6 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-1">
             <div className="flex items-center gap-1">
-              {/* Logo Icon - Using linear colors */}
               <Image
                 src={"/shiner-logo.png"}
                 alt="Shiner Logo"
@@ -35,24 +40,13 @@ export function Navbar() {
                 placeholder="blur"
                 blurDataURL={BLUR_DATA_URL}
               />
-              {/* Logo Text */}
-              <span className="text-xl font-bold text-brand-blue ">SHINER</span>
+              <span className="text-xl font-bold text-brand-blue font-hyundai">SHINER</span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="px-4 py-2 text-sm font-medium text-secondary-foreground rounded-xl hover:bg-brand-blue-10 transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
-
-            {/* About Us Popover with Hover */}
+            {/* About Popover */}
             <Popover open={aboutPopoverOpen} onOpenChange={setAboutPopoverOpen}>
               <PopoverTrigger
                 asChild
@@ -61,16 +55,16 @@ export function Navbar() {
               >
                 <button
                   type="button"
-                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-secondary-foreground rounded-xl hover:bg-brand-blue-10 transition-colors outline-hidden"
+                  className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-secondary-foreground rounded-xl hover:bg-brand-blue-10 transition-colors outline-hidden"
                 >
-                  About Us
+                  About
                   <ChevronDown
                     className={`w-4 h-4 transition-transform ${aboutPopoverOpen ? "rotate-180" : ""}`}
                   />
                 </button>
               </PopoverTrigger>
               <PopoverContent
-                align="end"
+                align="start"
                 side="bottom"
                 sideOffset={8}
                 className="p-2 w-64"
@@ -97,6 +91,70 @@ export function Navbar() {
                 </div>
               </PopoverContent>
             </Popover>
+
+            {/* Our Products Popover */}
+            <Popover open={productsPopoverOpen} onOpenChange={setProductsPopoverOpen}>
+              <PopoverTrigger
+                asChild
+                onMouseEnter={() => setProductsPopoverOpen(true)}
+                onMouseLeave={() => setProductsPopoverOpen(false)}
+              >
+                <button
+                  type="button"
+                  className="flex items-center gap-1 px-4 py-2 text-sm font-medium text-secondary-foreground rounded-xl hover:bg-brand-blue-10 transition-colors outline-hidden"
+                >
+                  Our Products
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${productsPopoverOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+              </PopoverTrigger>
+              <PopoverContent
+                align="start"
+                side="bottom"
+                sideOffset={8}
+                className="p-2 w-64"
+                onMouseEnter={() => setProductsPopoverOpen(true)}
+                onMouseLeave={() => setProductsPopoverOpen(false)}
+              >
+                <div className="space-y-1">
+                  <Link
+                    href="/products"
+                    onClick={() => setProductsPopoverOpen(false)}
+                    className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-secondary-foreground rounded-lg hover:bg-brand-blue-10 transition-colors group"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-linear-to-br from-brand-blue/10 to-brand-green/10 flex items-center justify-center group-hover:from-brand-blue/20 group-hover:to-brand-green/20 transition-colors">
+                      <Package className="w-4 h-4 text-brand-blue" />
+                    </div>
+                    <span>All Products</span>
+                  </Link>
+                  {collections.map((collection) => (
+                    <Link
+                      key={collection._id}
+                      href={`/products?category=${collection.slug.current}`}
+                      onClick={() => setProductsPopoverOpen(false)}
+                      className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-secondary-foreground rounded-lg hover:bg-brand-blue-10 transition-colors group"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-linear-to-br from-brand-blue/10 to-brand-green/10 flex items-center justify-center group-hover:from-brand-blue/20 group-hover:to-brand-green/20 transition-colors">
+                        <Package className="w-4 h-4 text-brand-blue" />
+                      </div>
+                      <span>{collection.title}</span>
+                    </Link>
+                  ))}
+                </div>
+              </PopoverContent>
+            </Popover>
+
+            {/* Flat nav links */}
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="px-4 py-2 text-sm font-medium text-secondary-foreground rounded-xl hover:bg-brand-blue-10 transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
 
             {/* More Popover with Hover */}
             <Popover open={morePopoverOpen} onOpenChange={setMorePopoverOpen}>
@@ -169,8 +227,11 @@ export function Navbar() {
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <div className="lg:hidden border-t border-primary py-4 space-y-2">
-            {/* Main nav links */}
-            {navLinks.map((link) => (
+            {/* About section */}
+            <div className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase">
+              About
+            </div>
+            {aboutLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
@@ -181,12 +242,33 @@ export function Navbar() {
               </Link>
             ))}
 
-            {/* About Us section - expanded for mobile */}
+            {/* Products section */}
             <div className="pt-2 mt-2 border-t border-primary">
               <div className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase">
-                About Us
+                Our Products
               </div>
-              {aboutLinks.map((link) => (
+              <Link
+                href="/products"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-4 py-3 text-sm font-medium text-secondary-foreground rounded-xl hover:bg-brand-blue-10 transition-colors"
+              >
+                All Products
+              </Link>
+              {collections.map((collection) => (
+                <Link
+                  key={collection._id}
+                  href={`/products?category=${collection.slug.current}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-4 py-3 text-sm font-medium text-secondary-foreground rounded-xl hover:bg-brand-blue-10 transition-colors"
+                >
+                  {collection.title}
+                </Link>
+              ))}
+            </div>
+
+            {/* Flat nav links */}
+            <div className="pt-2 mt-2 border-t border-primary">
+              {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
@@ -198,7 +280,7 @@ export function Navbar() {
               ))}
             </div>
 
-            {/* More section - expanded for mobile */}
+            {/* More section */}
             <div className="pt-2 mt-2 border-t border-primary">
               <div className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase">
                 More

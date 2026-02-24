@@ -9,7 +9,7 @@ interface ProductSingleImageProps {
 }
 
 export function ProductSingleImage({ image, title }: ProductSingleImageProps) {
-  const imageUrl = safeImageUrl(image, 1200, 900);
+  const imageUrl = safeImageUrl(image, 1200);
 
   if (!imageUrl) {
     return (
@@ -25,13 +25,13 @@ export function ProductSingleImage({ image, title }: ProductSingleImageProps) {
 
   return (
     <div className="w-full flex flex-col gap-2">
-      <div className="rounded-2xl overflow-hidden bg-muted border border-muted/50 shadow-sm">
+      <div className="rounded-2xl overflow-hidden bg-muted border border-muted/50 shadow-sm max-h-96 flex items-center justify-center">
         <Image
           src={imageUrl}
           alt={image?.alt || title}
-          width={1200}
-          height={900}
-          className="w-full h-auto"
+          width={600}
+          height={450}
+          className="w-full h-auto max-h-96 object-contain"
           priority
           placeholder="blur"
           blurDataURL={BLUR_DATA_URL}

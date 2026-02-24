@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
 import { ThemeProvider } from "@/lib/theme-provider";
@@ -11,9 +12,10 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ["400", "500", "600", "700", "800"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const hyundai = localFont({
+  src: "../fonts/hyundai-normal.ttf",
+  variable: "--font-hyundai",
+  display: "swap",
 });
 
 /**
@@ -161,7 +163,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body
-        className={`${plusJakartaSans.variable} ${geistMono.variable} font-sans antialiased`}
+        className={`${plusJakartaSans.variable} ${hyundai.variable} font-sans antialiased`}
       >
         <ThemeProvider
           attribute="class"

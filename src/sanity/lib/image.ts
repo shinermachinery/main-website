@@ -27,15 +27,18 @@ export function hasValidImageRef(
 /**
  * Safely get an image URL from a Sanity image.
  * Returns undefined if the image has no valid asset reference.
+ * When height is provided, the image is cropped to those dimensions.
+ * When height is omitted, the image scales proportionally (no cropping).
  */
 export function safeImageUrl(
   image: any,
   width: number,
-  height: number,
+  height?: number,
 ): string | undefined {
   if (!hasValidImageRef(image)) return undefined;
   try {
-    return builder.image(image).width(width).height(height).url();
+    const img = builder.image(image).width(width);
+    return height ? img.height(height).url() : img.url();
   } catch {
     return undefined;
   }

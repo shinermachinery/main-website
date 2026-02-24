@@ -1,7 +1,7 @@
 import {
   Award,
+  Building2,
   Calendar,
-  Info,
   type LucideIcon,
   Mail,
   User,
@@ -18,42 +18,19 @@ export interface NavLinkWithIcon extends NavLink {
 }
 
 /**
- * Main navigation links displayed in navbar
- */
-export const navLinks: NavLink[] = [
-  {
-    name: "Products",
-    href: "/products",
-  },
-  {
-    name: "Projects",
-    href: "/projects",
-  },
-  {
-    name: "Services",
-    href: "/services",
-  },
-  {
-    name: "Blog",
-    href: "/blog",
-  },
-];
-
-/**
- * About Us dropdown navigation links
+ * About dropdown links
  */
 export const aboutLinks: NavLinkWithIcon[] = [
   {
     name: "About Us",
     href: "/about",
-    icon: Info,
+    icon: Building2,
   },
   {
     name: "Why Choose Us",
     href: "/about/why-choose-us",
     icon: Award,
   },
-
   {
     name: "About Director",
     href: "/about/director",
@@ -63,6 +40,30 @@ export const aboutLinks: NavLinkWithIcon[] = [
     name: "Our Team",
     href: "/about/team",
     icon: Users,
+  },
+];
+
+/**
+ * Main navigation links displayed in navbar
+ * Order: Our Products | Our Services | Our Projects | Events | Blogs
+ * Note: "About" and "Our Products" are handled as popovers in the navbar
+ */
+export const navLinks: NavLink[] = [
+  {
+    name: "Our Services",
+    href: "/services",
+  },
+  {
+    name: "Our Projects",
+    href: "/projects",
+  },
+  {
+    name: "Events",
+    href: "/events",
+  },
+  {
+    name: "Blogs",
+    href: "/blog",
   },
 ];
 

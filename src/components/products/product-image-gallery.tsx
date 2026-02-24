@@ -72,13 +72,13 @@ export function ProductImageGallery({
       <div className="flex-1 w-full flex flex-col gap-4">
         {/* Main Image with Ultra-thin Navigation */}
         <div className="relative group">
-          <div className="rounded-2xl overflow-hidden bg-muted border border-muted/50 shadow-sm">
+          <div className="rounded-2xl overflow-hidden bg-muted border border-muted/50 shadow-sm max-h-96 flex items-center justify-center">
             <Image
-              src={safeImageUrl(currentImage, 1200, 900)!}
+              src={safeImageUrl(currentImage, 600)!}
               alt={currentImage.alt || title}
-              width={1200}
-              height={900}
-              className="w-full h-auto"
+              width={600}
+              height={450}
+              className="w-full h-auto max-h-96 object-contain"
               priority={selectedIndex === 0}
               placeholder="blur"
               blurDataURL={BLUR_DATA_URL}
@@ -201,11 +201,11 @@ export function ProductImageGallery({
 
           <div className="relative max-w-7xl max-h-[90vh] w-full mx-4 z-10">
             <Image
-              src={safeImageUrl(currentImage, 1920, 1080)!}
+              src={safeImageUrl(currentImage, 1920)!}
               alt={currentImage.alt || title}
               width={1920}
               height={1080}
-              className="w-full h-full object-cover"
+              className="w-full h-auto object-contain"
               placeholder="blur"
               blurDataURL={BLUR_DATA_URL}
             />

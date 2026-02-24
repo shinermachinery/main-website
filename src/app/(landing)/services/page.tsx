@@ -14,7 +14,7 @@ export default async function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-secondary">
-      <div className="container mx-auto px-4 py-16 md:py-24">
+      <div className="container mx-auto px-4 py-16 md:py-12">
         <div className="max-w-7xl mx-auto">
           {/* Page Header */}
           <SectionHeading

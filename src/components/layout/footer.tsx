@@ -1,6 +1,5 @@
 import {
   Facebook,
-  Heart,
   Instagram,
   Linkedin,
   Mail,
@@ -57,7 +56,7 @@ export function Footer() {
                 blurDataURL={BLUR_DATA_URL}
               />
               {/* Logo Text */}
-              <span className="text-xl font-bold text-brand-blue ">SHINER</span>
+              <span className="text-xl font-bold text-brand-blue font-hyundai">SHINER</span>
             </div>
           </Link>
 
@@ -198,11 +197,6 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
             <p>
               © {currentYear} {siteConfig.name}. All rights reserved.
-            </p>
-            <p className="text-center">
-              Built with{" "}
-              <Heart className="inline size-4 fill-red-500 text-red-500" />{" "}
-              using Next.js and Sanity CMS
             </p>
           </div>
         </div>

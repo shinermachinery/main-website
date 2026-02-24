@@ -12,7 +12,7 @@ export const metadata = pageMetadata.projects;
 export default async function ProductsPage() {
   return (
     <div className="bg-secondary">
-      <div className="container mx-auto px-6 py-24">
+      <div className="container mx-auto px-6 py-12">
         {/* All sections with 160px gap between them */}
         <div className="flex flex-col xl:gap-40 gap-20">
           <Suspense>

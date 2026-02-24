@@ -1,10 +1,9 @@
 "use client";
 
 import { Mail, Phone } from "lucide-react";
-import { useState, useTransition } from "react";
+import { ContactForm } from "@/components/sections/contact/contact-form";
 import { siteConfig } from "@/lib/site-config";
 import type { ContactPageData } from "@/sanity/lib/actions";
-import { submitContactForm } from "./actions";
 
 const { contactPage } = siteConfig;
 
@@ -13,39 +12,6 @@ interface ContactPageClientProps {
 }
 
 export function ContactPageClient({ data }: ContactPageClientProps) {
-  const [isPending, startTransition] = useTransition();
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    contactNumber: "",
-    message: "",
-  });
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    startTransition(async () => {
-      const result = await submitContactForm(formData);
-      if (result.success) {
-        setStatus("success");
-        setFormData({ fullName: "", email: "", contactNumber: "", message: "" });
-        setTimeout(() => setStatus("idle"), 3000);
-      } else {
-        setStatus("error");
-        setTimeout(() => setStatus("idle"), 3000);
-      }
-    });
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
   return (
     <div className="bg-background">
       {/* Contact Form Section */}
@@ -93,118 +59,9 @@ export function ContactPageClient({ data }: ContactPageClientProps) {
             </div>
           </div>
 
-          {/* Right Column - Contact Form */}
-          <div className="flex flex-1 flex-col gap-7 rounded-3xl border border-border bg-background p-5">
-            <form onSubmit={handleSubmit} className="flex flex-col gap-7">
-              {/* Full Name */}
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="fullName"
-                  className="text-sm font-semibold text-primary"
-                >
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  id="fullName"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  placeholder="John Doe"
-                  required
-                  className="h-10 rounded-2xl bg-secondary px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                />
-              </div>
-
-              {/* Email */}
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="email"
-                  className="text-sm font-semibold text-primary"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="sample@email.com"
-                  required
-                  className="h-10 rounded-2xl bg-secondary px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                />
-              </div>
-
-              {/* Contact Number */}
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="contactNumber"
-                  className="text-sm font-semibold text-primary"
-                >
-                  Contact Number
-                </label>
-                <input
-                  type="tel"
-                  id="contactNumber"
-                  name="contactNumber"
-                  value={formData.contactNumber}
-                  onChange={handleChange}
-                  placeholder="+91-90443 20555"
-                  required
-                  className="h-10 rounded-2xl bg-secondary px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                />
-              </div>
-
-              {/* Message */}
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="message"
-                  className="text-sm font-semibold text-primary"
-                >
-                  Your Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Your message here..."
-                  rows={4}
-                  required
-                  className="min-h-24 rounded-2xl bg-secondary p-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-brand-blue"
-                />
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isPending}
-                className="flex h-13 w-full items-center justify-center rounded-full px-4 py-2 transition-opacity hover:opacity-90 disabled:opacity-50"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(88.66deg, var(--brand-blue) 27.509%, var(--brand-green) 115.04%)",
-                  boxShadow:
-                    "inset 0px 4px 29px 0px rgba(244, 244, 245, 0.2)",
-                }}
-              >
-                <span className="text-sm font-semibold text-white">
-                  {isPending ? "Sending..." : "Get a Solution"}
-                </span>
-              </button>
-
-              {/* Status Messages */}
-              {status === "success" && (
-                <p className="text-center text-sm text-brand-green">
-                  Message sent successfully!
-                </p>
-              )}
-              {status === "error" && (
-                <p className="text-center text-sm text-red-600">
-                  Failed to send message. Please try again.
-                </p>
-              )}
-            </form>
+          {/* Right Column - Shared Contact Form */}
+          <div className="flex-1">
+            <ContactForm />
           </div>
         </div>
       </section>

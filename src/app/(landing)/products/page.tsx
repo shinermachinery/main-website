@@ -30,7 +30,7 @@ export default async function ProjectsPage({
 
   return (
     <div className="bg-secondary">
-      <div className="container mx-auto px-6 py-24">
+      <div className="container mx-auto px-6 py-12">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <SectionHeading

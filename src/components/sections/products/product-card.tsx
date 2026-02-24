@@ -29,22 +29,20 @@ export function ProductCard({
   const cardContent = (
     <div className="bg-background flex flex-col gap-4 items-center justify-center px-4 py-3 rounded-2xl hover:shadow-lg transition-shadow">
       {/* Product Image */}
-      <div
-        className="relative w-full rounded-2xl overflow-hidden"
-        style={{ aspectRatio: "282/168" }}
-      >
+      <div className="relative w-full rounded-2xl overflow-hidden bg-muted flex items-center justify-center max-h-48">
         {imageUrl ? (
           <Image
             src={imageUrl}
             alt={imageAlt || title}
-            fill
-            className="object-cover"
+            width={600}
+            height={400}
+            className="w-full h-auto max-h-48 object-contain"
             sizes="(max-width: 48rem) 100vw, (max-width: 64rem) 50vw, 33vw"
             placeholder="blur"
             blurDataURL={BLUR_DATA_URL}
           />
         ) : (
-          <div className="absolute inset-0 bg-muted flex flex-col items-center justify-center gap-2">
+          <div className="w-full h-48 bg-muted flex flex-col items-center justify-center gap-2">
             <FileText
               className="w-8 h-8 text-muted-foreground"
               strokeWidth={1}

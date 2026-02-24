@@ -13,6 +13,7 @@
  */
 export const IMAGE_PROJECTION = `
   asset,
+  "url": asset->url,
   alt,
   caption,
   hotspot
