@@ -49,7 +49,7 @@ async function WhyChooseUsContent() {
 
       {/* Reasons Grid */}
       {data.reasons.length > 0 ? (
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {data.reasons.map((reason, index) => (
             <div
               key={index}
@@ -116,7 +116,7 @@ function WhyChooseUsSkeleton() {
 
 export default function WhyChooseUsPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-16 md:py-12 flex flex-col gap-10">
+    <div className="max-w-7xl mx-auto px-4 py-8 md:py-12 flex flex-col gap-8 md:gap-10">
         <Suspense fallback={<WhyChooseUsSkeleton />}>
           <WhyChooseUsContent />
         </Suspense>

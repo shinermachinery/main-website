@@ -91,7 +91,7 @@ export default async function AboutPage() {
   const mainImageAlt = aboutData?.mainImage?.alt || "About Shiner";
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-16 md:py-12 flex flex-col gap-10">
+    <div className="max-w-7xl mx-auto px-4 py-8 md:py-12 flex flex-col gap-8 md:gap-10">
     
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-6">
           <div className="flex flex-1 flex-col gap-6">

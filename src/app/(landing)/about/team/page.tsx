@@ -24,11 +24,11 @@ async function TeamContent() {
         </p>
       </section>
 
-      <div className="flex flex-col gap-20">
+      <div className="flex flex-col gap-12 lg:gap-20">
         {members.map((member) => (
           <section
             key={member._id}
-            className="flex flex-col lg:flex-row gap-16"
+            className="flex flex-col lg:flex-row gap-8 lg:gap-16"
           >
             {/* Left: Photo & Contact */}
             <div className="lg:w-96 flex flex-col gap-8">
@@ -138,7 +138,7 @@ function TeamSkeleton() {
         <div className="h-7 bg-muted rounded-md w-96" />
       </section>
       {Array.from({ length: 3 }).map((_, i) => (
-        <section key={i} className="flex flex-col lg:flex-row gap-16">
+        <section key={i} className="flex flex-col lg:flex-row gap-8 lg:gap-16">
           <div className="lg:w-96 flex flex-col gap-8">
             <div className="aspect-square rounded-3xl bg-muted" />
             <div className="flex flex-col gap-2">
@@ -162,7 +162,7 @@ function TeamSkeleton() {
 
 export default function TeamPage() {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-16 md:py-12">
+    <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
       <Suspense fallback={<TeamSkeleton />}>
         <TeamContent />
       </Suspense>
