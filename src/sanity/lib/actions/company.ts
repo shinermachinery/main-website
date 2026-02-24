@@ -1,6 +1,6 @@
 /**
  * Company Actions
- * Server actions for fetching director, mission/vision, why choose us, and team
+ * Server actions for fetching mission/vision, why choose us, and team
  */
 
 import { urlFor } from "@/sanity/lib/image";
@@ -9,19 +9,6 @@ import { sanityFetch } from "@/sanity/lib/live";
 // ============================================================================
 // Types
 // ============================================================================
-
-export interface Director {
-  pageTitle: string;
-  pageSubtitle?: string;
-  name: string;
-  title: string;
-  image: string;
-  bio: any;
-  achievements?: string[];
-  email?: string;
-  phone?: string;
-  linkedin?: string;
-}
 
 export interface MissionVision {
   pageTitle: string;
@@ -59,52 +46,19 @@ export interface TeamMember {
   linkedin?: string;
 }
 
-// ============================================================================
-// Director Actions
-// ============================================================================
-
 /**
- * Get director page data
+ * Extract plain text from Portable Text blocks
  */
-export async function getDirector(): Promise<Director | null> {
-  try {
-    const { data } = await sanityFetch({
-      query: `*[_type == "director"][0] {
-        pageTitle,
-        pageSubtitle,
-        name,
-        title,
-        image,
-        bio,
-        achievements,
-        email,
-        phone,
-        linkedin
-      }`,
-    });
-
-    if (!data) {
-      return null;
-    }
-
-    return {
-      pageTitle: data.pageTitle || "Our Director",
-      pageSubtitle: data.pageSubtitle,
-      name: data.name,
-      title: data.title,
-      image: data.image
-        ? urlFor(data.image).url()
-        : "/placeholder-director.jpg",
-      bio: data.bio,
-      achievements: data.achievements,
-      email: data.email,
-      phone: data.phone,
-      linkedin: data.linkedin,
-    };
-  } catch (error) {
-    console.error("Error fetching director data:", error);
-    return null;
-  }
+function portableTextToPlain(blocks: any): string {
+  if (!blocks || !Array.isArray(blocks)) return "";
+  return blocks
+    .filter((block: any) => block._type === "block")
+    .map((block: any) =>
+      (block.children || [])
+        .map((child: any) => child.text || "")
+        .join(""),
+    )
+    .join(" ");
 }
 
 // ============================================================================
@@ -230,7 +184,7 @@ export async function getTeamMembers(limit?: number): Promise<TeamMember[]> {
         role,
         bio,
         image,
-        email,
+        contactEmail,
         phone,
         linkedin
       }${paginationSlice}`,
@@ -245,18 +199,18 @@ export async function getTeamMembers(limit?: number): Promise<TeamMember[]> {
         _id: string;
         name: string;
         role: string;
-        bio?: string;
+        bio?: any;
         image?: any;
-        email?: string;
+        contactEmail?: string;
         phone?: string;
         linkedin?: string;
       }) => ({
         id: member._id,
         name: member.name,
         role: member.role,
-        bio: member.bio,
+        bio: portableTextToPlain(member.bio),
         image: member.image ? urlFor(member.image).url() : undefined,
-        email: member.email,
+        email: member.contactEmail,
         phone: member.phone,
         linkedin: member.linkedin,
       }),

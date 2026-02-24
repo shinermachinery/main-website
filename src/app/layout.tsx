@@ -163,7 +163,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body
-        className={`${plusJakartaSans.variable} ${hyundai.variable} font-sans antialiased`}
+        className={`${plusJakartaSans.variable} ${hyundai.variable} font-sans antialiased bg-secondary`}
       >
         <ThemeProvider
           attribute="class"

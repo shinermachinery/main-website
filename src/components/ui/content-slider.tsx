@@ -122,13 +122,6 @@ export function ContentSlider<T>({
     return slidesToScroll.desktop || 3;
   };
 
-  // Calculate flex-basis accounting for gap
-  const calculateFlexBasis = () => {
-    const gapTotal = gap * (currentItemsPerView - 1);
-    const gapPerItem = gapTotal / currentItemsPerView;
-    return `calc(${100 / currentItemsPerView}% - ${gapPerItem}px)`;
-  };
-
   return (
     <div className={className}>
       <Carousel
@@ -143,16 +136,17 @@ export function ContentSlider<T>({
         className="w-full"
       >
         <CarouselContent
-          style={{ gap: `${gap}px` }}
-          className="ml-0 items-stretch"
+          style={{ marginLeft: `-${gap}px` }}
+          className="items-stretch"
         >
           {items.map((item, index) => (
             <CarouselItem
               key={index}
               style={{
-                flexBasis: calculateFlexBasis(),
+                flexBasis: `${100 / currentItemsPerView}%`,
+                paddingLeft: `${gap}px`,
               }}
-              className="!pl-0 flex"
+              className="flex"
             >
               <div className="w-full h-full">{renderItem(item, index)}</div>
             </CarouselItem>

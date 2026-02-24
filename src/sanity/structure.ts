@@ -44,13 +44,6 @@ export const structure: StructureResolver = (S) =>
                 .child(
                   S.document().schemaType("aboutPage").documentId("aboutPage"),
                 ),
-              // Director (Singleton)
-              S.listItem()
-                .title("Director")
-                .icon(UserIcon)
-                .child(
-                  S.document().schemaType("director").documentId("director"),
-                ),
               S.divider(),
               // Blog
               S.listItem()

@@ -33,7 +33,7 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
   });
 
   return (
-    <div className="container mx-auto px-4 md:px-8 lg:px-24 py-20">
+
       <div className="flex flex-col gap-10">
         {/* Back Button */}
         <Link
@@ -107,6 +107,6 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
           )}
         </div>
       </div>
-    </div>
+  
   );
 }

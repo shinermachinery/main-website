@@ -43,17 +43,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
   }));
 
   return (
-    <div className="min-h-screen bg-secondary">
-      <div className="container mx-auto px-4 py-16 md:py-12">
-        <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <SectionHeading
-            as="h1"
-            title="Our Blogs"
-            description="Insights, updates, and stories from the world of precision engineering and industrial machinery."
-            className="mb-12"
-          />
-
+    <div className="min-h-screen bg-secondary max-w-7xl mx-auto px-4 py-16 md:py-12">
+     
           {/* Search and Filters */}
           <SearchFilterBar
             basePath="/blog"
@@ -68,8 +59,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
           <Suspense fallback={<BlogsSkeleton />}>
             <BlogsData searchQuery={params.q} category={params.category} />
           </Suspense>
-        </div>
-      </div>
+    
     </div>
   );
 }

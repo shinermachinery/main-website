@@ -1,91 +1,75 @@
-import {
-  Award,
-  Building2,
-  Calendar,
-  type LucideIcon,
-  Mail,
-  User,
-  Users,
-} from "lucide-react";
-
 export interface NavLink {
   name: string;
   href: string;
 }
 
-export interface NavLinkWithIcon extends NavLink {
-  icon: LucideIcon;
+// ============================================================================
+// Link Groups
+// ============================================================================
+
+export const aboutLinks: NavLink[] = [
+  { name: "About Us", href: "/about" },
+  { name: "Why Choose Us", href: "/about/why-choose-us" },
+  { name: "About Director", href: "/about/director" },
+  { name: "Our Team", href: "/about/team" },
+];
+
+export const navLinks: NavLink[] = [
+  { name: "Our Services", href: "/services" },
+  { name: "Our Projects", href: "/projects" },
+];
+
+export const moreLinks: NavLink[] = [
+  { name: "Events", href: "/events" },
+  { name: "Blogs", href: "/blog" },
+  { name: "Contact", href: "/contact" },
+];
+
+// ============================================================================
+// Desktop Navigation
+// ============================================================================
+
+export type DesktopNavItem =
+  | { type: "popover"; label: string; links: NavLink[]; align: "start" | "end" }
+  | { type: "products"; label: string; align: "start" | "end" }
+  | { type: "links" };
+
+export const desktopNavItems: DesktopNavItem[] = [
+  { type: "popover", label: "About", links: aboutLinks, align: "start" },
+  { type: "products", label: "Our Products", align: "start" },
+  { type: "links" },
+  { type: "popover", label: "More", links: moreLinks, align: "end" },
+];
+
+// ============================================================================
+// Mobile Navigation
+// ============================================================================
+
+export interface MobileNavSection {
+  title?: string;
+  links: NavLink[];
 }
 
-/**
- * About dropdown links
- */
-export const aboutLinks: NavLinkWithIcon[] = [
-  {
-    name: "About Us",
-    href: "/about",
-    icon: Building2,
-  },
-  {
-    name: "Why Choose Us",
-    href: "/about/why-choose-us",
-    icon: Award,
-  },
-  {
-    name: "About Director",
-    href: "/about/director",
-    icon: User,
-  },
-  {
-    name: "Our Team",
-    href: "/about/team",
-    icon: Users,
-  },
+export const mobileNavSections: MobileNavSection[] = [
+  { title: "About", links: aboutLinks },
+  // Products section inserted dynamically between index 0 and 1 in navbar
+  { links: navLinks },
+  { title: "More", links: moreLinks },
 ];
 
-/**
- * Main navigation links displayed in navbar
- * Order: Our Products | Our Services | Our Projects | Events | Blogs
- * Note: "About" and "Our Products" are handled as popovers in the navbar
- */
-export const navLinks: NavLink[] = [
-  {
-    name: "Our Services",
-    href: "/services",
-  },
-  {
-    name: "Our Projects",
-    href: "/projects",
-  },
-  {
-    name: "Events",
-    href: "/events",
-  },
-  {
-    name: "Blogs",
-    href: "/blog",
-  },
-];
+// ============================================================================
+// CTA
+// ============================================================================
 
-/**
- * More dropdown navigation links
- */
-export const moreLinks: NavLinkWithIcon[] = [
-  {
-    name: "Events",
-    href: "/events",
-    icon: Calendar,
-  },
-  {
-    name: "Contact",
-    href: "/contact",
-    icon: Mail,
-  },
-];
+export const navbarCta = {
+  text: "Get a Quote",
+  href: "/contact",
+} as const;
 
-/**
- * Footer quick links
- */
+// ============================================================================
+// Footer
+// ============================================================================
+
 export const footerQuickLinks: NavLink[] = [
   { name: "About Us", href: "/about" },
   { name: "Products", href: "/products" },
@@ -94,9 +78,6 @@ export const footerQuickLinks: NavLink[] = [
   { name: "Contact", href: "/contact" },
 ];
 
-/**
- * Footer resource links
- */
 export const footerResourceLinks: NavLink[] = [
   { name: "Blog", href: "/blog" },
   { name: "Events", href: "/events" },
@@ -104,9 +85,6 @@ export const footerResourceLinks: NavLink[] = [
   { name: "Our Team", href: "/about/team" },
 ];
 
-/**
- * Social media links
- */
 export const socialLinks = {
   facebook: "https://facebook.com",
   twitter: "https://twitter.com",

@@ -77,12 +77,9 @@ export const teamMemberType = defineType({
       name: "contactEmail",
       title: "Contact Email",
       type: "string",
-      description: "Direct contact email (shown for Director)",
-      hidden: ({ parent }) => !parent?.isDirector,
       validation: (Rule) =>
-        Rule.custom((value, context) => {
-          const parent = context.parent as { isDirector?: boolean };
-          if (parent?.isDirector && value) {
+        Rule.custom((value) => {
+          if (value) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(value)) {
               return "Please enter a valid email address";
@@ -90,6 +87,16 @@ export const teamMemberType = defineType({
           }
           return true;
         }),
+    }),
+    defineField({
+      name: "phone",
+      title: "Phone",
+      type: "string",
+    }),
+    defineField({
+      name: "linkedin",
+      title: "LinkedIn URL",
+      type: "url",
     }),
     defineField({
       name: "order",

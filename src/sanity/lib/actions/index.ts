@@ -100,10 +100,6 @@ export {
 // ============================================================================
 
 export {
-  // Types
-  type Director,
-  // Director
-  getDirector,
   // Mission Vision
   getMissionVision,
   // Team Members

@@ -29,16 +29,8 @@ export default async function ProjectsPage({
   }));
 
   return (
-    <div className="bg-secondary">
-      <div className="container mx-auto px-6 py-12">
-        <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <SectionHeading
-            as="h1"
-            title="Our Products"
-            description="Explore our comprehensive range of products and projects. High-quality machinery and equipment for food processing plants."
-            className="mb-12"
-          />
+    <div className="max-w-7xl mx-auto px-4 py-16 md:py-12 flex flex-col gap-10">
+    
 
           {/* Search & Filter Bar */}
           <SearchFilterBar
@@ -54,8 +46,7 @@ export default async function ProjectsPage({
           <Suspense fallback={<ProductsGridSkeleton />}>
             <ProductsData searchQuery={params.q} category={params.category} />
           </Suspense>
-        </div>
-      </div>
+
     </div>
   );
 }

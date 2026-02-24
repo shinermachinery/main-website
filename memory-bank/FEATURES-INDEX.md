@@ -2,7 +2,7 @@
 
 Master index of all features in this project. Each feature has detailed documentation in its respective folder.
 
-**Last Updated**: 2026-02-19
+**Last Updated**: 2026-02-25
 
 ## Active Features
 
@@ -38,7 +38,7 @@ Features currently implemented and in use.
 **Description**: Headless CMS with embedded Studio for content management
 **Key Tech**: Sanity v4, next-sanity, GROQ
 **Created**: 2025-12-23
-**Last Updated**: 2026-02-14
+**Last Updated**: 2026-02-25
 
 **Quick Links:**
 - [Full Documentation](./features/sanity-integration/README.md)
@@ -47,13 +47,13 @@ Features currently implemented and in use.
 **Key Files:**
 - `sanity.config.ts` - Sanity configuration
 - `src/sanity/lib/client.ts` - API client
-- `src/sanity/schemaTypes/**/*.ts` - Content schemas (20 total, 7 domains)
+- `src/sanity/schemaTypes/**/*.ts` - Content schemas (19 total, removed standalone directorType, director data now fetched from teamMember with isDirector flag)
 - `src/sanity/lib/queries/pages/*.ts` - Page-specific GROQ queries
 - `src/sanity/lib/queries/shared/*.ts` - Shared projections and utilities
 - `src/sanity/structure.ts` - Studio structure
 - `src/app/studio/[[...tool]]/page.tsx` - Studio route
 
-**Content Schemas (20 total):**
+**Content Schemas (19 total):**
 
 *Singletons (Pages):*
 - Home - Homepage content (homeType)
@@ -282,7 +282,7 @@ Features currently implemented and in use.
 **Description**: Complete About Us section with main about page (hero, mission, vision, features, featured products) and three sub-pages, navbar dropdown, and rich content management
 **Key Tech**: Next.js 16, Sanity Singleton Documents, Portable Text, Server Components
 **Created**: 2025-12-30
-**Last Updated**: 2026-02-19
+**Last Updated**: 2026-02-25
 
 **Quick Links:**
 - [Full Documentation](./features/about-us-pages/README.md)
@@ -297,7 +297,6 @@ Features currently implemented and in use.
 - `src/sanity/schemaTypes/company/aboutPageType.ts` - About page schema (mainImage, rich text mission/vision)
 - `src/sanity/schemaTypes/whyChooseUsType.ts` - Why Choose schema
 - `src/sanity/schemaTypes/missionVisionType.ts` - Mission schema
-- `src/sanity/schemaTypes/directorType.ts` - Director schema
 - `src/actions/about.ts` - About page data fetching
 
 **Features:**
@@ -323,7 +322,7 @@ Features currently implemented and in use.
 - aboutPageType - Hero (mainImage, rich text heroDescription), mission/vision (rich text), features, bottomFeatures
 - whyChooseUsType - Hero image, reasons array with icons
 - missionVisionType - Mission/vision text and images
-- directorType - Full profile with Portable Text bio
+- Director data sourced from teamMember with `isDirector` flag (no standalone directorType schema)
 
 **Dependencies:**
 - Sanity CMS Integration
@@ -331,6 +330,7 @@ Features currently implemented and in use.
 - lucide-react (icons)
 
 **Recent Updates:**
+- **v1.3.0 (2026-02-25)**: Removed standalone `director` Sanity schema; director data now sourced from `teamMember` with `isDirector` flag. Added `phone` and `linkedin` fields to all team members. Removed icons from navbar dropdown popovers. Team page bio now properly handles Portable Text. Team page shows phone, email, and LinkedIn for all members.
 - **v1.2.0 (2026-02-19)**: About page schema refactor + codebase Tailwind cleanup
   - Removed `whoWeAre` section from about page schema, projection, types, and page
   - Added `mainImage` field to about page schema
@@ -543,7 +543,7 @@ Features scheduled for future implementation:
 | Feature | Status | Files | Docs |
 |---------|--------|-------|------|
 | Theme System | ✅ | `src/lib/theme-provider.tsx`<br>`src/components/global/mode-toggle.tsx` | [View](./features/theme-system/README.md) |
-| Sanity Integration | ✅ | `sanity.config.ts`<br>`src/sanity/**/*` (20 schemas, queries in pages/shared/) | [View](./features/sanity-integration/README.md) |
+| Sanity Integration | ✅ | `sanity.config.ts`<br>`src/sanity/**/*` (19 schemas, queries in pages/shared/) | [View](./features/sanity-integration/README.md) |
 | UI Components (shadcn/ui) | 🚧 | `src/components/ui/**/*`<br>`src/lib/utils.ts` | [View](./features/ui-components/README.md) |
 | MCP Integration | ✅ | `.mcp.json`<br>`.claude/settings.local.json` | [View](../MCP-SETUP.md) |
 | Landing Pages | ✅ | `src/app/(landing)/**/*`<br>6 pages: Home, About, Contact, Blog, Blog Detail, Services | [View](./features/landing-page/README.md) |
@@ -559,8 +559,9 @@ Features scheduled for future implementation:
 - 🚧 In Development: 0
 - 📋 Planned: 2
 
-**Last Feature Completed**: About Page Schema Refactor + Tailwind Cleanup (2026-02-19)
+**Last Feature Completed**: Director Schema Consolidation + Navbar Cleanup (2026-02-25)
 **Recently Updated**:
+- **Director + Team + Navbar (2026-02-25)** - Removed standalone `director` schema (consolidated into teamMember with isDirector flag). Added phone/linkedin to all team members. Removed icons from navbar dropdown popovers. Fixed team page Portable Text bio rendering.
 - **About Page + Codebase Cleanup (2026-02-19)** - Refactored about page schema (removed whoWeAre, added mainImage, converted to rich text). Replaced ALL arbitrary Tailwind rem values with standard classes across 42 files. Removed all `leading-*`/`tracking-*` from non-shadcn files. ProductCard now shows category as GradientBadge. Footer updated with real contact info.
 - **Contact Page (2026-02-17)** - Redesigned to match Figma (heading, Get In Touch card, gradient map borders). Moved phones/emails/offices to Sanity CMS with `contactPage` singleton schema. Static text in `site-config.ts`. Server action with IP-based rate limiting (3/min). Replaced arbitrary rem/px values with standard Tailwind classes. Replaced `max-w-[72.25rem]` with `max-w-7xl` codebase-wide.
 - **Services Page (2026-02-17)** - Replaced `max-w-[72.25rem]` with `max-w-7xl`.
@@ -587,4 +588,4 @@ Features scheduled for future implementation:
 
 **Maintenance Schedule**: Review and update this index when features change
 **Owner**: Team
-**Last Review**: 2026-02-19
+**Last Review**: 2026-02-25

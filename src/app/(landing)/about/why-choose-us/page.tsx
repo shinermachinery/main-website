@@ -116,12 +116,10 @@ function WhyChooseUsSkeleton() {
 
 export default function WhyChooseUsPage() {
   return (
-    <div className="bg-secondary">
-      <div className="container mx-auto px-6 py-16 md:py-24">
+    <div className="max-w-7xl mx-auto px-4 py-16 md:py-12 flex flex-col gap-10">
         <Suspense fallback={<WhyChooseUsSkeleton />}>
           <WhyChooseUsContent />
         </Suspense>
-      </div>
     </div>
   );
 }

@@ -91,9 +91,8 @@ export default async function AboutPage() {
   const mainImageAlt = aboutData?.mainImage?.alt || "About Shiner";
 
   return (
-    <div className="bg-secondary">
-      {/* Hero Section */}
-      <section className="container mx-auto px-6 py-16 md:py-24">
+    <div className="max-w-7xl mx-auto px-4 py-16 md:py-12 flex flex-col gap-10">
+    
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-6">
           <div className="flex flex-1 flex-col gap-6">
             <h1 className="text-3xl font-medium text-foreground md:text-2xl">
@@ -119,10 +118,9 @@ export default async function AboutPage() {
             )}
           </div>
         </div>
-      </section>
+      
 
-      {/* Mission, Vision & Features Section */}
-      <section className="container mx-auto px-6 py-16">
+ 
         <div className="w-full grid grid-cols-1 gap-6">
           <div className="w-full grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div className="flex flex-1 flex-col justify-start gap-4 rounded-2xl bg-brand-blue-10 p-6">
@@ -188,11 +186,11 @@ export default async function AboutPage() {
             );
           })}
         </div> */}
-      </section>
+
 
       {/* Featured Products Section */}
       {featuredProducts.length > 0 && (
-      <section className="container mx-auto px-6 py-16">
+      <section className="w-full">
         <div className="mb-10 flex items-center justify-between">
           <h2 className="text-2xl font-medium text-foreground">
             Featured Products

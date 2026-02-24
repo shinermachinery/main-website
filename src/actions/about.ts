@@ -1,9 +1,11 @@
 "use server";
 
+import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 import {
   getAboutPageQuery,
   getAllTeamMembersQuery,
+  getCompanyTeamMembersQuery,
   getDirectorQuery,
 } from "@/sanity/lib/queries";
 
@@ -49,7 +51,7 @@ export interface TeamMember {
   _type: "teamMember";
   name: string;
   role: string;
-  bio?: string;
+  bio?: any;
   image?: {
     asset: { _ref: string };
     alt?: string;
@@ -58,7 +60,20 @@ export interface TeamMember {
   isDirector?: boolean;
   achievements?: string[];
   contactEmail?: string;
+  phone?: string;
+  linkedin?: string;
   order?: number;
+}
+
+export interface DirectorData {
+  name: string;
+  title: string;
+  image: string;
+  bio?: any;
+  achievements?: string[];
+  email?: string;
+  phone?: string;
+  linkedin?: string;
 }
 
 // ============================================================================
@@ -81,12 +96,28 @@ export async function getAboutPage(): Promise<AboutPage | null> {
 
 /**
  * Get director (team member with isDirector flag)
+ * Returns resolved data with image URL ready for rendering
  */
-export async function getDirector(): Promise<TeamMember | null> {
+export async function getDirector(): Promise<DirectorData | null> {
   try {
     const { query, params } = getDirectorQuery();
     const result = await sanityFetch({ query, params });
-    return result.data || null;
+    const data = result.data as TeamMember | null;
+
+    if (!data) {
+      return null;
+    }
+
+    return {
+      name: data.name,
+      title: data.role,
+      image: data.image ? urlFor(data.image).url() : "/placeholder-director.jpg",
+      bio: data.bio,
+      achievements: data.achievements,
+      email: data.contactEmail,
+      phone: data.phone,
+      linkedin: data.linkedin,
+    };
   } catch (error) {
     console.error("Error fetching director:", error);
     return null;
@@ -109,10 +140,13 @@ export async function getAllTeamMembers(limit?: number): Promise<TeamMember[]> {
 
 /**
  * Get team members excluding the director
+ * Uses full projection (includes achievements) for detailed team profiles
  */
 export async function getTeamMembersExcludingDirector(): Promise<TeamMember[]> {
   try {
-    const teamMembers = await getAllTeamMembers();
+    const { query, params } = getCompanyTeamMembersQuery();
+    const result = await sanityFetch({ query, params });
+    const teamMembers: TeamMember[] = result.data || [];
     return teamMembers.filter((member) => !member.isDirector);
   } catch (error) {
     console.error("Error fetching team members:", error);

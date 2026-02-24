@@ -2,6 +2,34 @@
 
 All notable changes to the About Us pages system will be documented in this file.
 
+## [1.3.0] - 2026-02-25 - Director Schema Consolidation + Team Contact Info + Navbar Cleanup
+
+### Changed
+- **Director page** now fetches from `teamMember` with `isDirector == true` flag instead of standalone `director` schema
+- **Director page** import changed from `@/sanity/lib/actions` to `@/actions/about`
+- **Director page** removed `console.log` debug statement
+- **Director page** uses static "Meet Our Director" heading instead of CMS `pageTitle`/`pageSubtitle`
+- **Team page** bio now properly renders as plain text (converted from Portable Text blocks)
+- **Team page** now shows phone, email, and LinkedIn for all members
+- **Navbar** removed icon boxes from all popover dropdowns (About, Products, More)
+- **Navbar** popover width reduced from w-64 to w-48
+- **Navigation data** simplified - removed `NavLinkWithIcon` type and lucide-react icon imports
+
+### Removed
+- Standalone `director` Sanity schema type (`directorType.ts`)
+- Director singleton from Sanity Studio structure
+- `getDirector()` from `src/sanity/lib/actions/company.ts`
+- `Director` type export from `src/sanity/lib/actions/index.ts`
+- Icon imports (Award, Building2, Calendar, Mail, User, Users) from navigation data
+
+### Added
+- `phone` and `linkedin` fields to `teamMemberType` schema (available for all team members)
+- `DirectorData` interface in `src/actions/about.ts`
+- `portableTextToPlain()` helper in `src/sanity/lib/actions/company.ts`
+- Phone and LinkedIn display in team member cards
+
+---
+
 ## [1.0.0] - 2025-12-30
 
 ### Added

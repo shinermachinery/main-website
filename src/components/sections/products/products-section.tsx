@@ -14,9 +14,8 @@ export function ProductsGrid({ products }: ProductsGridProps) {
   if (!products || products.length === 0) return null;
 
   return (
-    <section id="products" className="py-40" aria-labelledby="products-heading">
-      <div className="container mx-auto px-4">
-        <div className="max-w-7xl mx-auto flex flex-col gap-10">
+    <section id="products" className="w-full flex flex-col gap-10" aria-labelledby="products-heading">
+       
           {/* Header with Title and Button */}
           <div className="flex items-center gap-6">
             <div className="flex-1">
@@ -56,8 +55,7 @@ export function ProductsGrid({ products }: ProductsGridProps) {
               );
             })}
           </div>
-        </div>
-      </div>
+       
     </section>
   );
 }

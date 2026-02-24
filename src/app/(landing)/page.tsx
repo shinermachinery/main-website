@@ -28,7 +28,7 @@ export default async function HomePage() {
   };
 
   return (
-    <div className="bg-secondary">
+    <div className="flex flex-col items-center justify-center gap-20 md:gap-28 lg:gap-36 pb-20 w-full max-w-7xl mx-auto px-4">
       <HeroSection {...heroProps} featuredProducts={homeData.featuredProducts} />
       <AboutSection
         title={homeData.home?.wordAboutUsTitle}

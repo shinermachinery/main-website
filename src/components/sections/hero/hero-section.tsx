@@ -37,9 +37,8 @@ export function HeroSection({
   featuredProducts = [],
 }: HeroSectionProps) {
   return (
-    <section className="relative overflow-hidden" aria-label="Hero section">
-      {/* Container wrapper for consistent width */}
-      <div className="container mx-auto px-4">
+    <section className="relative overflow-hidden w-full" aria-label="Hero section">
+      <div className="w-full mx-auto">
           {/* Gray Background Area */}
           <div
             className="bg-zinc-400 min-h-[calc(100vh-5rem)] flex items-end rounded-3xl"
@@ -63,12 +62,12 @@ export function HeroSection({
                 </h1>
 
                 {/* Description */}
-                <p className="text-sm md:text-base text-muted-foreground mb-6 font-light">
+                <p className="text-sm md:text-base text-muted-foreground mb-6">
                   {description}
                 </p>
 
                 {/* CTA Buttons */}
-                <div className="flex flex-wrap gap-3">
+                <div className="flex sm:flex-row flex-col gap-3">
                   {/* Primary CTA Button - Outline */}
                   <Button
                     variant="outline"

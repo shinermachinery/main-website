@@ -224,6 +224,9 @@ export const TEAM_MEMBER_PROJECTION = `{
     ${IMAGE_PROJECTION}
   },
   isDirector,
+  contactEmail,
+  phone,
+  linkedin,
   order
 }`;
 
@@ -242,6 +245,8 @@ export const TEAM_MEMBER_FULL_PROJECTION = `{
   isDirector,
   achievements,
   contactEmail,
+  phone,
+  linkedin,
   order
 }`;
 

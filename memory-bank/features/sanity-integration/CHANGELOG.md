@@ -2,6 +2,33 @@
 
 All notable changes to the Sanity integration will be documented in this file.
 
+## [2.2.0] - 2026-02-25 - Director Schema Consolidation
+
+### Summary
+Removed standalone `director` schema type. Director data is now fetched from `teamMember` with `isDirector == true` flag. Added `phone` and `linkedin` fields to all team members.
+
+### Schema Changes
+- **Removed** `src/sanity/schemaTypes/company/directorType.ts` - Standalone director document type
+- **Removed** Director singleton from Sanity Studio structure
+- **Updated** `teamMemberType` - Added `phone` and `linkedin` fields (available for all team members, not just director)
+- **Updated** `teamMemberType` - Removed `hidden` restriction from `contactEmail`, `phone`, `linkedin` fields
+
+### Action Changes
+- **Removed** `getDirector()` from `src/sanity/lib/actions/company.ts`
+- **Removed** `Director` type export from `src/sanity/lib/actions/index.ts`
+- **Updated** `getDirector()` in `src/actions/about.ts` - Now returns `DirectorData` type with resolved image URL
+- **Updated** `getTeamMembers()` in company.ts - Fixed bio Portable Text to plain text conversion, uses `contactEmail` field name
+
+### Projection Changes
+- **Updated** `TEAM_MEMBER_PROJECTION` - Added `contactEmail`, `phone`, `linkedin`
+- **Updated** `TEAM_MEMBER_FULL_PROJECTION` - Added `phone`, `linkedin`
+
+### Files Changed
+- 10+ files modified
+- 1 file deleted (directorType.ts)
+
+---
+
 ## [2.1.0] - 2026-02-14 - Query Reorganization & Infrastructure
 
 ### Summary

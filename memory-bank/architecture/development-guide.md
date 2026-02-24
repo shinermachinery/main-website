@@ -1,6 +1,6 @@
 # Development Guide
 
-**Last Updated**: 2026-02-17
+**Last Updated**: 2026-02-25
 
 This is the central reference for development commands, tooling configuration, and project setup.
 
@@ -187,7 +187,7 @@ src/
     │   └── queries/        # GROQ queries organized by domain
     │       ├── pages/      # Page-specific queries
     │       └── shared/     # Shared projections and utilities
-    ├── schemaTypes/        # Sanity content schemas (19 total)
+    ├── schemaTypes/        # Sanity content schemas (19 types, 7 domains)
     └── structure.ts        # Sanity Studio structure
 ```
 

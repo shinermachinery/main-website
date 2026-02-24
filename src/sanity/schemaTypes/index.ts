@@ -12,7 +12,7 @@ import {
 } from "./common";
 
 // Company schemas
-import { aboutPageType, directorType, teamMemberType } from "./company";
+import { aboutPageType, teamMemberType } from "./company";
 // Homepage schemas
 import { homeType } from "./homepage";
 
@@ -58,7 +58,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     // Company
     aboutPageType,
-    directorType,
     teamMemberType,
 
     // Marketing

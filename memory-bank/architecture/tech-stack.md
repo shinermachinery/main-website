@@ -1,6 +1,6 @@
 # Technology Stack
 
-**Last Updated**: 2025-12-23
+**Last Updated**: 2026-02-25
 
 ## Core Framework
 
@@ -106,18 +106,25 @@
 
 ## Fonts
 
-### Google Fonts (via next/font)
-- **Geist Sans**: Variable font for body text
-  - CSS Variable: `--font-geist-sans`
-- **Geist Mono**: Variable font for code/monospace
-  - CSS Variable: `--font-geist-mono`
+### Plus Jakarta Sans (via next/font/google)
+- **Primary font** for body text and headings
 - **Optimization**: Automatic by Next.js
+
+### Hyundai-Normal (Local Font)
+- **Branding font** used for logo text
+- **Location**: `src/fonts/hyundai-normal.ttf`
+- **CSS Class**: `font-hyundai`
+
+### Carousel
+- **embla-carousel-react**: 8.6.0
+- **embla-carousel-autoplay**: 8.6.0
+- **Usage**: Product carousels, testimonials, hero featured products
 
 ## Runtime
 
 ### Node.js
 - **Minimum Version**: Node 20+ (implied by Next.js 16)
-- **Package Manager**: npm or bun
+- **Package Manager**: bun (required)
 - **Scripts**: Defined in `package.json`
 
 ## Build Tools

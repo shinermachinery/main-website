@@ -10,10 +10,8 @@ const sizeBreakdown = [
 
 export function HighlightsSection() {
   return (
-    <section className="py-16">
-      <div className="container mx-auto px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <section className="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
+         
             {/* Left Card */}
             <div className="bg-background border border-border rounded-2xl p-6 flex flex-col gap-4">
               <div className="flex items-center justify-between">
@@ -72,7 +70,7 @@ export function HighlightsSection() {
             </div>
 
             {/* Right Card - Green gradient */}
-            <div className="bg-gradient-to-br from-brand-blue to-brand-green rounded-2xl p-6 flex flex-col gap-4">
+            <div className="bg-linear-to-br from-brand-blue to-brand-green rounded-2xl p-6 flex flex-col gap-4">
               <div className="flex items-center justify-between">
                 <TrendingUp className="size-5 text-white/80" />
                 <Link
@@ -95,9 +93,7 @@ export function HighlightsSection() {
                 Neque tincidunt et pellentesque proin.
               </p>
             </div>
-          </div>
-        </div>
-      </div>
+          
     </section>
   );
 }

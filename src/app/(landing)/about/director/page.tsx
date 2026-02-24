@@ -6,13 +6,12 @@ import { Suspense } from "react";
 import { PortableText } from "@/components/blog/portable-text";
 import { BLUR_DATA_URL } from "@/lib/image-blur";
 import { pageMetadata } from "@/lib/site-config";
-import { getDirector } from "@/sanity/lib/actions";
+import { getDirector } from "@/actions/about";
 
 export const metadata = pageMetadata.aboutDirector;
 
 async function DirectorContent() {
   const data = await getDirector();
-  console.log("data", data);
 
   if (!data) {
     notFound();
@@ -23,13 +22,8 @@ async function DirectorContent() {
       {/* Page Header */}
       <section className="flex flex-col gap-4">
         <h1 className="font-medium text-3xl text-foreground">
-          {data.pageTitle}
+          Meet Our Director
         </h1>
-        {data.pageSubtitle && (
-          <p className="font-medium text-lg text-muted-foreground">
-            {data.pageSubtitle}
-          </p>
-        )}
       </section>
 
       {/* Director Profile */}
@@ -179,12 +173,12 @@ function DirectorSkeleton() {
 
 export default function DirectorPage() {
   return (
-    <div className="bg-secondary">
-      <div className="container mx-auto px-6 py-16 md:py-24">
+    <div className="max-w-7xl mx-auto px-4 py-16 md:py-12">
+  
         <Suspense fallback={<DirectorSkeleton />}>
           <DirectorContent />
         </Suspense>
-      </div>
+      
     </div>
   );
 }

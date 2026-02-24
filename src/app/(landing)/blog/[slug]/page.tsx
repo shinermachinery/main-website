@@ -52,7 +52,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
 
   return (
-    <div className="min-h-screen bg-secondary">
+    <div className="min-h-screen max-w-7xl mx-auto px-4 py-16 md:py-12">
       <Suspense fallback={<BlogPostSkeleton />}>
         <BlogPostData slug={slug} />
       </Suspense>

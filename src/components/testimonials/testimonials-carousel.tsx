@@ -94,9 +94,8 @@ export function TestimonialsCarousel({
       : FALLBACK_TESTIMONIALS;
 
   return (
-    <section className="py-40" aria-labelledby="testimonials-heading">
-      <div className="container mx-auto px-4">
-        <div className="max-w-7xl mx-auto flex flex-col gap-10">
+    <section className="w-full flex flex-col gap-10" aria-labelledby="testimonials-heading">
+     
           {/* Header - Two Column Layout */}
           <div className="flex flex-col md:flex-row gap-8 items-start">
             <h2
@@ -134,8 +133,6 @@ export function TestimonialsCarousel({
             autoplayDelay={4000}
             className="relative"
           />
-        </div>
-      </div>
     </section>
   );
 }

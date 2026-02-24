@@ -13,9 +13,9 @@ interface ContactPageClientProps {
 
 export function ContactPageClient({ data }: ContactPageClientProps) {
   return (
-    <div className="bg-background">
+    <div className="max-w-7xl mx-auto px-4 py-16 md:py-12 flex flex-col gap-10">
       {/* Contact Form Section */}
-      <section className="mx-auto max-w-7xl px-6 py-16 md:py-24">
+     
         <div className="flex flex-col gap-10 lg:flex-row lg:gap-10">
           {/* Left Column - Heading & Contact Info */}
           <div className="flex w-full flex-col gap-6 lg:w-1/2">
@@ -64,7 +64,7 @@ export function ContactPageClient({ data }: ContactPageClientProps) {
             <ContactForm />
           </div>
         </div>
-      </section>
+      
 
       {/* Office Locations */}
       {data.offices.length > 0 && (
