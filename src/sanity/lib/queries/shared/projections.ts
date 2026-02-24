@@ -302,55 +302,6 @@ export const SITE_SETTINGS_PROJECTION = `{
   }
 }`;
 
-/**
- * Navigation Projection
- */
-export const NAVIGATION_PROJECTION = `{
-  ${BASE_DOCUMENT_FIELDS},
-  menuItems[] {
-    _key,
-    label,
-    link,
-    hasDropdown,
-    dropdownItems[] {
-      _key,
-      label,
-      link,
-      description
-    }
-  },
-  ctaButton {
-    label,
-    link
-  }
-}`;
-
-/**
- * Footer Projection
- */
-export const FOOTER_PROJECTION = `{
-  ${BASE_DOCUMENT_FIELDS},
-  sections[] {
-    _key,
-    title,
-    links[] {
-      _key,
-      label,
-      url
-    }
-  },
-  contactInfo {
-    email,
-    phone,
-    address
-  },
-  socialLinks[] {
-    platform,
-    url
-  },
-  copyrightText
-}`;
-
 // ============================================================================
 // About Page Projections
 // ============================================================================

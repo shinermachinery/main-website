@@ -36,13 +36,11 @@ export {
   // Collection Projections
   COLLECTION_SUMMARY_PROJECTION,
   EVENT_PROJECTION,
-  FOOTER_PROJECTION,
   // Base Projections
   IMAGE_PROJECTION,
   // Project Projections
   INSTALLATION_PROJECTION,
   OTHER_CLIENT_PROJECTION,
-  NAVIGATION_PROJECTION,
   POST_FULL_PROJECTION,
   // Post Projections
   POST_SUMMARY_PROJECTION,
@@ -135,12 +133,7 @@ export {
 // Settings Queries
 // ============================================================================
 
-export {
-  getFooterQuery,
-  getGlobalLayoutDataQuery,
-  getNavigationQuery,
-  getSiteSettingsQuery,
-} from "./pages/settings";
+export { getSiteSettingsQuery } from "./pages/settings";
 
 // ============================================================================
 // Services Page Queries

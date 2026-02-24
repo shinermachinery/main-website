@@ -6,8 +6,6 @@ import { authorType, blockContentType, categoryType, postType } from "./blog";
 import {
   contactPageType,
   contactSubmissionType,
-  footerType,
-  navigationType,
   siteSettingsType,
 } from "./common";
 
@@ -68,8 +66,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
     // Common
     siteSettingsType,
-    navigationType,
-    footerType,
     contactPageType,
     contactSubmissionType,
   ],

@@ -99,7 +99,7 @@ async function TeamContent() {
                   <h3 className="font-medium text-xl text-foreground">
                     Biography
                   </h3>
-                  <div className="prose prose-lg max-w-none">
+                  <div className="prose prose-sm max-w-none">
                     <PortableText value={member.bio} />
                   </div>
                 </div>
@@ -113,7 +113,7 @@ async function TeamContent() {
                   <ul className="flex flex-col gap-3">
                     {member.achievements.map((achievement: string) => (
                       <li key={achievement} className="flex gap-3 items-start">
-                        <div className="w-1 h-1 rounded-full bg-brand-blue mt-2 shrink-0" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-brand-blue mt-2 shrink-0" />
                         <p className="font-normal text-sm text-muted-foreground">
                           {achievement}
                         </p>

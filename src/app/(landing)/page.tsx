@@ -6,6 +6,7 @@ import { FaqSection } from "@/components/sections/faq/faq-section";
 import { HeroSection } from "@/components/sections/hero/hero-section";
 import { HighlightsSection } from "@/components/sections/highlights/highlights-section";
 import { HowItWorksSection } from "@/components/sections/how-it-works/how-it-works-section";
+import { ProcessSection } from "@/components/sections/process/process-section";
 import { ProductsData } from "@/components/sections/products/products-data";
 import { ProductsSkeleton } from "@/components/sections/products/products-skeleton";
 import { StatsSection } from "@/components/sections/stats/stats-section";
@@ -45,6 +46,9 @@ export default async function HomePage() {
         title={homeData.home?.fewMoreFactsTitle}
         facts={homeData.home?.facts || []}
       />
+
+      <ProcessSection />
+
       <HowItWorksSection
         title={homeData.home?.trustedByFounderTitle}
         certificates={homeData.home?.certificates || []}

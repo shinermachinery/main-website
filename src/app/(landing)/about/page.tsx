@@ -95,7 +95,7 @@ export default async function AboutPage() {
     
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-6">
           <div className="flex flex-1 flex-col gap-6">
-            <h1 className="text-3xl font-medium text-foreground md:text-2xl">
+            <h1 className="text-2xl font-medium text-foreground md:text-3xl">
               {heroTitle}
             </h1>
             {heroDescription && (
@@ -104,7 +104,7 @@ export default async function AboutPage() {
               </div>
             )}
           </div>
-          <div className="h-60 w-full flex-1 overflow-hidden rounded-2xl bg-muted md:h-80 md:w-xl">
+          <div className="aspect-[4/3] w-full flex-1 overflow-hidden rounded-2xl bg-muted md:w-xl">
             {mainImage && (
               <Image
                 src={mainImage}
@@ -160,7 +160,7 @@ export default async function AboutPage() {
                       {feature.title}
                     </p>
                   </div>
-                  <p className="text-lg font-medium text-foreground">
+                  <p className="text-sm text-muted-foreground">
                     {feature.description}
                   </p>
                 </div>

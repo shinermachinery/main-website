@@ -56,12 +56,12 @@ async function WhyChooseUsContent() {
               className="flex flex-col gap-4 p-6 rounded-2xl bg-muted"
             >
               {reason.icon && (
-                <div className="relative w-16 h-16 rounded-xl overflow-hidden">
+                <div className="relative w-16 h-16 rounded-xl overflow-hidden bg-secondary">
                   <Image
                     src={reason.icon}
                     alt={reason.title}
                     fill
-                    className="object-cover"
+                    className="object-contain p-2"
                     sizes="4rem"
                     placeholder="blur"
                     blurDataURL={BLUR_DATA_URL}

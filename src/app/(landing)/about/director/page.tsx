@@ -102,7 +102,7 @@ async function DirectorContent() {
               <h3 className="font-medium text-xl text-foreground">
                 Biography
               </h3>
-              <div className="prose prose-lg max-w-none">
+              <div className="prose prose-sm max-w-none">
                 <PortableText value={data.bio} />
               </div>
             </div>
@@ -117,7 +117,7 @@ async function DirectorContent() {
               <ul className="flex flex-col gap-3">
                 {data.achievements.map((achievement: string, index: number) => (
                   <li key={achievement} className="flex gap-3 items-start">
-                    <div className="w-1 h-1 rounded-full bg-brand-blue mt-2 shrink-0" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-brand-blue mt-2 shrink-0" />
                     <p className="font-normal text-sm text-muted-foreground">
                       {achievement}
                     </p>

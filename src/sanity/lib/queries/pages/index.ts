@@ -81,12 +81,7 @@ export {
   getServiceCountQuery,
 } from "./services";
 // Settings
-export {
-  getFooterQuery,
-  getGlobalLayoutDataQuery,
-  getNavigationQuery,
-  getSiteSettingsQuery,
-} from "./settings";
+export { getSiteSettingsQuery } from "./settings";
 
 // Testimonials
 export {

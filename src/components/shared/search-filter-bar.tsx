@@ -47,8 +47,8 @@ export function SearchFilterBar({
   }
 
   return (
-    <div className="mb-10">
-      <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
+    <div className="mb-10 w-full">
+      <div className="w-full flex flex-col md:flex-row gap-4 items-start md:items-center">
         <SearchInput
           placeholder={searchPlaceholder}
           defaultValue={currentSearch}

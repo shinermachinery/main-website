@@ -1,15 +1,12 @@
 import {
-  BlockContentIcon,
   CogIcon,
   ComposeIcon,
   DocumentIcon,
   EarthGlobeIcon,
   HomeIcon,
   InfoOutlineIcon,
-  MenuIcon,
   PackageIcon,
   RocketIcon,
-  UserIcon,
   WrenchIcon,
 } from "@sanity/icons";
 import type { StructureResolver } from "sanity/structure";
@@ -138,21 +135,6 @@ export const structure: StructureResolver = (S) =>
           S.list()
             .title("Globals")
             .items([
-              // Navigation (Singleton)
-              S.listItem()
-                .title("Navigation")
-                .icon(MenuIcon)
-                .child(
-                  S.document()
-                    .schemaType("navigation")
-                    .documentId("navigation"),
-                ),
-              // Footer (Singleton)
-              S.listItem()
-                .title("Footer")
-                .icon(BlockContentIcon)
-                .child(S.document().schemaType("footer").documentId("footer")),
-              S.divider(),
               // Shared content used on multiple pages
               S.documentTypeListItem("testimonial").title("Testimonials"),
               S.documentTypeListItem("teamMember").title("Team Members"),

@@ -1,22 +1,10 @@
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Mail,
-  Phone,
-  Twitter,
-} from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 import Image from "next/image";
 import { BLUR_DATA_URL } from "@/lib/image-blur";
 
 const socialLinks = [
-  {
-    href: siteConfig.social.twitter,
-    label: "Twitter",
-    icon: Twitter,
-  },
   {
     href: siteConfig.social.instagram,
     label: "Instagram",
@@ -43,7 +31,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div className="space-y-4">
-          <Link href="/" className="flex items-center gap-1">
+          <Link href="/" className="flex items-start gap-1">
             <div className="flex items-center gap-1">
               {/* Logo Icon - Using linear colors */}
               <Image
