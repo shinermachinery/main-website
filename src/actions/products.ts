@@ -1,9 +1,5 @@
 "use server";
 
-import {
-  getDemoProductBySlug,
-  getDemoProducts,
-} from "@/lib/demo-data/products";
 import type { Category, Product, ProductCollection } from "@/lib/sanity-types";
 import { sanityFetch } from "@/sanity/lib/live";
 import {
@@ -20,19 +16,10 @@ export const getAllProducts = async (
   try {
     const { query, params } = getAllProductsQuery(options);
     const result = await sanityFetch({ query, params });
-    const products = result.data as Product[];
-
-    // Return demo data if no products from Sanity
-    if (!products || products.length === 0) {
-      console.log("Using demo products as fallback");
-      return getDemoProducts(options.limit);
-    }
-
-    return products;
+    return (result.data as Product[]) ?? [];
   } catch (error) {
     console.error("Error fetching products:", error);
-    // Return demo data on error
-    return getDemoProducts(options.limit);
+    return [];
   }
 };
 
@@ -66,18 +53,9 @@ export const getProductBySlug = async (
   try {
     const { query, params } = getProductBySlugQuery(slug);
     const result = await sanityFetch({ query, params });
-    const product = result.data as Product;
-
-    // Return demo data if no product from Sanity
-    if (!product) {
-      console.log(`Using demo product for slug: ${slug}`);
-      return getDemoProductBySlug(slug);
-    }
-
-    return product;
+    return (result.data as Product) ?? null;
   } catch (error) {
     console.error("Error fetching product:", error);
-    // Return demo data on error
-    return getDemoProductBySlug(slug);
+    return null;
   }
 };

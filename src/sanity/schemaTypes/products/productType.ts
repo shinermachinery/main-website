@@ -33,7 +33,7 @@ export const productType = defineType({
           { title: "Image + Text", value: "imageText" },
         ],
       },
-      initialValue: "gallery",
+      initialValue: "imageText",
       validation: (Rule) => Rule.required(),
     }),
     defineField({

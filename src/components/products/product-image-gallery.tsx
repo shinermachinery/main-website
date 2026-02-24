@@ -3,10 +3,9 @@
 import { ChevronLeft, ChevronRight, Expand } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { getDemoImageUrl } from "@/lib/demo-data/products";
 import { BLUR_DATA_URL } from "@/lib/image-blur";
 import type { SanityImage } from "@/lib/sanity-types";
-import { urlFor } from "@/sanity/lib/image";
+import { safeImageUrl } from "@/sanity/lib/image";
 import { Button } from "../ui/button";
 
 interface ProductImageGalleryProps {
@@ -35,10 +34,17 @@ export function ProductImageGallery({
     return () => document.removeEventListener("keydown", handleEscape);
   }, [isFullscreen]);
 
-  if (!images || images.length === 0) {
+  // Filter to only images with valid Sanity asset refs
+  const validImages = images.filter(
+    (img) => safeImageUrl(img, 100, 100) !== undefined,
+  );
+
+  if (validImages.length === 0) {
     return (
       <div className="flex-1 w-full">
-        <div className="aspect-4/3 rounded-2xl bg-linear-to-br from-muted to-muted flex items-center justify-center border border-muted">
+        <div
+          className="aspect-4/3 rounded-2xl flex items-center justify-center border border-muted bg-muted"
+        >
           <span className="text-muted-foreground text-sm font-light">
             No images available
           </span>
@@ -47,29 +53,18 @@ export function ProductImageGallery({
     );
   }
 
-  const currentImage = images[selectedIndex];
-
-  // Helper to get image URL - handles both Sanity images and demo images
-  const getImageUrl = (image: SanityImage, width: number, height: number) => {
-    try {
-      // Check if it's a valid Sanity image
-      if (image?.asset?._ref && !image.asset._ref.startsWith("image-")) {
-        return urlFor(image).width(width).height(height).url();
-      }
-      // Use demo image URL for demo data
-      return getDemoImageUrl(image?.asset?._ref || "image-1");
-    } catch (error) {
-      console.error("Error getting image URL:", error);
-      return getDemoImageUrl("image-1");
-    }
-  };
+  const currentImage = validImages[selectedIndex] ?? validImages[0];
 
   const handlePrevious = () => {
-    setSelectedIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    setSelectedIndex((prev) =>
+      prev === 0 ? validImages.length - 1 : prev - 1,
+    );
   };
 
   const handleNext = () => {
-    setSelectedIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    setSelectedIndex((prev) =>
+      prev === validImages.length - 1 ? 0 : prev + 1,
+    );
   };
 
   return (
@@ -77,13 +72,13 @@ export function ProductImageGallery({
       <div className="flex-1 w-full flex flex-col gap-4">
         {/* Main Image with Ultra-thin Navigation */}
         <div className="relative group">
-          <div className="aspect-4/3 rounded-2xl overflow-hidden bg-muted border border-muted/50 shadow-sm">
+          <div className="rounded-2xl overflow-hidden bg-muted border border-muted/50 shadow-sm">
             <Image
-              src={getImageUrl(currentImage, 1200, 900)}
+              src={safeImageUrl(currentImage, 1200, 900)!}
               alt={currentImage.alt || title}
               width={1200}
               height={900}
-              className="w-full h-full object-cover"
+              className="w-full h-auto"
               priority={selectedIndex === 0}
               placeholder="blur"
               blurDataURL={BLUR_DATA_URL}
@@ -91,7 +86,7 @@ export function ProductImageGallery({
           </div>
 
           {/* Ultra-thin Navigation Arrows */}
-          {images.length > 1 && (
+          {validImages.length > 1 && (
             <>
               <Button
                 onClick={handlePrevious}
@@ -126,10 +121,10 @@ export function ProductImageGallery({
           </Button>
 
           {/* Ultra-thin Image Counter */}
-          {images.length > 1 && (
+          {validImages.length > 1 && (
             <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-full bg-black/10 backdrop-blur-md">
               <span className="text-xs font-light text-white">
-                {selectedIndex + 1} of {images.length}
+                {selectedIndex + 1} of {validImages.length}
               </span>
             </div>
           )}
@@ -143,9 +138,9 @@ export function ProductImageGallery({
         )}
 
         {/* Ultra-thin Thumbnail Navigation */}
-        {images.length > 1 && (
-          <div className="flex gap-2 overflow-x-auto scrollbar-hide py-1">
-            {images.map((image, index) => (
+        {validImages.length > 1 && (
+          <div className="flex gap-2 flex-wrap py-1">
+            {validImages.map((image, index) => (
               <Button
                 key={image?.asset?._ref}
                 onClick={() => setSelectedIndex(index)}
@@ -164,7 +159,7 @@ export function ProductImageGallery({
                   }`}
                 >
                   <Image
-                    src={getImageUrl(image, 160, 120)}
+                    src={safeImageUrl(image, 160, 120)!}
                     alt={`${title} thumbnail ${index + 1}`}
                     width={160}
                     height={120}
@@ -206,18 +201,18 @@ export function ProductImageGallery({
 
           <div className="relative max-w-7xl max-h-[90vh] w-full mx-4 z-10">
             <Image
-              src={getImageUrl(currentImage, 1920, 1080)}
+              src={safeImageUrl(currentImage, 1920, 1080)!}
               alt={currentImage.alt || title}
               width={1920}
               height={1080}
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover"
               placeholder="blur"
               blurDataURL={BLUR_DATA_URL}
             />
           </div>
 
           {/* Fullscreen Navigation */}
-          {images.length > 1 && (
+          {validImages.length > 1 && (
             <>
               <Button
                 onClick={(e) => {

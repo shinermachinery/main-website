@@ -2,7 +2,7 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import type { Product } from "@/lib/sanity-types";
-import { urlFor } from "@/sanity/lib/image";
+import { safeImageUrl } from "@/sanity/lib/image";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "./product-card";
 
@@ -41,9 +41,7 @@ export function ProductsGrid({ products }: ProductsGridProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {products.map((product) => {
-              const imageUrl = product?.images?.[0]
-                ? urlFor(product.images?.[0]).width(600).height(400).url()
-                : undefined;
+              const imageUrl = safeImageUrl(product?.images?.[0], 600, 400);
 
               return (
                 <ProductCard

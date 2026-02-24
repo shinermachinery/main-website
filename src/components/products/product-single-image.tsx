@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { BLUR_DATA_URL } from "@/lib/image-blur";
 import type { SanityImage } from "@/lib/sanity-types";
-import { urlFor } from "@/sanity/lib/image";
+import { safeImageUrl } from "@/sanity/lib/image";
 
 interface ProductSingleImageProps {
   image?: SanityImage;
@@ -9,7 +9,9 @@ interface ProductSingleImageProps {
 }
 
 export function ProductSingleImage({ image, title }: ProductSingleImageProps) {
-  if (!image?.asset?._ref) {
+  const imageUrl = safeImageUrl(image, 1200, 900);
+
+  if (!imageUrl) {
     return (
       <div className="w-full">
         <div className="aspect-4/3 rounded-2xl bg-muted flex items-center justify-center border border-muted/50">
@@ -21,23 +23,21 @@ export function ProductSingleImage({ image, title }: ProductSingleImageProps) {
     );
   }
 
-  const imageUrl = urlFor(image).width(1200).height(900).url();
-
   return (
     <div className="w-full flex flex-col gap-2">
-      <div className="aspect-4/3 rounded-2xl overflow-hidden bg-muted border border-muted/50 shadow-sm">
+      <div className="rounded-2xl overflow-hidden bg-muted border border-muted/50 shadow-sm">
         <Image
           src={imageUrl}
-          alt={image.alt || title}
+          alt={image?.alt || title}
           width={1200}
           height={900}
-          className="w-full h-full object-cover"
+          className="w-full h-auto"
           priority
           placeholder="blur"
           blurDataURL={BLUR_DATA_URL}
         />
       </div>
-      {image.caption && (
+      {image?.caption && (
         <p className="text-sm font-light text-muted-foreground px-1">
           {image.caption}
         </p>

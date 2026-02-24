@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { ProductCard } from "@/components/sections/products/product-card";
 import { EmptyState } from "@/components/ui/empty-state";
 import type { Product } from "@/lib/sanity-types";
-import { imageBuilder } from "@/sanity/lib/image";
+import { safeImageUrl } from "@/sanity/lib/image";
 
 interface ProductsGridProps {
   products: Product[];
@@ -25,9 +25,7 @@ export function ProductsGrid({ products }: ProductsGridProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {products.map((product) => {
-        const imageUrl = product?.images?.[0]
-          ? imageBuilder.image(product.images[0]).width(600).height(400).url()
-          : undefined;
+        const imageUrl = safeImageUrl(product?.images?.[0], 600, 400);
 
         return (
           <ProductCard

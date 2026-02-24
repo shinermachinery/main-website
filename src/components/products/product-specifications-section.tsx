@@ -31,7 +31,7 @@ export function ProductSpecificationsSection({
             <ul className="grid grid-cols-2 gap-2">
               {product.features?.map((feature, index) => (
                 <li key={index} className="flex items-start gap-3 group">
-                  <Star className="fill-brand-green" />
+                  <Star className="fill-brand-green stroke-none" />
                   <span className="text-sm font-light text-muted-foreground">
                     {feature}
                   </span>

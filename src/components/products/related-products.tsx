@@ -3,10 +3,9 @@
 import { ArrowRight, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { getDemoImageUrl } from "@/lib/demo-data/products";
 import { BLUR_DATA_URL } from "@/lib/image-blur";
 import type { Product } from "@/lib/sanity-types";
-import { urlFor } from "@/sanity/lib/image";
+import { safeImageUrl } from "@/sanity/lib/image";
 
 interface RelatedProductsProps {
   products: Product[];
@@ -26,19 +25,8 @@ export function RelatedProducts({
     return null;
   }
 
-  // Helper to get image URL - handles both Sanity images and demo images
-  const getImageUrl = (product: Product) => {
-    try {
-      const image = product.images?.[0];
-      if (image?.asset?._ref && !image.asset._ref.startsWith("image-")) {
-        return urlFor(image).width(400).height(300).url();
-      }
-      return getDemoImageUrl(image?.asset?._ref || "image-1");
-    } catch (error) {
-      console.error("Error getting image URL:", error);
-      return getDemoImageUrl("image-1");
-    }
-  };
+  const getImageUrl = (product: Product) =>
+    safeImageUrl(product.images?.[0], 400, 300);
 
   return (
     <section className="space-y-8">
@@ -71,11 +59,11 @@ export function RelatedProducts({
             className="group relative overflow-hidden rounded-2xl bg-secondary border border-muted transition-all duration-300 hover:border-muted-foreground hover:shadow-lg"
           >
             {/* Image */}
-            <div className="aspect-[4/3] overflow-hidden bg-gradient-to-br from-muted to-muted">
-              {product.images?.[0] ? (
+            <div className="aspect-[4/3] overflow-hidden bg-muted">
+              {getImageUrl(product) ? (
                 <Image
-                  src={getImageUrl(product)}
-                  alt={product.images[0].alt || product.title}
+                  src={getImageUrl(product)!}
+                  alt={product.images?.[0]?.alt || product.title}
                   width={400}
                   height={300}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
