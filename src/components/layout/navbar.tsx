@@ -151,7 +151,7 @@ export function Navbar({ collections = [] }: NavbarProps) {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-primary py-4 space-y-2">
+          <div className="lg:hidden border-t border-primary py-4 space-y-2 max-h-[calc(100vh-5rem)] overflow-y-auto">
             {mobileNavSections.map((section, i) => (
               <div key={section.title || `section-${i}`}>
                 <div
