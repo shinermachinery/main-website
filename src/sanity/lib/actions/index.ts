@@ -63,6 +63,8 @@ export {
   type Event,
   // Achievements
   getAchievements,
+  // Testimonials
+  getAllTestimonials,
   // Certifications
   getCertifications,
   // Events

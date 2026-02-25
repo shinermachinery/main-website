@@ -121,10 +121,10 @@ export const pageMetadata = {
     "/about",
   ),
   aboutDirector: createPageMetadata(
-    "About Our Director",
-    "Meet the leadership behind Shiner. Learn about our director's vision, expertise, and commitment to excellence.",
-    ["director", "leadership"],
-    "/about/director",
+    "About Our Founder & MD",
+    "Meet the leadership behind Shiner. Learn about our founder & MD's vision, expertise, and commitment to excellence.",
+    ["founder", "md", "leadership"],
+    "/about/founder-md",
   ),
   aboutMissionVision: createPageMetadata(
     "Our Mission & Vision",
@@ -170,9 +170,15 @@ export const pageMetadata = {
   ),
   services: createPageMetadata(
     "Our Services",
-    "Explore our comprehensive services including training, spare parts, after-sale service, equipment modernization, and consultancy services.",
+    "End-to-end support engineered around your rice processing plant — from hands-on operator training and genuine spare parts to 24/7 technical service, equipment modernization, and expert mill consultancy.",
     ["services", "training", "spare parts", "consultancy"],
     "/services",
+  ),
+  testimonials: createPageMetadata(
+    "Testimonials",
+    "Hear from the manufacturers who trust Shiner Machinery to power their production lines with precision and reliability.",
+    ["testimonials", "reviews", "customer feedback"],
+    "/testimonials",
   ),
   notFound: createPageMetadata(
     "Page Not Found",

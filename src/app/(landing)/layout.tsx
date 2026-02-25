@@ -15,7 +15,9 @@ export default function LandingLayout({
         <NavbarData />
       </Suspense>
       <main className="pt-20">{children}</main>
-      <Footer />
+      <Suspense>
+        <Footer />
+      </Suspense>
       <SanityLive />
     </>
   );

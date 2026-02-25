@@ -16,7 +16,7 @@ export function AchievementCard({
   awardName,
 }: AchievementCardProps) {
   return (
-    <div className="bg-background rounded-2xl p-4 flex flex-col gap-4">
+    <div className="bg-background rounded-2xl p-4 flex flex-col gap-4 w-72 shrink-0">
       {/* Award Image */}
       <ImageLightbox
         src={image}

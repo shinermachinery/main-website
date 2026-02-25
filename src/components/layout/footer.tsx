@@ -1,8 +1,15 @@
-import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site-config";
 import Image from "next/image";
-import { BLUR_DATA_URL } from "@/lib/image-blur";
+import { getContactPage } from "@/sanity/lib/actions";
 
 const socialLinks = [
   {
@@ -22,8 +29,10 @@ const socialLinks = [
   },
 ];
 
-export function Footer() {
+export async function Footer() {
   const currentYear = new Date().getFullYear();
+  const contactData = await getContactPage();
+  const offices = contactData.offices;
 
   return (
     <footer className="bg-secondary border-t border-border">
@@ -31,22 +40,17 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div className="space-y-4">
-          <Link href="/" className="flex items-start gap-1">
-            <div className="flex items-center gap-1">
-              {/* Logo Icon - Using linear colors */}
-              <Image
-                src={"/shiner-logo.png"}
-                alt="Shiner Logo"
-                width={48}
-                height={48}
-                className="size-8"
-                placeholder="blur"
-                blurDataURL={BLUR_DATA_URL}
-              />
-              {/* Logo Text */}
-              <span className="text-xl font-bold text-brand-blue font-hyundai">SHINER</span>
-            </div>
-          </Link>
+            <Link href="/" className="flex items-start gap-1">
+              <div className="flex items-center gap-1">
+                <Image
+                  src="/shiner-logo.png"
+                  alt="Shiner Logo"
+                  width={128}
+                  height={128}
+                  className="h-16 w-auto"
+                />
+              </div>
+            </Link>
 
             <p className="text-sm text-muted-foreground">
               Precision engineering delivered with confidence. Built to perform,
@@ -121,12 +125,23 @@ export function Footer() {
                   Events
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/testimonials"
+                  className="text-muted-foreground hover:text-brand-blue transition-colors"
+                >
+                  Testimonials
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Contact & Social */}
           <div className="space-y-4">
             <h4 className="font-semibold text-primary">Connect With Us</h4>
+            <p className="text-sm font-medium text-primary">
+              Shiner Machinery Pvt Ltd
+            </p>
             <div className="flex gap-3">
               {socialLinks.map((link) => (
                 <a
@@ -180,11 +195,31 @@ export function Footer() {
           </div>
         </div>
 
+        {/* Office Locations */}
+        {offices.length > 0 && (
+          <div className="mb-12 pt-8 border-t border-border">
+            <h4 className="font-semibold text-primary mb-6">Our Offices</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {offices.map((office, i) => (
+                <div key={`office-${i}`} className="space-y-1">
+                  <p className="text-sm font-medium text-primary">
+                    {office.name}
+                  </p>
+                  <p className="text-sm text-muted-foreground flex items-start gap-2">
+                    <MapPin className="size-4 shrink-0 mt-0.5" />
+                    {office.address}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
             <p>
-              © {currentYear} {siteConfig.name}. All rights reserved.
+              © {currentYear} Shiner Machinery Pvt Ltd. All rights reserved.
             </p>
           </div>
         </div>

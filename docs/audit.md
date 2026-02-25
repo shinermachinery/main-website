@@ -569,7 +569,7 @@ export const metadata: Metadata = {
     default: "Shiner - Precision Engineering Solutions",
     template: "%s | Shiner Machinery"
   },
-  description: "Shiner delivers precision-engineered machinery and components for manufacturing. Built to perform, built to last.",
+  description: "Shiner delivers precision-engineered machinery and components for manufacturing. Quality Over Quantity",
   keywords: ["precision engineering", "industrial machinery", "manufacturing equipment"],
   authors: [{ name: "Shiner Team" }],
   openGraph: {

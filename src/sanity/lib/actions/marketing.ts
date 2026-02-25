@@ -3,8 +3,10 @@
  * Server actions for fetching achievements, certifications, and events
  */
 
+import type { Testimonial } from "@/lib/sanity-types";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
+import { getAllTestimonialsQuery } from "@/sanity/lib/queries/pages/testimonials";
 
 // ============================================================================
 // Types
@@ -23,6 +25,7 @@ export interface Certification {
   id: string;
   title: string;
   description: string;
+  image?: string;
 }
 
 export interface Event {
@@ -30,6 +33,29 @@ export interface Event {
   title: string;
   images: string[];
   location?: string;
+}
+
+// ============================================================================
+// Testimonial Actions
+// ============================================================================
+
+/**
+ * Get all testimonials
+ */
+export async function getAllTestimonials(): Promise<Testimonial[]> {
+  try {
+    const { query } = getAllTestimonialsQuery();
+    const { data: testimonials } = await sanityFetch({ query });
+
+    if (!testimonials || testimonials.length === 0) {
+      return [];
+    }
+
+    return testimonials as Testimonial[];
+  } catch (error) {
+    console.error("Error fetching testimonials:", error);
+    return [];
+  }
 }
 
 // ============================================================================
@@ -100,7 +126,8 @@ export async function getCertifications(
       query: `*[_type == "certification"] | order(order asc, _createdAt desc) {
         _id,
         title,
-        description
+        description,
+        image
       }[0...${limit}]`,
     });
 
@@ -109,10 +136,11 @@ export async function getCertifications(
     }
 
     return certifications.map(
-      (certification: { _id: string; title: string; description: string }) => ({
+      (certification: { _id: string; title: string; description: string; image?: any }) => ({
         id: certification._id,
         title: certification.title,
         description: certification.description,
+        image: certification.image ? urlFor(certification.image).url() : undefined,
       }),
     );
   } catch (error) {

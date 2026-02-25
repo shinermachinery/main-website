@@ -22,7 +22,7 @@ async function DirectorContent() {
       {/* Page Header */}
       <section className="flex flex-col gap-4">
         <h1 className="font-medium text-3xl text-foreground">
-          Meet Our Director
+          Meet Founder & MD
         </h1>
       </section>
 

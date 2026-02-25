@@ -72,7 +72,18 @@ export const homeType = defineType({
       options: {
         hotspot: true,
       },
-      description: "Background image for the hero section",
+      description:
+        "Background image for the hero section (used as fallback when no video is set)",
+    }),
+    defineField({
+      name: "heroBackgroundVideo",
+      title: "Hero - Background Video",
+      type: "file",
+      options: {
+        accept: "video/*",
+      },
+      description:
+        "Background video for the hero section (autoplays muted on loop). Takes priority over the background image.",
     }),
 
     // ============================================================

@@ -8,7 +8,7 @@ export async function ClientsListSection() {
   if (clients.length === 0) return null;
 
   return (
-    <section className="flex flex-col gap-6 w-full">
+    <section id="client-list" className="flex flex-col gap-6 w-full">
       {/* Header */}
       <SectionHeading
         title="Plant Engineering Clients List"

@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { ModeToggle } from "@/components/layout/mode-toggle";
-import { BLUR_DATA_URL } from "@/lib/image-blur";
 import type { ProductCollection } from "@/lib/sanity-types";
 import {
   Popover,
@@ -37,15 +36,14 @@ export function Navbar({ collections = [] }: NavbarProps) {
               <Image
                 src="/shiner-logo.png"
                 alt="Shiner Logo"
-                width={48}
-                height={48}
-                className="size-8"
-                placeholder="blur"
-                blurDataURL={BLUR_DATA_URL}
+                width={128}
+                height={128}
+                className="h-16 w-auto"
+                priority
               />
-              <span className="text-xl font-bold text-brand-blue font-hyundai">
+              {/* <span className="text-xl font-bold text-brand-blue font-hyundai">
                 SHINER
-              </span>
+              </span> */}
             </div>
           </Link>
 
@@ -68,16 +66,16 @@ export function Navbar({ collections = [] }: NavbarProps) {
               const popoverId = item.label;
               const isOpen = openPopover === popoverId;
 
-              const popoverLinks =
-                item.type === "products"
-                  ? [
-                      { name: "All Products", href: "/products" },
-                      ...collections.map((c) => ({
-                        name: c.title,
-                        href: `/products?category=${c.slug.current}`,
-                      })),
-                    ]
-                  : item.links;
+              const isProducts = item.type === "products";
+              const popoverLinks = isProducts
+                ? [
+                    { name: "Our Products", href: "/products" },
+                    ...collections.map((c) => ({
+                      name: c.title,
+                      href: `/products?category=${c.slug.current}`,
+                    })),
+                  ]
+                : item.links;
 
               return (
                 <Popover
@@ -106,11 +104,13 @@ export function Navbar({ collections = [] }: NavbarProps) {
                     align={item.align}
                     side="bottom"
                     sideOffset={8}
-                    className="p-2 w-48"
+                    className={`p-2 ${isProducts ? "w-72" : "w-48"}`}
                     onMouseEnter={() => setOpenPopover(popoverId)}
                     onMouseLeave={() => setOpenPopover(null)}
                   >
-                    <div className="space-y-1">
+                    <div
+                      className={`space-y-1 ${isProducts ? "max-h-80 overflow-y-auto" : ""}`}
+                    >
                       {popoverLinks.map((link) => (
                         <Link
                           key={link.name}
@@ -187,7 +187,7 @@ export function Navbar({ collections = [] }: NavbarProps) {
                       onClick={() => setMobileMenuOpen(false)}
                       className="block px-4 py-3 text-sm font-medium text-secondary-foreground rounded-xl hover:bg-brand-blue-10 transition-colors"
                     >
-                      All Products
+                      Our Products
                     </Link>
                     {collections.map((collection) => (
                       <Link

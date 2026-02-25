@@ -14,9 +14,14 @@ export const aboutLinks: NavLink[] = [
   { name: "Our Team", href: "/about/team" },
 ];
 
+export const projectLinks: NavLink[] = [
+  { name: "Our Projects", href: "/projects" },
+  { name: "Our Client List", href: "/projects#client-list" },
+  { name: "Testimonials", href: "/testimonials" },
+];
+
 export const navLinks: NavLink[] = [
   { name: "Our Services", href: "/services" },
-  { name: "Our Projects", href: "/projects" },
 ];
 
 export const moreLinks: NavLink[] = [
@@ -37,6 +42,7 @@ export type DesktopNavItem =
 export const desktopNavItems: DesktopNavItem[] = [
   { type: "popover", label: "About", links: aboutLinks, align: "start" },
   { type: "products", label: "Our Products", align: "start" },
+  { type: "popover", label: "Projects", links: projectLinks, align: "start" },
   { type: "links" },
   { type: "popover", label: "More", links: moreLinks, align: "end" },
 ];
@@ -53,6 +59,7 @@ export interface MobileNavSection {
 export const mobileNavSections: MobileNavSection[] = [
   { title: "About", links: aboutLinks },
   // Products section inserted dynamically between index 0 and 1 in navbar
+  { title: "Projects", links: projectLinks },
   { links: navLinks },
   { title: "More", links: moreLinks },
 ];

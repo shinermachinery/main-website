@@ -18,7 +18,7 @@ export default async function ServicesPage() {
       <SectionHeading
         as="h1"
         title="Our Services"
-        description="From installation and training to spare parts and ongoing support, we ensure your machinery performs at its best throughout its lifecycle."
+        description="End-to-end support engineered around your rice processing plant — from hands-on operator training and genuine spare parts to 24/7 technical service, equipment modernization, and expert mill consultancy."
         className="mb-10"
       />
 

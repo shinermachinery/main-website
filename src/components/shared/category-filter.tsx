@@ -67,7 +67,7 @@ export function CategoryFilter({
         <ChevronDown className="size-4 opacity-50" />
       </PopoverTrigger>
       <PopoverContent align="end" className="w-56 p-2">
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-1 max-h-64 overflow-y-auto">
           {categories.map((category) => (
             <label
               key={category.value}

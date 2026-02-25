@@ -26,6 +26,7 @@ export default async function HomePage() {
     primaryCta: homeData.home?.heroPrimaryCta || undefined,
     secondaryCta: homeData.home?.heroSecondaryCta || undefined,
     backgroundImage: homeData.home?.heroBackgroundImage || undefined,
+    backgroundVideo: homeData.home?.heroBackgroundVideo || undefined,
   };
 
   return (

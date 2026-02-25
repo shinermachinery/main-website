@@ -31,6 +31,7 @@ export function getHomePageQuery(): QueryResult {
         link
       },
       "heroBackgroundImage": heroBackgroundImage.asset->url,
+      "heroBackgroundVideo": heroBackgroundVideo.asset->url,
       // About Section
       wordAboutUsTitle,
       wordAboutUsDescription,
@@ -139,6 +140,7 @@ export function getCompleteHomePageQuery(): QueryResult {
           link
         },
         "heroBackgroundImage": heroBackgroundImage.asset->url,
+      "heroBackgroundVideo": heroBackgroundVideo.asset->url,
         // About Section
         wordAboutUsTitle,
         wordAboutUsDescription,

@@ -19,6 +19,7 @@ export interface HomePageData {
       link: string;
     };
     heroBackgroundImage?: string;
+    heroBackgroundVideo?: string;
     // About Section
     wordAboutUsTitle?: string;
     wordAboutUsDescription?: any[];

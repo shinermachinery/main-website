@@ -25,6 +25,7 @@ interface HeroSectionProps {
     link: string;
   };
   backgroundImage?: string;
+  backgroundVideo?: string;
   featuredProducts?: FeaturedProduct[];
 }
 
@@ -34,6 +35,7 @@ export function HeroSection({
   primaryCta = { text: "Request a Quote", link: "/contact" },
   secondaryCta = { text: "View Products", link: "/products" },
   backgroundImage,
+  backgroundVideo,
   featuredProducts = [],
 }: HeroSectionProps) {
   return (
@@ -41,9 +43,9 @@ export function HeroSection({
       <div className="w-full mx-auto">
           {/* Gray Background Area */}
           <div
-            className="bg-zinc-400 min-h-[calc(100vh-5rem)] flex items-end rounded-3xl"
+            className="bg-zinc-400 min-h-[calc(100vh-5rem)] flex items-end rounded-3xl relative overflow-hidden"
             style={
-              backgroundImage
+              !backgroundVideo && backgroundImage
                 ? {
                     backgroundImage: `url(${backgroundImage})`,
                     backgroundSize: "cover",
@@ -52,10 +54,22 @@ export function HeroSection({
                 : undefined
             }
           >
+            {/* Background Video */}
+            {backgroundVideo && (
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute inset-0 z-0 w-full h-full object-cover"
+              >
+                <source src={backgroundVideo} type="video/mp4" />
+              </video>
+            )}
             {/* Flex container for Typography Card and Featured Product Card */}
-            <div className="w-full flex flex-col lg:flex-row gap-6 items-end justify-between pb-0 relative">
+            <div className="w-full flex flex-col lg:flex-row gap-6 items-end justify-between pb-0 relative z-10">
               {/* Typography Card - Left (Less than 50%) */}
-              <div className="bg-background rounded-t-4xl w-full lg:max-w-[40%] px-6 lg:px-8 py-12 lg:py-16 rounded-bl-xl">
+              <div className="bg-background rounded-t-4xl rounded-br-4xl w-full lg:max-w-[40%] px-6 lg:px-8 py-12 lg:py-16">
                 {/* Main Heading */}
                 <h1 className="text-2xl md:text-3xl lg:text-4xl font-normal mb-4 text-primary">
                   {headline}
