@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, FileText } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -30,28 +30,16 @@ export function ProductCard({
     <div className="bg-background flex flex-col gap-4 items-center justify-center px-4 py-3 rounded-2xl hover:shadow-lg transition-shadow">
       {/* Product Image */}
       <div className="relative w-full rounded-2xl overflow-hidden bg-muted flex items-center justify-center max-h-48">
-        {imageUrl ? (
-          <Image
-            src={imageUrl}
-            alt={imageAlt || title}
-            width={600}
-            height={400}
-            className="w-full h-auto max-h-48 object-contain"
-            sizes="(max-width: 48rem) 100vw, (max-width: 64rem) 50vw, 33vw"
-            placeholder="blur"
-            blurDataURL={BLUR_DATA_URL}
-          />
-        ) : (
-          <div className="w-full h-48 bg-muted flex flex-col items-center justify-center gap-2">
-            <FileText
-              className="w-8 h-8 text-muted-foreground"
-              strokeWidth={1}
-            />
-            <span className="text-xs text-muted-foreground font-light">
-              Text Content
-            </span>
-          </div>
-        )}
+        <Image
+          src={imageUrl || "/shiner-logo.png"}
+          alt={imageAlt || title}
+          width={600}
+          height={400}
+          className={`w-full h-auto max-h-48 ${imageUrl ? "object-contain" : "object-contain p-6 opacity-60"}`}
+          sizes="(max-width: 48rem) 100vw, (max-width: 64rem) 50vw, 33vw"
+          placeholder="blur"
+          blurDataURL={BLUR_DATA_URL}
+        />
       </div>
 
       {/* Category Badge */}
@@ -63,9 +51,7 @@ export function ProductCard({
 
       {/* Product Info */}
       <div className="flex flex-col gap-2 items-start w-full">
-        <p className="text-sm font-medium text-foreground w-full">
-          {title}
-        </p>
+        <p className="text-sm font-medium text-foreground w-full">{title}</p>
         {description && (
           <p className="text-sm font-medium text-muted-foreground w-full line-clamp-2">
             {description}

@@ -11,7 +11,10 @@ export function AchievementsSectionSkeleton() {
       {/* Grid Skeleton */}
       <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
         {SKELETON_IDS.map((id) => (
-          <div key={id} className="bg-background rounded-2xl p-4 flex flex-col gap-4">
+          <div
+            key={id}
+            className="bg-background rounded-2xl p-4 flex flex-col gap-4"
+          >
             {/* Image Skeleton */}
             <div className="w-full aspect-square rounded-2xl bg-muted" />
 

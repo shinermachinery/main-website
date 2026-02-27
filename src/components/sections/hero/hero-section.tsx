@@ -39,78 +39,81 @@ export function HeroSection({
   featuredProducts = [],
 }: HeroSectionProps) {
   return (
-    <section className="relative overflow-hidden w-full" aria-label="Hero section">
+    <section
+      className="relative overflow-hidden w-full"
+      aria-label="Hero section"
+    >
       <div className="w-full mx-auto">
-          {/* Gray Background Area */}
-          <div
-            className="bg-zinc-400 min-h-[calc(100vh-5rem)] flex items-end rounded-3xl relative overflow-hidden"
-            style={
-              !backgroundVideo && backgroundImage
-                ? {
-                    backgroundImage: `url(${backgroundImage})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }
-                : undefined
-            }
-          >
-            {/* Background Video */}
-            {backgroundVideo && (
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 z-0 w-full h-full object-cover"
-              >
-                <source src={backgroundVideo} type="video/mp4" />
-              </video>
-            )}
-            {/* Flex container for Typography Card and Featured Product Card */}
-            <div className="w-full flex flex-col lg:flex-row gap-6 items-end justify-between pb-0 relative z-10">
-              {/* Typography Card - Left (Less than 50%) */}
-              <div className="bg-background rounded-t-4xl rounded-br-4xl w-full lg:max-w-[40%] px-6 lg:px-8 py-12 lg:py-16">
-                {/* Main Heading */}
-                <h1 className="text-2xl md:text-3xl lg:text-4xl font-normal mb-4 text-primary">
-                  {headline}
-                </h1>
+        {/* Gray Background Area */}
+        <div
+          className="bg-zinc-400 min-h-[calc(100vh-5rem)] flex items-end rounded-3xl relative overflow-hidden"
+          style={
+            !backgroundVideo && backgroundImage
+              ? {
+                  backgroundImage: `url(${backgroundImage})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }
+              : undefined
+          }
+        >
+          {/* Background Video */}
+          {backgroundVideo && (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 z-0 w-full h-full object-cover"
+            >
+              <source src={backgroundVideo} type="video/mp4" />
+            </video>
+          )}
+          {/* Flex container for Typography Card and Featured Product Card */}
+          <div className="w-full flex flex-col lg:flex-row gap-6 items-end justify-between pb-0 relative z-10">
+            {/* Typography Card - Left (Less than 50%) */}
+            <div className="bg-background rounded-t-4xl rounded-br-4xl w-full lg:max-w-[40%] px-6 lg:px-8 py-12 lg:py-16">
+              {/* Main Heading */}
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-normal mb-4 text-primary">
+                {headline}
+              </h1>
 
-                {/* Description */}
-                <p className="text-sm md:text-base text-muted-foreground mb-6">
-                  {description}
-                </p>
+              {/* Description */}
+              <p className="text-sm md:text-base text-muted-foreground mb-6">
+                {description}
+              </p>
 
-                {/* CTA Buttons */}
-                <div className="flex sm:flex-row flex-col gap-3">
-                  {/* Primary CTA Button - Outline */}
-                  <Button
-                    variant="outline"
-                    size="default"
-                    className="h-10 px-5 text-sm font-normal rounded-full"
-                    asChild
-                  >
-                    <Link href={primaryCta.link}>{primaryCta.text}</Link>
-                  </Button>
+              {/* CTA Buttons */}
+              <div className="flex sm:flex-row flex-col gap-3">
+                {/* Primary CTA Button - Outline */}
+                <Button
+                  variant="outline"
+                  size="default"
+                  className="h-10 px-5 text-sm font-normal rounded-full"
+                  asChild
+                >
+                  <Link href={primaryCta.link}>{primaryCta.text}</Link>
+                </Button>
 
-                  {/* Secondary CTA Button - Gradient */}
-                  <Link
-                    href={secondaryCta.link}
-                    className="h-10 px-5 text-sm font-semibold rounded-full bg-linear-to-r from-brand-blue to-brand-green text-white shadow-[inset_0rem_0.25rem_1.806rem_0rem_rgba(244,244,245,0.2)] inline-flex items-center justify-center gap-2 transition-all hover:shadow-lg"
-                  >
-                    {secondaryCta.text}
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
+                {/* Secondary CTA Button - Gradient */}
+                <Link
+                  href={secondaryCta.link}
+                  className="h-10 px-5 text-sm font-semibold rounded-full bg-linear-to-r from-brand-blue to-brand-green text-white shadow-[inset_0rem_0.25rem_1.806rem_0rem_rgba(244,244,245,0.2)] inline-flex items-center justify-center gap-2 transition-all hover:shadow-lg"
+                >
+                  {secondaryCta.text}
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
-
-              {/* Featured Product Card - Right (floating above bottom) */}
-              {featuredProducts.length > 0 && (
-                <div className="w-full lg:w-64 absolute bottom-3 right-6 hidden sm:block">
-                  <HeroFeaturedProduct products={featuredProducts} />
-                </div>
-              )}
             </div>
+
+            {/* Featured Product Card - Right (floating above bottom) */}
+            {featuredProducts.length > 0 && (
+              <div className="w-full lg:w-64 absolute bottom-3 right-6 hidden sm:block">
+                <HeroFeaturedProduct products={featuredProducts} />
+              </div>
+            )}
           </div>
+        </div>
       </div>
     </section>
   );

@@ -57,27 +57,25 @@ export function BlogCard({
         <p className="font-normal text-sm text-muted-foreground line-clamp-3 overflow-hidden">
           {description}
         </p>
-          {/* Meta Info */}
-      {(readTime || publishedDate) && (
-        <div className="flex gap-1 items-center opacity-40 w-full">
-          {readTime && (
-            <span className="font-medium text-sm text-foreground">
-              {readTime}
-            </span>
-          )}
-          {readTime && publishedDate && (
-            <span className="font-medium text-sm text-foreground">•</span>
-          )}
-          {publishedDate && (
-            <span className="font-medium text-sm text-foreground">
-              {publishedDate}
-            </span>
-          )}
-        </div>
-      )}
+        {/* Meta Info */}
+        {(readTime || publishedDate) && (
+          <div className="flex gap-1 items-center opacity-40 w-full">
+            {readTime && (
+              <span className="font-medium text-sm text-foreground">
+                {readTime}
+              </span>
+            )}
+            {readTime && publishedDate && (
+              <span className="font-medium text-sm text-foreground">•</span>
+            )}
+            {publishedDate && (
+              <span className="font-medium text-sm text-foreground">
+                {publishedDate}
+              </span>
+            )}
+          </div>
+        )}
       </div>
-
-    
     </Link>
   );
 }

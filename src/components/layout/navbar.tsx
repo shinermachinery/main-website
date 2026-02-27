@@ -155,9 +155,7 @@ export function Navbar({ collections = [] }: NavbarProps) {
             {mobileNavSections.map((section, i) => (
               <div key={section.title || `section-${i}`}>
                 <div
-                  className={
-                    i > 0 ? "pt-2 mt-2 border-t border-primary" : ""
-                  }
+                  className={i > 0 ? "pt-2 mt-2 border-t border-primary" : ""}
                 >
                   {section.title && (
                     <div className="px-4 py-2 text-xs font-semibold text-muted-foreground uppercase">

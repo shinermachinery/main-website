@@ -4,7 +4,6 @@ import { Download, Share } from "lucide-react";
 import type { SanityFile } from "@/lib/sanity-types";
 import { Button } from "../ui/button";
 
-
 interface ProductBrochureDownloadProps {
   brochure?: SanityFile;
   title: string;

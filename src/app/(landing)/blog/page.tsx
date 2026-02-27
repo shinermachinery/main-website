@@ -44,22 +44,20 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
 
   return (
     <div className="min-h-screen bg-secondary max-w-7xl mx-auto px-4 py-16 md:py-12">
-     
-          {/* Search and Filters */}
-          <SearchFilterBar
-            basePath="/blog"
-            searchPlaceholder="Search blogs"
-            categoryPlaceholder="All Categories"
-            categories={categoryOptions}
-            currentSearch={params.q}
-            currentCategory={params.category}
-          />
+      {/* Search and Filters */}
+      <SearchFilterBar
+        basePath="/blog"
+        searchPlaceholder="Search blogs"
+        categoryPlaceholder="All Categories"
+        categories={categoryOptions}
+        currentSearch={params.q}
+        currentCategory={params.category}
+      />
 
-          {/* Blog Grid */}
-          <Suspense fallback={<BlogsSkeleton />}>
-            <BlogsData searchQuery={params.q} category={params.category} />
-          </Suspense>
-    
+      {/* Blog Grid */}
+      <Suspense fallback={<BlogsSkeleton />}>
+        <BlogsData searchQuery={params.q} category={params.category} />
+      </Suspense>
     </div>
   );
 }

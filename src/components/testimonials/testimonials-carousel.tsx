@@ -94,45 +94,47 @@ export function TestimonialsCarousel({
       : FALLBACK_TESTIMONIALS;
 
   return (
-    <section className="w-full flex flex-col gap-10" aria-labelledby="testimonials-heading">
-     
-          {/* Header - Two Column Layout */}
-          <div className="flex flex-col md:flex-row gap-8 items-start">
-            <h2
-              id="testimonials-heading"
-              className="flex-1 font-medium text-2xl text-primary"
-            >
-              Testimonials
-            </h2>
-            <p className="flex-1 font-medium text-lg text-muted-foreground">
-              Hear from the manufacturers who trust Shiner Machinery to power
-              their production lines with precision and reliability.
-            </p>
-          </div>
+    <section
+      className="w-full flex flex-col gap-10"
+      aria-labelledby="testimonials-heading"
+    >
+      {/* Header - Two Column Layout */}
+      <div className="flex flex-col md:flex-row gap-8 items-start">
+        <h2
+          id="testimonials-heading"
+          className="flex-1 font-medium text-2xl text-primary"
+        >
+          Testimonials
+        </h2>
+        <p className="flex-1 font-medium text-lg text-muted-foreground">
+          Hear from the manufacturers who trust Shiner Machinery to power their
+          production lines with precision and reliability.
+        </p>
+      </div>
 
-          {/* Testimonials Carousel */}
-          <ContentSlider
-            items={displayTestimonials}
-            renderItem={(testimonial) => (
-              <TestimonialCard testimonial={testimonial} />
-            )}
-            itemsPerView={{
-              mobile: 1,
-              tablet: 2,
-              desktop: 3,
-            }}
-            slidesToScroll={{
-              mobile: 1,
-              tablet: 1,
-              desktop: 1,
-            }}
-            gap={24}
-            showNavigation={displayTestimonials.length > 3}
-            showDots={false}
-            autoplay
-            autoplayDelay={4000}
-            className="relative"
-          />
+      {/* Testimonials Carousel */}
+      <ContentSlider
+        items={displayTestimonials}
+        renderItem={(testimonial) => (
+          <TestimonialCard testimonial={testimonial} />
+        )}
+        itemsPerView={{
+          mobile: 1,
+          tablet: 2,
+          desktop: 3,
+        }}
+        slidesToScroll={{
+          mobile: 1,
+          tablet: 1,
+          desktop: 1,
+        }}
+        gap={24}
+        showNavigation={displayTestimonials.length > 3}
+        showDots={false}
+        autoplay
+        autoplayDelay={4000}
+        className="relative"
+      />
     </section>
   );
 }

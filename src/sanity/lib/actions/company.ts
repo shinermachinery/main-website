@@ -54,9 +54,7 @@ function portableTextToPlain(blocks: any): string {
   return blocks
     .filter((block: any) => block._type === "block")
     .map((block: any) =>
-      (block.children || [])
-        .map((child: any) => child.text || "")
-        .join(""),
+      (block.children || []).map((child: any) => child.text || "").join(""),
     )
     .join(" ");
 }

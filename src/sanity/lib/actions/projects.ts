@@ -82,8 +82,7 @@ export async function getInstallations(options?: {
         id: installation._id,
         title: installation.title,
         description: installation.description,
-        images:
-          installation.images?.map((img: any) => urlFor(img).url()) || [],
+        images: installation.images?.map((img: any) => urlFor(img).url()) || [],
       }),
     );
   } catch (error) {

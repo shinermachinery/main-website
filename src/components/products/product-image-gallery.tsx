@@ -42,12 +42,16 @@ export function ProductImageGallery({
   if (validImages.length === 0) {
     return (
       <div className="flex-1 w-full">
-        <div
-          className="aspect-4/3 rounded-2xl flex items-center justify-center border border-muted bg-muted"
-        >
-          <span className="text-muted-foreground text-sm font-light">
-            No images available
-          </span>
+        <div className="aspect-4/3 rounded-2xl flex items-center justify-center border border-muted bg-muted overflow-hidden">
+          <Image
+            src="/shiner-logo.png"
+            alt={title}
+            width={600}
+            height={450}
+            className="w-full h-auto object-contain p-12 opacity-60"
+            placeholder="blur"
+            blurDataURL={BLUR_DATA_URL}
+          />
         </div>
       </div>
     );

@@ -136,11 +136,18 @@ export async function getCertifications(
     }
 
     return certifications.map(
-      (certification: { _id: string; title: string; description: string; image?: any }) => ({
+      (certification: {
+        _id: string;
+        title: string;
+        description: string;
+        image?: any;
+      }) => ({
         id: certification._id,
         title: certification.title,
         description: certification.description,
-        image: certification.image ? urlFor(certification.image).url() : undefined,
+        image: certification.image
+          ? urlFor(certification.image).url()
+          : undefined,
       }),
     );
   } catch (error) {

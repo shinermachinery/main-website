@@ -20,9 +20,7 @@ async function WhyChooseUsContent() {
       <section className="flex flex-col gap-6">
         {/* Header */}
         <div className="flex flex-col gap-4 mt-5 sm:mt-0">
-          <h1 className="font-medium text-3xl text-foreground">
-            {data.title}
-          </h1>
+          <h1 className="font-medium text-3xl text-foreground">{data.title}</h1>
           {data.subtitle && (
             <p className="font-medium text-lg text-muted-foreground">
               {data.subtitle}
@@ -117,9 +115,9 @@ function WhyChooseUsSkeleton() {
 export default function WhyChooseUsPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 md:py-12 flex flex-col gap-8 md:gap-10">
-        <Suspense fallback={<WhyChooseUsSkeleton />}>
-          <WhyChooseUsContent />
-        </Suspense>
+      <Suspense fallback={<WhyChooseUsSkeleton />}>
+        <WhyChooseUsContent />
+      </Suspense>
     </div>
   );
 }

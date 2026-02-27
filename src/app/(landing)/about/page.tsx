@@ -65,7 +65,6 @@ const fallbackBottomFeatures = [
   { icon: "award", title: "Proven results worldwide" },
 ];
 
-
 export default async function AboutPage() {
   const [aboutData, featuredProducts] = await Promise.all([
     getAboutPage(),
@@ -92,85 +91,82 @@ export default async function AboutPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 md:py-12 flex flex-col gap-8 md:gap-10">
-    
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-6">
-          <div className="flex flex-1 flex-col gap-6">
-            <h1 className="text-2xl font-medium text-foreground md:text-3xl">
-              {heroTitle}
-            </h1>
-            {heroDescription && (
-              <div className="prose prose-sm max-w-none text-muted-foreground">
-                <PortableText value={heroDescription} />
+      <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-6">
+        <div className="flex flex-1 flex-col gap-6">
+          <h1 className="text-2xl font-medium text-foreground md:text-3xl">
+            {heroTitle}
+          </h1>
+          {heroDescription && (
+            <div className="prose prose-sm max-w-none text-muted-foreground">
+              <PortableText value={heroDescription} />
+            </div>
+          )}
+        </div>
+        <div className="aspect-[4/3] w-full flex-1 overflow-hidden rounded-2xl bg-muted md:w-xl">
+          {mainImage && (
+            <Image
+              src={mainImage}
+              alt={mainImageAlt}
+              width={600}
+              height={400}
+              className="h-full w-full object-cover"
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
+            />
+          )}
+        </div>
+      </div>
+
+      <div className="w-full grid grid-cols-1 gap-6">
+        <div className="w-full grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div className="flex flex-1 flex-col justify-start gap-4 rounded-2xl bg-brand-blue-10 p-6">
+            <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-lg">
+              {missionTitle}
+            </p>
+            {missionDescription && (
+              <div className="prose prose-sm max-w-none text-foreground">
+                <PortableText value={missionDescription} />
               </div>
             )}
           </div>
-          <div className="aspect-[4/3] w-full flex-1 overflow-hidden rounded-2xl bg-muted md:w-xl">
-            {mainImage && (
-              <Image
-                src={mainImage}
-                alt={mainImageAlt}
-                width={600}
-                height={400}
-                className="h-full w-full object-cover"
-                placeholder="blur"
-                blurDataURL={BLUR_DATA_URL}
-              />
+          <div className="flex flex-1 flex-col justify-between gap-4 rounded-2xl bg-brand-green-10 p-6">
+            <p className="text-lg font-medium text-brand-green">
+              {visionTitle}
+            </p>
+            {visionDescription && (
+              <div className="prose prose-sm max-w-none text-foreground">
+                <PortableText value={visionDescription} />
+              </div>
             )}
           </div>
         </div>
-      
 
- 
-        <div className="w-full grid grid-cols-1 gap-6">
-          <div className="w-full grid grid-cols-1 gap-6 sm:grid-cols-2">
-            <div className="flex flex-1 flex-col justify-start gap-4 rounded-2xl bg-brand-blue-10 p-6">
-              <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-lg">
-                {missionTitle}
-              </p>
-              {missionDescription && (
-                <div className="prose prose-sm max-w-none text-foreground">
-                  <PortableText value={missionDescription} />
-                </div>
-              )}
-            </div>
-            <div className="flex flex-1 flex-col justify-between gap-4 rounded-2xl bg-brand-green-10 p-6">
-              <p className="text-lg font-medium text-brand-green">
-                {visionTitle}
-              </p>
-              {visionDescription && (
-                <div className="prose prose-sm max-w-none text-foreground">
-                  <PortableText value={visionDescription} />
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Feature Cards */}
-          <div className="w-full grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
-            {features.map((feature) => {
-              const Icon = iconMap[feature.icon || ""] || Settings;
-              return (
-                <div
-                  key={feature.title}
-                  className="flex flex-col gap-3 rounded-2xl bg-background p-6"
-                >
-                  <div className="flex items-center gap-2">
-                    <Icon className="size-6 text-brand-blue" />
-                    <p className="font-medium text-lg bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent">
-                      {feature.title}
-                    </p>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    {feature.description}
+        {/* Feature Cards */}
+        <div className="w-full grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
+          {features.map((feature) => {
+            const Icon = iconMap[feature.icon || ""] || Settings;
+            return (
+              <div
+                key={feature.title}
+                className="flex flex-col gap-3 rounded-2xl bg-background p-6"
+              >
+                <div className="flex items-center gap-2">
+                  <Icon className="size-6 text-brand-blue" />
+                  <p className="font-medium text-lg bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent">
+                    {feature.title}
                   </p>
                 </div>
-              );
-            })}
-          </div>
+                <p className="text-sm text-muted-foreground">
+                  {feature.description}
+                </p>
+              </div>
+            );
+          })}
         </div>
+      </div>
 
-        {/* Bottom Feature Cards */}
-        {/* <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
+      {/* Bottom Feature Cards */}
+      {/* <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
           {bottomFeatures.map((feature) => {
             const Icon = iconMap[feature.icon || ""] || Building2;
             return (
@@ -187,35 +183,34 @@ export default async function AboutPage() {
           })}
         </div> */}
 
-
       {/* Featured Products Section */}
       {featuredProducts.length > 0 && (
-      <section className="w-full">
-        <div className="mb-10 flex items-center justify-between">
-          <h2 className="text-2xl font-medium text-foreground">
-            Featured Products
-          </h2>
-          <Button variant="shiner" size="lg" asChild className="rounded-full">
-            <Link href="/products">
-              <span>Explore Products</span>
-              <ArrowUpRight className="size-5" />
-            </Link>
-          </Button>
-        </div>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {featuredProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              title={product.title}
-              description={product.description}
-              category={product.collection?.title}
-              imageUrl={product.primaryImage}
-              imageAlt={product.title}
-              href={`/products/${product.slug}`}
-            />
-          ))}
-        </div>
-      </section>
+        <section className="w-full">
+          <div className="mb-10 flex items-center justify-between">
+            <h2 className="text-2xl font-medium text-foreground">
+              Featured Products
+            </h2>
+            <Button variant="shiner" size="lg" asChild className="rounded-full">
+              <Link href="/products">
+                <span>Explore Products</span>
+                <ArrowUpRight className="size-5" />
+              </Link>
+            </Button>
+          </div>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {featuredProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                title={product.title}
+                description={product.description}
+                category={product.collection?.title}
+                imageUrl={product.primaryImage}
+                imageAlt={product.title}
+                href={`/products/${product.slug}`}
+              />
+            ))}
+          </div>
+        </section>
       )}
     </div>
   );

@@ -30,23 +30,20 @@ export default async function ProjectsPage({
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-16 md:py-12 flex flex-col gap-10">
-    
+      {/* Search & Filter Bar */}
+      <SearchFilterBar
+        basePath="/products"
+        searchPlaceholder="Search products..."
+        categoryPlaceholder="All Categories"
+        categories={categoryOptions}
+        currentSearch={params.q}
+        currentCategory={params.category}
+      />
 
-          {/* Search & Filter Bar */}
-          <SearchFilterBar
-            basePath="/products"
-            searchPlaceholder="Search products..."
-            categoryPlaceholder="All Categories"
-            categories={categoryOptions}
-            currentSearch={params.q}
-            currentCategory={params.category}
-          />
-
-          {/* Products Grid */}
-          <Suspense fallback={<ProductsGridSkeleton />}>
-            <ProductsData searchQuery={params.q} category={params.category} />
-          </Suspense>
-
+      {/* Products Grid */}
+      <Suspense fallback={<ProductsGridSkeleton />}>
+        <ProductsData searchQuery={params.q} category={params.category} />
+      </Suspense>
     </div>
   );
 }

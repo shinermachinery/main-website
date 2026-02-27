@@ -12,18 +12,15 @@ export const metadata = pageMetadata.events;
 export default function EventsPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-16 md:py-12 flex flex-col gap-40">
-  
- 
-          <Suspense fallback={<EventsSectionSkeleton />}>
-            <EventsSection />
-          </Suspense>
-          <Suspense fallback={<CertificationsSectionSkeleton />}>
-            <CertificationsSection />
-          </Suspense>
-          <Suspense fallback={<AchievementsSectionSkeleton />}>
-            <AchievementsSection />
-          </Suspense>
- 
+      <Suspense fallback={<EventsSectionSkeleton />}>
+        <EventsSection />
+      </Suspense>
+      <Suspense fallback={<CertificationsSectionSkeleton />}>
+        <CertificationsSection />
+      </Suspense>
+      <Suspense fallback={<AchievementsSectionSkeleton />}>
+        <AchievementsSection />
+      </Suspense>
     </div>
   );
 }

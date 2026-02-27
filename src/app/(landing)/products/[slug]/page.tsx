@@ -76,14 +76,16 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <Suspense fallback={<ProductDetailSkeleton />}>
         {/* Main Product Section - layout varies by displayType */}
         {displayType === "textOnly" ? (
-          <div className="max-w-4xl mx-auto mb-16">
-            <ProductInfo product={product} />
-            {product.body && product.body.length > 0 && (
-              <div className="mt-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
+            <ProductSingleImage
+              image={product.images?.[0]}
+              title={product.title}
+            />
+            <div className="flex flex-col gap-8">
+              <ProductInfo product={product} />
+              {product.body && product.body.length > 0 && (
                 <PortableText value={product.body} />
-              </div>
-            )}
-            <div className="mt-8">
+              )}
               <ProductBrochureDownload
                 brochure={product.brochure}
                 title={product.title}
@@ -141,7 +143,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
       </Suspense>
 
       {/* Ultra-thin CTA Section */}
-{/* 
+      {/* 
       <div className="text-center space-y-4 mt-10 border-t border-border pt-10">
         <h3 className="text-xl font-light text-foreground">
           Need More Information?

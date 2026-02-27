@@ -41,9 +41,7 @@ export function FaqSection() {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
         {/* Left column — Heading */}
         <div className="lg:col-span-2">
-          <p className="text-sm font-semibold text-brand-blue uppercase">
-            FAQ
-          </p>
+          <p className="text-sm font-semibold text-brand-blue uppercase">FAQ</p>
           <h2 className="mt-2 text-3xl font-bold text-foreground">
             Frequently Asked Questions
           </h2>

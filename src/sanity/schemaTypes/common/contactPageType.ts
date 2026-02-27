@@ -84,8 +84,7 @@ export const contactPageType = defineType({
               name: "mapEmbedUrl",
               title: "Google Maps Embed URL",
               type: "url",
-              description:
-                "Paste the src URL from a Google Maps embed iframe.",
+              description: "Paste the src URL from a Google Maps embed iframe.",
             }),
           ],
           preview: {

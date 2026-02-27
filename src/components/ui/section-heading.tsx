@@ -19,7 +19,9 @@ export function SectionHeading({
         {title}
       </Tag>
       {description && (
-        <p className="text-sm text-muted-foreground md:text-base">{description}</p>
+        <p className="text-sm text-muted-foreground md:text-base">
+          {description}
+        </p>
       )}
     </div>
   );

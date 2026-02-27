@@ -111,7 +111,9 @@ export async function getDirector(): Promise<DirectorData | null> {
     return {
       name: data.name,
       title: data.role,
-      image: data.image ? urlFor(data.image).url() : "/placeholder-director.jpg",
+      image: data.image
+        ? urlFor(data.image).url()
+        : "/placeholder-director.jpg",
       bio: data.bio,
       achievements: data.achievements,
       email: data.contactEmail,

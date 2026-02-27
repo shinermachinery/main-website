@@ -62,9 +62,7 @@ async function DirectorContent() {
                 className="flex items-center gap-3 text-muted-foreground hover:text-brand-blue transition-colors"
               >
                 <Mail className="size-5" />
-                <span className="font-normal text-sm">
-                  {data.email}
-                </span>
+                <span className="font-normal text-sm">{data.email}</span>
               </Link>
             )}
             {data.phone && (
@@ -73,9 +71,7 @@ async function DirectorContent() {
                 className="flex items-center gap-3 text-muted-foreground hover:text-brand-blue transition-colors"
               >
                 <Phone className="size-5" />
-                <span className="font-normal text-sm">
-                  {data.phone}
-                </span>
+                <span className="font-normal text-sm">{data.phone}</span>
               </Link>
             )}
             {data.linkedin && (
@@ -86,9 +82,7 @@ async function DirectorContent() {
                 className="flex items-center gap-3 text-muted-foreground hover:text-brand-blue transition-colors"
               >
                 <Linkedin className="size-5" />
-                <span className="font-normal text-sm">
-                  LinkedIn Profile
-                </span>
+                <span className="font-normal text-sm">LinkedIn Profile</span>
               </Link>
             )}
           </div>
@@ -99,9 +93,7 @@ async function DirectorContent() {
           {/* Biography */}
           {data.bio && (
             <div className="flex flex-col gap-4">
-              <h3 className="font-medium text-xl text-foreground">
-                Biography
-              </h3>
+              <h3 className="font-medium text-xl text-foreground">Biography</h3>
               <div className="prose prose-sm max-w-none">
                 <PortableText value={data.bio} />
               </div>
@@ -174,11 +166,9 @@ function DirectorSkeleton() {
 export default function DirectorPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
-  
-        <Suspense fallback={<DirectorSkeleton />}>
-          <DirectorContent />
-        </Suspense>
-      
+      <Suspense fallback={<DirectorSkeleton />}>
+        <DirectorContent />
+      </Suspense>
     </div>
   );
 }

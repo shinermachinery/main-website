@@ -12,7 +12,10 @@ import { getOtherClients } from "@/sanity/lib/actions";
 function ClientLogo({
   logo,
   companyName,
-}: { logo?: string | null; companyName: string }) {
+}: {
+  logo?: string | null;
+  companyName: string;
+}) {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
@@ -52,7 +55,9 @@ export async function OtherClientsSection() {
       />
 
       {clients.length === 0 ? (
-        <p className="text-sm text-muted-foreground">No clients to display at this time.</p>
+        <p className="text-sm text-muted-foreground">
+          No clients to display at this time.
+        </p>
       ) : (
         <div className="flex flex-col gap-6 overflow-hidden">
           <Marquee pauseOnHover className="[--duration:60s] [--gap:1.5rem]">
@@ -89,7 +94,7 @@ export async function OtherClientsSection() {
                   logo={client.logo}
                   companyName={client.companyName}
                 />
-          ))}
+              ))}
             </Marquee>
           )}
         </div>

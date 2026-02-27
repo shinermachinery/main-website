@@ -11,27 +11,15 @@ interface ProductSingleImageProps {
 export function ProductSingleImage({ image, title }: ProductSingleImageProps) {
   const imageUrl = safeImageUrl(image, 1200);
 
-  if (!imageUrl) {
-    return (
-      <div className="w-full">
-        <div className="aspect-4/3 rounded-2xl bg-muted flex items-center justify-center border border-muted/50">
-          <span className="text-muted-foreground text-sm font-light">
-            No image available
-          </span>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="w-full flex flex-col gap-2">
       <div className="rounded-2xl overflow-hidden bg-muted border border-muted/50 shadow-sm max-h-96 flex items-center justify-center">
         <Image
-          src={imageUrl}
+          src={imageUrl || "/shiner-logo.png"}
           alt={image?.alt || title}
           width={600}
           height={450}
-          className="w-full h-auto max-h-96 object-contain"
+          className={`w-full h-auto max-h-96 ${imageUrl ? "object-contain" : "object-contain p-12 opacity-60"}`}
           priority
           placeholder="blur"
           blurDataURL={BLUR_DATA_URL}

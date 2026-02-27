@@ -27,9 +27,7 @@ export function ProductsGridSection({
     <section className="flex flex-col gap-y-10 w-full">
       {/* Header */}
       <div className="flex flex-col gap-y-4">
-        <h1 className="font-medium text-4xl text-foreground">
-          Our Products
-        </h1>
+        <h1 className="font-medium text-4xl text-foreground">Our Products</h1>
         <p className="font-medium text-lg text-muted-foreground">
           Explore our complete range of precision-engineered machinery and
           equipment built for performance and durability.
