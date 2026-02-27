@@ -2,6 +2,50 @@
 
 All notable changes to the Sanity integration will be documented in this file.
 
+## [2.4.0] - 2026-02-27 - Homepage Schema Updates + Marketing Actions
+
+### Summary
+Updated homepage schema with new fields and updated marketing actions. Updated shiner logo. Added process section component.
+
+### Schema Changes
+- **Updated** `homeType` - Added new fields for homepage content
+- **Updated** marketing actions in `src/sanity/lib/actions/marketing.ts`
+- **Updated** home page queries in `src/sanity/lib/queries/pages/home.ts`
+
+### Files Changed
+- `src/sanity/schemaTypes/homepage/homeType.ts`
+- `src/sanity/lib/actions/marketing.ts`
+- `src/sanity/lib/queries/pages/home.ts`
+- `src/sanity/lib/actions/index.ts`
+
+---
+
+## [2.3.0] - 2026-02-25 - Remove Navigation & Footer Schemas
+
+### Summary
+Removed `navigationType` and `footerType` Sanity schemas. Navigation and footer are now fully static/data-driven from `src/data/navigation.ts`. Simplified settings queries significantly.
+
+### Schema Changes
+- **Removed** `src/sanity/schemaTypes/common/navigationType.ts` - CMS-managed navigation menu
+- **Removed** `src/sanity/schemaTypes/common/footerType.ts` - CMS-managed footer content
+- **Removed** Navigation and Footer singletons from Sanity Studio structure
+- **Removed** Navigation and Footer projections from `src/sanity/lib/queries/shared/projections.ts`
+
+### Query Changes
+- **Simplified** `src/sanity/lib/queries/pages/settings.ts` - Removed navigation and footer queries
+- **Simplified** `src/actions/settings.ts` - Removed `getNavigation()` and `getFooter()` functions
+- **Updated** query index exports
+
+### Component Changes
+- **Updated** `src/components/layout/footer.tsx` - Now uses static data from `src/data/navigation.ts`
+- **Updated** `src/components/layout/navbar.tsx` - Uses data-driven config
+- **Added** `src/components/sections/process/process-section.tsx` - New process section component
+
+### Files Changed
+- 20 files modified, 587 lines removed
+
+---
+
 ## [2.2.0] - 2026-02-25 - Director Schema Consolidation
 
 ### Summary

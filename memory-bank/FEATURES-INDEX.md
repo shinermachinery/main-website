@@ -2,7 +2,7 @@
 
 Master index of all features in this project. Each feature has detailed documentation in its respective folder.
 
-**Last Updated**: 2026-02-25
+**Last Updated**: 2026-02-27
 
 ## Active Features
 
@@ -38,7 +38,7 @@ Features currently implemented and in use.
 **Description**: Headless CMS with embedded Studio for content management
 **Key Tech**: Sanity v4, next-sanity, GROQ
 **Created**: 2025-12-23
-**Last Updated**: 2026-02-25
+**Last Updated**: 2026-02-27
 
 **Quick Links:**
 - [Full Documentation](./features/sanity-integration/README.md)
@@ -47,20 +47,18 @@ Features currently implemented and in use.
 **Key Files:**
 - `sanity.config.ts` - Sanity configuration
 - `src/sanity/lib/client.ts` - API client
-- `src/sanity/schemaTypes/**/*.ts` - Content schemas (19 total, removed standalone directorType, director data now fetched from teamMember with isDirector flag)
+- `src/sanity/schemaTypes/**/*.ts` - Content schemas (21 total, removed standalone directorType/navigationType/footerType, director data from teamMember with isDirector flag)
 - `src/sanity/lib/queries/pages/*.ts` - Page-specific GROQ queries
 - `src/sanity/lib/queries/shared/*.ts` - Shared projections and utilities
 - `src/sanity/structure.ts` - Studio structure
 - `src/app/studio/[[...tool]]/page.tsx` - Studio route
 
-**Content Schemas (19 total):**
+**Content Schemas (21 total):**
 
 *Singletons (Pages):*
 - Home - Homepage content (homeType)
 - About Page - Merged mission/vision/features (aboutPageType)
 - Site Settings - Company info, SEO defaults (siteSettingsType)
-- Navigation - CMS-managed menu (navigationType)
-- Footer - CMS-managed footer (footerType)
 
 *Collections:*
 - Post - Blog posts
@@ -69,7 +67,6 @@ Features currently implemented and in use.
 - Block Content - Rich text
 - Product - Product catalog items
 - Product Collection - Product groupings
-- Project - Projects with gallery
 - Service - Service offerings
 - Team Member - Team profiles (with isDirector flag for director)
 - Testimonial - Customer testimonials (with rating, company)
@@ -80,7 +77,13 @@ Features currently implemented and in use.
 - Achievement - Company achievements
 - Installation - Installation projects (simplified)
 - Client - Client logos (with featured flag)
+- Client List - Client list page content
 - Flowchart - Process flowcharts
+
+*Removed:*
+- ~~Navigation~~ - Removed; navbar is now static/data-driven (`src/data/navigation.ts`)
+- ~~Footer~~ - Removed; footer is now static/data-driven (`src/data/navigation.ts`)
+- ~~Director~~ - Consolidated into teamMember with `isDirector` flag
 
 **Dependencies:**
 - sanity@4
@@ -189,14 +192,15 @@ Features currently implemented and in use.
 - **Contact** (`/contact`) - Contact form and office locations
 - **Blog** (`/blog`) - Blog posts listing with search and filters
 - **Services** (`/services`) - Service offerings overview (5 services)
+- **Testimonials** (`/testimonials`) - Customer testimonials grid (CMS with fallback)
 
 **Home Page Sections:**
-- Hero section (static)
+- Hero section (static, redesigned)
 - About Us (static)
 - Features Grid (static)
 - Featured Products (CMS)
-- Statistics (static)
-- How It Works (static)
+- Statistics (static, card-based redesign)
+- Process / How It Works (static)
 - Team (CMS)
 - Testimonials (CMS)
 - Contact Form (Server Action → CMS)
@@ -225,6 +229,8 @@ Features currently implemented and in use.
 - ✅ Phase 12: Services Page (Completed 2025-12-29)
 - ✅ Phase 13: Contact Page Figma Redesign + Sanity Integration (Completed 2026-02-17)
 - ✅ Phase 14: Services Page Cleanup (Completed 2026-02-17)
+- ✅ Phase 15: Navbar Data-Driven Refactor + Mobile Fixes (Completed 2026-02-25)
+- ✅ Phase 16: Remove CMS Navigation/Footer + Hero/Stats/Footer Redesign + Testimonials Page (Completed 2026-02-27)
 
 ---
 
@@ -279,7 +285,7 @@ Features currently implemented and in use.
 
 **Status**: ✅ Completed
 **Location**: `memory-bank/features/about-us-pages/`
-**Description**: Complete About Us section with main about page (hero, mission, vision, features, featured products) and three sub-pages, navbar dropdown, and rich content management
+**Description**: Complete About Us section with main about page (hero, mission, vision, features, featured products) and four sub-pages, navbar dropdown, and rich content management
 **Key Tech**: Next.js 16, Sanity Singleton Documents, Portable Text, Server Components
 **Created**: 2025-12-30
 **Last Updated**: 2026-02-25
@@ -471,33 +477,21 @@ Sanity Integration (independent)
 
 Features scheduled for future implementation:
 
-### 📋 Blog Frontend
+### 📋 Contact Form Email Notifications
 
-**Priority**: High
-**Description**: Public-facing blog pages displaying Sanity content
-**Estimated Start**: TBD
-**Dependencies**: Sanity Integration
-
-**Planned Components:**
-- Blog listing page
-- Individual post pages
-- Author pages
-- Category pages
+**Priority**: High (In Progress)
+**Description**: Send confirmation emails to submitters and notification emails to company on contact form submission
+**Dependencies**: Sanity Integration, nodemailer
+**Status**: Uncommitted — `src/lib/mail.ts` created, `submit-contact.ts` updated, `contactSubmissionType` has `contactNumber` field
 
 ---
 
-### 📋 Image Optimization
+### 📋 Service Detail Pages
 
 **Priority**: Medium
-**Description**: Enhanced image handling and optimization
+**Description**: Individual detail pages for each service
 **Estimated Start**: TBD
-**Dependencies**: Sanity Integration
-
-**Planned Features:**
-- Next.js Image component integration
-- Responsive images
-- Lazy loading
-- Blur placeholders
+**Dependencies**: Sanity Integration, Landing Page
 
 ---
 
@@ -543,10 +537,10 @@ Features scheduled for future implementation:
 | Feature | Status | Files | Docs |
 |---------|--------|-------|------|
 | Theme System | ✅ | `src/lib/theme-provider.tsx`<br>`src/components/global/mode-toggle.tsx` | [View](./features/theme-system/README.md) |
-| Sanity Integration | ✅ | `sanity.config.ts`<br>`src/sanity/**/*` (19 schemas, queries in pages/shared/) | [View](./features/sanity-integration/README.md) |
+| Sanity Integration | ✅ | `sanity.config.ts`<br>`src/sanity/**/*` (21 schemas, queries in pages/shared/) | [View](./features/sanity-integration/README.md) |
 | UI Components (shadcn/ui) | 🚧 | `src/components/ui/**/*`<br>`src/lib/utils.ts` | [View](./features/ui-components/README.md) |
 | MCP Integration | ✅ | `.mcp.json`<br>`.claude/settings.local.json` | [View](../MCP-SETUP.md) |
-| Landing Pages | ✅ | `src/app/(landing)/**/*`<br>6 pages: Home, About, Contact, Blog, Blog Detail, Services | [View](./features/landing-page/README.md) |
+| Landing Pages | ✅ | `src/app/(landing)/**/*`<br>7 pages: Home, About, Contact, Blog, Blog Detail, Services, Testimonials | [View](./features/landing-page/README.md) |
 | Projects & Products | ✅ | `src/app/(landing)/projects/**/*`<br>`src/components/projects/*` | [View](./features/projects-products/README.md) |
 | About Us Pages | ✅ | `src/app/(landing)/about/*`<br>3 pages: Why Choose, Mission/Vision, Director | [View](./features/about-us-pages/README.md) |
 | SEO Configuration | ✅ | `src/app/robots.ts`<br>`src/app/sitemap.ts`<br>`src/lib/site-config.ts`<br>`src/app/error.tsx`<br>`src/app/not-found.tsx` | [View](./features/seo-configuration/README.md) |
@@ -557,23 +551,21 @@ Features scheduled for future implementation:
 **Total Features**: 9
 - ✅ Completed: 9
 - 🚧 In Development: 0
-- 📋 Planned: 2
+- 📋 Planned: 2 (Email Notifications, Service Detail Pages)
 
-**Last Feature Completed**: Director Schema Consolidation + Navbar Cleanup (2026-02-25)
+**Last Feature Completed**: Hero/Footer/Stats Redesign + Testimonials Page (2026-02-27)
 **Recently Updated**:
-- **Director + Team + Navbar (2026-02-25)** - Removed standalone `director` schema (consolidated into teamMember with isDirector flag). Added phone/linkedin to all team members. Removed icons from navbar dropdown popovers. Fixed team page Portable Text bio rendering.
+- **Hero/Footer/Stats Redesign + Testimonials Page (2026-02-27)** - Redesigned hero section, footer, stats section (card-based), and certification/achievement cards. Added new `/testimonials` page with grid layout. Added process section component. Removed seed scripts. Updated navigation links (Testimonials under Projects). Updated homeType schema with new fields. Updated globals.css colors. Updated shiner logo.
+- **Remove CMS Navigation/Footer (2026-02-25)** - Removed `navigationType` and `footerType` Sanity schemas entirely. Footer and navbar are now fully static/data-driven from `src/data/navigation.ts`. Simplified settings queries. Added process section component.
+- **Navbar Data-Driven Refactor + Mobile Fixes (2026-02-25)** - Refactored navbar to data-driven structure using `desktopNavItems`/`mobileNavSections` config from `src/data/navigation.ts`. Consolidated popover state. Fixed mobile responsiveness. Redesigned FAQ section (two-column). Redesigned stats section (card-based). Fixed carousel mobile snapping. Updated team page to match director page layout. Removed standalone director schema. Added phone/linkedin to team members.
+- **Mobile Padding/Gaps + Navbar Scroll (2026-02-25)** - Fixed mobile padding (`py-8` mobile, `md:py-12` desktop), gap sizes on about pages, and mobile navbar scroll with `overflow-y-auto`.
 - **About Page + Codebase Cleanup (2026-02-19)** - Refactored about page schema (removed whoWeAre, added mainImage, converted to rich text). Replaced ALL arbitrary Tailwind rem values with standard classes across 42 files. Removed all `leading-*`/`tracking-*` from non-shadcn files. ProductCard now shows category as GradientBadge. Footer updated with real contact info.
-- **Contact Page (2026-02-17)** - Redesigned to match Figma (heading, Get In Touch card, gradient map borders). Moved phones/emails/offices to Sanity CMS with `contactPage` singleton schema. Static text in `site-config.ts`. Server action with IP-based rate limiting (3/min). Replaced arbitrary rem/px values with standard Tailwind classes. Replaced `max-w-[72.25rem]` with `max-w-7xl` codebase-wide.
-- **Services Page (2026-02-17)** - Replaced `max-w-[72.25rem]` with `max-w-7xl`.
-- **EmptyState Component (2026-02-16)** - Created global `EmptyState` component with 3 variants (empty/filtered/error), 3 sizes, and optional icon/action. Migrated 14 files from inline empty-state patterns, eliminating duplicated section wrappers.
-- **Shared Components + px→rem (2026-02-15)** - Extracted shared search/filter/active-filters components for blog and products pages. Made products search/filter functional via URL params. Converted all px to rem across 30+ files. ProductCard cleanup.
-- **Query Reorganization (2026-02-14)** - Reorganized GROQ queries into pages/ and shared/ modules. Added error boundary and 404 pages. Updated all components and actions (123 files, 4472+/2412-).
-- **Sanity Schema Refactoring (2026-02-08)** - Consolidated 27 schemas to 19. Added siteSettings, navigation, footer, aboutPage singletons. Simplified installation, client, event schemas.
+- **Contact Page (2026-02-17)** - Redesigned to match Figma. Moved phones/emails/offices to Sanity CMS. Server action with IP-based rate limiting. Replaced arbitrary values with standard Tailwind classes.
+- **Shared Components + px→rem (2026-02-15)** - Extracted shared search/filter/active-filters components. Made products search/filter functional via URL params.
+- **Query Reorganization (2026-02-14)** - Reorganized GROQ queries into pages/ and shared/ modules. Added error boundary and 404 pages.
+- **Sanity Schema Refactoring (2026-02-08)** - Consolidated 27 schemas to 19. Added siteSettings, navigation, footer, aboutPage singletons.
 - **SEO Configuration (2026-01-29)** - Sitemap, robots.txt, favicons, Open Graph metadata, PWA manifest
-- **Sanity Data Flow Pattern (2026-01-15)** - Documented 3-layer architecture (Queries → Actions → Components) in patterns.md
-- **Hero Section Redesign (2026-01-10)** - Complete redesign to match Figma reference
-- **Design System Refactoring (2026-01-09)** - Codebase-wide conversion of px to rem units (36 files), hardcoded colors to semantic tokens
-**Next Planned**: Team Members Page, Events Page, Service Detail Pages
+**Next Planned**: Contact form email notifications (in progress — nodemailer integration), Service Detail Pages
 
 ## Related Documentation
 
@@ -588,4 +580,4 @@ Features scheduled for future implementation:
 
 **Maintenance Schedule**: Review and update this index when features change
 **Owner**: Team
-**Last Review**: 2026-02-25
+**Last Review**: 2026-02-27

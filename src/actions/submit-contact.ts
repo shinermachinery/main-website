@@ -1,6 +1,7 @@
 "use server";
 
 import { headers } from "next/headers";
+import { sendContactConfirmation, sendContactNotification } from "@/lib/mail";
 import { writeClient } from "@/sanity/lib/client";
 
 // ============================================================================
@@ -101,6 +102,21 @@ export async function submitContactForm(
     if (!submission._id) {
       throw new Error("Failed to create submission");
     }
+
+    // Send emails in the background — don't block the response
+    const emailData = {
+      name: name.trim(),
+      email: email.trim().toLowerCase(),
+      contactNumber: contactNumber.trim(),
+      message: message.trim(),
+    };
+
+    Promise.all([
+      sendContactConfirmation(emailData),
+      sendContactNotification(emailData),
+    ]).catch((err) => {
+      console.error("Failed to send contact emails:", err);
+    });
 
     return {
       success: true,

@@ -21,6 +21,12 @@ export const contactSubmissionType = defineType({
       validation: (Rule) => Rule.required().email(),
     }),
     defineField({
+      name: "contactNumber",
+      title: "Contact Number",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "message",
       title: "Message",
       type: "text",

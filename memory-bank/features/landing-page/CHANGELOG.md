@@ -2,6 +2,50 @@
 
 All notable changes to the landing page feature will be documented in this file.
 
+## Phase 16: Hero/Footer/Stats Redesign + Testimonials Page (2026-02-27)
+
+### Added
+- **Testimonials page** (`/testimonials`) - New dedicated page with 3-column grid of testimonial cards, CMS integration with fallback data
+- **Process section** component (`src/components/sections/process/process-section.tsx`)
+- Testimonials link added to Projects navbar popover
+
+### Changed
+- **Hero section** redesigned (`src/components/sections/hero/hero-section.tsx`)
+- **Footer** redesigned (`src/components/layout/footer.tsx`) - new layout and styling
+- **Stats section** redesigned with card-based layout (`src/components/sections/stats/stats-section.tsx`)
+- **Certification card** redesigned (`src/components/cards/certification-card.tsx`)
+- **Image carousel card** enhanced (`src/components/cards/image-carousel-card.tsx`)
+- **Achievement card** updated (`src/components/cards/achievement-card.tsx`)
+- **Events page** sections updated (achievements, certifications)
+- **Globals.css** updated with new color values
+- **Site config** updated with new metadata and settings
+- **Navigation data** updated — Events and Blogs moved to More links, Testimonials added to Projects
+- **Home page Sanity schema** (`homeType`) updated with new fields
+- **Marketing actions** updated with new queries
+- Updated shiner logo (`public/shiner-logo.png`)
+
+### Removed
+- Seed scripts (`scripts/seed.ts`, `scripts/upload-clients.ts`)
+
+---
+
+## Phase 15: Remove CMS Navigation/Footer + Navbar Data-Driven Refactor (2026-02-25)
+
+### Changed
+- **Navbar** refactored to data-driven structure using `desktopNavItems`/`mobileNavSections` from `src/data/navigation.ts`
+- **Footer** converted from CMS-driven to static/data-driven
+- Consolidated 3 popover state variables into single `openPopover` state
+- FAQ section redesigned with two-column layout and card-style accordion
+- Stats section redesigned with card-based layout
+- Fixed carousel mobile snapping (Embla-native padding instead of CSS gap)
+- Mobile homepage responsiveness fixes (reduced section gaps, stacked feature cards)
+- Mobile navbar scroll fix (`overflow-y-auto` with max viewport height)
+- Mobile padding/gaps across all about pages (responsive `py-8`/`md:py-12`)
+- Team page matches director page UI (two-column profile layout)
+- Removed `GradientButton` component (`src/components/ui/gradient-button.tsx`)
+
+---
+
 ## Hero Section Redesign (2026-01-10)
 
 ### Updated - Hero Section to Match Reference Design & Figma Specs

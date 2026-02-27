@@ -2,7 +2,7 @@
 
 > **Status**: ✅ Completed
 > **Created**: 2025-12-23
-> **Last Modified**: 2026-01-10
+> **Last Modified**: 2026-02-27
 > **Owner/Lead**: Team
 
 ## Overview
@@ -16,6 +16,7 @@ A professional, modern landing page system featuring a hybrid architecture: stat
 - **Blog** (`/blog`) - Blog posts listing with search and category filters
 - **Blog Post** (`/blog/[slug]`) - Individual blog post detail page
 - **Services** (`/services`) - Service offerings overview (5 services)
+- **Testimonials** (`/testimonials`) - Customer testimonials grid with CMS integration
 
 All pages use the same layout structure (Navbar + Footer) through Next.js route groups, ensuring consistent navigation and branding across the site.
 
