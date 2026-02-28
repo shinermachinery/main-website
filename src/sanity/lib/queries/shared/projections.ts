@@ -88,6 +88,21 @@ export const CATEGORY_SUMMARY_PROJECTION = `{
 }`;
 
 // ============================================================================
+// Collection Projections
+// ============================================================================
+
+/**
+ * Collection Summary Projection
+ * Basic collection info for references
+ */
+export const COLLECTION_SUMMARY_PROJECTION = `{
+  _id,
+  title,
+  slug ${SLUG_PROJECTION},
+  description
+}`;
+
+// ============================================================================
 // Product Projections
 // ============================================================================
 
@@ -117,7 +132,7 @@ export const PRODUCT_FULL_PROJECTION = `{
   title,
   slug ${SLUG_PROJECTION},
   displayType,
-  description,
+  description[],
   descriptionBulletPoints,
   images[] {
     ${IMAGE_PROJECTION}
@@ -128,24 +143,10 @@ export const PRODUCT_FULL_PROJECTION = `{
   },
   specifications,
   price,
+  collections[]-> ${COLLECTION_SUMMARY_PROJECTION},
   features,
   featured,
   order
-}`;
-
-// ============================================================================
-// Collection Projections
-// ============================================================================
-
-/**
- * Collection Summary Projection
- * Basic collection info for references
- */
-export const COLLECTION_SUMMARY_PROJECTION = `{
-  _id,
-  title,
-  slug ${SLUG_PROJECTION},
-  description
 }`;
 
 /**

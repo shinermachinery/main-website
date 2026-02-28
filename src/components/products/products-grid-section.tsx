@@ -3,6 +3,7 @@ import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ProductCard } from "@/components/sections/products/product-card";
 import type { Category, Product } from "@/lib/sanity-types";
+import { toPlainText } from "@/lib/utils";
 import { imageBuilder } from "@/sanity/lib/image";
 import { Button } from "../ui/button";
 import {
@@ -104,8 +105,8 @@ export function ProductsGridSection({
             <ProductCard
               key={product._id}
               title={product.title}
-              description={product.description}
-              category={product.collection?.title}
+              description={toPlainText(product.description)}
+              category={product.collections?.map((c) => c.title).join(", ")}
               imageUrl={imageUrl}
               imageAlt={product.images?.[0]?.alt || product.title}
               onViewDetails={() => {

@@ -120,21 +120,12 @@ export interface ProductCollection {
 }
 
 /**
- * Product Specification
- * Individual spec item (label + value)
+ * Product Specification Item (label + value)
  */
 export interface ProductSpecItem {
   _key: string;
   label: string;
   value: string;
-}
-
-/**
- * Product Specifications Object
- */
-export interface ProductSpecifications {
-  description?: string;
-  specs?: ProductSpecItem[];
 }
 
 /**
@@ -149,15 +140,15 @@ export interface Product {
   title: string;
   slug: SanitySlug;
   displayType: "gallery" | "textOnly" | "imageText";
-  description?: string;
+  description?: PortableTextBlock[];
   descriptionBulletPoints?: string[];
   images?: SanityImage[];
   body?: PortableTextBlock[];
   brochure?: SanityFile;
-  specifications?: ProductSpecifications;
+  specifications?: ProductSpecItem[];
   price?: number;
   relatedProducts?: Product[];
-  collection?: ProductCollection;
+  collections?: ProductCollection[];
   features?: string[];
   featured: boolean;
   order?: number;
@@ -245,8 +236,8 @@ export interface SanityReference<_T = string> {
  * Product with populated relations
  */
 export interface ProductWithRelations
-  extends Omit<Product, "collection" | "relatedProducts"> {
-  collection?: ProductCollection;
+  extends Omit<Product, "collections" | "relatedProducts"> {
+  collections?: ProductCollection[];
   relatedProducts?: Product[];
 }
 

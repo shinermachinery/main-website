@@ -3,6 +3,7 @@
  * Server actions for fetching products and collections
  */
 
+import { toPlainText } from "@/lib/utils";
 import { urlFor } from "@/sanity/lib/image";
 import { sanityFetch } from "@/sanity/lib/live";
 
@@ -21,11 +22,12 @@ export interface Product {
   primaryImage: string;
   body?: any[];
   brochure?: string;
-  specifications?: string;
+  specifications?: any[];
   price?: number;
   features?: string[];
   featured: boolean;
   collection?: Collection;
+  collections?: Collection[];
   relatedProducts?: ProductSummary[];
 }
 
@@ -67,7 +69,7 @@ export async function getProducts(options?: {
     }
     if (options?.collectionSlug) {
       conditions.push(
-        `collection->slug.current == "${options.collectionSlug}"`,
+        `"${options.collectionSlug}" in collections[]->slug.current`,
       );
     }
 
@@ -79,7 +81,7 @@ export async function getProducts(options?: {
         title,
         "slug": slug.current,
         displayType,
-        description,
+        description[],
         descriptionBulletPoints,
         images,
         body,
@@ -88,7 +90,7 @@ export async function getProducts(options?: {
         price,
         features,
         featured,
-        collection-> {
+        collections[]-> {
           _id,
           title,
           "slug": slug.current,
@@ -150,7 +152,7 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
         title,
         "slug": slug.current,
         displayType,
-        description,
+        description[],
         descriptionBulletPoints,
         images,
         body,
@@ -159,7 +161,7 @@ export async function getProductBySlug(slug: string): Promise<Product | null> {
         price,
         features,
         featured,
-        collection-> {
+        collections[]-> {
           _id,
           title,
           "slug": slug.current,
@@ -199,12 +201,12 @@ export async function searchProducts(
 ): Promise<Product[]> {
   try {
     const { data: products } = await sanityFetch({
-      query: `*[_type == "product" && [title, description, features] match $searchTerm] | order(_score desc, order asc) {
+      query: `*[_type == "product" && [title, features] match $searchTerm] | order(_score desc, order asc) {
         _id,
         title,
         "slug": slug.current,
         displayType,
-        description,
+        description[],
         descriptionBulletPoints,
         images,
         body,
@@ -308,12 +310,19 @@ export async function getCollectionBySlug(
 // ============================================================================
 
 function transformProduct(product: any): Product {
+  const collections = product.collections?.map((col: any) => ({
+    id: col._id,
+    title: col.title,
+    slug: col.slug || "",
+    description: col.description,
+  }));
+
   return {
     id: product._id,
     title: product.title,
     slug: product.slug || "",
     displayType: product.displayType || "gallery",
-    description: product.description,
+    description: toPlainText(product.description),
     descriptionBulletPoints: product.descriptionBulletPoints,
     images: product.images?.map((img: any) => urlFor(img).url()) || [],
     primaryImage: product.images?.[0]
@@ -327,14 +336,8 @@ function transformProduct(product: any): Product {
     price: product.price,
     features: product.features,
     featured: product.featured || false,
-    collection: product.collection
-      ? {
-          id: product.collection._id,
-          title: product.collection.title,
-          slug: product.collection.slug || "",
-          description: product.collection.description,
-        }
-      : undefined,
+    collection: collections?.[0],
+    collections,
     relatedProducts: product.relatedProducts?.map((p: any) => ({
       id: p._id,
       title: p.title,

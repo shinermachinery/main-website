@@ -65,7 +65,7 @@ export function getAllProductsQuery(
     conditions.push(`featured == ${featured}`);
   }
   if (collectionSlug) {
-    conditions.push("collection->slug.current == $collectionSlug");
+    conditions.push("$collectionSlug in collections[]->slug.current");
   }
 
   const filterString = buildFilterString("product", conditions);
@@ -107,7 +107,6 @@ export function getProductBySlugQuery(
   return {
     query: `*[_type == "product" && slug.current == $slug][0] {
       ${productFields},
-      collection-> ${COLLECTION_SUMMARY_PROJECTION},
       relatedProducts[]-> ${PRODUCT_SUMMARY_PROJECTION}
     }`,
     params: { slug },
@@ -162,7 +161,7 @@ export function searchProductsQuery(
   limit: number = 20,
 ): QueryResult<{ searchTerm: string }> {
   const filterString = buildFilterString("product", [
-    "[title, description, features] match $searchTerm",
+    "[title, features] match $searchTerm",
   ]);
   const orderString = buildOrderString(["_score desc", "order asc"]);
   const paginationString = buildPaginationString(limit);
@@ -219,7 +218,7 @@ export function getAllCollectionsQuery(limit?: number): QueryResult {
   return {
     query: `*[${filterString}] ${orderString} ${paginationString} {
       ${COLLECTION_FULL_PROJECTION.replace("{", "").replace("}", "").trim()},
-      "productCount": count(*[_type == "product" && references(^._id)])
+      "productCount": count(*[_type == "product" && ^._id in collections[]._ref])
     }`,
     params: {},
   };
@@ -243,7 +242,7 @@ export function getCollectionBySlugQuery(
   return {
     query: `*[_type == "productCollection" && slug.current == $slug][0] {
       ${COLLECTION_FULL_PROJECTION.replace("{", "").replace("}", "").trim()},
-      "products": *[_type == "product" && collection._ref == ^._id]
+      "products": *[_type == "product" && ^._id in collections[]._ref]
         | order(order asc, _createdAt desc) [0...${productLimit}] ${PRODUCT_SUMMARY_PROJECTION}
     }`,
     params: { slug },
@@ -305,7 +304,7 @@ export function getPopularCollectionsQuery(limit: number = 5): QueryResult {
   return {
     query: `*[_type == "productCollection"] {
       ${COLLECTION_SUMMARY_PROJECTION.replace("{", "").replace("}", "").trim()},
-      "productCount": count(*[_type == "product" && references(^._id)])
+      "productCount": count(*[_type == "product" && ^._id in collections[]._ref])
     } | order(productCount desc) [0...${limit}]`,
     params: {},
   };

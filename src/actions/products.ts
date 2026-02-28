@@ -1,6 +1,7 @@
 "use server";
 
 import type { Category, Product, ProductCollection } from "@/lib/sanity-types";
+import { getDemoCollections } from "@/lib/demo-data/products";
 import { sanityFetch } from "@/sanity/lib/live";
 import {
   getAllCategoriesQuery,
@@ -40,10 +41,14 @@ export const getAllProductCollections = async (): Promise<
   try {
     const { query, params } = getAllCollectionsQuery();
     const result = await sanityFetch({ query, params });
-    return (result.data as ProductCollection[]) ?? [];
+    const collections = (result.data as ProductCollection[]) ?? [];
+    if (collections.length === 0) {
+      return getDemoCollections();
+    }
+    return collections;
   } catch (error) {
     console.error("Error fetching product collections:", error);
-    return [];
+    return getDemoCollections();
   }
 };
 

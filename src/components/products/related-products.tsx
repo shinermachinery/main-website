@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BLUR_DATA_URL } from "@/lib/image-blur";
 import type { Product } from "@/lib/sanity-types";
+import { toPlainText } from "@/lib/utils";
 import { safeImageUrl } from "@/sanity/lib/image";
 
 interface RelatedProductsProps {
@@ -73,11 +74,18 @@ export function RelatedProducts({
 
             {/* Content */}
             <div className="p-4 space-y-2">
-              {/* Collection Badge */}
-              {product.collection && (
-                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-brand-blue/5 text-brand-blue">
-                  {product.collection.title}
-                </span>
+              {/* Collection Badges */}
+              {product.collections && product.collections.length > 0 && (
+                <div className="flex flex-wrap gap-1">
+                  {product.collections.map((col) => (
+                    <span
+                      key={col._id}
+                      className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-brand-blue/5 text-brand-blue"
+                    >
+                      {col.title}
+                    </span>
+                  ))}
+                </div>
               )}
 
               {/* Title */}
@@ -86,9 +94,9 @@ export function RelatedProducts({
               </h3>
 
               {/* Description */}
-              {product.description && (
+              {product.description && product.description.length > 0 && (
                 <p className="text-xs font-light text-muted-foreground line-clamp-2">
-                  {product.description}
+                  {toPlainText(product.description)}
                 </p>
               )}
 

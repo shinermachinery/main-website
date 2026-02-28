@@ -115,7 +115,7 @@ const portableTextComponents = {
 
 export function PortableText({ value, className = "" }: PortableTextProps) {
   return (
-    <div className={`prose prose-lg max-w-none dark:prose-invert ${className}`}>
+    <div className={`prose prose-lg max-w-none dark:prose-invert w-full grid-cols-2 ${className}`}>
       <PortableTextReact value={value} components={portableTextComponents} />
     </div>
   );

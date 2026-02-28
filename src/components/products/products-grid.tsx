@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { ProductCard } from "@/components/sections/products/product-card";
 import { EmptyState } from "@/components/ui/empty-state";
 import type { Product } from "@/lib/sanity-types";
+import { toPlainText } from "@/lib/utils";
 import { safeImageUrl } from "@/sanity/lib/image";
 
 interface ProductsGridProps {
@@ -31,8 +32,8 @@ export function ProductsGrid({ products }: ProductsGridProps) {
           <ProductCard
             key={product._id}
             title={product.title}
-            description={product.description}
-            category={product.collection?.title}
+            description={toPlainText(product.description)}
+            category={product.collections?.map((c) => c.title).join(", ")}
             imageUrl={imageUrl}
             imageAlt={product.images?.[0]?.alt || product.title}
             href={`/products/${product.slug.current}`}

@@ -1,9 +1,18 @@
 "use client";
+import Autoplay from "embla-carousel-autoplay";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import type { Product } from "@/lib/sanity-types";
+import { toPlainText } from "@/lib/utils";
 import { safeImageUrl } from "@/sanity/lib/image";
 import { Button } from "@/components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { ProductCard } from "./product-card";
 
 interface ProductsGridProps {
@@ -41,23 +50,44 @@ export function ProductsGrid({ products }: ProductsGridProps) {
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {products.map((product) => {
-          const imageUrl = safeImageUrl(product?.images?.[0], 600, 400);
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        plugins={[
+          Autoplay({
+            delay: 3000,
+            stopOnInteraction: false,
+            stopOnMouseEnter: true,
+          }),
+        ]}
+        className="w-full"
+      >
+        <CarouselContent>
+          {products.map((product) => {
+            const imageUrl = safeImageUrl(product?.images?.[0], 600, 400);
 
-          return (
-            <ProductCard
-              key={product._id}
-              title={product.title}
-              description={product.description}
-              category={product.collection?.title}
-              imageUrl={imageUrl}
-              imageAlt={product.images?.[0]?.alt || product.title}
-              href={`/products/${product.slug.current}`}
-            />
-          );
-        })}
-      </div>
+            return (
+              <CarouselItem
+                key={product._id}
+                className="basis-full sm:basis-1/2 lg:basis-1/4"
+              >
+                <ProductCard
+                  title={product.title}
+                  description={toPlainText(product.description)}
+                  category={product.collections?.map((c) => c.title).join(", ")}
+                  imageUrl={imageUrl}
+                  imageAlt={product.images?.[0]?.alt || product.title}
+                  href={`/products/${product.slug.current}`}
+                />
+              </CarouselItem>
+            );
+          })}
+        </CarouselContent>
+        <CarouselPrevious className="-left-4 md:-left-6" />
+        <CarouselNext className="-right-4 md:-right-6" />
+      </Carousel>
     </section>
   );
 }

@@ -27,15 +27,15 @@ export function ProductCard({
   onViewDetails,
 }: ProductCardProps) {
   const cardContent = (
-    <div className="bg-background flex flex-col gap-4 items-center justify-center px-4 py-3 rounded-2xl hover:shadow-lg transition-shadow">
+    <div className="bg-background flex flex-col px-4 py-3 rounded-2xl hover:shadow-lg transition-shadow h-full">
       {/* Product Image */}
-      <div className="relative w-full rounded-2xl overflow-hidden bg-muted flex items-center justify-center max-h-48">
+      <div className="relative w-full rounded-2xl overflow-hidden bg-muted flex items-center justify-center h-48">
         <Image
           src={imageUrl || "/shiner-logo.png"}
           alt={imageAlt || title}
           width={600}
           height={400}
-          className={`w-full h-auto max-h-48 ${imageUrl ? "object-contain" : "object-contain p-6 opacity-60"}`}
+          className={`w-full h-full ${imageUrl ? "object-contain" : "object-contain p-6 opacity-60"}`}
           sizes="(max-width: 48rem) 100vw, (max-width: 64rem) 50vw, 33vw"
           placeholder="blur"
           blurDataURL={BLUR_DATA_URL}
@@ -43,26 +43,22 @@ export function ProductCard({
       </div>
 
       {/* Category Badge */}
-      {category && (
-        <div className="flex items-center w-full">
-          <GradientBadge>{category}</GradientBadge>
-        </div>
-      )}
+      <div className="flex items-center w-full mt-4 min-h-6">
+        {category && <GradientBadge>{category}</GradientBadge>}
+      </div>
 
       {/* Product Info */}
-      <div className="flex flex-col gap-2 items-start w-full">
-        <p className="text-sm font-medium text-foreground w-full">{title}</p>
-        {description && (
-          <p className="text-sm font-medium text-muted-foreground w-full line-clamp-2">
-            {description}
-          </p>
-        )}
+      <div className="flex flex-col gap-2 items-start w-full mt-2 flex-1">
+        <p className="text-sm font-medium text-foreground w-full line-clamp-1">{title}</p>
+        <p className="text-sm font-medium text-muted-foreground w-full line-clamp-2">
+          {description || "\u00A0"}
+        </p>
       </div>
 
       {/* CTA Button */}
       <Button
         onClick={href ? undefined : onViewDetails}
-        className="flex gap-2 h-10 items-center justify-center px-4 py-2 rounded-full w-full relative overflow-hidden cursor-pointer"
+        className="flex gap-2 h-10 items-center justify-center px-4 py-2 rounded-full w-full relative overflow-hidden cursor-pointer mt-4"
         style={{
           background:
             "linear-gradient(88.66deg, var(--brand-blue) 27.51%, var(--brand-green) 115.04%)",

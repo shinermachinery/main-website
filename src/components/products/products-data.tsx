@@ -21,18 +21,18 @@ export async function ProductsData({
     const params: Record<string, string> = {};
 
     if (searchQuery) {
-      conditions.push("[title, description, features] match $searchTerm");
+      conditions.push("[title, features] match $searchTerm");
       params.searchTerm = `${searchQuery}*`;
     }
 
     if (category) {
       const slugs = category.split(",");
       if (slugs.length === 1) {
-        conditions.push("collection->slug.current == $categorySlug");
+        conditions.push("$categorySlug in collections[]->slug.current");
         params.categorySlug = category;
       } else {
         conditions.push(
-          `collection->slug.current in [${slugs.map((_, i) => `$cat${i}`).join(", ")}]`,
+          `collections[]->slug.current in [${slugs.map((_, i) => `$cat${i}`).join(", ")}]`,
         );
         for (let i = 0; i < slugs.length; i++) {
           params[`cat${i}`] = slugs[i];

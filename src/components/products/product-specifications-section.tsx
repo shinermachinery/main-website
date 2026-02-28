@@ -1,4 +1,3 @@
-import { Star } from "lucide-react";
 import type { Product } from "@/lib/sanity-types";
 
 interface ProductSpecificationsSectionProps {
@@ -8,38 +7,33 @@ interface ProductSpecificationsSectionProps {
 export function ProductSpecificationsSection({
   product,
 }: ProductSpecificationsSectionProps) {
-  return (
-    <section className="space-y-8">
-      {/* Ultra-thin Header */}
-      <div className="space-y-2">
-        <div className="flex items-center gap-2">
-          <h2 className="text-xl font-light text-primary">
-            Our Specifications
-          </h2>
-        </div>
-        {product.specifications?.description && (
-          <p className="text-sm font-light text-muted-foreground">
-            {product.specifications.description}
-          </p>
-        )}
-      </div>
+  if (!product.specifications || product.specifications.length === 0) {
+    return null;
+  }
 
-      {/* Ultra-thin Specifications Grid */}
-      {product.descriptionBulletPoints &&
-        product.descriptionBulletPoints.length > 0 && (
-          <div className="space-y-3">
-            <ul className="grid grid-cols-2 gap-2">
-              {product.features?.map((feature, index) => (
-                <li key={index} className="flex items-start gap-3 group">
-                  <Star className="fill-brand-green stroke-none" />
-                  <span className="text-sm font-light text-muted-foreground">
-                    {feature}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+  return (
+    <section className="space-y-6">
+      <h2 className="text-xl font-light text-primary">Specifications</h2>
+
+      <div className="rounded-xl border border-border overflow-hidden">
+        <table className="w-full text-sm">
+          <tbody>
+            {product.specifications.map((spec, index) => (
+              <tr
+                key={spec._key}
+                className={index % 2 === 0 ? "bg-secondary" : "bg-background"}
+              >
+                <td className="px-4 py-3 font-medium text-foreground w-1/3">
+                  {spec.label}
+                </td>
+                <td className="px-4 py-3 font-light text-muted-foreground">
+                  {spec.value}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </section>
   );
 }

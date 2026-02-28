@@ -14,6 +14,7 @@ import { ProductSingleImage } from "@/components/products/product-single-image";
 import { ProductSpecificationsSection } from "@/components/products/product-specifications-section";
 import { RelatedProducts } from "@/components/products/related-products";
 import { siteConfig } from "@/lib/site-config";
+import { toPlainText } from "@/lib/utils";
 import { safeImageUrl } from "@/sanity/lib/image";
 
 interface PageProps {
@@ -27,7 +28,7 @@ export async function generateMetadata({
   const product = await getProductBySlug(slug);
 
   const title = product?.title ?? "Product";
-  const description = product?.description;
+  const description = toPlainText(product?.description) || undefined;
   const image = safeImageUrl(product?.images?.[0], 1200, 630);
 
   return {
@@ -93,21 +94,23 @@ export default async function ProductDetailPage({ params }: PageProps) {
             </div>
           </div>
         ) : displayType === "imageText" ? (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
-            <ProductSingleImage
-              image={product.images?.[0]}
-              title={product.title}
-            />
-            <div className="flex flex-col gap-8">
-              <ProductInfo product={product} />
-              {product.body && product.body.length > 0 && (
-                <PortableText value={product.body} />
-              )}
-              <ProductBrochureDownload
-                brochure={product.brochure}
+          <div className="w-full flex flex-col gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+              <ProductImageGallery
+                images={product.images || []}
                 title={product.title}
               />
+              <div className="flex flex-col gap-8 w-full">
+                <ProductInfo product={product} />
+                <ProductBrochureDownload
+                  brochure={product.brochure}
+                  title={product.title}
+                />
+              </div>
             </div>
+            {product.body && product.body.length > 0 && (
+              <PortableText value={product.body} />
+            )}
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
@@ -126,12 +129,11 @@ export default async function ProductDetailPage({ params }: PageProps) {
         )}
 
         {/* Specifications Section */}
-        {product.specifications?.description &&
-          product.specifications.description.length > 0 && (
-            <div className="mb-16">
-              <ProductSpecificationsSection product={product} />
-            </div>
-          )}
+        {product.specifications && product.specifications.length > 0 && (
+          <div className="mb-16">
+            <ProductSpecificationsSection product={product} />
+          </div>
+        )}
 
         {/* Related Products */}
         {relatedProducts.length > 0 && (

@@ -1,19 +1,25 @@
 import { Star } from "lucide-react";
-import type { Product } from "@/lib/sanity-types";
+import { PortableText } from "@/components/blog/portable-text";
 import { GradientBadge } from "@/components/ui/gradient-badge";
+import type { Product } from "@/lib/sanity-types";
 
 interface ProductInfoProps {
   product: Product;
 }
 
 export function ProductInfo({ product }: ProductInfoProps) {
+  console.log(product);
   return (
     <div className="flex-1 flex flex-col gap-8">
       {/* Header */}
       <div className="space-y-3">
-        {/* Collection Badge */}
-        {product.collection && (
-          <GradientBadge>{product.collection.title}</GradientBadge>
+        {/* Collection Badges */}
+        {product.collections && product.collections.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {product.collections.map((col) => (
+              <GradientBadge key={col._id}>{col.title}</GradientBadge>
+            ))}
+          </div>
         )}
 
         {/* Title */}
@@ -22,10 +28,10 @@ export function ProductInfo({ product }: ProductInfoProps) {
         </h1>
 
         {/* Description */}
-        {product.description && (
-          <p className="text-sm font-light text-muted-foreground">
-            {product.description}
-          </p>
+        {product.description && product.description.length > 0 && (
+          <div className="text-sm font-light text-muted-foreground prose prose-sm max-w-none">
+            <PortableText value={product.description} />
+          </div>
         )}
       </div>
 
