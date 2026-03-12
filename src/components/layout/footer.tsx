@@ -47,7 +47,7 @@ export async function Footer() {
                   alt="Shiner Logo"
                   width={128}
                   height={128}
-                  className="h-16 w-auto"
+                  className="h- w-auto"
                 />
               </div>
             </Link>

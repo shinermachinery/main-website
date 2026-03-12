@@ -23,7 +23,7 @@ export function HighlightsSection() {
             <ArrowUpRight className="size-3.5" />
           </Link>
         </div>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-base text-muted-foreground">
           Delivering precision-engineered machinery across industries.{" "}
           <span className="font-semibold text-foreground">
             Trusted by food processing plants
@@ -38,8 +38,8 @@ export function HighlightsSection() {
       {/* Middle Card - Stats */}
       <div className="bg-background border border-border rounded-2xl p-6 flex flex-col gap-4">
         <div>
-          <p className="text-3xl font-semibold text-foreground">500+</p>
-          <p className="text-sm text-muted-foreground">Companies served</p>
+          <p className="text-4xl font-semibold text-foreground">500+</p>
+          <p className="text-base text-muted-foreground">Companies served</p>
         </div>
         <div className="flex flex-col gap-3">
           {sizeBreakdown.map((item) => (
@@ -78,7 +78,7 @@ export function HighlightsSection() {
             <ArrowUpRight className="size-3.5" />
           </Link>
         </div>
-        <p className="text-sm text-white/80">
+        <p className="text-base text-white/80">
           Industry-grade solutions built for scale.{" "}
           <span className="font-semibold text-white">Turpis bibendum</span> eget
           adipiscing{" "}

@@ -53,7 +53,7 @@ export function EmptyState({
         />
       )}
       {resolvedTitle && (
-        <p className="text-lg font-medium text-foreground mb-1">
+        <p className="text-lg font-semibold text-foreground mb-1">
           {resolvedTitle}
         </p>
       )}

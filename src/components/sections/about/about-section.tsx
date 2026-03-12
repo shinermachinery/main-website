@@ -19,7 +19,13 @@ export function AboutSection({ title, description }: AboutSectionProps) {
         <div className="flex-1">
           <h2
             id="about-heading"
-            className="text-2xl font-medium text-foreground max-w-sm"
+            className="text-3xl font-bold max-w-sm"
+            style={{
+              backgroundImage:
+                "linear-gradient(45deg, var(--brand-blue), var(--brand-green))",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
           >
             {title || "A Word About Us and Our Mission"}
           </h2>
@@ -28,11 +34,11 @@ export function AboutSection({ title, description }: AboutSectionProps) {
         {/* Description Column */}
         <div className="flex-1">
           {description && description.length > 0 ? (
-            <div className="text-lg font-medium text-muted-foreground">
+            <div className="text-xl font-semibold text-muted-foreground">
               <PortableText value={description} />
             </div>
           ) : (
-            <p className="text-lg font-medium text-muted-foreground">
+            <p className="text-xl font-semibold text-muted-foreground">
               At Shiner Machinery, we design and deliver precision-engineered
               machines that empower manufacturers to build faster, smarter, and
               more efficiently. Backed by decades of expertise, our commitment
@@ -46,7 +52,15 @@ export function AboutSection({ title, description }: AboutSectionProps) {
       <div className="flex flex-col lg:flex-row gap-6 items-start">
         {/* Tagline Column */}
         <div className="flex-1">
-          <h3 className="text-2xl font-medium text-primary max-w-sm">
+          <h3
+            className="text-3xl font-bold max-w-sm"
+            style={{
+              backgroundImage:
+                "linear-gradient(45deg, var(--brand-blue), var(--brand-green))",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
             Built to Perform
             <br />
             Built to Last
@@ -63,10 +77,10 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                   <Wrench className="w-6 h-6" />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <h4 className="text-sm font-medium text-primary">
+                  <h4 className="text-base font-semibold text-primary">
                     Highest Precision Components
                   </h4>
-                  <p className="text-sm font-medium text-muted-foreground">
+                  <p className="text-base font-medium text-muted-foreground">
                     Engineered to meet tight tolerances for accurate, consistent
                     performance every cycle.
                   </p>
@@ -79,10 +93,10 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                   <Settings className="w-6 h-6" />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <h4 className="text-sm font-medium text-primary">
+                  <h4 className="text-base font-semibold text-primary">
                     24/7 Support & Service
                   </h4>
-                  <p className="text-sm font-medium text-muted-foreground">
+                  <p className="text-base font-medium text-muted-foreground">
                     Round-the-clock technical assistance to keep your operations
                     running without interruption.
                   </p>
@@ -95,10 +109,10 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                   <TrendingUp className="w-6 h-6" />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <h4 className="text-sm font-medium text-primary">
+                  <h4 className="text-base font-semibold text-primary">
                     Productivity Focused
                   </h4>
-                  <p className="text-sm font-medium text-muted-foreground">
+                  <p className="text-base font-medium text-muted-foreground">
                     Solutions designed to maximize output and minimize downtime
                     across your production line.
                   </p>
@@ -111,10 +125,10 @@ export function AboutSection({ title, description }: AboutSectionProps) {
                   <Globe className="w-6 h-6" />
                 </div>
                 <div className="flex flex-col gap-1">
-                  <h4 className="text-sm font-medium text-primary">
+                  <h4 className="text-base font-semibold text-primary">
                     Global Reach, Local Support
                   </h4>
-                  <p className="text-sm font-medium text-muted-foreground">
+                  <p className="text-base font-medium text-muted-foreground">
                     Serving clients worldwide with dedicated local service teams
                     and rapid response times.
                   </p>

@@ -23,7 +23,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
         )}
 
         {/* Title */}
-        <h1 className="text-2xl lg:text-3xl font-light text-foreground">
+        <h1 className="text-2xl lg:text-3xl font-bold text-foreground">
           {product.title}
         </h1>
 

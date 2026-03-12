@@ -21,7 +21,15 @@ export function HowItWorksSection({
     <section className="flex flex-col lg:flex-row gap-10 lg:gap-10 items-start w-full">
       {/* Left Column - Heading */}
       <div className="flex items-center lg:w-xl shrink-0">
-        <h2 className="font-medium text-2xl text-foreground w-full lg:w-96">
+        <h2
+          className="font-bold text-3xl w-full lg:w-96"
+          style={{
+            backgroundImage:
+              "linear-gradient(45deg, var(--brand-blue), var(--brand-green))",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
           {title || "Trusted by Founders, Marketers, and Individuals"}
         </h2>
       </div>
@@ -37,8 +45,8 @@ export function HowItWorksSection({
 
             {/* Text Content */}
             <div className="flex flex-col gap-1 flex-1">
-              <p className="font-medium text-lg text-foreground">{cert.name}</p>
-              <p className="font-medium text-sm text-muted-foreground">
+              <p className="font-semibold text-xl text-foreground">{cert.name}</p>
+              <p className="font-medium text-base text-muted-foreground">
                 {cert.subDescription}
               </p>
             </div>

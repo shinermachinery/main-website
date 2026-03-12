@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronLeft, ChevronRight, Expand } from "lucide-react";
+import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BLUR_DATA_URL } from "@/lib/image-blur";
@@ -197,19 +197,19 @@ export function ProductImageGallery({
           />
           <Button
             onClick={() => setIsFullscreen(false)}
-            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-secondary/10 backdrop-blur-md border border-white/20 flex items-center justify-center hover:bg-secondary/20 transition-colors z-10"
+            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/15 backdrop-blur-md border border-white/30 flex items-center justify-center hover:bg-white/25 transition-colors z-10"
             aria-label="Close fullscreen"
           >
-            <span className="text-white text-lg font-light">×</span>
+            <X className="w-5 h-5 text-white" strokeWidth={2} />
           </Button>
 
-          <div className="relative max-w-7xl max-h-[90vh] w-full mx-4 z-10">
+          <div className="relative max-w-7xl max-h-[90vh] w-full mx-4 z-10 flex items-center justify-center">
             <Image
               src={safeImageUrl(currentImage, 1920)!}
               alt={currentImage.alt || title}
               width={1920}
               height={1080}
-              className="w-full h-auto object-contain"
+              className="max-w-full max-h-[90vh] object-contain"
               placeholder="blur"
               blurDataURL={BLUR_DATA_URL}
             />

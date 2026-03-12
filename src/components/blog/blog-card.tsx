@@ -51,7 +51,7 @@ export function BlogCard({
 
       {/* Title and Description */}
       <div className="flex flex-col gap-2 w-full">
-        <h3 className="font-medium text-base text-foreground transition-colors">
+        <h3 className="font-semibold text-base text-foreground transition-colors">
           {title}
         </h3>
         <p className="font-normal text-sm text-muted-foreground line-clamp-3 overflow-hidden">

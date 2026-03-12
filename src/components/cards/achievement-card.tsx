@@ -39,7 +39,7 @@ export function AchievementCard({
         <p className="text-sm text-muted-foreground line-clamp-1">
           {awardGiver}
         </p>
-        <p className="text-lg font-medium text-foreground">{awardName}</p>
+        <p className="text-lg font-semibold text-foreground">{awardName}</p>
       </div>
     </div>
   );

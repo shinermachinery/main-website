@@ -21,7 +21,7 @@ export function ClientCard({
         }}
       >
         <p
-          className="text-lg font-medium bg-clip-text"
+          className="text-lg font-semibold bg-clip-text"
           style={{
             WebkitTextFillColor: "transparent",
             backgroundImage:
@@ -37,7 +37,7 @@ export function ClientCard({
   return (
     <div className="flex flex-col gap-3 p-5 rounded-2xl bg-background h-full">
       {/* Company Name */}
-      <p className="text-lg font-medium text-foreground">{companyName}</p>
+      <p className="text-lg font-semibold text-foreground">{companyName}</p>
 
       {/* Projects List */}
       <div className="flex flex-col gap-3">

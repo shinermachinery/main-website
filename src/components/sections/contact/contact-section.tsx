@@ -9,7 +9,13 @@ export function ContactSection() {
         <div className="flex-1 flex flex-col gap-6">
           <h2
             id="contact-heading"
-            className="font-medium text-2xl text-primary text-center sm:text-left"
+            className="font-bold text-3xl text-center sm:text-left"
+            style={{
+              backgroundImage:
+                "linear-gradient(45deg, var(--brand-blue), var(--brand-green))",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
           >
             Get in touch for quotes, demos, or technical guidance.
           </h2>

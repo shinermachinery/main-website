@@ -18,7 +18,7 @@ async function TeamContent() {
   return (
     <div className="flex flex-col gap-10">
       <section className="flex flex-col gap-4">
-        <h1 className="font-medium text-3xl text-foreground">Our Team</h1>
+        <h1 className="font-bold text-3xl text-foreground">Our Team</h1>
         <p className="text-lg text-muted-foreground">
           Meet the people behind Shiner who make precision engineering possible.
         </p>
@@ -47,10 +47,10 @@ async function TeamContent() {
               )}
 
               <div className="flex flex-col gap-2">
-                <h2 className="font-medium text-2xl text-foreground">
+                <h2 className="font-bold text-2xl text-foreground">
                   {member.name}
                 </h2>
-                <p className="font-medium text-sm text-muted-foreground">
+                <p className="font-semibold text-sm text-muted-foreground">
                   {member.role}
                 </p>
               </div>
@@ -96,10 +96,10 @@ async function TeamContent() {
             <div className="flex-1 flex flex-col gap-10">
               {member.bio && (
                 <div className="flex flex-col gap-4">
-                  <h3 className="font-medium text-xl text-foreground">
+                  <h3 className="text-2xl text-foreground font-bold">
                     Biography
                   </h3>
-                  <div className="prose prose-sm max-w-none">
+                  <div className="prose prose-sm max-w-none text-base md:text-xl">
                     <PortableText value={member.bio} />
                   </div>
                 </div>
@@ -107,7 +107,7 @@ async function TeamContent() {
 
               {member.achievements && member.achievements.length > 0 && (
                 <div className="flex flex-col gap-4">
-                  <h3 className="font-medium text-xl text-foreground">
+                  <h3 className="font-bold text-xl text-foreground">
                     Key Achievements
                   </h3>
                   <ul className="flex flex-col gap-3">

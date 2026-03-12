@@ -33,7 +33,13 @@ export function ProductsGrid({ products }: ProductsGridProps) {
         <div className="flex-1">
           <h2
             id="products-heading"
-            className="text-2xl font-medium text-foreground"
+            className="text-3xl font-bold"
+            style={{
+              backgroundImage:
+                "linear-gradient(45deg, var(--brand-blue), var(--brand-green))",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
           >
             Featured Products
           </h2>

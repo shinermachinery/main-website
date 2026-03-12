@@ -62,7 +62,7 @@ export function TeamMemberCard({
           {member.name}
         </h3>
         <p
-          className={`font-medium bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-brand-green ${
+          className={`font-semibold bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-brand-green ${
             isCompact ? "text-xs" : "text-sm"
           }`}
         >

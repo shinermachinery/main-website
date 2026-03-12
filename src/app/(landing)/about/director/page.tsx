@@ -21,7 +21,7 @@ async function DirectorContent() {
     <div className="flex flex-col gap-10">
       {/* Page Header */}
       <section className="flex flex-col gap-4">
-        <h1 className="font-medium text-3xl text-foreground">
+        <h1 className="font-bold text-3xl text-foreground">
           Meet Founder & MD
         </h1>
       </section>
@@ -46,10 +46,10 @@ async function DirectorContent() {
 
           {/* Name & Title */}
           <div className="flex flex-col gap-2">
-            <h2 className="font-medium text-2xl text-foreground">
+            <h2 className="font-bold text-2xl text-foreground">
               {data.name}
             </h2>
-            <p className="font-medium text-sm text-muted-foreground">
+            <p className="font-semibold text-sm text-muted-foreground">
               {data.title}
             </p>
           </div>
@@ -93,8 +93,8 @@ async function DirectorContent() {
           {/* Biography */}
           {data.bio && (
             <div className="flex flex-col gap-4">
-              <h3 className="font-medium text-xl text-foreground">Biography</h3>
-              <div className="prose prose-sm max-w-none">
+              <h3 className="text-2xl text-foreground font-bold">Biography</h3>
+              <div className="prose prose-sm max-w-none text-base md:text-xl">
                 <PortableText value={data.bio} />
               </div>
             </div>
@@ -103,7 +103,7 @@ async function DirectorContent() {
           {/* Key Achievements */}
           {data.achievements && data.achievements.length > 0 && (
             <div className="flex flex-col gap-4">
-              <h3 className="font-medium text-xl text-foreground">
+              <h3 className="font-bold text-xl text-foreground">
                 Key Achievements
               </h3>
               <ul className="flex flex-col gap-3">

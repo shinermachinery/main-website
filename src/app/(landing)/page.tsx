@@ -51,7 +51,7 @@ export default async function HomePage() {
         facts={homeData.home?.facts || []}
       />
 
-      <ProcessSection />
+      {/* <ProcessSection /> */}
 
       <HowItWorksSection
         title={homeData.home?.trustedByFounderTitle}

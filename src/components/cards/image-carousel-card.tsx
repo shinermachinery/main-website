@@ -88,7 +88,7 @@ export function ImageCarouselCard({
 
       {/* Title Below Image */}
       {showTitle && (
-        <p className="text-lg font-medium text-foreground mt-3 px-1">{title}</p>
+        <p className="text-lg font-semibold text-foreground mt-3 px-1">{title}</p>
       )}
     </div>
   );

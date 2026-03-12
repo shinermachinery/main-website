@@ -35,11 +35,15 @@ export const moreLinks: NavLink[] = [
 // ============================================================================
 
 export type DesktopNavItem =
+  | { type: "link"; label: string; href: string }
   | { type: "popover"; label: string; links: NavLink[]; align: "start" | "end" }
   | { type: "products"; label: string; align: "start" | "end" }
   | { type: "links" };
 
-export const desktopNavItems: DesktopNavItem[] = [
+export const 
+
+desktopNavItems: DesktopNavItem[] = [
+  { type: "link", label: "Home", href: "/" },
   { type: "popover", label: "About", links: aboutLinks, align: "start" },
   { type: "products", label: "Our Products", align: "start" },
   { type: "popover", label: "Projects", links: projectLinks, align: "start" },
@@ -78,6 +82,7 @@ export const navbarCta = {
 // ============================================================================
 
 export const footerQuickLinks: NavLink[] = [
+  { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Products", href: "/products" },
   { name: "Projects", href: "/projects" },

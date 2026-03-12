@@ -56,7 +56,7 @@ export function SectionHeader({
     >
       <h2
         className={cn(
-          "font-medium text-foreground",
+          "font-bold text-foreground",
           size === "large" && "text-5xl",
           size === "default" && "text-4xl",
           size === "small" && "text-3xl",

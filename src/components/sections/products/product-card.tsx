@@ -49,7 +49,7 @@ export function ProductCard({
 
       {/* Product Info */}
       <div className="flex flex-col gap-2 items-start w-full mt-2 flex-1">
-        <p className="text-sm font-medium text-foreground w-full line-clamp-1">{title}</p>
+        <p className="text-sm font-semibold text-foreground w-full line-clamp-1">{title}</p>
         <p className="text-sm font-medium text-muted-foreground w-full line-clamp-2">
           {description || "\u00A0"}
         </p>

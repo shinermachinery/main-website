@@ -122,7 +122,7 @@ export function ContactForm() {
             ) : (
               <AlertCircle className="size-5 shrink-0" />
             )}
-            <p className="text-sm font-medium">{responseMessage.text}</p>
+            <p className="text-sm font-semibold">{responseMessage.text}</p>
           </div>
         )}
 

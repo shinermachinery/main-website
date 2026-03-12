@@ -44,7 +44,7 @@ export function HeroFeaturedProduct({ products }: HeroFeaturedProductProps) {
     >
       {/* Header Row */}
       <div className="flex items-start justify-between gap-4">
-        <p className="text-sm font-medium text-primary flex-1 truncate">
+        <p className="text-sm font-semibold text-primary flex-1 truncate">
           {activeProduct.title}
         </p>
         <div className="opacity-50 pt-0.5">

@@ -48,7 +48,7 @@ export function ActiveFilters({ filters, basePath }: ActiveFiltersProps) {
           key={filter.key}
           className="flex items-center gap-2 px-3 py-1.5 bg-background rounded-full"
         >
-          <span className="font-medium text-sm text-foreground">
+          <span className="font-semibold text-sm text-foreground">
             {filter.label}
           </span>
           <button

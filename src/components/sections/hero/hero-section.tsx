@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { HeroFeaturedProduct } from "./hero-featured-product";
+// import { HeroFeaturedProduct } from "./hero-featured-product";
 
 interface FeaturedProduct {
   _id: string;
@@ -36,7 +36,7 @@ export function HeroSection({
   secondaryCta = { text: "View Products", link: "/products" },
   backgroundImage,
   backgroundVideo,
-  featuredProducts = [],
+  // featuredProducts = [],
 }: HeroSectionProps) {
   return (
     <section
@@ -72,14 +72,22 @@ export function HeroSection({
           {/* Flex container for Typography Card and Featured Product Card */}
           <div className="w-full flex flex-col lg:flex-row gap-6 items-end justify-between pb-0 relative z-10">
             {/* Typography Card - Left (Less than 50%) */}
-            <div className="bg-background rounded-t-4xl rounded-br-4xl w-full lg:max-w-[40%] px-6 lg:px-8 py-12 lg:py-16">
+            <div className="bg-background/50 rounded-t-4xl rounded-br-lg w-full px-6 lg:px-8 py-8">
               {/* Main Heading */}
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-normal mb-4 text-primary">
+              <h1
+                className="text-3xl md:text-4xl lg:text-5xl mb-4 font-bold"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(45deg, var(--brand-blue), var(--brand-green))",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
                 {headline}
               </h1>
 
               {/* Description */}
-              <p className="text-sm md:text-base text-muted-foreground mb-6">
+              <p className="text-base md:text-lg text-primary mb-6 font-semibold">
                 {description}
               </p>
 
@@ -107,11 +115,11 @@ export function HeroSection({
             </div>
 
             {/* Featured Product Card - Right (floating above bottom) */}
-            {featuredProducts.length > 0 && (
+            {/* {featuredProducts.length > 0 && (
               <div className="w-full lg:w-64 absolute bottom-3 right-6 hidden sm:block">
                 <HeroFeaturedProduct products={featuredProducts} />
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>

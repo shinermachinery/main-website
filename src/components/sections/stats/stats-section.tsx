@@ -23,7 +23,7 @@ export function StatsSection({ title, facts = [] }: StatsSectionProps) {
   return (
     <section className="w-full rounded-3xl bg-linear-to-r from-brand-blue to-brand-green p-10 md:p-14">
       {/* Heading */}
-      <h2 className="text-2xl font-semibold text-white text-center mb-10">
+      <h2 className="text-3xl font-semibold text-white text-center mb-10">
         {title || "A few more facts about us"}
       </h2>
 
@@ -34,10 +34,10 @@ export function StatsSection({ title, facts = [] }: StatsSectionProps) {
             key={fact._key}
             className="flex flex-col items-center gap-2 p-6 rounded-2xl bg-white/10 backdrop-blur-sm"
           >
-            <span className="text-3xl md:text-4xl font-bold text-white">
+            <span className="text-4xl md:text-5xl font-bold text-white">
               {formatNumber(fact.number)}+
             </span>
-            <p className="text-sm md:text-base font-medium text-white/80 text-center">
+            <p className="text-base md:text-lg font-semibold text-white/80 text-center">
               {fact.text}
             </p>
           </div>

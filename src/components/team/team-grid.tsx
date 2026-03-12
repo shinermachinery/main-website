@@ -59,7 +59,7 @@ export function TeamGrid({ teamMembers }: TeamGridProps) {
 
                   <div className="space-y-2">
                     <h3 className="text-lg font-semibold">{member.name}</h3>
-                    <p className="text-sm font-medium bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-brand-green">
+                    <p className="text-sm font-semibold bg-clip-text text-transparent bg-gradient-to-r from-brand-blue to-brand-green">
                       {member.role}
                     </p>
                     {member.bio && (

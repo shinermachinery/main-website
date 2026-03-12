@@ -19,7 +19,15 @@ export function ContactPageClient({ data }: ContactPageClientProps) {
       <div className="flex flex-col gap-10 lg:flex-row lg:gap-10">
         {/* Left Column - Heading & Contact Info */}
         <div className="flex w-full flex-col gap-6 lg:w-1/2">
-          <h1 className="text-2xl font-medium text-foreground md:text-3xl">
+          <h1
+            className="text-2xl font-bold md:text-3xl"
+            style={{
+              backgroundImage:
+                "linear-gradient(45deg, var(--brand-blue), var(--brand-green))",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
             {contactPage.heading}
           </h1>
           <p className="text-sm text-muted-foreground">
@@ -72,7 +80,7 @@ export function ContactPageClient({ data }: ContactPageClientProps) {
             {data.offices.map((office, i) => (
               <div key={`office-${i}`} className="flex h-full flex-col gap-4">
                 <div className="flex min-h-24 flex-col gap-2">
-                  <h3 className="text-lg font-medium text-foreground">
+                  <h3 className="text-lg font-semibold text-foreground">
                     {office.name}
                   </h3>
                   <p className="text-sm text-muted-foreground">

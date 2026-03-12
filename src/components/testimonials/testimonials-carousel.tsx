@@ -102,11 +102,17 @@ export function TestimonialsCarousel({
       <div className="flex flex-col md:flex-row gap-8 items-start">
         <h2
           id="testimonials-heading"
-          className="flex-1 font-medium text-2xl text-primary"
+          className="flex-1 font-bold text-3xl"
+          style={{
+            backgroundImage:
+              "linear-gradient(45deg, var(--brand-blue), var(--brand-green))",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
         >
           Testimonials
         </h2>
-        <p className="flex-1 font-medium text-lg text-muted-foreground">
+        <p className="flex-1 font-semibold text-xl text-muted-foreground">
           Hear from the manufacturers who trust Shiner Machinery to power their
           production lines with precision and reliability.
         </p>

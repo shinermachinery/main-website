@@ -93,7 +93,7 @@ export default async function AboutPage() {
     <div className="max-w-7xl mx-auto px-4 py-8 md:py-12 flex flex-col gap-8 md:gap-10">
       <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-6">
         <div className="flex flex-1 flex-col gap-6">
-          <h1 className="text-2xl font-medium text-foreground md:text-3xl">
+          <h1 className="text-2xl font-bold text-foreground md:text-3xl">
             {heroTitle}
           </h1>
           {heroDescription && (
@@ -120,7 +120,7 @@ export default async function AboutPage() {
       <div className="w-full grid grid-cols-1 gap-6">
         <div className="w-full grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div className="flex flex-1 flex-col justify-start gap-4 rounded-2xl bg-brand-blue-10 p-6">
-            <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-medium text-lg">
+            <p className="bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent font-semibold text-lg">
               {missionTitle}
             </p>
             {missionDescription && (
@@ -130,7 +130,7 @@ export default async function AboutPage() {
             )}
           </div>
           <div className="flex flex-1 flex-col justify-between gap-4 rounded-2xl bg-brand-green-10 p-6">
-            <p className="text-lg font-medium text-brand-green">
+            <p className="text-lg font-semibold text-brand-green">
               {visionTitle}
             </p>
             {visionDescription && (
@@ -152,7 +152,7 @@ export default async function AboutPage() {
               >
                 <div className="flex items-center gap-2">
                   <Icon className="size-6 text-brand-blue" />
-                  <p className="font-medium text-lg bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent">
+                  <p className="font-semibold text-lg bg-linear-to-r from-brand-blue to-brand-green bg-clip-text text-transparent">
                     {feature.title}
                   </p>
                 </div>
@@ -187,7 +187,7 @@ export default async function AboutPage() {
       {featuredProducts.length > 0 && (
         <section className="w-full">
           <div className="mb-10 flex items-center justify-between">
-            <h2 className="text-2xl font-medium text-foreground">
+            <h2 className="text-2xl font-bold text-foreground">
               Featured Products
             </h2>
             <Button variant="shiner" size="lg" asChild className="rounded-full">

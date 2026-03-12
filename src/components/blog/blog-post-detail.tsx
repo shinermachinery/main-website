@@ -53,7 +53,7 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
         <p className="font-normal text-sm text-muted-foreground">
           {formattedDate}
         </p>
-        <h1 className="font-medium text-3xl text-foreground">{post.title}</h1>
+        <h1 className="font-bold text-3xl text-foreground">{post.title}</h1>
       </div>
 
       {/* Featured Image */}
@@ -80,7 +80,7 @@ export function BlogPostDetail({ post }: BlogPostDetailProps) {
             components={{
               block: {
                 h2: ({ children }) => (
-                  <h2 className="font-medium text-2xl text-foreground">
+                  <h2 className="font-bold text-2xl text-foreground">
                     {children}
                   </h2>
                 ),

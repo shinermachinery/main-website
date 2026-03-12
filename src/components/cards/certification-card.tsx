@@ -43,7 +43,7 @@ export function CertificationCard({
 
       {/* Info */}
       <div className="flex flex-col gap-2">
-        <p className="text-lg font-medium text-foreground line-clamp-2">
+        <p className="text-lg font-semibold text-foreground line-clamp-2">
           {title}
         </p>
         <p className="text-sm text-muted-foreground line-clamp-2">

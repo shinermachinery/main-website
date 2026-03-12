@@ -20,9 +20,9 @@ async function WhyChooseUsContent() {
       <section className="flex flex-col gap-6">
         {/* Header */}
         <div className="flex flex-col gap-4 mt-5 sm:mt-0">
-          <h1 className="font-medium text-3xl text-foreground">{data.title}</h1>
+          <h1 className="font-bold text-3xl text-foreground">{data.title}</h1>
           {data.subtitle && (
-            <p className="font-medium text-lg text-muted-foreground">
+            <p className="font-semibold text-lg text-muted-foreground">
               {data.subtitle}
             </p>
           )}
@@ -67,7 +67,7 @@ async function WhyChooseUsContent() {
                 </div>
               )}
               <div className="flex flex-col gap-2">
-                <h3 className="font-medium text-lg text-foreground">
+                <h3 className="font-semibold text-lg text-foreground">
                   {reason.title}
                 </h3>
                 <p className="font-normal text-sm text-muted-foreground">
