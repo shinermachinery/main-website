@@ -1,0 +1,49 @@
+import { Suspense } from "react";
+import { getAllProductCollections } from "@/actions/products";
+import { ProductsData } from "@/components/products/products-data";
+import { ProductsGridSkeleton } from "@/components/products/products-grid-skeleton";
+import { SearchFilterBar } from "@/components/shared/search-filter-bar";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { pageMetadata } from "@/lib/site-config";
+
+export const metadata = pageMetadata.products;
+
+interface ProductsPageProps {
+  searchParams: Promise<{
+    q?: string;
+    category?: string;
+  }>;
+}
+
+export default async function ProjectsPage({
+  searchParams,
+}: ProductsPageProps) {
+  const [params, collections] = await Promise.all([
+    searchParams,
+    getAllProductCollections(),
+  ]);
+
+  const categoryOptions = collections.map((c) => ({
+    label: c.title,
+    value: c.slug.current,
+  }));
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-16 md:py-12 flex flex-col gap-10">
+      {/* Search & Filter Bar */}
+      <SearchFilterBar
+        basePath="/products"
+        searchPlaceholder="Search products..."
+        categoryPlaceholder="All Categories"
+        categories={categoryOptions}
+        currentSearch={params.q}
+        currentCategory={params.category}
+      />
+
+      {/* Products Grid */}
+      <Suspense fallback={<ProductsGridSkeleton />}>
+        <ProductsData searchQuery={params.q} category={params.category} />
+      </Suspense>
+    </div>
+  );
+}

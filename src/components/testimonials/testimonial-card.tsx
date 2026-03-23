@@ -1,0 +1,95 @@
+/**
+ * Testimonial Card Component
+ * Displays customer testimonial with rating, photo, and quote
+ * Reusable for carousel, grid, or single display
+ */
+
+"use client";
+
+import { Quote, Star } from "lucide-react";
+import Image from "next/image";
+import { BLUR_DATA_URL } from "@/lib/image-blur";
+import type { Testimonial } from "@/lib/sanity-types";
+import { urlFor } from "@/sanity/lib/image";
+
+export interface TestimonialCardProps {
+  testimonial: Testimonial;
+  variant?: "card" | "quote" | "compact";
+  showImage?: boolean;
+}
+
+export function TestimonialCard({
+  testimonial,
+  variant = "card",
+  showImage = true,
+}: TestimonialCardProps) {
+  const imageUrl = testimonial.image
+    ? urlFor(testimonial.image).width(100).height(100).url()
+    : "/placeholder-avatar.jpg";
+
+  const isCard = variant === "card";
+  const isQuote = variant === "quote";
+  const isCompact = variant === "compact";
+
+  return (
+    <article
+      className={`flex flex-col h-full ${
+        isCard
+          ? "rounded-2xl border bg-card p-8 shadow-lg hover:shadow-xl transition-shadow"
+          : isQuote
+            ? "border-l-4 border-brand-green pl-6 py-4"
+            : ""
+      }`}
+    >
+      {/* Rating */}
+      <div className="flex gap-1 mb-6">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Star
+            key={i}
+            className={`h-5 w-5 ${
+              i < testimonial.rating
+                ? "fill-brand-green text-brand-green"
+                : "text-muted-foreground"
+            }`}
+            aria-hidden="true"
+          />
+        ))}
+      </div>
+
+      {/* Content */}
+      <blockquote
+        className={`text-foreground flex-1 mb-6 ${isCompact ? "text-sm" : ""}`}
+      >
+        {isQuote && <Quote className="h-10 w-10 text-brand-green/20" />}
+        <p className={isQuote ? "mt-2" : ""}>"{testimonial.content}"</p>
+      </blockquote>
+
+      {/* Customer Info */}
+      <footer
+        className={`flex items-center gap-4 mt-auto ${isCard ? "pt-4 border-t" : ""}`}
+      >
+        {showImage && (
+          <div className="relative h-12 w-12 rounded-full overflow-hidden bg-muted flex-shrink-0">
+            <Image
+              src={imageUrl}
+              alt={testimonial.image?.alt || testimonial.customerName}
+              fill
+              className="object-cover"
+              sizes="3rem"
+              placeholder="blur"
+              blurDataURL={BLUR_DATA_URL}
+            />
+          </div>
+        )}
+        <div>
+          <cite className="font-semibold not-italic">
+            {testimonial.customerName}
+          </cite>
+          {testimonial.role && (
+            <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+          )}
+        </div>
+      </footer>
+    </article>
+  );
+}

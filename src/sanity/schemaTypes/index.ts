@@ -1,0 +1,73 @@
+import type { SchemaTypeDefinition } from "sanity";
+
+// Blog schemas
+import { authorType, blockContentType, categoryType, postType } from "./blog";
+// Common schemas
+import {
+  contactPageType,
+  contactSubmissionType,
+  siteSettingsType,
+} from "./common";
+
+// Company schemas
+import { aboutPageType, teamMemberType } from "./company";
+// Homepage schemas
+import { homeType, trustedPartnerType } from "./homepage";
+
+// Marketing schemas
+import {
+  achievementType,
+  certificationType,
+  eventType,
+  testimonialType,
+} from "./marketing";
+// Product schemas
+import { productCollectionType, productType } from "./products";
+// Project schemas
+import {
+  clientListType,
+  clientType,
+  flowchartType,
+  installationType,
+  serviceType,
+} from "./projects";
+
+export const schema: { types: SchemaTypeDefinition[] } = {
+  types: [
+    // Homepage
+    homeType,
+    trustedPartnerType,
+
+    // Blog
+    blockContentType,
+    categoryType,
+    postType,
+    authorType,
+
+    // Products
+    productType,
+    productCollectionType,
+
+    // Projects
+    serviceType,
+    clientType,
+    clientListType,
+    installationType,
+    flowchartType,
+
+    // Company
+    aboutPageType,
+    teamMemberType,
+
+    // Marketing
+    testimonialType,
+    eventType,
+    certificationType,
+    achievementType,
+
+    // Common
+    siteSettingsType,
+    contactPageType,
+    contactSubmissionType,
+  ],
+};
